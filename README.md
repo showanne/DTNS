@@ -1,2 +1,5 @@
 # DTNS
-Discovery發現  Thinking思考 Notes筆記 Share分享
+- Discovery 發現
+- Thinking 思考
+- Notes 筆記
+- Share 分享
