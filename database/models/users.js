@@ -10,7 +10,9 @@ const writingItemSchema = new Schema({
     // required: [true, '請選擇模板'] // 會有預設值，不可能空白
   },
   c_id: {
-    // 存放 contents 的 id
+    // Aggregation 聚合
+    // c_id: 使用 contents 資料表的 _id 為欄位值
+    // 查詢時可以一起帶出對應的商品資料
     type: mongoose.ObjectId,
     // 關聯的地方名稱需相同
     // ↑ contents.js const contents = mongoose.model('contents', contentSchema) ↓
@@ -29,6 +31,8 @@ const writingSchema = new Schema({
     type: Date
   },
   items: {
+    // Composition 組合
+    // 文章為陣列，每筆資料使用 writingItemSchema 定義的結構
     type: [writingItemSchema]
   }
 })
