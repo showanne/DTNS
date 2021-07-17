@@ -1,0 +1,29 @@
+@import "~vue-material/dist/theme/engine"; // Import the theme engine
+// 自訂主題顏色
+@include md-register-theme("default", (
+  primary: #FFF9DB, // The primary color of your brand
+  accent: #B3AB88,  // The secondary color of your brand
+  theme: dark // This can be dark or light
+));
+
+@import "~vue-material/dist/theme/all"; // Apply the theme
+
+// <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+// #B3AB88
+// #FFFDF5
+// #FFF9DB
+// #7876B3
+// #DDDBFF
+
+
+// App
+#app {
+  .md-app {
+    // width: 20%;
+    height: 100vh;
+  }
+  // .md-content {
+  //   width: 80%;
+  // }
+}

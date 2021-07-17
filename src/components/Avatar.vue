@@ -1,9 +1,15 @@
 <template>
-  <img
-      :src="`https://source.boringavatars.com/${variant}/${size}/?colors=${colors[random()]},${colors[random()]}`"
-      alt="Avatar"
-    />
+    <img class="avatar"
+        :src="`https://source.boringavatars.com/${variant}/${size}/?colors=${colors[random()]},${colors[random()]}`"
+        alt="Avatar"
+      />
 </template>
+
+<style>
+  img.avatar{
+    filter: drop-shadow(3px 3px 3px #7876B3);
+  }
+</style>
 
 <script>
 export default {
