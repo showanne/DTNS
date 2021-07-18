@@ -15,21 +15,29 @@
 
     <div id="nav" class="page-container">
     <md-app md-waterfall md-mode="fixed">
-      <md-app-toolbar class="md-primary">
-        <span class="md-title">DTNS</span>
+      <md-app-toolbar class="md-layout md-gutter md-alignment-center-right">
+        <!-- <h3 class="md-title">DTNS</h3> md-collapse -->
+        <div class="md-layout-item md-large-size-20 md-medium-size-33 md-xsmall-hide">
+          <md-field>
+            <label>Search...</label>
+            <!-- search has-white -->
+            <md-input v-model="search"></md-input>
+            <!-- <span class="md-helper-text">Helper text</span> -->
+          </md-field>
+        </div>
       </md-app-toolbar>
 
-      <md-app-drawer md-permanent="full">
-        <!-- md-persistent="mini" -->
-        <md-toolbar class="md-transparent" md-elevation="0" to="/">
-          DTNS
-        </md-toolbar>
+      <md-app-drawer md-permanent="full" md-persistent="mini">
+        <!-- <md-toolbar class="md-transparent" md-elevation="3" to="/">
+          DTNS Logo
+        </md-toolbar> -->
 
         <md-list>
-        <md-list-item>
-          <!-- <menu-icon /> -->
-          <md-icon>menu</md-icon>
-        </md-list-item>
+          <md-list-item  to="/">
+            <!-- <menu-icon /> -->
+            <!-- <md-icon>menu</md-icon> -->
+            <img src="./assets/logo.png" alt="">
+          </md-list-item>
           <md-list-item to="/edit">
               <md-icon :md-src="require('./assets/icon/iconEdit.svg')" />
               <!-- <span>Edit</span> -->
@@ -68,3 +76,13 @@
   </div>
   </div>
 </template>
+
+<script>
+export default {
+  data () {
+    return {
+      search: ''
+    }
+  }
+}
+</script>
