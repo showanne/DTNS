@@ -1,9 +1,12 @@
 @import "~vue-material/dist/theme/engine"; // Import the theme engine
 // 自訂主題顏色
 @include md-register-theme("default", (
-  primary: #FFF9DB, // The primary color of your brand
-  accent: #B3AB88,  // The secondary color of your brand
-  theme: dark // This can be dark or light
+  primary: #7876B3, // The primary color of your brand
+  accent: #FFF9DB, // The secondary color of your brand
+  // black: #B3AB88,
+  // white: #FFFDF5,
+  // primary-light: #DDDBFF,
+  // theme: dark // This can be dark or light
 ));
 
 @import "~vue-material/dist/theme/all"; // Apply the theme
@@ -26,4 +29,8 @@
   // .md-content {
   //   width: 80%;
   // }
+  .md-drawer {
+    // .md-persistent-mini:not(.md-active)
+    width: 90px!important;
+}
 }
