@@ -60,14 +60,14 @@ const routes = [
     meta: {
       title: 'DTNS - Manage'
     }
-  // },
-  // {
-  //   path: '/signin',
-  //   name: 'SignIn',
-  //   component: () => import(/* webpackChunkName: "signin" */ '../views/SignIn.vue'),
-  //   meta: {
-  //     title: 'DTNS - SignIn'
-  //   }
+  },
+  {
+    path: '/signin',
+    name: 'SignIn',
+    component: () => import(/* webpackChunkName: "signin" */ '../views/SignIn.vue'),
+    meta: {
+      title: 'DTNS - SignIn'
+    }
   // },
   // {
   //   path: '/signup',
