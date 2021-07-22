@@ -1,0 +1,126 @@
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #fff;
+}
+
+#geulrara-path-1,
+#geulrara-path-2,
+#geulrara-path-3,
+#geulrara-path-4,
+#geulrara-path-5,
+#geulrara-path-6,
+#geulrara-path-7,
+#geulrara-path-8,
+#geulrara-path-9 {
+  fill: none;
+  stroke: #5b69e7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-miterlimit: 10;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+}
+
+#geulrara-path-1 {
+  stroke-width: 32;
+  animation: hand-writing 0.45s linear forwards 0.1s;
+}
+
+#geulrara-path-2 {
+  stroke-width: 26;
+  animation: hand-writing 0.45s linear forwards 0.3s;
+}
+
+#geulrara-path-3 {
+  stroke-width: 20;
+  animation: hand-writing 0.45s linear forwards 0.6s;
+}
+
+#geulrara-path-4 {
+  stroke-width: 20;
+  animation: hand-writing 0.45s linear forwards 0.7s;
+}
+
+#geulrara-path-5 {
+  stroke-width: 25;
+  animation: hand-writing 0.45s linear forwards 0.8s;
+}
+
+#geulrara-path-6 {
+  stroke-width: 22;
+  animation: hand-writing 1s linear forwards 1.05s;
+}
+
+#geulrara-path-7 {
+  stroke-width: 15;
+  animation: hand-writing 0.6s linear forwards 1.3s;
+}
+
+#geulrara-path-8 {
+  stroke-width: 20;
+  animation: hand-writing 1s linear forwards 1.45s;
+}
+
+#geulrara-path-9 {
+  stroke-width: 13;
+  animation: hand-writing 0.6s linear forwards 1.6s;
+}
+
+#calli-path-1,
+#calli-path-2,
+#calli-path-3,
+#calli-path-4,
+#calli-path-5 {
+  fill: none;
+  stroke: #5b69e7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+}
+
+#calli-path-1 {
+  stroke-width: 24;
+  animation: hand-writing 0.45s linear forwards 1.8s;
+}
+
+#calli-path-2 {
+  stroke-width: 19;
+  animation: hand-writing 0.45s linear forwards 1.9s;
+}
+
+#calli-path-3 {
+  stroke-width: 23;
+  animation: hand-writing 0.45s linear forwards 1.9s;
+}
+
+#calli-path-4 {
+  stroke-width: 23;
+  animation: hand-writing 0.45s linear forwards 2s;
+}
+
+#calli-path-5 {
+  stroke-width: 18;
+  animation: hand-writing 0.45s linear forwards 2.1s;
+}
+
+#heart-path {
+  fill: none;
+  stroke: #5b69e7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  stroke-width: 10;
+  animation: hand-writing 0.8s linear forwards 2.3s;
+}
+
+@keyframes hand-writing {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
