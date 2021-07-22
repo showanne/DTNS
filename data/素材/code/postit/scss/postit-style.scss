@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap');
+
+$colorBlack: #3E3A39;
+$colorWhite: #FFFDF5;
+$colorYellow: #FFEB67;
+$colorBlue: #A5D8D6;
+$colorRed: #EF898C;
+$colorGreen: #CBE196;
+
+// scss 的 預設集 給變數 自動產生樣式 
+@mixin size($w,$h:$w) {
+  width: $w;
+  height: $h;
+}
+
+*,*:before,*:after{
+  // 先幫所有東西加邊框好辨認
+  // border: 1px solid #cce;
+  font-family: 'Noto Sans TC', sans-serif;
+  color: #44403F;
+}
+
+html,body {
+  @include size(100%);
+  background-color: $colorBlack;
+  margin: 0;padding: 0;
+}
+
+.postit{
+  @include size(240px);
+  background-color: $colorGreen;
+  font-size: calc( 240px / 4 - 9px);
+  letter-spacing: 10px;
+  font-weight: 800;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 15px 10px 40px rgba(black, 0.4);
+  position: absolute;
+  transition: background-color 0.5s;
+  cursor: pointer;
+}
+
+.postitList{
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 190px;
+  p{
+    color: $colorWhite;
+    font-size: 32px;
+    margin: 0;
+    display: inline-block;
+  }
+  ul{
+    // display: inline-block;
+    list-style: none;
+    width: 100%;
+    padding: 0;
+    li{
+      margin: 5px 0;
+    }
+    input{
+      display: inline-block;
+      width: 45%;
+    }
+  }
+}
+
+.block {
+  @include size(19px);
+  display: inline-block;
+  margin: 2px 1px;
+}

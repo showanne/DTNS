@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/postit-style.css">
+</head>
+
+<body>
+  <div id="app">
+    <div class="postit"
+      v-for="(p, pId) in postit"
+      :style="postitSet(p)"
+      @mousedown="selectId($event, pId)">
+      <!-- $event 是 vue 觸發 事件 時會產生的變數 -->
+      <div class="text">
+        {{ p.text }}
+      </div>
+    </div>
+    <div class="postitList">
+      <p>便利貼清單</p>
+      <ul>
+        <li style="color:burlywood;">{{ nowId }}</li>
+        <li v-for="(p, pId) in postit">
+          <input type="text" v-model="p.text">
+          <!-- <input type="text" v-model="p.color"> -->
+          <!-- <select v-model="p.color">
+            <option :value="Citem"
+            v-for="Citem in colorList"
+            @click=" p.color = Citem.color "
+            >{{ Citem.color }}</option>
+          </select> -->
+          <div class="colorBlock">
+            <div class="block"
+            v-for="Citem in colorList"
+            :style="{ backgroundColor: Citem.colorHex }"
+            @click=" p.color = Citem.color "
+            ></div>
+          </div>
+        </li>
+        <button @click="addPost">+ 新增便利貼</button>
+      </ul>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+  <script>
+    const vm = new Vue({
+      el: '#app',
+      data() {
+        return {
+          colorList:[
+            { color: 'White',
+              colorHex: '#FFFDF5' },
+            { color: 'Yellow',
+              colorHex: '#FFEB67' },
+            { color: 'Blue',
+              colorHex: '#A5D8D6' },
+            { color: 'Red',
+              colorHex: '#EF898C' },
+            { color: 'Green',
+              colorHex: '#CBE196' }
+          ],
+          postit:[
+            {
+              text: '便利貼',
+              color:'Yellow',
+              pos: {x: 20, y: 60}
+            },
+            {
+              text: '便利商店',
+              color:'Green',
+              pos: {x: 60, y: 180}
+            }
+          ],
+          nowId: -1,
+          // 便利貼距離網頁邊的位置
+          mousePos: { x: 0, y: 0 },
+          // 滑鼠現在點擊便利貼上的位置
+          mouseStartPos: { x: 0, y: 0 }
+        }
+      },
+      watch: {
+        // 觀測目前滑鼠點擊的便利貼的狀態
+        mousePos () {
+          // console.log(this.mousePos);
+          // 如果滑鼠現在有選便利貼 (現在的 nowId 不是 -1 )
+          if (this.nowId != -1) {
+            // 設定現在點擊的是哪張便利貼，並對其更新位置
+            let nowPostit = this.postit[this.nowId]
+            // 滑鼠點擊到便利貼時，依據現在便利貼的位置減掉現在滑鼠點的位置，否則便利貼會以左上角為起點，便利貼放開時會抖一下
+            nowPostit.pos.x = this.mousePos.x - this.mouseStartPos.x
+            nowPostit.pos.y = this.mousePos.y - this.mouseStartPos.y
+          }
+          console.log(this.mousePos.x, this.mousePos.y, this.mouseStartPos.x, this.mouseStartPos.y);
+        }
+      },
+      methods: {
+        // 設定便利貼
+        postitSet(p){
+          return {
+            top: p.pos.y + 'px',
+            left: p.pos.x + 'px',
+            // 動態計算文字間距 240 是 postit 的寬 -10 是左右想留的間距
+            fontSize: ((240-10) / p.text.length)-10 + 'px',
+            // 在 colorList 內尋找 符合條件 " " 的 .find() 會自動傳回新陣列的第一筆資料，然後取裡面的值
+            backgroundColor: this.colorList.find( c => c.color == p.color ).colorHex
+          }
+        },
+        // 選擇便利貼
+        selectId(evt, id){
+          this.nowId = id
+          // 滑鼠現在點擊便利貼 相對於便利貼的位置
+          this.mouseStartPos = {
+            x : evt.offsetX,
+            y : evt.offsetY
+          }
+          // console.log("start:" + this.mouseStartPos)
+        },
+        // 新增便利貼
+        addPost(){
+          this.postit.push(
+            {
+              text: '便利貼',
+              color:'White',
+              pos: {
+                x: 90 + Math.random()*190,
+                y: 90 + Math.random()*190
+              }
+            }
+          )
+        },
+        // 取得便利貼顏色
+        getColor(name){
+          return this.colorList.find( c => c.color == name ).colorHex
+        }
+      }
+    })
+
+    // 滑鼠移動時，偵測位置並改 mousePos 值
+    // 偵測滑鼠點到哪張便利貼交給 mousePos
+    window.onmousemove = (evt) => {
+      vm.mousePos = {
+        x: evt.pageX,
+        y: evt.pageY
+      }
+    }
+
+    // 滑鼠點擊離開時，nowId 改回 -1
+    window.onmouseup = (evt) => {
+      vm.nowId = -1
+    }
+  </script>
+</body>
+</html>

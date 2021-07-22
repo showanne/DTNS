@@ -1,0 +1,73 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap");
+*, *:before, *:after {
+  font-family: 'Noto Sans TC', sans-serif;
+  color: #44403F;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  background-color: #3E3A39;
+  margin: 0;
+  padding: 0;
+}
+
+.postit {
+  width: 240px;
+  height: 240px;
+  background-color: #CBE196;
+  font-size: calc( 240px / 4 - 9px);
+  letter-spacing: 10px;
+  font-weight: 800;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-shadow: 15px 10px 40px rgba(0, 0, 0, 0.4);
+          box-shadow: 15px 10px 40px rgba(0, 0, 0, 0.4);
+  position: absolute;
+  -webkit-transition: background-color 0.5s;
+  transition: background-color 0.5s;
+  cursor: pointer;
+}
+
+.postitList {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 190px;
+}
+
+.postitList p {
+  color: #FFFDF5;
+  font-size: 32px;
+  margin: 0;
+  display: inline-block;
+}
+
+.postitList ul {
+  list-style: none;
+  width: 100%;
+  padding: 0;
+}
+
+.postitList ul li {
+  margin: 5px 0;
+}
+
+.postitList ul input {
+  display: inline-block;
+  width: 45%;
+}
+
+.block {
+  width: 19px;
+  height: 19px;
+  display: inline-block;
+  margin: 2px 1px;
+}
