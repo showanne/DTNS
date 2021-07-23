@@ -1,5 +1,6 @@
 <template>
-  <md-card class="md-card-sign" :class="{ 'md-card-hidden': cardHidden }">
+  <!-- <md-card class="md-card-sign" :class="{ 'md-card-hidden': cardHidden }"> -->
+  <md-card>
     <md-card-header :class="getClass(headerColor)">
       <slot name="title"></slot>
       <div class="social-line">
@@ -10,6 +11,8 @@
     <md-card-content>
       <slot name="description"></slot>
       <slot name="inputs"></slot>
+      <slot name="select"></slot>
+      <slot name="textarea"></slot>
     </md-card-content>
 
     <md-card-actions>
@@ -20,7 +23,7 @@
 
 <script>
 export default {
-  name: 'SignCard',
+  name: 'FormCard',
   props: {
     headerColor: {
       type: String,
@@ -29,21 +32,19 @@ export default {
   },
   data () {
     return {
-      cardHidden: true
+      // cardHidden: true
     }
   },
-  beforeMount () {
-    setTimeout(this.showCard, 400)
-  },
+  // beforeMount () {
+  //   setTimeout(this.showCard, 400)
+  // },
   methods: {
-    showCard: function () {
-      this.cardHidden = false
-    },
+    // showCard: function () {
+    //   this.cardHidden = false
+    // },
     getClass: function (headerColor) {
       return 'md-card-header-' + headerColor + ''
     }
   }
 }
 </script>
-
-<style lang="css"></style>

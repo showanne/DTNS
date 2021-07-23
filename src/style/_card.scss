@@ -1,0 +1,26 @@
+.md-card .md-card-header{
+  margin: 0 20px 15px;
+  text-align: center;
+
+  &-signIn{
+    background: linear-gradient(
+    60deg
+    ,#66bb6a,#388e3c);
+    box-shadow: 0 5px 20px 0 rgba(0,0,0,0.2),
+     0 13px 24px -11px rgba(76,175,80,0.6);
+  }
+  &-signUp{
+    background: linear-gradient(
+    60deg
+    ,#a6bb66,#718e38);
+    box-shadow: 0 5px 20px 0 rgba(0,0,0,0.2),
+     0 13px 24px -11px rgba(162, 175, 76, 0.6);
+  }
+  &-contact{
+    background: linear-gradient(
+    60deg
+    ,#668cbb,#385f8e);
+    box-shadow: 0 5px 20px 0 rgba(0,0,0,0.2),
+     0 13px 24px -11px rgba(76, 92, 175, 0.6);
+  }
+}
