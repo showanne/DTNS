@@ -35,7 +35,7 @@
   bottom: 25px;
   left: 0;
   right: 0;
-  text-align: center;
+  text-align: right;
   padding-top: 20px;
   padding-bottom: 45px;
 
@@ -45,6 +45,11 @@
   .fab,
   .fas {
     color: $white-color !important;
+  }
+
+  h4{
+    margin: 0 0 -10px 0;
+    padding-right: 79px;
   }
 }
 

@@ -17,8 +17,8 @@
             <slide>
               <div class="carousel-caption">
                 <h4>
-                  <md-icon>location_on</md-icon>
-                  Somewhere Beyond, United States
+                  <md-icon>person</md-icon>
+                  Beyond
                 </h4>
               </div>
               <img :src="carousel1" alt="carousel1" />
@@ -26,8 +26,8 @@
             <slide>
               <div class="carousel-caption">
                 <h4>
-                  <md-icon>location_on</md-icon>
-                  Yellowstone National Park, United States
+                  <md-icon>person</md-icon>
+                  Yellowstone
                 </h4>
               </div>
               <img :src="carousel2" alt="carousel2" />
@@ -35,8 +35,8 @@
             <slide>
               <div class="carousel-caption">
                 <h4>
-                  <md-icon>location_on</md-icon>
-                  Yellowstone National Park, United States
+                  <md-icon>person</md-icon>
+                  Unitesvykjvyfvyu
                 </h4>
               </div>
               <img :src="carousel3" alt="carousel3" />
