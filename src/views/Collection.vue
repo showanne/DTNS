@@ -112,7 +112,12 @@
                   <p>Edit this content to add your own quote</p>
               </blockquote>
 
-              <cite contenteditable="true">-- Write your own name here</cite>
+              <figcaption>––
+                <span>作者 ngoewsghep</span>，
+                <cite>
+                  <a href="">出處 Brave New World</a>
+                </cite>
+              </figcaption>
             </md-card-content>
 
           <md-card-actions  md-alignment="space-between">
