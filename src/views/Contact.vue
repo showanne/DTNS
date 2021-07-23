@@ -11,49 +11,51 @@
     <md-dialog
       :md-active.sync="contactBtn"
     >
-      <form class="">
-        <FormCard header-color="contact">
-          <!-- <p slot="description" class="description">Or Be Classical</p> -->
-          <h4 slot="title" class="card-title">contact us</h4>
+      <md-dialog-content class="md-scrollbar">
+        <form class="">
+          <FormCard header-color="contact">
+            <!-- <p slot="description" class="description">Or Be Classical</p> -->
+            <h4 slot="title" class="card-title">contact us</h4>
 
-          <md-field class="md-form-group" slot="select">
-            <label>Major Issue...</label>
-            <md-select v-model="majorIssue"
-                       name="majorIssue"
-                       placeholder="MajorIssue">
-              <md-option value="1">1</md-option>
-              <md-option value="2">2</md-option>
-              <md-option value="3">3</md-option>
-            </md-select>
-          </md-field>
+            <md-field class="md-form-group" slot="select">
+              <label>Major Issue...</label>
+              <md-select v-model="majorIssue"
+                        name="majorIssue"
+                        placeholder="MajorIssue">
+                <md-option value="1">1</md-option>
+                <md-option value="2">2</md-option>
+                <md-option value="3">3</md-option>
+              </md-select>
+            </md-field>
 
-          <md-field class="md-form-group" slot="inputs">
-            <md-icon>face</md-icon>
-            <label>Nick Name...</label>
-            <md-input v-model="nickname"></md-input>
-          </md-field>
+            <md-field class="md-form-group" slot="inputs">
+              <md-icon>face</md-icon>
+              <label>Nick Name...</label>
+              <md-input v-model="nickname"></md-input>
+            </md-field>
 
-          <md-field class="md-form-group" slot="inputs">
-            <md-icon>phone</md-icon>
-            <label>Contact Data...</label>
-            <md-input v-model="contactData" type="contactData"></md-input>
-          </md-field>
+            <md-field class="md-form-group" slot="inputs">
+              <md-icon>phone</md-icon>
+              <label>Contact Data...</label>
+              <md-input v-model="contactData" type="contactData"></md-input>
+            </md-field>
 
-          <md-field class="md-form-group" slot="textarea">
-            <label>Issue description ...</label>
-            <md-textarea v-model="issueDescription"></md-textarea>
-          </md-field>
+            <md-field class="md-form-group" slot="textarea">
+              <label>Issue description ...</label>
+              <md-textarea v-model="issueDescription"></md-textarea>
+            </md-field>
 
-          <md-button slot="footer" type="reset">
-            <!-- <md-icon>reset</md-icon> -->
-             reset
-          </md-button>
-          <md-button slot="footer" type="submit">
-            <!-- <md-icon>submit</md-icon> -->
-             submit
-          </md-button>
-        </FormCard>
-      </form>
+            <md-button slot="footer" type="reset">
+              <!-- <md-icon>reset</md-icon> -->
+              reset
+            </md-button>
+            <md-button slot="footer" type="submit">
+              <!-- <md-icon>submit</md-icon> -->
+              submit
+            </md-button>
+          </FormCard>
+        </form>
+      </md-dialog-content>
 
       <!-- <md-dialog-actions>
         <md-button class="md-primary" @click="signInBtn = false">Close</md-button>
