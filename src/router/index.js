@@ -14,6 +14,22 @@ const routes = [
     }
   },
   {
+    path: '/signin',
+    name: 'SignIn',
+    component: () => import(/* webpackChunkName: "signin" */ '../views/SignIn.vue'),
+    meta: {
+      title: 'DTNS - SignIn'
+    }
+  },
+  {
+    path: '/signup',
+    name: 'SignUp',
+    component: () => import(/* webpackChunkName: "signup" */ '../views/SignUp.vue'),
+    meta: {
+      title: 'DTNS - SignUp'
+    }
+  },
+  {
     path: '/edit',
     name: 'Edit',
     component: () => import(/* webpackChunkName: "edit" */ '../views/Edit.vue'),
@@ -60,27 +76,16 @@ const routes = [
     meta: {
       title: 'DTNS - Manage'
     }
-  },
-  {
-    path: '/signin',
-    name: 'SignIn',
-    component: () => import(/* webpackChunkName: "signin" */ '../views/SignIn.vue'),
-    meta: {
-      title: 'DTNS - SignIn'
-    }
-  // },
-  // {
-  //   path: '/signup',
-  //   name: 'SignUp',
-  //   component: () => import(/* webpackChunkName: "signup" */ '../views/SignUp.vue'),
-  //   meta: {
-  //     title: 'DTNS - SignUp'
-  //   }
   }
 ]
 
 const router = new VueRouter({
   routes
+})
+
+// 進去每一頁後，更改網頁標題
+router.afterEach((to, from) => {
+  document.title = to.meta.title
 })
 
 export default router

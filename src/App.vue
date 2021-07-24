@@ -1,18 +1,5 @@
 <template>
   <div id="app">
-    <!-- <div id="nav">
-      <router-link to="/">Home</router-link>
-      <router-link to="/edit">Edit</router-link>
-      <router-link to="/collection">Collection</router-link>
-      <router-link to="/contact">Contact</router-link>
-      <router-link to="/setting">Setting</router-link>
-      <router-link to="/member">Member</router-link>
-      <router-link to="/manage">Manage</router-link>
-      // modal
-         <router-link to="/signin">SignIn</router-link>
-      <router-link to="/signup">SignUp</router-link>
-    </div> -->
-
     <div id="nav" class="page-container" nav-pills-icons>
       <md-app md-waterfall md-mode="fixed">
         <md-app-toolbar
@@ -78,6 +65,11 @@
             <md-list-item to="/SignIn">
               <!-- <md-icon>recent_actors</md-icon> -->
               <span class="md-list-item-text">SignIn</span>
+            </md-list-item>
+
+            <md-list-item to="/SignUp">
+              <!-- <md-icon>recent_actors</md-icon> -->
+              <span class="md-list-item-text">SignUp</span>
             </md-list-item>
           </md-list>
         </md-app-drawer>
