@@ -2,126 +2,92 @@
   <div id="signUp">
     <!-- Sign Up -->
     <div>
-      <form novalidate class="md-layout" @submit.prevent="validateUser">
-        <md-card class="md-layout-item md-size-50 md-small-size-100">
+      <form
+        novalidate
+        class="md-layout"
+        @submit.prevent="validateUser"
+        @reset="clearForm"
+      >
+        <md-card
+          class="md-layout-item md-size-33 md-medium-size-50 md-small-size-100"
+        >
           <md-card-header>
-            <md-icon>perm_contact_calendar</md-icon>
-            <div class="md-title">Users</div>
+            <md-icon class="md-size-2x">perm_contact_calendar</md-icon>
+            <div class="md-title">
+              Sign Up
+            </div>
           </md-card-header>
 
           <md-card-content>
-            <div class="md-layout md-gutter">
-              <div class="md-layout-item md-small-size-100">
-                <md-field :class="getValidationClass('account')">
-                  <label for="account">First Name</label>
-                  <md-input
-                    name="account"
-                    id="account"
-                    autocomplete="given-name"
-                    v-model="signUp.account"
-                    :disabled="sending"
-                  />
-                  <span class="md-error" v-if="!$v.signUp.account.required"
-                    >Account is required</span
-                  >
-                  <span
-                    class="md-error"
-                    v-else-if="!$v.signUp.account.minlength"
-                    >Invalid account</span
-                  >
-                </md-field>
-              </div>
+            <md-field :class="getValidationClass('account')">
+              <label for="account">Account</label>
+              <md-input
+                name="account"
+                id="account"
+                autocomplete="account"
+                v-model="signUp.account"
+                placeholder="You Nick Name..."
+                :disabled="sending"
+              />
+              <span class="md-error" v-if="!$v.signUp.account.required"
+                >帳號是必填欄位</span
+              >
+              <span class="md-error" v-else-if="!$v.signUp.account.minlength"
+                >帳號最少須 5 個字，最多 20 個字</span
+              >
+            </md-field>
 
-              <!-- <div class="md-layout-item md-small-size-100">
-                <md-field :class="getValidationClass('lastName')">
-                  <label for="last-name">Last Name</label>
-                  <md-input
-                    name="last-name"
-                    id="last-name"
-                    autocomplete="family-name"
-                    v-model="form.lastName"
-                    :disabled="sending"
-                  />
-                  <span class="md-error" v-if="!$v.form.lastName.required"
-                    >The last name is required</span
-                  >
-                  <span class="md-error" v-else-if="!$v.form.lastName.minlength"
-                    >Invalid last name</span
-                  >
-                </md-field>
-              </div> -->
-            </div>
+            <md-field :class="getValidationClass('password')">
+              <label for="password">Password</label>
+              <md-input
+                type="password"
+                name="password"
+                id="password"
+                autocomplete="password"
+                v-model="signUp.password"
+                placeholder="password..."
+                :disabled="sending"
+              />
+              <span class="md-error" v-if="!$v.signUp.password.required"
+                >密碼是必填欄位</span
+              >
+              <span class="md-error" v-else-if="!$v.signUp.password.minlength"
+                >密碼最少須 4 個字，最多 20 個字</span
+              >
+            </md-field>
 
-            <!-- <div class="md-layout md-gutter">
-              <div class="md-layout-item md-small-size-100">
-                <md-field :class="getValidationClass('gender')">
-                  <label for="gender">Gender</label>
-                  <md-select
-                    name="gender"
-                    id="gender"
-                    v-model="form.gender"
-                    md-dense
-                    :disabled="sending"
-                  >
-                    <md-option></md-option>
-                    <md-option value="M">M</md-option>
-                    <md-option value="F">F</md-option>
-                  </md-select>
-                  <span class="md-error">The gender is required</span>
-                </md-field>
-              </div>
-
-              <div class="md-layout-item md-small-size-100">
-                <md-field :class="getValidationClass('age')">
-                  <label for="age">Age</label>
-                  <md-input
-                    type="number"
-                    id="age"
-                    name="age"
-                    autocomplete="age"
-                    v-model="form.age"
-                    :disabled="sending"
-                  />
-                  <span class="md-error" v-if="!$v.form.age.required"
-                    >The age is required</span
-                  >
-                  <span class="md-error" v-else-if="!$v.form.age.maxlength"
-                    >Invalid age</span
-                  >
-                </md-field>
-              </div>
-            </div> -->
-
-            <!-- <md-field :class="getValidationClass('email')">
+            <md-field :class="getValidationClass('email')">
               <label for="email">Email</label>
               <md-input
                 type="email"
                 name="email"
                 id="email"
                 autocomplete="email"
-                v-model="form.email"
+                v-model="signUp.email"
                 :disabled="sending"
               />
-              <span class="md-error" v-if="!$v.form.email.required"
-                >The email is required</span
+              <span class="md-error" v-if="!$v.signUp.email.required"
+                >信箱是必填欄位</span
               >
-              <span class="md-error" v-else-if="!$v.form.email.email"
-                >Invalid email</span
+              <span class="md-error" v-else-if="!$v.signUp.email.email"
+                >信箱格式不符</span
               >
-            </md-field> -->
+            </md-field>
           </md-card-content>
 
           <md-progress-bar md-mode="indeterminate" v-if="sending" />
 
           <md-card-actions>
-            <md-button type="submit" class="md-primary" :disabled="sending"
-              >Create user</md-button
+            <md-button> Line</md-button>
+            <md-button type="reset" class="md-primary"> Reset</md-button>
+            <md-button type="submit" class="md-primary" :disabled="sending">
+              Create user</md-button
             >
           </md-card-actions>
         </md-card>
 
         <md-snackbar :md-active.sync="userSaved"
-          >The user {{ lastUser }} was saved with success!</md-snackbar
+          >The user {{ user }} was saved with {{ message }}!</md-snackbar
         >
       </form>
     </div>
@@ -135,7 +101,7 @@
 import { validationMixin } from 'vuelidate'
 import {
   required,
-  // email,
+  email,
   minLength,
   maxLength
 } from 'vuelidate/lib/validators'
@@ -148,11 +114,14 @@ export default {
       signUp: {
         signUpBtn: false,
         account: '',
-        password: ''
+        password: '',
+        email: ''
       },
       userSaved: false,
+      // 送出後的進度條 false 是不跑
       sending: false,
-      lastUser: ''
+      user: '',
+      message: ''
     }
   },
   validations: {
@@ -166,11 +135,11 @@ export default {
         required,
         minLength: minLength(4),
         maxLength: maxLength(20)
+      },
+      email: {
+        required,
+        email
       }
-      // email: {
-      //   required,
-      //   email
-      // }
     }
   },
   methods: {
@@ -187,18 +156,31 @@ export default {
       this.$v.$reset()
       this.signUp.account = ''
       this.signUp.password = ''
-      // this.signUp.email = ''
+      this.signUp.email = ''
     },
-    saveUser () {
-      this.sending = true
+    async saveUser () {
+      try {
+        await this.axios.post('/users', this.signUp)
 
-      // Instead of this timeout, here you can call your API
-      // window.setTimeout(() => {
-      //   this.lastUser = `${this.form.firstName} ${this.form.lastName}`
-      //   this.userSaved = true
-      //   this.sending = false
-      //   this.clearForm()
-      // }, 1500)
+        this.sending = true
+
+        // Instead of this timeout, here you can call your API
+        window.setTimeout(() => {
+          this.user = `${this.signUp.account}`
+          this.message = 'success'
+          this.userSaved = true
+          this.sending = false
+          this.clearForm()
+        }, 1500)
+      } catch (error) {
+        window.setTimeout(() => {
+          this.user = `${this.signUp.account}`
+          this.userSaved = false
+          this.message = 'error'
+          this.sending = true
+          // this.clearForm()
+        }, 1500)
+      }
     },
     validateUser () {
       this.$v.$touch()
