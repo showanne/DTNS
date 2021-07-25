@@ -1,10 +1,10 @@
 <template>
-  <div id="signUp">
+  <div id="signUp" class="md-layout md-alignment-center-center" style="height: 80vh;">
     <!-- Sign Up -->
-    <div>
+
       <form
         novalidate
-        class="md-layout"
+        class="md-layout md-alignment-center-center"
         @submit.prevent="validateUser"
         @reset="clearForm"
       >
@@ -12,7 +12,7 @@
           class="md-layout-item md-size-33 md-medium-size-50 md-small-size-100"
         >
           <md-card-header>
-            <md-icon class="md-size-2x">perm_contact_calendar</md-icon>
+            <md-icon class="md-size-3x signIcon">perm_contact_calendar</md-icon>
             <div class="md-title">
               Sign Up
             </div>
@@ -89,8 +89,9 @@
         <md-snackbar :md-active.sync="userSaved"
           >The user {{ user }} was saved with {{ message }}!</md-snackbar
         >
+        <b></b>
       </form>
-    </div>
+
   </div>
 </template>
 
@@ -157,6 +158,7 @@ export default {
       this.signUp.account = ''
       this.signUp.password = ''
       this.signUp.email = ''
+      this.sending = false
     },
     async saveUser () {
       try {
@@ -170,13 +172,16 @@ export default {
           this.message = 'success'
           this.userSaved = true
           this.sending = false
-          this.clearForm()
+          // this.clearForm()
+
+          // 註冊成功後導回首頁
+          // this.$router.push('/')
         }, 1500)
       } catch (error) {
         window.setTimeout(() => {
           this.user = `${this.signUp.account}`
-          this.userSaved = false
-          this.message = 'error'
+          this.message = error
+          this.userSaved = true
           this.sending = true
           // this.clearForm()
         }, 1500)

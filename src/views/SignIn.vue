@@ -1,143 +1,176 @@
 <template>
-  <div id="signIn">
-    <!-- Sign Up -->
-
-    <md-button
-      class="md-primary md-raised"
-      @click="signUp.signUpBtn = true">
-      <!-- <md-icon>star</md-icon> -->
-      Sign Up
-    </md-button>
-
-    <md-dialog
-      :md-active.sync="signUp.signUpBtn"
-    >
-      <!-- md-close-on-esc= false
-      md-click-outside-to-close= false -->
-      <!-- <md-dialog-title>Sign Up</md-dialog-title> -->
-      <md-dialog-content class="md-scrollbar">
-        <form class="">
-          <FormCard header-color="signUp">
-            <!-- <p slot="description" class="description">Or Be Classical</p> -->
-            <h4 slot="title" class="card-title">Sign Up</h4>
-            <md-field class="md-form-group" slot="inputs">
-              <md-icon>face</md-icon>
-              <label>account</label>
-              <md-input v-model="signUp.nickname"
-                placeholder="You Nick Name..."></md-input>
-            </md-field>
-            <md-field class="md-form-group" slot="inputs">
-              <md-icon>lock_outline</md-icon>
-              <label>Password...</label>
-              <md-input type="password"
-               v-model="signUp.password"
-               placeholder="********"></md-input>
-            </md-field>
-
-            <md-button slot="footer" type="reset">
-              <!-- <md-icon>reset</md-icon> -->
-              reset
-            </md-button>
-            <md-button slot="footer" to="/">
-              <md-icon>star</md-icon>
-              Started
-            </md-button>
-            <md-button slot="footer"  type="submit" to="/member">
-              Get Started
-            </md-button>
-          </FormCard>
-        </form>
-      </md-dialog-content>
-      <!-- <md-dialog-actions>
-        <md-button class="md-primary" @click="signInBtn = false">Close</md-button>
-        <md-button class="md-primary" @click="signInBtn = false">Save</md-button>
-      </md-dialog-actions> -->
-    </md-dialog>
-
+  <div id="signIn"  class="md-layout md-alignment-center-center" style="height: 80vh;">
+    <!-- TODO: 寬高的class -->
     <!-- Sign In -->
 
-    <md-button
-      class="md-primary md-raised"
-      @click="signIn.signInBtn = true">
-      <!-- <md-icon>star</md-icon> -->
-      Sign In
-    </md-button>
+      <form
+        novalidate
+        class="md-layout md-alignment-center-center"
+        @submit.prevent="validateUser"
+        @reset="clearForm"
+      >
+        <md-card
+          class="md-layout-item md-size-33 md-medium-size-50 md-small-size-100"
+        >
+          <md-card-header>
+            <md-icon class="md-size-3x signIcon">person_pin</md-icon>
+            <div class="md-title">
+              Sign In
+            </div>
+          </md-card-header>
 
-    <md-dialog
-      :md-active.sync="signIn.signInBtn"
-    >
-      <!-- md-close-on-esc= false
-      md-click-outside-to-close= false -->
-      <!-- <md-dialog-title>Sign In</md-dialog-title> -->
-      <md-dialog-content class="md-scrollbar">
-        <form class="">
-          <FormCard header-color="signIn">
-            <!-- <p slot="description" class="description">Or Be Classical</p> -->
-            <h4 slot="title" class="card-title">Sign In</h4>
-            <md-field class="md-form-group" slot="inputs">
-              <md-icon>face</md-icon>
-              <label>Nick Name...</label>
-              <md-input v-model="signIn.nickname"></md-input>
-            </md-field>
-            <md-field class="md-form-group" slot="inputs">
-              <md-icon>email</md-icon>
-              <label>Email...</label>
-              <md-input v-model="signIn.email" type="email"></md-input>
-            </md-field>
-            <md-field class="md-form-group" slot="inputs">
-              <md-icon>lock_outline</md-icon>
-              <label>Password Set...</label>
-              <md-input type="password" v-model="signIn.passwordSet"></md-input>
+          <md-card-content>
+            <md-field :class="getValidationClass('account')">
+              <label for="account">Account</label>
+              <md-input
+                name="account"
+                id="account"
+                autocomplete="account"
+                v-model="signIn.account"
+                placeholder="You Nick Name..."
+                :disabled="sending"
+              />
+              <span class="md-error" v-if="!$v.signIn.account.required"
+                >帳號是必填欄位</span
+              >
+              <span class="md-error" v-else-if="!$v.signIn.account.minlength"
+                >帳號最少須 5 個字，最多 20 個字</span
+              >
             </md-field>
 
-            <md-button slot="footer" type="reset">
-              <!-- <md-icon>reset</md-icon> -->
-              reset
-            </md-button>
-            <md-button slot="footer" to="/">
-              <md-icon>star</md-icon>
-              Started
-            </md-button>
-            <md-button slot="footer"  type="submit" to="/member">
-              Get Started
-            </md-button>
-          </FormCard>
-        </form>
-      </md-dialog-content>
-      <!-- <md-dialog-actions>
-        <md-button class="md-primary" @click="signInBtn = false">Close</md-button>
-        <md-button class="md-primary" @click="signInBtn = false">Save</md-button>
-      </md-dialog-actions> -->
-    </md-dialog>
+            <md-field :class="getValidationClass('password')">
+              <label for="password">Password</label>
+              <md-input
+                type="password"
+                name="password"
+                id="password"
+                autocomplete="password"
+                v-model="signIn.password"
+                placeholder="password..."
+                :disabled="sending"
+              />
+              <span class="md-error" v-if="!$v.signIn.password.required"
+                >密碼是必填欄位</span
+              >
+              <span class="md-error" v-else-if="!$v.signIn.password.minlength"
+                >密碼最少須 4 個字，最多 20 個字</span
+              >
+            </md-field>
+
+          </md-card-content>
+
+          <md-progress-bar md-mode="indeterminate" v-if="sending" />
+
+          <md-card-actions>
+            <md-button> Line</md-button>
+            <md-button type="reset" class="md-primary"> Reset</md-button>
+            <md-button type="submit" class="md-primary" :disabled="sending">
+              Sign In</md-button
+            >
+          </md-card-actions>
+        </md-card>
+
+        <md-snackbar :md-active.sync="userSaved"
+          >{{ user }} {{ message }}</md-snackbar
+        >
+      </form>
 
   </div>
 </template>
 
 <script>
 // components元件
-import FormCard from '@/components/FormCard.vue'
+// import FormCard from '@/components/FormCard.vue'
+
+import { validationMixin } from 'vuelidate'
+import {
+  required,
+  minLength,
+  maxLength
+} from 'vuelidate/lib/validators'
 
 export default {
   name: 'SignIn',
+  mixins: [validationMixin],
   data () {
     return {
-      signUp: {
-        signUpBtn: false,
-        account: null,
-        password: null
-      },
       signIn: {
         signInBtn: false,
-        nickname: null,
-        email: null,
-        passwordSet: null
+        account: '',
+        password: ''
+      },
+      userSaved: false,
+      // 送出後的進度條 false 是不跑
+      sending: false,
+      user: '',
+      message: ''
+    }
+  },
+  validations: {
+    signIn: {
+      account: {
+        required,
+        minLength: minLength(5),
+        maxLength: maxLength(20)
+      },
+      password: {
+        required,
+        minLength: minLength(4),
+        maxLength: maxLength(20)
       }
     }
   },
-  components: {
-    FormCard
-  },
-  computed: {
+  methods: {
+    getValidationClass (fieldName) {
+      const field = this.$v.signIn[fieldName]
+
+      if (field) {
+        return {
+          'md-invalid': field.$invalid && field.$dirty
+        }
+      }
+    },
+    clearForm () {
+      this.$v.$reset()
+      this.signIn.account = ''
+      this.signIn.password = ''
+      this.sending = false
+    },
+    async saveUser () {
+      try {
+        const { data } = await this.axios.post('/users/signIn', this.signIn)
+
+        this.sending = true
+
+        // Instead of this timeout, here you can call your API
+        // window.setTimeout(() => {
+        this.user = `Wellcome ${this.signIn.account}`
+        this.message = ''
+        this.userSaved = true
+        this.sending = false
+        // this.clearForm()
+
+        this.$store.commit('signIn', data)
+        // 登入成功後導向?頁
+        // this.$router.push('/?')
+        // }, 1500)
+      } catch (error) {
+        // window.setTimeout(() => {
+        this.user = ''
+        this.message = error
+        this.userSaved = true
+        this.sending = true
+        // this.clearForm()
+        // }, 1500)
+      }
+    },
+    validateUser () {
+      this.$v.$touch()
+
+      if (!this.$v.$invalid) {
+        this.saveUser()
+      }
+    }
   }
 }
 </script>
