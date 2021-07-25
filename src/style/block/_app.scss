@@ -1,0 +1,42 @@
+/* app 首頁 toolbar + drawer + content */
+
+// App
+#app {
+  .md-app {
+    // width: 20%;
+    height: 100vh;
+  }
+  // .md-content {
+  //   width: 80%;
+  // }
+  .md-drawer {
+    // .md-persistent-mini:not(.md-active)
+    width: 190px!important;
+  }
+}
+
+// 網頁內容高度
+.h-content{
+  // xsmall
+  height: calc(100vh - 56px);
+
+  @include medium {
+    height: calc(100vh - 64px);
+  }
+}
+
+
+.md-toolbar, .md-toolbar-row {
+  min-height: 64px;
+  
+  @media (max-width: 600px){
+      min-height: 56px;
+  }
+  
+  @media (max-width: 960px) {
+      min-height: 48px;
+  }
+
+    // transition-property: opacity,background-color,box-shadow,transform,color,min-height;
+    // will-change: opacity,background-color,box-shadow,transform,color,min-height;
+}
