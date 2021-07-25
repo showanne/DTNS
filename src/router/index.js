@@ -73,9 +73,58 @@ const routes = [
     path: '/manage',
     name: 'Manage',
     component: () => import(/* webpackChunkName: "manage" */ '../views/Manage.vue'),
-    meta: {
-      title: 'DTNS - Manage'
-    }
+    children: [
+      {
+      // path: '', 不打代表跟上面路徑相同
+      // /* webpackChunkName: "admin" */ 打包時 是否要單獨存 js 檔
+        path: '',
+        name: 'ManageHome',
+        component: () => import(/* webpackChunkName: "manage" */ '../views/ManageHome.vue'),
+        meta: {
+          title: 'DTNS - ManageHome'
+        }
+      },
+      {
+        path: 'editApp',
+        name: 'ManageEditApp',
+        component: () => import(/* webpackChunkName: "manage" */ '../views/ManageEditApp.vue'),
+        meta: {
+          title: 'DTNS - ManageEditApp'
+        }
+      },
+      {
+        path: 'memberData',
+        name: 'ManageMemberData',
+        component: () => import(/* webpackChunkName: "manage" */ '../views/ManageMemberData.vue'),
+        meta: {
+          title: 'DTNS - ManageMemberData'
+        }
+      },
+      {
+        path: 'template',
+        name: 'ManageTemplate',
+        component: () => import(/* webpackChunkName: "manage" */ '../views/ManageTemplate.vue'),
+        meta: {
+          title: 'DTNS - ManageTemplate'
+        }
+      },
+      {
+        path: 'reply',
+        name: 'ManageReply',
+        component: () => import(/* webpackChunkName: "manage" */ '../views/ManageReply.vue'),
+        meta: {
+          title: 'DTNS - ManageReply'
+        }
+      },
+      {
+        path: 'special',
+        name: 'ManageSpecial',
+        component: () => import(/* webpackChunkName: "manage" */ '../views/ManageSpecial.vue'),
+        meta: {
+          title: 'DTNS - ManageSpecial'
+        }
+      }
+    ]
   }
 ]
 
@@ -83,7 +132,7 @@ const router = new VueRouter({
   routes
 })
 
-// 進去每一頁後，更改網頁標題
+// .afterEach 在進去每頁之後，更改網頁標題
 router.afterEach((to, from) => {
   document.title = to.meta.title
 })
