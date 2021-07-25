@@ -9,6 +9,7 @@
             <md-icon>menu</md-icon>
           </md-button>
           <!-- <h3 class="md-title">DTNS</h3> md-collapse -->
+          <h4>Hello user ^^</h4>
           <div class="md-layout-item md-large-size-20 md-medium-size-33 md-xsmall-hide">
             <md-field>
               <label>Search...</label>
@@ -63,13 +64,13 @@
             </md-list-item>
 
             <md-list-item to="/SignIn">
-              <!-- <md-icon>recent_actors</md-icon> -->
-              <span class="md-list-item-text">SignIn</span>
+              <md-icon>person_remove</md-icon>
+              <!-- <span class="md-list-item-text">SignIn</span> -->
             </md-list-item>
 
             <md-list-item to="/SignUp">
-              <!-- <md-icon>recent_actors</md-icon> -->
-              <span class="md-list-item-text">SignUp</span>
+              <md-icon>person_add_alt_1</md-icon>
+              <!-- <span class="md-list-item-text">SignUp</span> -->
             </md-list-item>
           </md-list>
         </md-app-drawer>
@@ -82,12 +83,15 @@
 </template>
 
 <script>
+// components元件
+// import SignModal from '@/components/SignModal.vue'
+// TODO: 研究將註冊及登入按鈕跳 modal 變成元件方便使用
+
 export default {
   data () {
     return {
       search: '',
       menuVisible: false
-
     }
   },
   methods: {
