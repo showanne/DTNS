@@ -3,7 +3,7 @@
     <!-- <h1>This is an edit page</h1> -->
 
     <div class="md-layout md-gutter md-alignment-space-around">
-      <div class="md-layout-item md-size-33 md-layout">
+      <div id="temp" class="md-layout-item md-size-33 md-layout">
         <!-- 有漸層背景及文字
         <div class="md-layout-item md-size-50">
           <md-card md-with-hover>
@@ -31,6 +31,12 @@
                 <md-card-media md-ratio="1:1">
                   <img :src="require('../assets/icon/iconpostIt.svg')" alt="Skyscraper">
                 </md-card-media>
+
+                <md-card-area>
+                  <md-card-header>
+                    <span>postIt</span>
+                  </md-card-header>
+                </md-card-area>
               </md-card-media-cover>
             </md-ripple>
           </md-card>
@@ -43,6 +49,12 @@
                 <md-card-media md-ratio="1:1">
                   <img :src="require('../assets/icon/iconshare.svg')" alt="Skyscraper">
                 </md-card-media>
+
+                <md-card-area>
+                  <md-card-header>
+                    <span>share</span>
+                  </md-card-header>
+                </md-card-area>
               </md-card-media-cover>
             </md-ripple>
           </md-card>
@@ -55,6 +67,12 @@
                 <md-card-media md-ratio="1:1">
                   <img :src="require('../assets/icon/iconnotes.svg')" alt="Skyscraper">
                 </md-card-media>
+
+                <md-card-area>
+                  <md-card-header>
+                    <span>notes</span>
+                  </md-card-header>
+                </md-card-area>
               </md-card-media-cover>
             </md-ripple>
           </md-card>
