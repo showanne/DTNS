@@ -23,6 +23,9 @@ import './style/all.scss'
 // import MenuIcon from 'vue-material-design-icons/Menu.vue'
 // Vue.component('menu-icon', MenuIcon)
 
+// 全域引用 mixin
+import mixin from './mixin.js'
+
 // VueMaterial UI
 Vue.use(VueMaterial)
 // Vue.use(MdButton)
@@ -32,6 +35,9 @@ Vue.use(VueMaterial)
 axios.defaults.baseURL = process.env.VUE_APP_API
 Vue.use(VueAxios, axios)
 Vue.use(VueCarousel)
+
+// 全域引用 mixin 方便各分頁直接用變數
+Vue.mixin(mixin)
 
 Vue.config.productionTip = false
 

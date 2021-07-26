@@ -3,17 +3,22 @@
     <div id="nav" class="page-container" nav-pills-icons>
       <md-app md-waterfall md-mode="fixed">
         <md-app-toolbar
-          class="md-accent md-layout md-gutter md-alignment-center-space-between">
+          class="md-accent md-layout md-gutter md-alignment-center-space-between"
+        >
           <!-- <md-button class="md-icon-button"
             @click="toggleMenu" v-if="!menuVisible">
             <md-icon>menu</md-icon>
           </md-button> -->
           <!-- <h3 class="md-title">DTNS</h3> md-collapse -->
-          <div class="md-layout-item md-large-size-60 md-medium-size-60 md-xsmall-hide">
-               <h4>Hello user ^^</h4>
+          <div
+            class="md-layout-item md-large-size-60 md-medium-size-60 md-xsmall-hide"
+          >
+            <h4>Hello user ^^</h4>
           </div>
 
-          <div class="md-layout-item md-large-size-20 md-medium-size-33 md-xsmall-hide">
+          <div
+            class="md-layout-item md-large-size-20 md-medium-size-33 md-xsmall-hide"
+          >
             <md-field>
               <label>Search...</label>
               <!-- search has-white -->
@@ -22,7 +27,9 @@
             </md-field>
           </div>
 
-          <div class="md-layout-item md-large-size-5 md-medium-size-5 md-xsmall-hide">
+          <div
+            class="md-layout-item md-large-size-5 md-medium-size-5 md-xsmall-hide"
+          >
             <md-button class="md-icon-button">
               <md-icon>tungsten</md-icon>
             </md-button>
@@ -30,7 +37,7 @@
         </md-app-toolbar>
 
         <md-app-drawer md-permanent="full">
-        <!-- <md-app-drawer :md-active.sync="menuVisible" md-permanent="full" md-persistent="mini"> -->
+          <!-- <md-app-drawer :md-active.sync="menuVisible" md-permanent="full" md-persistent="mini"> -->
           <!-- <md-toolbar class="md-transparent" md-elevation="3" to="/">
             DTNS Logo
             <md-button class="md-icon-button md-dense" @click="toggleMenu">
@@ -40,74 +47,108 @@
 
           <md-list>
             <md-list-item to="/">
-            <h3 class="md-title">DTNS</h3>
+              <h3 class="md-title">DTNS</h3>
               <!-- <img src="./assets/logo.png" alt="logo" width="90"> -->
             </md-list-item>
+            <!-- edit -->
             <md-list-item to="/edit">
-                <md-icon :md-src="require('./assets/icon/icon-Edit.svg')"></md-icon>
-                <span class="md-list-item-text">Edit</span>
+              <md-icon
+                :md-src="require('./assets/icon/icon-Edit.svg')"
+              ></md-icon>
+              <span class="md-list-item-text">Edit</span>
             </md-list-item>
 
+            <!-- collection -->
             <md-list-item to="/collection">
-                <md-icon :md-src="require('./assets/icon/icon-Collection.svg')"></md-icon>
-                <span class="md-list-item-text">Collection</span>
+              <md-icon
+                :md-src="require('./assets/icon/icon-Collection.svg')"
+              ></md-icon>
+              <span class="md-list-item-text">Collection</span>
             </md-list-item>
 
+            <!-- contact -->
             <md-list-item to="/contact">
-                <md-icon :md-src="require('./assets/icon/icon-Contact.svg')"></md-icon>
-                <span class="md-list-item-text">Contact</span>
+              <md-icon
+                :md-src="require('./assets/icon/icon-Contact.svg')"
+              ></md-icon>
+              <span class="md-list-item-text">Contact</span>
             </md-list-item>
 
+            <!-- setting -->
             <md-list-item to="/setting">
-                <md-icon :md-src="require('./assets/icon/icon-Setting.svg')"></md-icon>
-                <span class="md-list-item-text">Setting</span>
+              <md-icon
+                :md-src="require('./assets/icon/icon-Setting.svg')"
+              ></md-icon>
+              <span class="md-list-item-text">Setting</span>
             </md-list-item>
 
-            <md-list-item to="/member">
-                <md-icon :md-src="require('./assets/icon/icon-Member.svg')"></md-icon>
-                <span class="md-list-item-text">Member</span>
+            <!-- member -->
+            <md-list-item v-if="user.isSignIn" to="/member">
+              <md-icon
+                :md-src="require('./assets/icon/icon-Member.svg')"
+              ></md-icon>
+              <span class="md-list-item-text">Member</span>
             </md-list-item>
 
-            <md-list-item to="/manage">
-                <md-icon :md-src="require('./assets/icon/icon-Manage.svg')"></md-icon>
-                <span class="md-list-item-text">Manage</span>
+            <!-- manage -->
+            <md-list-item v-if="user.isSignIn && user.isAdmin" to="/manage">
+              <md-icon
+                :md-src="require('./assets/icon/icon-Manage.svg')"
+              ></md-icon>
+              <span class="md-list-item-text">Manage</span>
             </md-list-item>
 
             <!-- Sign Up -->
-            <md-list-item>
-              <md-button
-                class="md-primary md-raised"
-                @click="signUpBtn = true">
+            <md-list-item v-if="!user.isSignIn">
+              <md-button class="md-primary md-raised"
+                @click="signUpBtn = true" >
                 <md-icon>person_add_alt_1</md-icon>
                 &nbsp; Sign Up
               </md-button>
-              <SignModal v-if="signUpBtn"
-              :signBtn="signUpBtn"
-              @closeModal="signUpBtn = false"
-              ><!-- capturing event close-context -->
-              <span slot="title">Sign Up</span>
-              </SignModal>
+
+              <md-dialog :md-active.sync="signUpBtn">
+                <md-dialog-content>
+                  <md-button>
+                    <div class="md-layou">
+                      <div class="md-layout-item">
+                        <md-icon :md-src="require('./assets/icon/line-logo.svg')"></md-icon>
+                      </div>
+                      <div class="md-layout-item">&nbsp; 快速登入</div>
+                    </div>
+                  </md-button>
+                </md-dialog-content>
+              </md-dialog>
             </md-list-item>
 
             <!-- Sign In -->
-            <md-list-item>
-              <md-button
-                class="md-primary md-raised"
-                @click="signInBtn = true">
+            <md-list-item v-if="!user.isSignIn">
+              <md-button class="md-primary md-raised" @click="signInBtn = true">
                 <md-icon>person_remove</md-icon>
                 &nbsp; Sign In
               </md-button>
-              <SignModal v-if="signInBtn"
-              :signBtn="signInBtn"
-              @closeModal="signInBtn = false"
-              ><!-- capturing event close-context -->
-              <span slot="title">Sign In</span>
+              <SignModal
+                v-if="signInBtn"
+                :signBtn="signInBtn"
+                @closeModal="signInBtn = false"
+                ><!-- capturing event close-context -->
+                <span slot="title">Sign In</span>
               </SignModal>
+            </md-list-item>
+
+            <!-- Sign out -->
+            <md-list-item v-if="user.isSignIn">
+              <md-button
+                class="md-primary md-raised"
+                @click="signOutBtn = true"
+              >
+                <md-icon>person_remove</md-icon>
+                &nbsp; Sign out
+              </md-button>
             </md-list-item>
           </md-list>
         </md-app-drawer>
         <md-app-content class="h-content">
-          <router-view/>
+          <router-view />
         </md-app-content>
       </md-app>
     </div>

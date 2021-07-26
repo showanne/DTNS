@@ -25,14 +25,16 @@
               </md-card>
             </div> -->
 
-          <div class="md-layout-item md-size-50 md-xsmall-size-15">
+          <!-- postIt -->
+          <div
+               class="md-layout-item md-size-50 md-xsmall-size-15">
             <md-card md-with-hover>
               <md-ripple>
                 <md-card-media-cover>
                   <md-card-media md-ratio="1:1">
                     <img
                       :src="require('../assets/icon/iconpostIt.svg')"
-                      alt="Skyscraper"
+                      alt="postIt"
                     />
                   </md-card-media>
 
@@ -46,14 +48,16 @@
             </md-card>
           </div>
 
-          <div class="md-layout-item md-size-50 md-xsmall-size-15">
+          <!-- share -->
+          <div
+               class="md-layout-item md-size-50 md-xsmall-size-15">
             <md-card md-with-hover>
               <md-ripple>
                 <md-card-media-cover>
                   <md-card-media md-ratio="1:1">
                     <img
                       :src="require('../assets/icon/iconshare.svg')"
-                      alt="Skyscraper"
+                      alt="share"
                     />
                   </md-card-media>
 
@@ -67,14 +71,16 @@
             </md-card>
           </div>
 
-          <div class="md-layout-item md-size-50 md-xsmall-size-15">
+          <!-- notes -->
+          <div v-if="user.isSignIn"
+               class="md-layout-item md-size-50 md-xsmall-size-15">
             <md-card md-with-hover>
               <md-ripple>
                 <md-card-media-cover>
                   <md-card-media md-ratio="1:1">
                     <img
                       :src="require('../assets/icon/iconnotes.svg')"
-                      alt="Skyscraper"
+                      alt="notes"
                     />
                   </md-card-media>
 
@@ -87,6 +93,99 @@
               </md-ripple>
             </md-card>
           </div>
+
+          <!-- diary -->
+          <div v-if="user.isSignIn"
+               class="md-layout-item md-size-50 md-xsmall-size-15">
+            <md-card md-with-hover>
+              <md-ripple>
+                <md-card-media-cover>
+                  <md-card-media md-ratio="1:1">
+                    <img
+                      :src="require('../assets/icon/icondiary.svg')"
+                      alt="diary"
+                    />
+                  </md-card-media>
+
+                  <md-card-area>
+                    <md-card-header>
+                      <span>diary</span>
+                    </md-card-header>
+                  </md-card-area>
+                </md-card-media-cover>
+              </md-ripple>
+            </md-card>
+          </div>
+
+          <!-- todo -->
+          <div v-if="user.isSignIn"
+               class="md-layout-item md-size-50 md-xsmall-size-15">
+            <md-card md-with-hover>
+              <md-ripple>
+                <md-card-media-cover>
+                  <md-card-media md-ratio="1:1">
+                    <img
+                      :src="require('../assets/icon/icontodo.svg')"
+                      alt="todo"
+                    />
+                  </md-card-media>
+
+                  <md-card-area>
+                    <md-card-header>
+                      <span>todo</span>
+                    </md-card-header>
+                  </md-card-area>
+                </md-card-media-cover>
+              </md-ripple>
+            </md-card>
+          </div>
+
+          <!-- novel -->
+          <div v-if="user.isAdmin"
+               class="md-layout-item md-size-50 md-xsmall-size-15">
+            <md-card md-with-hover>
+              <md-ripple>
+                <md-card-media-cover>
+                  <md-card-media md-ratio="1:1">
+                    <img
+                      :src="require('../assets/icon/iconnovel.svg')"
+                      alt="novel"
+                    />
+                  </md-card-media>
+
+                  <md-card-area>
+                    <md-card-header>
+                      <span>novel</span>
+                    </md-card-header>
+                  </md-card-area>
+                </md-card-media-cover>
+              </md-ripple>
+            </md-card>
+          </div>
+
+          <!-- storage -->
+          <div v-if="user.isAdmin"
+               class="md-layout-item md-size-50 md-xsmall-size-15">
+            <md-card md-with-hover>
+              <md-ripple>
+                <md-card-media-cover>
+                  <md-card-media md-ratio="1:1">
+                    <img
+                      :src="require('../assets/icon/iconstorage.svg')"
+                      alt="storage"
+                    />
+                  </md-card-media>
+
+                  <md-card-area>
+                    <md-card-header>
+                      <span>storage</span>
+                    </md-card-header>
+                  </md-card-area>
+                </md-card-media-cover>
+              </md-ripple>
+            </md-card>
+          </div>
+
         </div>
       </div>
 
