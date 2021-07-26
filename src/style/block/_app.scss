@@ -15,17 +15,6 @@
   }
 }
 
-// 網頁內容高度
-.h-content{
-  // xsmall
-  height: calc(100vh - 56px);
-
-  @include medium {
-    height: calc(100vh - 64px);
-  }
-}
-
-
 .md-toolbar, .md-toolbar-row {
   min-height: 64px;
   
