@@ -105,14 +105,14 @@
               </md-card>
 
               <!-- Sign Up -->
-              <!-- <md-snackbar :md-active.sync="userSaved"
+              <!-- <md-snackbar :md-active.sync="messageShow"
                 >The user {{ user }} was saved with {{ message }}!</md-snackbar> -->
               <!-- Sign In -->
-              <md-snackbar :md-active.sync="userSaved"
+              <md-snackbar :md-active.sync="messageShow"
             >{{ message }}</md-snackbar>
 
             <!-- <md-dialog-alert
-              :md-active.sync="userSaved"
+              :md-active.sync="messageShow"
               md-title="ERROR"
               :md-content="message" /> -->
 
@@ -125,21 +125,19 @@
     <!-- 參考 https://stackoverflow.com/questions/61611210/opening-and-closing-vue-material-dialog-on-different-components -->
 
     <md-dialog-alert
-      :md-active.sync="userSaved"
+      :md-active.sync="messageShow"
       md-title="ERROR"
       :md-content="message" />
-    <!-- <md-dialog :md-active.sync="userSaved">
+
+    <md-dialog :md-active.sync="wellcomeMsg">
       <md-dialog-content>
-        <md-button>
-          <div class="md-layou">
-            <div class="md-layout-item">
-              <md-icon :md-src="require('../assets/icon/icon-share.svg')"></md-icon>
-            </div>
-            <div class="md-layout-item">{{ message }}</div>
+        <Avatar />
+        <Anonymous />
+        <div class="md-layout-item">
+          Wellcome {{ form.account }}
           </div>
-        </md-button>
       </md-dialog-content>
-    </md-dialog> -->
+    </md-dialog>
   </div>
 </template>
 
@@ -170,9 +168,12 @@ export default {
         password: ''
         // email: ''
       },
-      userSaved: false,
       // 送出後的進度條 false 是不跑
       sending: false,
+      // 登入的歡迎訊息
+      wellcomeMsg: false,
+      // alert 訊息控制 false 是不跳 alert
+      messageShow: false,
       // 登入訊息
       message: ''
     }
@@ -219,8 +220,7 @@ export default {
         this.sending = true
 
         window.setTimeout(() => {
-          this.message = `Wellcome ${this.form.account}`
-          this.userSaved = true
+          this.wellcomeMsg = true
           this.sending = false
           // this.clearForm()
 
@@ -229,7 +229,7 @@ export default {
           this.$router.push('/member')
         }, 1500)
       } catch (error) {
-        this.userSaved = true
+        this.messageShow = true
         this.message = `${this.form.account}` + error
         this.sending = true
         // this.clearForm()

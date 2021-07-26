@@ -139,14 +139,19 @@
             <md-list-item v-if="user.isSignIn">
               <md-button
                 class="md-primary md-raised"
-                @click="signOutBtn = true"
-              >
+                @click="signOutBtn">
                 <md-icon>person_remove</md-icon>
                 &nbsp; Sign out
               </md-button>
             </md-list-item>
+
           </md-list>
         </md-app-drawer>
+        <!-- Sign out alert 錯誤訊息 -->
+        <md-dialog-alert
+        :md-active.sync="signOutMsg"
+        md-title="ERROR"
+        md-content="發生錯誤" />
         <md-app-content class="h-content">
           <router-view />
         </md-app-content>
@@ -158,7 +163,6 @@
 <script>
 // components元件
 import SignModal from '@/components/SignModal.vue'
-// TODO: 研究將註冊及登入按鈕跳 modal 變成元件方便使用
 
 export default {
   data () {
@@ -166,13 +170,31 @@ export default {
       search: '',
       menuVisible: false,
       signUpBtn: false,
-      signInBtn: false
+      signInBtn: false,
+      // alert 訊息控制 false 是不跳 alert
+      signOutMsg: false
     }
   },
   components: {
     SignModal
   },
   methods: {
+    async signOutBtn () {
+      try {
+        await this.axios.delete('/users/signOut', {
+          headers: {
+            // 驗證欄位 'Bearer ' + token  -> Bearer要空格
+            authorization: 'Bearer ' + this.$store.state.jwt.token
+          }
+        })
+        this.$store.commit('signOut')
+        // (如果登出時不在首頁) 登出後導向首頁
+        if (this.$route.path !== '/') this.$router.push('/')
+        // $route 是取路由資訊 / $router 是對路由做修改的 function
+      } catch (error) {
+        this.signOutMsg = true
+      }
+    },
     toggleMenu () {
       this.menuVisible = !this.menuVisible
     }

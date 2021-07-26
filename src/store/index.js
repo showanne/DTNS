@@ -15,8 +15,8 @@ export default new Vuex.Store({
     },
     user: {
       account: '',
-      role: 0, // 一般會員 0 / 管理者 1
-      email: ''
+      role: 0 // 一般會員 0 / 管理者 1
+      // email: ''
     }
   },
   // 修改狀態的 function
@@ -27,7 +27,13 @@ export default new Vuex.Store({
       state.jwt.received = new Date().getTime()
       state.user.account = data.account
       state.user.role = data.role
-      state.user.email = data.email
+    },
+    signOut (state) {
+      // 登出把 vuex 清空
+      state.jwt.token = ''
+      state.jwt.received = 0
+      state.user.account = ''
+      state.user.role = 0
     }
   },
   // 修改狀態的 function，支援 async
