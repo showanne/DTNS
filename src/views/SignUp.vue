@@ -1,6 +1,6 @@
 <template>
   <div id="signUp" class="md-layout md-alignment-center-center" style="height: 80vh;">
-    <!-- Sign Up -->
+    <!-- Sign Up 註冊 -->
 
       <form
         novalidate
@@ -78,7 +78,7 @@
           <md-progress-bar md-mode="indeterminate" v-if="sending" />
 
           <md-card-actions>
-            <md-button> Line</md-button>
+            <md-button> Line 快速註冊</md-button>
             <md-button type="reset" class="md-primary"> Reset</md-button>
             <md-button type="submit" class="md-primary" :disabled="sending">
               Create user</md-button

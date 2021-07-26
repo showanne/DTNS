@@ -1,7 +1,7 @@
 <template>
-  <div id="signIn"  class="md-layout md-alignment-center-center" style="height: 80vh;">
+  <div id="signIn"  class="md-layout md-alignment-center-center h-content">
     <!-- TODO: 寬高的class -->
-    <!-- Sign In -->
+    <!-- Sign In 登入 -->
 
       <form
         novalidate
@@ -62,7 +62,7 @@
           <md-progress-bar md-mode="indeterminate" v-if="sending" />
 
           <md-card-actions>
-            <md-button> Line</md-button>
+            <md-button> Line 快速登入</md-button>
             <md-button type="reset" class="md-primary"> Reset</md-button>
             <md-button type="submit" class="md-primary" :disabled="sending">
               Sign In</md-button

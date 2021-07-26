@@ -82,6 +82,38 @@
               <md-icon>person_add_alt_1</md-icon>
               <span class="md-list-item-text">SignUp</span>
             </md-list-item>
+
+            <!-- Sign Up -->
+            <md-list-item>
+              <md-button
+                class="md-primary md-raised"
+                @click="signUpBtn = true">
+                <md-icon>person_add_alt_1</md-icon>
+                &nbsp; Sign Up
+              </md-button>
+              <SignModal v-if="signUpBtn"
+              :signBtn="signUpBtn"
+              @closeModal="signUpBtn = false"
+              ><!-- capturing event close-context -->
+              <span slot="title">Sign Up</span>
+              </SignModal>
+            </md-list-item>
+
+            <!-- Sign In -->
+            <md-list-item>
+              <md-button
+                class="md-primary md-raised"
+                @click="signInBtn = true">
+                <md-icon>person_add_alt_1</md-icon>
+                &nbsp; Sign In
+              </md-button>
+              <SignModal v-if="signInBtn"
+              :signBtn="signInBtn"
+              @closeModal="signInBtn = false"
+              ><!-- capturing event close-context -->
+              <span slot="title">Sign In</span>
+              </SignModal>
+            </md-list-item>
           </md-list>
         </md-app-drawer>
         <md-app-content class="h-content">
@@ -94,15 +126,20 @@
 
 <script>
 // components元件
-// import SignModal from '@/components/SignModal.vue'
+import SignModal from '@/components/SignModal.vue'
 // TODO: 研究將註冊及登入按鈕跳 modal 變成元件方便使用
 
 export default {
   data () {
     return {
       search: '',
-      menuVisible: false
+      menuVisible: false,
+      signUpBtn: false,
+      signInBtn: false
     }
+  },
+  components: {
+    SignModal
   },
   methods: {
     toggleMenu () {
