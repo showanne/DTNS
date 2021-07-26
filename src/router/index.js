@@ -13,22 +13,22 @@ const routes = [
       title: 'DTNS'
     }
   },
-  {
-    path: '/signin',
-    name: 'SignIn',
-    component: () => import(/* webpackChunkName: "signin" */ '../views/SignIn.vue'),
-    meta: {
-      title: 'DTNS - SignIn'
-    }
-  },
-  {
-    path: '/signup',
-    name: 'SignUp',
-    component: () => import(/* webpackChunkName: "signup" */ '../views/SignUp.vue'),
-    meta: {
-      title: 'DTNS - SignUp'
-    }
-  },
+  // {
+  //   path: '/signin',
+  //   name: 'SignIn',
+  //   component: () => import(/* webpackChunkName: "signin" */ '../views/SignIn.vue'),
+  //   meta: {
+  //     title: 'DTNS - SignIn'
+  //   }
+  // },
+  // {
+  //   path: '/signup',
+  //   name: 'SignUp',
+  //   component: () => import(/* webpackChunkName: "signup" */ '../views/SignUp.vue'),
+  //   meta: {
+  //     title: 'DTNS - SignUp'
+  //   }
+  // },
   {
     path: '/edit',
     name: 'Edit',

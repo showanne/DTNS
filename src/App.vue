@@ -73,16 +73,6 @@
                 <span class="md-list-item-text">Manage</span>
             </md-list-item>
 
-            <md-list-item to="/SignIn">
-              <md-icon>person_remove</md-icon>
-              <span class="md-list-item-text">SignIn</span>
-            </md-list-item>
-
-            <md-list-item to="/SignUp">
-              <md-icon>person_add_alt_1</md-icon>
-              <span class="md-list-item-text">SignUp</span>
-            </md-list-item>
-
             <!-- Sign Up -->
             <md-list-item>
               <md-button
@@ -104,7 +94,7 @@
               <md-button
                 class="md-primary md-raised"
                 @click="signInBtn = true">
-                <md-icon>person_add_alt_1</md-icon>
+                <md-icon>person_remove</md-icon>
                 &nbsp; Sign In
               </md-button>
               <SignModal v-if="signInBtn"
