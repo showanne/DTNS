@@ -108,16 +108,18 @@
           </md-card-header>
 
             <md-card-content class="blockquote">
-              <blockquote contenteditable="true">
-                  <p>Edit this content to add your own quote</p>
-              </blockquote>
+              <figure>
+                <blockquote>
+                    <p>Edit this content to add your own quote</p>
+                </blockquote>
 
-              <figcaption>––
-                <span>作者 ngoewsghep</span>，
-                <cite>
-                  <a href="">出處 Brave New World</a>
-                </cite>
-              </figcaption>
+                <figcaption>––
+                  <span>作者 ngoewsghep</span>，
+                  <cite>
+                    <a href="">出處 Brave New World</a>
+                  </cite>
+                </figcaption>
+              </figure>
             </md-card-content>
 
           <md-card-actions  md-alignment="space-between">
