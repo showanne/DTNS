@@ -2,24 +2,31 @@
 @import './variables/breakpoint';
 @import './variables/colors';
 
-// 函式
-// @import './functions';
-
 // 混合
 @import './mixins/rwd';
+
+// 通用設定
+@import './helpers/color';
+@import './helpers/font';
+@import './helpers/spacing';
+@import './helpers/sizing';
+@import './helpers/flex';
+@import './helpers/display';
+@import './helpers/position';
+@import './helpers/other';
+
 
 // 全域設定
 @import './global';
 
 // 區塊結構
-// app 首頁 toolbar + drawer + content
-@import './block/app';
-@import './block/edit';
-@import './block/collection';
-@import './block/contact';
-@import './block/setting';
-@import './block/member';
-@import './block/manage';
+@import './pages/app';
+@import './pages/edit';
+@import './pages/collection';
+@import './pages/contact';
+@import './pages/setting';
+@import './pages/member';
+@import './pages/manage';
 
 // 功能 components 元件
 // card

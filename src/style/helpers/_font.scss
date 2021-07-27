@@ -5,7 +5,6 @@ $font-family-CH: 'jf open 粉圓', 'Noto Sans' !default;
 $font-family-EN: 'Patrick Hand', 'Noto Sans' !default;
 // THINK: 是否需要分中英文及大小標設定
 
-$font-size-root: null !default;
 $font-size-base: 1rem !default; // Browser 16px
 $font-size-sm: $font-size-base * 0.875 !default;
 $font-size-lg: $font-size-base * 1.25 !default;
@@ -31,10 +30,6 @@ $small-font-size: 0.875em !default;
 
 $text-muted: $gray-600 !default;
 
-$hr-margin-y: $spacer !default;
-$hr-color: inherit !default;
-$hr-height: $border-width !default;
-$hr-opacity: 0.25 !default;
 
 // Utilities
 $utilities: () !default;
@@ -113,7 +108,67 @@ $utilities: map-merge(
       property: word-wrap word-break,
       class: text,
       values: (break: break-word)
+    ),
+    // Vertical alignment
+    "align": (
+      property: vertical-align,
+      class: v-align,
+      values: baseline top middle bottom text-bottom text-top
     )
   ),
   $utilities
 );
+
+// Text truncation
+//
+
+.text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Reset heading
+%heading {
+  margin-top: 0; // 1
+  margin-bottom: $headings-margin-bottom;
+  font-family: $headings-font-family;
+  font-style: $headings-font-style;
+  font-weight: $headings-font-weight;
+  line-height: $headings-line-height;
+  color: $headings-color;
+}
+
+h1 {
+  @extend %heading;
+  @include font-size($h1-font-size);
+}
+
+h2 {
+  @extend %heading;
+  @include font-size($h2-font-size);
+}
+
+h3 {
+  @extend %heading;
+  @include font-size($h3-font-size);
+}
+
+h4 {
+  @extend %heading;
+  @include font-size($h4-font-size);
+}
+
+h5 {
+  @extend %heading;
+  @include font-size($h5-font-size);
+}
+
+h6 {
+  @extend %heading;
+  @include font-size($h6-font-size);
+}
+
+small {
+  @include font-size($small-font-size);
+}

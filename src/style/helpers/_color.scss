@@ -1,5 +1,4 @@
-// Material Color system
-@import '../variables/colors';
+// Color
 
 // theme-colors
 $primary:       $blue;
@@ -27,6 +26,8 @@ $theme-colors: (
   "dark":       $dark
 );
 
+// Utilities
+$utilities: () !default;
 $utilities: map-merge(
   (
     // NOTE: '自訂Utilities名稱': (
@@ -36,6 +37,20 @@ $utilities: map-merge(
       // values 設定屬性值
       // state: 自訂狀態(hover focus ...) 編譯成:class-values-hover
     // )
+    "color": (
+      property: color,
+      class: text,
+      values: map-merge(
+        $theme-colors,
+        (
+          "white": $white,
+          "muted": $text-muted,
+          "black-50": rgba($black, .5),
+          "white-50": rgba($white, .5),
+          "reset": inherit,
+        )
+      )
+    ),
     "background-color": (
       property: background-color,
       class: bg,
@@ -44,6 +59,11 @@ $utilities: map-merge(
         ("transparent": transparent)
       )
     ),
+    "gradient": (
+      property: background-image,
+      class: bg,
+      values: (gradient: var($gradient))
+    ),
     "border-color": (
       property: border-color,
       class: border,
@@ -51,21 +71,7 @@ $utilities: map-merge(
         $theme-colors,
         ("white": $white)
       )
-    ),
-    "color": (
-      property: color,
-      class: text,
-      values: map-merge(
-        $theme-colors,
-        (
-          "white": $white,
-          "muted": $muted,
-          "black-50": rgba($black, .5),
-          "white-50": rgba($white, .5),
-          "reset": inherit,
-        )
-      )
-    ),
+    )
   )
   $utilities
 );

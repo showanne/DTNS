@@ -1,0 +1,95 @@
+// Sizing 
+
+$sizing-values: (
+  33: 33,
+  50: 50%,
+  66: 66%,
+  100: 100%
+) !default;
+
+// Utilities
+$utilities: () !default;
+$utilities: map-merge(
+  (
+    // NOTE: '自訂Utilities名稱': (
+      // responsive: 支援響應式，屬性會被加上斷點 編譯成:class-xl
+      // property: 設定對應的 css 屬性，沒有設定 class 會以此為主
+      // class: 自訂 class 前綴名稱 編譯成:class-values
+      // values 設定屬性值
+      // state: 自訂狀態(hover focus ...) 編譯成:class-values-hover
+    // )
+    "width": (
+      property: width,
+      class: w,
+      values: (
+        10: 10%,
+        25: 25%,
+        33: 33%,
+        50: 50%,
+        66: 66%,
+        75: 75%,
+        80: 80%,
+        90: 90%,
+        100: 100%,
+        auto: auto
+      )
+    ),
+    "max-width": (
+      property: max-width,
+      class: max-w,
+      values: $sizing-values
+    ),
+    "min-width": (
+      property: min-width,
+      class: min-w,
+      values: $sizing-values
+    ),
+    "viewport-width": (
+      property: width,
+      class: vw,
+      values: (100: 100vw)
+    ),
+    "min-viewport-width": (
+      property: min-width,
+      class: min-vw,
+      values: (100: 100vw)
+    ),
+    "height": (
+      property: height,
+      class: h,
+      values: (
+        10: 10%,
+        25: 25%,
+        33: 33%,
+        50: 50%,
+        66: 66%,
+        75: 75%,
+        80: 80%,
+        90: 90%,
+        100: 100%,
+        auto: auto
+      )
+    ),
+    "max-height": (
+      property: max-height,
+      class: max-h,
+      values: $sizing-values
+    ),
+    "min-height": (
+      property: min-height,
+      class: min-h,
+      values: $sizing-values
+    ),
+    "viewport-height": (
+      property: height,
+      class: vh,
+      values: (100: 100vh)
+    ),
+    "min-viewport-height": (
+      property: min-height,
+      class: min-vh,
+      values: (100: 100vh)
+    )
+  )
+  $utilities
+);
