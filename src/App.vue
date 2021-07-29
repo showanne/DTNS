@@ -74,6 +74,14 @@
               <span class="md-list-item-text">Contact</span>
             </md-list-item>
 
+            <!-- news -->
+            <md-list-item to="/news">
+              <!-- <md-icon
+                :md-src="require('./assets/icon/icon-News.svg')"
+              ></md-icon> -->
+              <span class="md-list-item-text">News</span>
+            </md-list-item>
+
             <!-- setting -->
             <md-list-item to="/setting">
               <md-icon

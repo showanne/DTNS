@@ -54,6 +54,14 @@ const routes = [
     }
   },
   {
+    path: '/news',
+    name: 'News',
+    component: () => import(/* webpackChunkName: "news" */ '../views/News.vue'),
+    meta: {
+      title: 'DTNS - News'
+    }
+  },
+  {
     path: '/setting',
     name: 'Setting',
     component: () => import(/* webpackChunkName: "setting" */ '../views/Setting.vue'),
