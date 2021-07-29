@@ -1,6 +1,20 @@
 /* contact */
 #contact{
+  .w-contact-content{
+    // min-width: 150%;
+    // max-width: 150%;
+    min-width: 132%;
+    // size-50 剛好是 66% 的寬度
+  }
+  // .h-contact-content{
+  //   max-height: calc(100vh - 64px);
+  // }
+
   .md-card .md-avatar {
     margin-left: -40px;
   }
+}
+
+form.w-contact-modal {
+  min-width: 299px;
 }
