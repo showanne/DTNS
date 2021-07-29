@@ -58,64 +58,101 @@
       </md-dialog-content>
     </md-dialog>
 
-    <div class="md-layout md-gutter md-alignment-center w-contact-content">
-                <!-- md-layout-nowrap -->
-      <div class="md-layout-item md-large-size-50 md-medium-size-50 md-small-size-50 md-xsmall-size-100">
-        <md-card class="md-accent" md-with-hover>
-          <md-card-content class="md-layout md-alignment-center">
-            <div class="md-layout-item md-size-15">
-            <md-avatar class="md-large md-elevation-5">
-              <Avatar />
-            </md-avatar>
-            </div>
-            <div class="md-layout-item md-size-85">
-              <div class="md-layout md-alignment-center-space-between">
-                <div class="md-title">Nick name</div>
-                <div class="md-subhead">110.07.29</div>
-              </div>
-              <span>
-                Lorem adipisci aspernatur saepe quo possimus deserunt accusantium cum explicabo, vero cumque fugiat praesentium enim hic dolorem. Excepturi fuga mollitia alias?
-              </span>
-              <!-- <md-button class="md-icon-button">
-                <md-icon>volunteer_activism</md-icon>
-              </md-button>
+    <div class="md-layout md-gutter">
+      <div class="md-layout-item md-large-size-33 md-medium-size-33 md-small-size-100  md-xsmall-size-100">
+        <div class="md-title">常見問題</div>
+        <accordion>
+          <accordion-item>
+            <template slot="accordion-trigger">
+              <h3>Question 1</h3>
+            </template>
+            <template slot="accordion-content">
+              <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span>
+            </template>
+          </accordion-item>
 
-              <md-button class="md-icon-button">
-                <md-icon>cloud_download</md-icon>
-              </md-button> -->
-            </div>
-          </md-card-content>
-        </md-card>
+          <accordion-item>
+            <template slot="accordion-trigger">
+              <h3>Question 2</h3>
+            </template>
+            <template slot="accordion-content">
+              <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span>
+            </template>
+          </accordion-item>
+
+          <accordion-item>
+            <template slot="accordion-trigger">
+              <h3>Question 3</h3>
+            </template>
+            <template slot="accordion-content">
+              <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span>
+            </template>
+          </accordion-item>
+      </accordion>
       </div>
-      <div class="md-layout-item md-large-size-50 md-medium-size-50 md-small-size-50 md-xsmall-size-100">
-        <md-card class="md-accent" md-with-hover>
-          <md-card-content class="md-layout md-alignment-center">
-            <div class="md-layout-item md-size-15">
-            <md-avatar class="md-large md-elevation-5">
-              <Avatar />
-            </md-avatar>
-            </div>
-            <div class="md-layout-item md-size-85">
-              <div class="md-layout md-alignment-center-space-between">
-                <div class="md-title">Nick name</div>
-                <div class="md-subhead">110.07.29</div>
-              </div>
-              <span>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium
-                quod neque optio et delectus obcaecati  laudantium!
-              </span>
-              <!-- <md-button class="md-icon-button">
-                <md-icon>volunteer_activism</md-icon>
-              </md-button>
 
-              <md-button class="md-icon-button">
-                <md-icon>cloud_download</md-icon>
-              </md-button> -->
-            </div>
-          </md-card-content>
-        </md-card>
+      <div class="md-layout-item md-large-size-66 md-medium-size-66 md-small-size-100  md-xsmall-size-100">
+        <div class="md-layout md-gutter md-alignment-center">
+        <!-- md-layout-nowrap w-contact-content -->
+          <div class="md-layout-item md-large-size-50 md-medium-size-50 md-small-size-50 md-xsmall-size-100">
+            <md-card class="md-accent" md-with-hover>
+              <md-card-content class="md-layout md-alignment-center">
+                <div class="md-layout-item md-size-15">
+                <md-avatar class="md-large md-elevation-5">
+                  <Avatar />
+                </md-avatar>
+                </div>
+                <div class="md-layout-item md-size-85">
+                  <div class="md-layout md-alignment-center-space-between">
+                    <div class="md-title">Nick name</div>
+                    <div class="md-subhead">110.07.29</div>
+                  </div>
+                  <span>
+                    Lorem adipisci aspernatur saepe quo possimus deserunt accusantium cum explicabo, vero cumque fugiat praesentium enim hic dolorem. Excepturi fuga mollitia alias?
+                  </span>
+                  <!-- <md-button class="md-icon-button">
+                    <md-icon>volunteer_activism</md-icon>
+                  </md-button>
+
+                  <md-button class="md-icon-button">
+                    <md-icon>cloud_download</md-icon>
+                  </md-button> -->
+                </div>
+              </md-card-content>
+            </md-card>
+          </div>
+          <div class="md-layout-item md-large-size-50 md-medium-size-50 md-small-size-50 md-xsmall-size-100">
+            <md-card class="md-accent" md-with-hover>
+              <md-card-content class="md-layout md-alignment-center">
+                <div class="md-layout-item md-size-15">
+                <md-avatar class="md-large md-elevation-5">
+                  <Avatar />
+                </md-avatar>
+                </div>
+                <div class="md-layout-item md-size-85">
+                  <div class="md-layout md-alignment-center-space-between">
+                    <div class="md-title">Nick name</div>
+                    <div class="md-subhead">110.07.29</div>
+                  </div>
+                  <span>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium
+                    quod neque optio et delectus obcaecati  laudantium!
+                  </span>
+                  <!-- <md-button class="md-icon-button">
+                    <md-icon>volunteer_activism</md-icon>
+                  </md-button>
+
+                  <md-button class="md-icon-button">
+                    <md-icon>cloud_download</md-icon>
+                  </md-button> -->
+                </div>
+              </md-card-content>
+            </md-card>
+          </div>
+        </div>
       </div>
     </div>
+
   </div>
 </template>
 
@@ -123,6 +160,8 @@
 // components元件
 // import FormCard from '@/components/FormCard.vue'
 import Avatar from '@/components/Avatar.vue'
+import Accordion from '@/components/accordion.vue'
+import AccordionItem from '@/components/accordion-item.vue'
 
 export default {
   name: 'Contact',
@@ -138,7 +177,9 @@ export default {
     }
   },
   components: {
-    Avatar
+    Avatar,
+    Accordion,
+    AccordionItem
   }
 }
 </script>
