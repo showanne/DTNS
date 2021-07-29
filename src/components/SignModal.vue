@@ -225,8 +225,13 @@ export default {
           // this.clearForm()
 
           this.$store.commit('signIn', data)
-          // 登入成功後導向會員中心
-          this.$router.push('/member')
+          if (this.user.isSignIn && this.user.isAdmin) {
+            // 是管理者登入的話，登入成功後導向管理中心
+            this.$router.push('/manage')
+          } else {
+            // 登入成功後導向會員中心
+            this.$router.push('/member')
+          }
         }, 1500)
       } catch (error) {
         this.messageShow = true
