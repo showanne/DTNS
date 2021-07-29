@@ -1,5 +1,5 @@
 <template>
-  <div id="setting" class="md-primary">
+  <div id="setting">
     <h1>This is an setting page</h1>
     <div class="md-layout md-alignment-bottom-left">
       <span class="md-medium-size-30">

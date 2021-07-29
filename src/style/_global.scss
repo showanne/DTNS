@@ -1,15 +1,19 @@
 // 網頁內容高度
 .h-content{
   // xsmall
-  min-height: calc(100vh - 56px);
+  min-height: calc(100vh - 64px);
 
-  @include medium {
-    height: calc(100vh - 64px);
+  @media (min-width: 600px) {
+    min-height: calc(100vh - 72px);
   }
+  // @include md-layout-xsmall {
+  //   min-height: calc(100vh - 72px);
+  // }
 }
 
 // 調整卡片間距
 #collection .md-layout-item,
+#contact .md-layout-item,
 #edit #temp .md-layout-item {
   margin-top: 16px;
   margin-bottom: 16px;
