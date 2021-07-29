@@ -1,8 +1,5 @@
 #collection {
-  .md-card-header .md-avatar, .md-card-header>img {
-    width: 25%;
-    height: 25%;
-    // margin-right: 16px;
+  .md-card-header .md-avatar {
     // float: left; 預設讓標題字不會貼邊
     margin: -35px 16px 5px -55px;
   }

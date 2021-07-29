@@ -5,7 +5,7 @@
     <div class="md-layout-item md-medium-size-33 md-small-size-50 md-xsmall-size-100">
         <md-card md-with-hover>
           <md-card-header>
-            <md-avatar>
+            <md-avatar class="md-large md-elevation-5">
               <Avatar />
             </md-avatar>
 
@@ -52,7 +52,7 @@
     <div class="md-layout-item md-medium-size-33 md-small-size-50 md-xsmall-size-100">
         <md-card md-with-hover>
           <md-card-header>
-            <md-avatar>
+            <md-avatar class="md-large md-elevation-5">
               <Avatar />
             </md-avatar>
 
@@ -99,7 +99,7 @@
     <div class="md-layout-item md-medium-size-33 md-small-size-50 md-xsmall-size-100">
         <md-card md-with-hover>
           <md-card-header>
-            <md-avatar>
+            <md-avatar class="md-large md-elevation-5">
               <Avatar />
             </md-avatar>
 
@@ -153,7 +153,7 @@
     <div class="md-layout-item md-medium-size-33 md-small-size-50 md-xsmall-size-100">
         <md-card md-with-hover>
           <md-card-header>
-            <md-avatar>
+            <md-avatar class="md-large md-elevation-5">
               <Avatar />
             </md-avatar>
 
@@ -196,7 +196,7 @@
     <div class="md-layout-item md-medium-size-33 md-small-size-50 md-xsmall-size-100">
         <md-card md-with-hover>
           <md-card-header>
-            <md-avatar>
+            <md-avatar class="md-large md-elevation-5">
               <Avatar />
             </md-avatar>
 
@@ -243,7 +243,7 @@
     <div class="md-layout-item md-medium-size-33 md-small-size-50 md-xsmall-size-100">
         <md-card md-with-hover>
           <md-card-header>
-            <md-avatar>
+            <md-avatar class="md-large md-elevation-5">
               <Avatar />
             </md-avatar>
 
