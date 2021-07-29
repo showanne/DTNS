@@ -2,13 +2,13 @@
 
 // theme-colors
 $primary:       $blue;
-$secondary:     $gray-600;
+// $secondary:     $gray-600;
 $success:       $green;
 $info:          $cyan;
 $warning:       $yellow;
 $danger:        $red;
-$light:         $gray-100;
-$dark:          $gray-900;
+// $light:         $gray-100;
+// $dark:          $gray-900;
 $gradient: linear-gradient(
   180deg,
   rgba($white, 0.15),
@@ -17,13 +17,13 @@ $gradient: linear-gradient(
 
 $theme-colors: (
   "primary":    $primary,
-  "secondary":  $secondary,
+  // "secondary":  $secondary,
   "success":    $success,
   "info":       $info,
   "warning":    $warning,
   "danger":     $danger,
-  "light":      $light,
-  "dark":       $dark
+  // "light":      $light,
+  // "dark":       $dark
 );
 
 // Utilities
@@ -44,7 +44,7 @@ $utilities: map-merge(
         $theme-colors,
         (
           "white": $white,
-          "muted": $text-muted,
+          // "muted": $text-muted,
           "black-50": rgba($black, .5),
           "white-50": rgba($white, .5),
           "reset": inherit,
@@ -72,6 +72,6 @@ $utilities: map-merge(
         ("white": $white)
       )
     )
-  )
+  ),
   $utilities
 );

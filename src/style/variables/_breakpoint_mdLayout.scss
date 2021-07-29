@@ -1,0 +1,29 @@
+/* breakpoints */
+
+ $md-breakpoint-xsmall: 600px !default;
+ $md-breakpoint-small: 960px !default;
+ $md-breakpoint-medium: 1280px !default;
+ $md-breakpoint-large: 1920px !default;
+ 
+ /* The available gutter sizes */
+ 
+ $md-gutter-xsmall: 8px;
+ $md-gutter-small: 16px;
+ $md-gutter-medium: 24px;
+ $md-gutter-large: 40px;
+ $md-gutter-xlarge: 40px;
+ 
+
+ $grid-breakpoints: (
+  xsmall: 600px,
+  small: 960px,
+  medium: 1280px,
+  large: 1920px
+) !default;
+
+ // BreakPoint
+// $breakpoint-xsmall: 599px;
+// $breakpoint-small: 959px;
+// $breakpoint-medium: 1279px;
+// $breakpoint-large: 1919px;
+// $breakpoint-xlarge: 1920px;

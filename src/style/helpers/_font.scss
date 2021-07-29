@@ -9,7 +9,7 @@ $font-size-base: 1rem !default; // Browser 16px
 $font-size-sm: $font-size-base * 0.875 !default;
 $font-size-lg: $font-size-base * 1.25 !default;
 
-$font-weight-base: $font-weight-normal !default;
+$font-weight-base: 400 !default;
 
 $h1-font-size: $font-size-base * 2.25 !default; // 36px
 $h2-font-size: $font-size-base * 2 !default; // 32px
@@ -28,7 +28,7 @@ $headings-color: null !default;
 
 $small-font-size: 0.875em !default;
 
-$text-muted: $gray-600 !default;
+$text-muted: $grey-600 !default;
 
 
 // Utilities
@@ -88,7 +88,8 @@ $utilities: map-merge(
       values: left right center,
     ),
     "text-decoration": (
-      property: td,
+      property: text-decoration,
+      class: td,
       values: none underline line-through
     ),
     "text-transform": (
@@ -141,34 +142,34 @@ $utilities: map-merge(
 
 h1 {
   @extend %heading;
-  @include font-size($h1-font-size);
+  font-size: $h1-font-size;
 }
 
 h2 {
   @extend %heading;
-  @include font-size($h2-font-size);
+  font-size: $h2-font-size;
 }
 
 h3 {
   @extend %heading;
-  @include font-size($h3-font-size);
+  font-size: $h3-font-size;
 }
 
 h4 {
   @extend %heading;
-  @include font-size($h4-font-size);
+  font-size: $h4-font-size;
 }
 
 h5 {
   @extend %heading;
-  @include font-size($h5-font-size);
+  font-size: $h5-font-size;
 }
 
 h6 {
   @extend %heading;
-  @include font-size($h6-font-size);
+  font-size: $h6-font-size;
 }
 
 small {
-  @include font-size($small-font-size);
+  font-size: $small-font-size;
 }

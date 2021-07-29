@@ -1,9 +1,9 @@
 import Vue from 'vue'
 // VueMaterial UI
 import VueMaterial from 'vue-material'
-// import { MdButton, MdContent, MdTabs } from 'vue-material/dist/components'
+
 import 'vue-material/dist/vue-material.min.css'
-import 'vue-material/dist/theme/default.css'
+// import 'vue-material/dist/theme/default.css'
 // axios
 import axios from 'axios'
 import VueAxios from 'vue-axios'
@@ -13,11 +13,13 @@ import App from './App.vue'
 import './registerServiceWorker'
 import router from './router'
 import store from './store'
+
+// vue-material variables
+import './style/_variables.scss'
 // style
 import './style/style.scss'
 import './style/all.scss'
-// vue-material variables
-// import './style/variables.scss'
+import './style/style-custom.css'
 
 // material icon
 // import MenuIcon from 'vue-material-design-icons/Menu.vue'
