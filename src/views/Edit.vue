@@ -11,7 +11,7 @@
                 <md-ripple>
                   <md-card-media-cover md-text-scrim>
                     <md-card-media md-ratio="1:1">
-                      <img :src="require('../assets/icon/iconpostIt.svg')" alt="Skyscraper">
+                      <img :src="require('../assets/icon/temp-postIt.svg')" alt="Skyscraper">
                     </md-card-media>
 
                     <md-card-area>
@@ -33,7 +33,7 @@
                 <md-card-media-cover>
                   <md-card-media md-ratio="1:1">
                     <img
-                      :src="require('../assets/icon/iconpostIt.svg')"
+                      :src="require('../assets/icon/temp-postIt.svg')"
                       alt="postIt"
                     />
                   </md-card-media>
@@ -56,7 +56,7 @@
                 <md-card-media-cover>
                   <md-card-media md-ratio="1:1">
                     <img
-                      :src="require('../assets/icon/iconshare.svg')"
+                      :src="require('../assets/icon/temp-share.svg')"
                       alt="share"
                     />
                   </md-card-media>
@@ -79,7 +79,7 @@
                 <md-card-media-cover>
                   <md-card-media md-ratio="1:1">
                     <img
-                      :src="require('../assets/icon/iconnotes.svg')"
+                      :src="require('../assets/icon/temp-notes.svg')"
                       alt="notes"
                     />
                   </md-card-media>
@@ -102,7 +102,7 @@
                 <md-card-media-cover>
                   <md-card-media md-ratio="1:1">
                     <img
-                      :src="require('../assets/icon/icondiary.svg')"
+                      :src="require('../assets/icon/temp-diary.svg')"
                       alt="diary"
                     />
                   </md-card-media>
@@ -125,7 +125,7 @@
                 <md-card-media-cover>
                   <md-card-media md-ratio="1:1">
                     <img
-                      :src="require('../assets/icon/icontodo.svg')"
+                      :src="require('../assets/icon/temp-todo.svg')"
                       alt="todo"
                     />
                   </md-card-media>
@@ -148,7 +148,7 @@
                 <md-card-media-cover>
                   <md-card-media md-ratio="1:1">
                     <img
-                      :src="require('../assets/icon/iconnovel.svg')"
+                      :src="require('../assets/icon/temp-novel.svg')"
                       alt="novel"
                     />
                   </md-card-media>
@@ -171,7 +171,7 @@
                 <md-card-media-cover>
                   <md-card-media md-ratio="1:1">
                     <img
-                      :src="require('../assets/icon/iconstorage.svg')"
+                      :src="require('../assets/icon/temp-storage.svg')"
                       alt="storage"
                     />
                   </md-card-media>

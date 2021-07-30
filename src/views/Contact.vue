@@ -1,8 +1,11 @@
 <template>
   <div id="contact">
 
-    <md-button class="md-primary md-raised md-fab md-fab-bottom-right" @click="contactBtn = true">
-      <md-icon class="md-size-2x">add</md-icon>
+    <md-button class="md-raised md-fab md-fab-bottom-right" @click="contactBtn = true">
+      <!-- <md-icon class="md-size-2x">add</md-icon> -->
+      <md-icon class="md-size-2x"
+        :md-src="require('../assets/icon/action-addContact.svg')"
+      ></md-icon>
     </md-button>
 
     <md-dialog :md-active.sync="contactBtn">
@@ -65,7 +68,7 @@
           <accordion-item>
             <template slot="accordion-trigger">
               <div class="md-title">
-                <md-icon>live_help</md-icon>
+                <md-icon :md-src="require('../assets/icon/question.svg')"></md-icon>
                 Question 1
               </div>
             </template>
@@ -77,7 +80,7 @@
           <accordion-item>
             <template slot="accordion-trigger">
               <div class="md-title">
-                <md-icon>live_help</md-icon>
+                <md-icon :md-src="require('../assets/icon/question.svg')"></md-icon>
                 Question 1
               </div>
             </template>
@@ -89,7 +92,7 @@
           <accordion-item>
             <template slot="accordion-trigger">
               <div class="md-title">
-                <md-icon>live_help</md-icon>
+                <md-icon :md-src="require('../assets/icon/question.svg')"></md-icon>
                 Question 1
               </div>
             </template>

@@ -23,7 +23,7 @@
 
           <md-card-actions  md-alignment="space-between">
               <md-button class="md-icon-button">
-                <md-icon :md-src="require('../assets/icon/icon-novel.svg')"></md-icon>
+                <md-icon :md-src="require('../assets/icon/temp-novel.svg')"></md-icon>
               </md-button>
 
               <md-button class="md-icon-button">
@@ -70,7 +70,7 @@
 
           <md-card-actions  md-alignment="space-between">
               <md-button class="md-icon-button">
-                <md-icon :md-src="require('../assets/icon/icon-novel.svg')"></md-icon>
+                <md-icon :md-src="require('../assets/icon/temp-novel.svg')"></md-icon>
               </md-button>
 
               <md-button class="md-icon-button">
@@ -124,7 +124,7 @@
 
           <md-card-actions  md-alignment="space-between">
               <md-button class="md-icon-button">
-                <md-icon :md-src="require('../assets/icon/icon-novel.svg')"></md-icon>
+                <md-icon :md-src="require('../assets/icon/temp-novel.svg')"></md-icon>
               </md-button>
 
               <md-button class="md-icon-button">
@@ -167,7 +167,7 @@
 
           <md-card-actions  md-alignment="space-between">
               <md-button class="md-icon-button">
-                <md-icon :md-src="require('../assets/icon/icon-novel.svg')"></md-icon>
+                <md-icon :md-src="require('../assets/icon/temp-novel.svg')"></md-icon>
               </md-button>
 
               <md-button class="md-icon-button">
@@ -214,7 +214,7 @@
 
           <md-card-actions  md-alignment="space-between">
               <md-button class="md-icon-button">
-                <md-icon :md-src="require('../assets/icon/icon-novel.svg')"></md-icon>
+                <md-icon :md-src="require('../assets/icon/temp-novel.svg')"></md-icon>
               </md-button>
 
               <md-button class="md-icon-button">
@@ -261,7 +261,7 @@
 
           <md-card-actions  md-alignment="space-between">
               <md-button class="md-icon-button">
-                <md-icon :md-src="require('../assets/icon/icon-novel.svg')"></md-icon>
+                <md-icon :md-src="require('../assets/icon/temp-novel.svg')"></md-icon>
               </md-button>
 
               <md-button class="md-icon-button">

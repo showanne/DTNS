@@ -5,7 +5,10 @@
         <md-app-toolbar
           class="md-accent md-layout md-gutter md-alignment-center-space-between"
         >
-          <!-- <md-button class="md-icon-button"
+          <md-button class="md-menu-button">
+            <md-icon :md-src="require('./assets/icon/menu.svg')"></md-icon>
+          </md-button>
+          <!-- <md-button class="md-menu-button"
             @click="toggleMenu" v-if="!menuVisible">
             <md-icon>menu</md-icon>
           </md-button> -->
@@ -30,7 +33,7 @@
           <div
             class="md-layout-item md-large-size-5 md-medium-size-5 md-xsmall-hide"
           >
-            <md-button class="md-icon-button">
+            <md-button class="md-menu-button">
               <md-icon>tungsten</md-icon>
             </md-button>
           </div>
@@ -40,7 +43,7 @@
           <!-- <md-app-drawer :md-active.sync="menuVisible" md-permanent="full" md-persistent="mini"> -->
           <!-- <md-toolbar class="md-transparent" md-elevation="3" to="/">
             DTNS Logo
-            <md-button class="md-icon-button md-dense" @click="toggleMenu">
+            <md-button class="md-menu-button md-dense" @click="toggleMenu">
               <md-icon>keyboard_arrow_left</md-icon>
             </md-button>
           </md-toolbar> -->
@@ -53,7 +56,7 @@
             <!-- edit -->
             <md-list-item to="/edit">
               <md-icon
-                :md-src="require('./assets/icon/icon-Edit.svg')"
+                :md-src="require('./assets/icon/menu-Edit.svg')"
               ></md-icon>
               <span class="md-list-item-text">Edit</span>
             </md-list-item>
@@ -61,7 +64,7 @@
             <!-- collection -->
             <md-list-item to="/collection">
               <md-icon
-                :md-src="require('./assets/icon/icon-Collection.svg')"
+                :md-src="require('./assets/icon/menu-Collection.svg')"
               ></md-icon>
               <span class="md-list-item-text">Collection</span>
             </md-list-item>
@@ -69,23 +72,23 @@
             <!-- contact -->
             <md-list-item to="/contact">
               <md-icon
-                :md-src="require('./assets/icon/icon-Contact.svg')"
+                :md-src="require('./assets/icon/menu-Contact.svg')"
               ></md-icon>
               <span class="md-list-item-text">Contact</span>
             </md-list-item>
 
             <!-- news -->
             <md-list-item to="/news">
-              <!-- <md-icon
-                :md-src="require('./assets/icon/icon-News.svg')"
-              ></md-icon> -->
+              <md-icon
+                :md-src="require('./assets/icon/menu-News.svg')"
+              ></md-icon>
               <span class="md-list-item-text">News</span>
             </md-list-item>
 
             <!-- setting -->
             <md-list-item to="/setting">
               <md-icon
-                :md-src="require('./assets/icon/icon-Setting.svg')"
+                :md-src="require('./assets/icon/menu-Setting.svg')"
               ></md-icon>
               <span class="md-list-item-text">Setting</span>
             </md-list-item>
@@ -93,7 +96,7 @@
             <!-- member -->
             <md-list-item v-if="user.isSignIn" to="/member">
               <md-icon
-                :md-src="require('./assets/icon/icon-Member.svg')"
+                :md-src="require('./assets/icon/menu-Member.svg')"
               ></md-icon>
               <span class="md-list-item-text">Member</span>
             </md-list-item>
@@ -101,7 +104,7 @@
             <!-- manage -->
             <md-list-item v-if="user.isSignIn && user.isAdmin" to="/manage">
               <md-icon
-                :md-src="require('./assets/icon/icon-Manage.svg')"
+                :md-src="require('./assets/icon/menu-Manage.svg')"
               ></md-icon>
               <span class="md-list-item-text">Manage</span>
             </md-list-item>
@@ -110,7 +113,7 @@
             <md-list-item v-if="!user.isSignIn">
               <md-button class="md-primary md-raised"
                 @click="signUpBtn = true" >
-                <md-icon>person_add_alt_1</md-icon>
+                <md-icon :md-src="require('./assets/icon/signUp.svg')"></md-icon>
                 &nbsp; Sign Up
               </md-button>
 
@@ -131,7 +134,7 @@
             <!-- Sign In -->
             <md-list-item v-if="!user.isSignIn">
               <md-button class="md-primary md-raised" @click="signInBtn = true">
-                <md-icon>person_remove</md-icon>
+                <md-icon :md-src="require('./assets/icon/signIn.svg')"></md-icon>
                 &nbsp; Sign In
               </md-button>
               <SignModal
@@ -148,12 +151,18 @@
               <md-button
                 class="md-primary md-raised"
                 @click="signOutBtn">
-                <md-icon>person_remove</md-icon>
+                <md-icon :md-src="require('./assets/icon/signOut.svg')"></md-icon>
                 &nbsp; Sign out
               </md-button>
             </md-list-item>
 
           </md-list>
+
+          <md-button
+            class=" md-raised">
+            <md-icon :md-src="require('./assets/icon/icon-github.svg')"></md-icon>
+            &nbsp; Anne.
+          </md-button>
         </md-app-drawer>
         <!-- Sign out alert 錯誤訊息 -->
         <md-dialog-alert
