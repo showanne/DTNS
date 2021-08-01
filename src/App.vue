@@ -112,14 +112,14 @@
             <!-- Sign Up -->
             <md-list-item v-if="!user.isSignIn">
               <md-button class="md-primary md-raised"
-                @click="signUpBtn" >
+                @click="signUpBtn = true" >
                 <md-icon :md-src="require('./assets/icon/signUp.svg')"></md-icon>
                 &nbsp; Sign Up
               </md-button>
 
               <md-dialog :md-active.sync="signUpBtn">
                 <md-dialog-content>
-                  <md-button>
+                  <md-button @click="signUpLine">
                     <div class="md-layou">
                       <div class="md-layout-item">
                         <md-icon :md-src="require('./assets/icon/line-logo.svg')"></md-icon>
@@ -186,7 +186,7 @@ export default {
     return {
       search: '',
       menuVisible: false,
-      // signUpBtn: false,
+      signUpBtn: false,
       signInBtn: false,
       // alert 訊息控制 false 是不跳 alert
       signOutMsg: false
@@ -196,9 +196,9 @@ export default {
     SignModal
   },
   methods: {
-    async signUpBtn () {
+    async signUpLine () {
       const clientId = '1656271137'
-      const redirectUri = 'https://showanne.github.io/DTNS/'
+      const redirectUri = 'http://localhost:8080'
       let link = 'https://access.line.me/oauth2/v2.1/authorize?'
       link += 'response_type=code'
       link += '&client_id=' + clientId
@@ -206,6 +206,8 @@ export default {
       link += '&state=login'
       link += '&scope=openid%20profile'
       window.location.href = link
+      // 送出的請求 https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=1656271137&redirect_uri=http://localhost:8080&state=login&scope=openid%20profile
+      // 回傳的 http://localhost:8080/?code=OPpVRg1yMbAL6C5SB9EC&state=login#/
     },
     async signOutBtn () {
       try {
