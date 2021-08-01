@@ -1,0 +1,33 @@
+# Action 名稱
+name: Deploy
+# 觸發時機，當推送到分支 main 時
+on:
+  push:
+    branches: [ main ]
+# 執行的工作
+jobs:
+  # 工作名稱
+  deploy:
+    # 執行工作的虛擬機作業系統
+    runs-on: ubuntu-latest
+    # 工作步驟
+    steps:
+      # 步驟一：複製程式碼
+      - name: checkout
+        # 使用的 actions/checkout 複製程式碼
+        uses: actions/checkout@v2.3.1
+      # 步驟二：編譯
+      - name: Install and Build
+        run: |
+          npm install
+          npm run build
+        # env:
+        #   VUE_APP_TIME: 1500
+        #   VUE_APP_TIME_BREAK: 300
+      # 步驟三：部署
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@4.1.1
+        with:
+          branch: gh-pages
+          # 打包後創建的資料夾名稱
+          folder: dist

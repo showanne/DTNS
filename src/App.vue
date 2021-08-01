@@ -112,7 +112,7 @@
             <!-- Sign Up -->
             <md-list-item v-if="!user.isSignIn">
               <md-button class="md-primary md-raised"
-                @click="signUpBtn = true" >
+                @click="signUpBtn" >
                 <md-icon :md-src="require('./assets/icon/signUp.svg')"></md-icon>
                 &nbsp; Sign Up
               </md-button>
@@ -186,7 +186,7 @@ export default {
     return {
       search: '',
       menuVisible: false,
-      signUpBtn: false,
+      // signUpBtn: false,
       signInBtn: false,
       // alert 訊息控制 false 是不跳 alert
       signOutMsg: false
@@ -196,6 +196,17 @@ export default {
     SignModal
   },
   methods: {
+    async signUpBtn () {
+      const clientId = '1656271137'
+      const redirectUri = 'https://showanne.github.io/DTNS/'
+      let link = 'https://access.line.me/oauth2/v2.1/authorize?'
+      link += 'response_type=code'
+      link += '&client_id=' + clientId
+      link += '&redirect_uri=' + redirectUri
+      link += '&state=login'
+      link += '&scope=openid%20profile'
+      window.location.href = link
+    },
     async signOutBtn () {
       try {
         await this.axios.delete('/users/signOut', {
