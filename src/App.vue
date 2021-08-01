@@ -197,17 +197,29 @@ export default {
   },
   methods: {
     async signUpLine () {
-      const clientId = '1656271137'
-      const redirectUri = 'http://localhost:8080'
+      // CHANNEL_ID 要用 env
+      const CHANNEL_ID = '1656271137'
+      const CALLBACK_URL = 'http://localhost:8080'
+      // const BOT_PROMPT = normal
       let link = 'https://access.line.me/oauth2/v2.1/authorize?'
       link += 'response_type=code'
-      link += '&client_id=' + clientId
-      link += '&redirect_uri=' + redirectUri
+      link += '&client_id=' + CHANNEL_ID
+      link += '&redirect_uri=' + CALLBACK_URL
       link += '&state=login'
+      link += '&bot_prompt=normal'
+      link += '&state=login'
+      // TODO: state 建議在 Web app 請求中，針對每個登入階段隨機生成。並確認該值與Web app 中接收授權碼時的 state 屬性值一致。
       link += '&scope=openid%20profile'
       window.location.href = link
+
+      // 在 LINE Login 授權 URL 中附加bot_prompt查詢參數，並讓用戶重新導向 https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id={CHANNEL_ID}&redirect_uri={CALLBACK_URL}&state={STATE}&bot_prompt={BOT_PROMPT}&scope={SCOPE_LIST}
+
       // 送出的請求 https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=1656271137&redirect_uri=http://localhost:8080&state=login&scope=openid%20profile
+      // https://access.line.me/oauth2/v2.1/authorize?client_id=1656271137&nonce=LXExaDVKQUE%3D&prompt=consent&redirect_uri=https%3A%2F%2Fdtns-test-app.herokuapp.com%2Fauth&response_type=code&scope=profile+openid&state=VFN3LXdTNWI%3D
+      // https://access.line.me/oauth2/v2.1/authorize/consent?scope=profile+openid&response_type=code&state=VFN3LXdTNWI%3D&redirect_uri=https%3A%2F%2Fdtns-test-app.herokuapp.com%2Fauth&prompt=consent&nonce=LXExaDVKQUE%3D&client_id=1656271137
+
       // 回傳的 http://localhost:8080/?code=OPpVRg1yMbAL6C5SB9EC&state=login#/
+      // https://dtns-test-app.herokuapp.com/auth?friendship_status_changed=false&code=JFJstzoT7w62112rXfyy&state=MX44ZkxPWUg%3D
     },
     async signOutBtn () {
       try {
