@@ -5,7 +5,7 @@ export default {
     },
     randomState () {
       // Math.floor(Math.random() * 7)
-      return 'unrgabniteP'
+      return 'DTNSLOGIN'
     }
   }
 }

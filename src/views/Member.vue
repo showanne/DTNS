@@ -1,17 +1,13 @@
 <template>
   <div id="member">
-    <h1>This is an member page</h1>
-    <Avatar />
-    <Anonymous />
-    <br><br><br>
-    <h1>Receive Page</h1>
-    <h3>回傳回來的值：{{ query }}</h3>
-    <hr>
-    <h1>Token API</h1>
-    <h3>回傳回來的值: {{ token }}</h3>
-    <hr>
-    <h1>IdToken Decode</h1>
-    <h3>解析後的值: {{ idTokenDecode }}</h3>
+    <!-- <h1>This is an member page</h1> -->
+    <md-avatar v-if="user.avatar != null" class="md-large">
+      <img :src="user.avatar" alt="avatar">
+    </md-avatar>
+    <Avatar v-else />
+    <h2 v-if="user.name != null">{{ user.name }}</h2>
+    <h2 v-else-if="user.name == null && user.account != null">{{ user.account }}</h2>
+    <Anonymous v-else />
   </div>
 </template>
 
@@ -27,38 +23,19 @@ export default {
   name: 'Member',
   data () {
     return {
-      query: {},
-      token: {},
-      idTokenDecode: {}
+      // query: {},
+      // token: {},
+      // idTokenDecode: {}
     }
   },
   components: {
     Avatar,
     Anonymous
+  },
+  computed: {
+    user () {
+      return this.$store.state.user
+    }
   }
-  // async mounted () {
-  //   console.log(this.$route.query)
-  //   this.query = this.$route.query
-
-  //   const options = Qs.stringify({
-  //     grant_type: 'authorization_code',
-  //     code: this.query.code,
-  //     redirect_uri: process.env.VUE_APP_CALLBACK_URL,
-  //     client_id: process.env.VUE_APP_CHANNEL_ID,
-  //     client_secret: process.env.VUE_APP_CHANNEL_SECRET
-  //   })
-
-  //   await this.axios.post('https://api.line.me/oauth2/v2.1/token', options, {
-  //     headers: {
-  //       'Content-Type': 'application/x-www-form-urlencoded'
-  //     }
-  //   }).then(res => {
-  //     console.log(res)
-  //     this.token = res.data
-  //     this.idTokenDecode = jwtDecode(res.data.id_token)
-  //   }).catch((error) => {
-  //     console.log(error)
-  //   })
-  // }
 }
 </script>

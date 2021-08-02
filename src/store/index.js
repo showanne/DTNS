@@ -14,10 +14,10 @@ export default new Vuex.Store({
       received: 0
     },
     user: {
+      role: 0, // 一般會員 0 / 管理者 1
       account: '',
-      account: '',
-      account: '',
-      role: 0 // 一般會員 0 / 管理者 1
+      name: '',
+      avatar: ''
       // email: ''
     }
   },
@@ -38,6 +38,8 @@ export default new Vuex.Store({
       state.jwt.received = 0
       state.user.account = ''
       state.user.role = 0
+      state.user.name = ''
+      state.user.avatar = ''
     }
   },
   // 修改狀態的 function，支援 async
@@ -53,7 +55,7 @@ export default new Vuex.Store({
   getters: {
     user (state) {
       return {
-        isSignIn: state.jwt.length > 0,
+        isSignIn: state.jwt.token.length > 0,
         isAdmin: state.user.role === 1,
         ...state.user
       }

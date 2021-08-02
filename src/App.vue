@@ -94,8 +94,7 @@
             </md-list-item>
 
             <!-- member -->
-            <md-list-item to="/member">
-            <!--  v-if="user.isSignIn" -->
+            <md-list-item v-if="user.isSignIn" to="/member">
               <md-icon
                 :md-src="require('./assets/icon/menu-Member.svg')"
               ></md-icon>
@@ -112,7 +111,7 @@
 
             <!-- Sign Up -->
             <md-list-item v-if="!user.isSignIn">
-              <md-button class="md-primary md-raised"
+              <md-button class="md-raised"
                 @click="signUpBtn = true" >
                 <md-icon :md-src="require('./assets/icon/signUp.svg')"></md-icon>
                 &nbsp; Sign Up
@@ -134,7 +133,7 @@
 
             <!-- Sign In -->
             <md-list-item v-if="!user.isSignIn">
-              <md-button class="md-primary md-raised" @click="signInBtn = true">
+              <md-button class="md-raised" @click="signInBtn = true">
                 <md-icon :md-src="require('./assets/icon/signIn.svg')"></md-icon>
                 &nbsp; Sign In
               </md-button>
@@ -150,7 +149,7 @@
             <!-- Sign out -->
             <md-list-item v-if="user.isSignIn">
               <md-button
-                class="md-primary md-raised"
+                class="md-raised"
                 @click="signOutBtn">
                 <md-icon :md-src="require('./assets/icon/signOut.svg')"></md-icon>
                 &nbsp; Sign out
@@ -202,7 +201,7 @@ export default {
       let link = 'https://access.line.me/oauth2/v2.1/authorize?'
       link += 'response_type=code' // 使用者登入後，請LINE回傳「code」（授權碼）
       link += '&client_id=' + process.env.VUE_APP_CHANNEL_ID
-      link += '&redirect_uri=' + process.env.VUE_APP_CALLBACK_URL
+      link += '&redirect_uri=' + process.env.VUE_APP_CALLBACK_URL // /users/signInLine
       link += '&state=' + this.randomState
       // TODO: state 建議在 Web app 請求中，針對每個登入階段隨機生成。並確認該值與Web app 中接收授權碼時的 state 屬性值一致。
       link += '&bot_prompt=normal' // 預設要加官方帳號好友
@@ -210,11 +209,8 @@ export default {
       window.location.href = link
       // window.open(link, '_self') // 跳轉頁面
 
-      // 在 LINE Login 授權 URL 中附加bot_prompt查詢參數，並讓用戶重新導向 https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id={CHANNEL_ID}&redirect_uri={CALLBACK_URL}&state={STATE}&bot_prompt={BOT_PROMPT}&scope={SCOPE_LIST}
-
-      // 送出的請求 https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=1656271137&redirect_uri=http://localhost:8080&state=login&scope=openid%20profile
-      // https://access.line.me/oauth2/v2.1/authorize?client_id=1656271137&nonce=LXExaDVKQUE%3D&prompt=consent&redirect_uri=https%3A%2F%2Fdtns-test-app.herokuapp.com%2Fauth&response_type=code&scope=profile+openid&state=VFN3LXdTNWI%3D
-      // https://access.line.me/oauth2/v2.1/authorize/consent?scope=profile+openid&response_type=code&state=VFN3LXdTNWI%3D&redirect_uri=https%3A%2F%2Fdtns-test-app.herokuapp.com%2Fauth&prompt=consent&nonce=LXExaDVKQUE%3D&client_id=1656271137
+      // 在 LINE Login 授權 URL ，並讓用戶重新導向
+      // https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id={CHANNEL_ID}&redirect_uri={CALLBACK_URL}&state={STATE}&bot_prompt={BOT_PROMPT}&scope={SCOPE_LIST}
 
       // 回傳的 http://localhost:8080/?code=OPpVRg1yMbAL6C5SB9EC&state=login#/
       // https://dtns-test-app.herokuapp.com/auth?friendship_status_changed=false&code=JFJstzoT7w62112rXfyy&state=MX44ZkxPWUg%3D
@@ -242,19 +238,20 @@ export default {
   },
   created () {
     const jwt = this.$route.query.jwt
+    console.log(jwt)
     if (jwt) {
       // this.$store.commit('signIn', jwt)
       // const query = this.$route.query
       // delete query.jwt
-      this.$router.replace({ query: {} })
+      // 把網址列的 jwt 清掉
+      // this.$router.replace({ query: {} })
       this.axios.get(`${process.env.VUE_APP_API}/users/signInLineData`, {
         headers: {
           authorization: 'Bearer ' + jwt
         }
       }).then(res => {
-        console.log(jwt)
         console.log(res)
-        this.$store.commit('signIn', res)
+        this.$store.commit('signIn', res.data)
       }).catch((error) => {
         console.log(error)
         this.$store.commit('signOut')
