@@ -79,7 +79,7 @@ const routes = [
   },
   {
     path: '/manage',
-    name: 'Manage',
+    // name: 'Manage',
     component: () => import(/* webpackChunkName: "manage" */ '../views/Manage.vue'),
     children: [
       {
