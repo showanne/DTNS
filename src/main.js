@@ -34,7 +34,7 @@ Vue.use(VueMaterial)
 
 // 要注意有多個請求 api 不能寫 baseURL
 // 使用 baseURL 的方便之處在於 文件內有用到 axios 需要網址的地方可直接省略
-axios.defaults.baseURL = process.env.VUE_APP_API
+// axios.defaults.baseURL = process.env.VUE_APP_API
 Vue.use(VueAxios, axios)
 Vue.use(VueCarousel)
 

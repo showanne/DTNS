@@ -94,7 +94,8 @@
             </md-list-item>
 
             <!-- member -->
-            <md-list-item v-if="user.isSignIn" to="/member">
+            <md-list-item to="/member">
+            <!--  v-if="user.isSignIn" -->
               <md-icon
                 :md-src="require('./assets/icon/menu-Member.svg')"
               ></md-icon>
@@ -124,7 +125,7 @@
                       <div class="md-layout-item">
                         <md-icon :md-src="require('./assets/icon/line-logo.svg')"></md-icon>
                       </div>
-                      <div class="md-layout-item">&nbsp; 快速登入</div>
+                      <div class="md-layout-item">&nbsp; 快速註冊</div>
                     </div>
                   </md-button>
                 </md-dialog-content>
@@ -164,6 +165,7 @@
             &nbsp; Anne.
           </md-button>
         </md-app-drawer>
+        
         <!-- Sign out alert 錯誤訊息 -->
         <md-dialog-alert
         :md-active.sync="signOutMsg"
@@ -197,20 +199,16 @@ export default {
   },
   methods: {
     async signUpLine () {
-      // CHANNEL_ID 要用 env
-      const CHANNEL_ID = '1656271137'
-      const CALLBACK_URL = 'http://localhost:8080'
-      // const BOT_PROMPT = normal
       let link = 'https://access.line.me/oauth2/v2.1/authorize?'
-      link += 'response_type=code'
-      link += '&client_id=' + CHANNEL_ID
-      link += '&redirect_uri=' + CALLBACK_URL
-      link += '&state=login'
-      link += '&bot_prompt=normal'
-      link += '&state=login'
+      link += 'response_type=code' // 使用者登入後，請LINE回傳「code」（授權碼）
+      link += '&client_id=' + process.env.VUE_APP_CHANNEL_ID
+      link += '&redirect_uri=' + process.env.VUE_APP_CALLBACK_URL
+      link += '&state=' + this.randomState
       // TODO: state 建議在 Web app 請求中，針對每個登入階段隨機生成。並確認該值與Web app 中接收授權碼時的 state 屬性值一致。
-      link += '&scope=openid%20profile'
+      link += '&bot_prompt=normal' // 預設要加官方帳號好友
+      link += '&scope=openid%20profile' // 預設申請使用者資料及 token
       window.location.href = link
+      // window.open(link, '_self') // 跳轉頁面
 
       // 在 LINE Login 授權 URL 中附加bot_prompt查詢參數，並讓用戶重新導向 https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id={CHANNEL_ID}&redirect_uri={CALLBACK_URL}&state={STATE}&bot_prompt={BOT_PROMPT}&scope={SCOPE_LIST}
 
@@ -220,10 +218,11 @@ export default {
 
       // 回傳的 http://localhost:8080/?code=OPpVRg1yMbAL6C5SB9EC&state=login#/
       // https://dtns-test-app.herokuapp.com/auth?friendship_status_changed=false&code=JFJstzoT7w62112rXfyy&state=MX44ZkxPWUg%3D
+      console.log(this.$route.query)
     },
     async signOutBtn () {
       try {
-        await this.axios.delete('/users/signOut', {
+        await this.axios.delete(`${process.env.VUE_APP_API}/users/signOut`, {
           headers: {
             // 驗證欄位 'Bearer ' + token  -> Bearer要空格
             authorization: 'Bearer ' + this.$store.state.jwt.token
