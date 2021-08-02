@@ -15,6 +15,8 @@ export default new Vuex.Store({
     },
     user: {
       account: '',
+      account: '',
+      account: '',
       role: 0 // 一般會員 0 / 管理者 1
       // email: ''
     }
@@ -27,6 +29,8 @@ export default new Vuex.Store({
       state.jwt.received = new Date().getTime()
       state.user.account = data.account
       state.user.role = data.role
+      state.user.name = data.name
+      state.user.avatar = data.avatar
     },
     signOut (state) {
       // 登出把 vuex 清空
@@ -49,7 +53,7 @@ export default new Vuex.Store({
   getters: {
     user (state) {
       return {
-        isSignIn: state.user.account.length > 0,
+        isSignIn: state.jwt.length > 0,
         isAdmin: state.user.role === 1,
         ...state.user
       }

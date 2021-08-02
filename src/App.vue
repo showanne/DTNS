@@ -165,7 +165,7 @@
             &nbsp; Anne.
           </md-button>
         </md-app-drawer>
-        
+
         <!-- Sign out alert 錯誤訊息 -->
         <md-dialog-alert
         :md-active.sync="signOutMsg"
@@ -218,7 +218,7 @@ export default {
 
       // 回傳的 http://localhost:8080/?code=OPpVRg1yMbAL6C5SB9EC&state=login#/
       // https://dtns-test-app.herokuapp.com/auth?friendship_status_changed=false&code=JFJstzoT7w62112rXfyy&state=MX44ZkxPWUg%3D
-      console.log(this.$route.query)
+      // console.log(this.$route.query)
     },
     async signOutBtn () {
       try {
@@ -238,6 +238,27 @@ export default {
     },
     toggleMenu () {
       this.menuVisible = !this.menuVisible
+    }
+  },
+  created () {
+    const jwt = this.$route.query.jwt
+    if (jwt) {
+      // this.$store.commit('signIn', jwt)
+      // const query = this.$route.query
+      // delete query.jwt
+      this.$router.replace({ query: {} })
+      this.axios.get(`${process.env.VUE_APP_API}/users/signInLineData`, {
+        headers: {
+          authorization: 'Bearer ' + jwt
+        }
+      }).then(res => {
+        console.log(jwt)
+        console.log(res)
+        this.$store.commit('signIn', res)
+      }).catch((error) => {
+        console.log(error)
+        this.$store.commit('signOut')
+      })
     }
   }
 }
