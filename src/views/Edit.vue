@@ -3,182 +3,28 @@
     <!-- <h1>This is an edit page</h1> -->
 
     <div class="md-layout md-gutter md-alignment-space-around">
-      <div id="temp" class="md-layout-item md-large-size-33 md-medium-size-33 md-small-size-100">
-        <div class="md-layout">
-          <!-- 有漸層背景及文字
-            <div class="md-layout-item md-size-50 md-xsmall-size-15">
-              <md-card md-with-hover>
-                <md-ripple>
-                  <md-card-media-cover md-text-scrim>
-                    <md-card-media md-ratio="1:1">
-                      <img :src="require('../assets/icon/temp-postIt.svg')" alt="Skyscraper">
-                    </md-card-media>
+      <!-- 模板選擇 -->
+      <div id="temp" class="md-layout-item md-xlarge-size-15 md-large-size-20 md-medium-size-33 md-small-size-100 md-xsmall-size-100">
+        <div class="md-layout md-alignment-space-between-center">
+          <!-- 有漸層背景及文字 <md-card-media-cover md-text-scrim> -->
 
-                    <md-card-area>
-                      <md-card-header>
-                        <span class="md-title">G</span>
-                        <span class="md-subhead">postIt</span>
-                      </md-card-header>
-                    </md-card-area>
-                  </md-card-media-cover>
-                </md-ripple>
-              </md-card>
-            </div> -->
-
-          <!-- postIt -->
-          <div
-               class="md-layout-item md-size-50 md-xsmall-size-15">
+          <div v-for="(temp, T) in tempList" :key="T" @click="tempShow(T)"
+               class="md-layout-item md-xlarge-size-50 md-large-size-50 md-medium-size-50 md-small-size-15 md-xsmall-size-15">
             <md-card md-with-hover>
               <md-ripple>
                 <md-card-media-cover>
-                  <md-card-media md-ratio="1:1">
+                  <md-card-media md-ratio="10:19">
                     <img
-                      :src="require('../assets/icon/temp-postIt.svg')"
-                      alt="postIt"
+                      :src="require('../assets/icon/temp-'+temp.subhead+'.svg')"
+                      :alt="temp.subhead"
                     />
                   </md-card-media>
 
                   <md-card-area>
                     <md-card-header>
-                      <span>postIt</span>
-                    </md-card-header>
-                  </md-card-area>
-                </md-card-media-cover>
-              </md-ripple>
-            </md-card>
-          </div>
-
-          <!-- share -->
-          <div
-               class="md-layout-item md-size-50 md-xsmall-size-15">
-            <md-card md-with-hover>
-              <md-ripple>
-                <md-card-media-cover>
-                  <md-card-media md-ratio="1:1">
-                    <img
-                      :src="require('../assets/icon/temp-share.svg')"
-                      alt="share"
-                    />
-                  </md-card-media>
-
-                  <md-card-area>
-                    <md-card-header>
-                      <span>share</span>
-                    </md-card-header>
-                  </md-card-area>
-                </md-card-media-cover>
-              </md-ripple>
-            </md-card>
-          </div>
-
-          <!-- notes -->
-          <div v-if="user.isSignIn"
-               class="md-layout-item md-size-50 md-xsmall-size-15">
-            <md-card md-with-hover>
-              <md-ripple>
-                <md-card-media-cover>
-                  <md-card-media md-ratio="1:1">
-                    <img
-                      :src="require('../assets/icon/temp-notes.svg')"
-                      alt="notes"
-                    />
-                  </md-card-media>
-
-                  <md-card-area>
-                    <md-card-header>
-                      <span>notes</span>
-                    </md-card-header>
-                  </md-card-area>
-                </md-card-media-cover>
-              </md-ripple>
-            </md-card>
-          </div>
-
-          <!-- diary -->
-          <div v-if="user.isSignIn"
-               class="md-layout-item md-size-50 md-xsmall-size-15">
-            <md-card md-with-hover>
-              <md-ripple>
-                <md-card-media-cover>
-                  <md-card-media md-ratio="1:1">
-                    <img
-                      :src="require('../assets/icon/temp-diary.svg')"
-                      alt="diary"
-                    />
-                  </md-card-media>
-
-                  <md-card-area>
-                    <md-card-header>
-                      <span>diary</span>
-                    </md-card-header>
-                  </md-card-area>
-                </md-card-media-cover>
-              </md-ripple>
-            </md-card>
-          </div>
-
-          <!-- todo -->
-          <div v-if="user.isSignIn"
-               class="md-layout-item md-size-50 md-xsmall-size-15">
-            <md-card md-with-hover>
-              <md-ripple>
-                <md-card-media-cover>
-                  <md-card-media md-ratio="1:1">
-                    <img
-                      :src="require('../assets/icon/temp-todo.svg')"
-                      alt="todo"
-                    />
-                  </md-card-media>
-
-                  <md-card-area>
-                    <md-card-header>
-                      <span>todo</span>
-                    </md-card-header>
-                  </md-card-area>
-                </md-card-media-cover>
-              </md-ripple>
-            </md-card>
-          </div>
-
-          <!-- novel -->
-          <div v-if="user.isAdmin"
-               class="md-layout-item md-size-50 md-xsmall-size-15">
-            <md-card md-with-hover>
-              <md-ripple>
-                <md-card-media-cover>
-                  <md-card-media md-ratio="1:1">
-                    <img
-                      :src="require('../assets/icon/temp-novel.svg')"
-                      alt="novel"
-                    />
-                  </md-card-media>
-
-                  <md-card-area>
-                    <md-card-header>
-                      <span>novel</span>
-                    </md-card-header>
-                  </md-card-area>
-                </md-card-media-cover>
-              </md-ripple>
-            </md-card>
-          </div>
-
-          <!-- storage -->
-          <div v-if="user.isAdmin"
-               class="md-layout-item md-size-50 md-xsmall-size-15">
-            <md-card md-with-hover>
-              <md-ripple>
-                <md-card-media-cover>
-                  <md-card-media md-ratio="1:1">
-                    <img
-                      :src="require('../assets/icon/temp-storage.svg')"
-                      alt="storage"
-                    />
-                  </md-card-media>
-
-                  <md-card-area>
-                    <md-card-header>
-                      <span>storage</span>
+                      <span class="md-subhead md-small-hide">
+                        {{ temp.name }}
+                      </span>
                     </md-card-header>
                   </md-card-area>
                 </md-card-media-cover>
@@ -189,78 +35,85 @@
         </div>
       </div>
 
-      <div id="tempEdit" class="md-layout-item md-large-size-66 md-medium-size-66 md-small-size-100">
-        <md-card>
-          <md-card-header>
-            <h4 class="title">Edit temp name</h4>
-            <!-- <p class="category">小標文字</p> -->
-          </md-card-header>
+      <!-- 編輯 -->
+      <div id="tempEdit" class="md-layout-item md-xlarge-size-85 md-large-size-80 md-medium-size-66 md-small-size-100 md-xsmall-size-100">
+        <form>
+          <md-card>
+            <md-card-header>
+              <h4 class="title">
+                <!-- Edit temp name -->
+                {{ tempList[tempForm.template].name }}
+              </h4>
+              <!-- <p class="category">小標文字</p> -->
+            </md-card-header>
 
-          <md-card-content>
-            <form @submit.prevent="submitEdit" @reset="clearForm">
-              <div class="md-layout md-gutter">
-                <div class="md-layout-item md-small-size-100 md-size-66">
-                  <md-field>
-                    <label>Title</label>
-                    <md-input v-model="title"></md-input>
-                  </md-field>
+            <md-card-content>
+              <form @submit.prevent="submitEdit" @reset="clearForm">
+                <div class="md-layout md-gutter">
+                  <div class="md-layout-item md-small-size-100 md-size-66">
+                    <md-field>
+                      <label>Title</label>
+                      <md-input v-model="tempForm.title"></md-input>
+                    </md-field>
+                  </div>
+                  <div class="md-layout-item md-small-size-100 md-size-33">
+                    <md-switch v-model="tempForm.share" class="md-primary">share</md-switch>
+                  </div>
+
+                  <div class="md-layout-item md-size-100">
+                    <md-field>
+                      <label>images</label>
+                      <md-file v-model="tempForm.image" accept="image/*" />
+                    </md-field>
+                  </div>
+
+                  <div class="md-layout-item md-size-100">
+                    <md-field>
+                      <label>Textarea</label>
+                      <md-textarea v-model="tempForm.textarea"></md-textarea>
+                    </md-field>
+                  </div>
+
+                  <div class="md-layout-item md-size-100">
+                    <md-field>
+                      <label>text</label>
+                      <md-input v-model="tempForm.text"></md-input>
+                      <span class="md-helper-text">Helper text</span>
+                    </md-field>
+                  </div>
+
+                  <!-- <div class="md-layout-item md-size-100">
+                    <md-field>
+                      <md-select
+                        v-model="tempForm.select"
+                        name="select"
+                        id="select"
+                        placeholder="select"
+                      >
+                        {{ selectList[0].mood[2] }}
+                        <md-option v-for="(Sitem, s) in selectList"
+                        :value="Sitem" :key="s"
+                        >{{ Sitem }}</md-option>
+                      </md-select>
+                    </md-field>
+                  </div> -->
+
+                  <div class="md-layout-item md-size-100">
+                    <md-datepicker v-model="tempForm.datepicker" md-immediately />
+                  </div>
+
                 </div>
-                <div class="md-layout-item md-small-size-100 md-size-33">
-                  <md-switch v-model="share" class="md-primary">share</md-switch>
-                </div>
 
-                <div class="md-layout-item md-size-100">
-                  <md-field>
-                    <label>images</label>
-                    <md-file v-model="image" accept="image/*" />
-                  </md-field>
-                </div>
-
-                <div class="md-layout-item md-size-100">
-                  <md-field>
-                    <label>Textarea</label>
-                    <md-textarea v-model="textarea"></md-textarea>
-                  </md-field>
-                </div>
-
-                <div class="md-layout-item md-size-100">
-                  <md-field>
-                    <label>text</label>
-                    <md-input v-model="text"></md-input>
-                    <span class="md-helper-text">Helper text</span>
-                  </md-field>
-                </div>
-
-                <div class="md-layout-item md-size-100">
-                  <md-field>
-                    <md-select
-                      v-model="select"
-                      name="select"
-                      id="select"
-                      placeholder="select"
-                    >
-                      <md-option v-for="(Sitem, s) in select.finish"
-                      :value="Sitem" :key="s"
-                      >{{ Sitem }}</md-option>
-                    </md-select>
-                  </md-field>
-                </div>
-
-                <div class="md-layout-item md-size-100">
-                   <md-datepicker v-model="datepicker" md-immediately />
-                </div>
-
-              </div>
-
-            <md-button class="md-raised" type="reset">
-              RESET
-            </md-button>
-            <md-button class="md-raised" type="submit">
-              Submit
-            </md-button>
-            </form>
-          </md-card-content>
-        </md-card>
+              <md-button class="md-raised" type="reset">
+                RESET
+              </md-button>
+              <md-button class="md-raised" type="submit">
+                Submit
+              </md-button>
+              </form>
+            </md-card-content>
+          </md-card>
+        </form>
       </div>
     </div>
   </div>
@@ -271,37 +124,48 @@ export default {
   name: 'Edit',
   data () {
     return {
-      temp: [
-        { name: '便利貼', subhead: 'postIt', src: '' },
-        { name: '美字美句分享', subhead: 'share', src: '' },
-        { name: '待辦事項', subhead: 'todo', src: '' },
-        { name: '心情隨筆', subhead: 'diary', src: '' },
-        { name: '筆記', subhead: 'notes', src: '' },
-        { name: '小說', subhead: 'novel', src: '' },
-        { name: '儲物清單', subhead: 'storage', src: '' }
+      tempList: [
+        { name: '便利貼', subhead: 'postIt' },
+        { name: '美字美句分享', subhead: 'share' },
+        { name: '待辦事項', subhead: 'todo' },
+        { name: '心情隨筆', subhead: 'diary' },
+        { name: '筆記', subhead: 'notes' },
+        // { name: '小說', subhead: 'novel' },
+        { name: '儲物清單', subhead: 'storage' }
       ],
-      title: 'text',
-      share: true,
-      image: '',
-      textarea: '',
-      text: '',
-      select: {
-        mood: ['開心', '不好', '傷心'],
-        finish: ['很重要', '近期須完成', '普通']
-      },
-      datepicker: Number(new Date())
+      selectList: [
+        { mood: ['開心', '不好', '傷心'] },
+        { finish: ['很重要', '近期須完成', '普通'] }
+      ],
+      tempForm: {
+        _id: '', // 方便編輯
+        template: 0,
+        title: 'text',
+        share: true,
+        image: null,
+        textarea: '',
+        text: '',
+        select: -1,
+        datepicker: Number(new Date()),
+        date: new Date().toLocaleString('zh-TW', { hour12: false }) // "2021/8/3 12:28:23"
+      }
     }
   },
   methods: {
+    tempShow (num) {
+      console.log(num)
+      this.tempForm.template = num
+    },
     submitEdit () {},
     clearForm () {
-      this.title = ''
-      this.share = true
-      this.image = ''
-      this.textarea = ''
-      this.text = ''
-      this.select = ''
-      this.datepicker = ''
+      this.tempForm.template = ''
+      this.tempForm.title = ''
+      this.tempForm.share = true
+      this.tempForm.image = ''
+      this.tempForm.textarea = ''
+      this.tempForm.text = ''
+      this.tempForm.select = ''
+      this.tempForm.datepicker = ''
     }
   }
 }
