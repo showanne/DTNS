@@ -61,7 +61,7 @@
       </md-dialog-content>
     </md-dialog>
 
-    <div class="md-layout md-gutter">
+    <div class="md-layout">
       <div class="md-layout-item md-large-size-33 md-medium-size-33 md-small-size-100  md-xsmall-size-100">
         <div class="md-headline">常見問題</div>
         <accordion>
