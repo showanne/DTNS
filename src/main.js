@@ -43,6 +43,17 @@ Vue.mixin(mixin)
 
 Vue.config.productionTip = false
 
+// 隱藏 MdSelect 的 'badInput' 警告
+// https://github.com/vuematerial/vue-material/issues/2285
+Vue.config.errorHandler = (err, vm, info) => {
+  if (process.env.NODE_ENV !== 'production') {
+    // Show any error but this one
+    if (err.message !== "Cannot read property 'badInput' of undefined") {
+      console.error(err)
+    }
+  }
+}
+
 new Vue({
   router,
   store,
