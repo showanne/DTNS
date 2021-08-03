@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import store from '../store'
 
 Vue.use(VueRouter)
 
@@ -74,6 +75,7 @@ const routes = [
     name: 'Member',
     component: () => import(/* webpackChunkName: "member" */ '../views/Member.vue'),
     meta: {
+      signIn: true,
       title: 'DTNS - Member'
     }
   },
@@ -89,15 +91,9 @@ const routes = [
         name: 'ManageHome',
         component: () => import(/* webpackChunkName: "manage" */ '../views/ManageHome.vue'),
         meta: {
+          signIn: true,
+          admin: true,
           title: 'DTNS - ManageHome'
-        }
-      },
-      {
-        path: 'editApp',
-        name: 'ManageEditApp',
-        component: () => import(/* webpackChunkName: "manage" */ '../views/ManageEditApp.vue'),
-        meta: {
-          title: 'DTNS - ManageEditApp'
         }
       },
       {
@@ -105,7 +101,19 @@ const routes = [
         name: 'ManageMemberData',
         component: () => import(/* webpackChunkName: "manage" */ '../views/ManageMemberData.vue'),
         meta: {
+          signIn: true,
+          admin: true,
           title: 'DTNS - ManageMemberData'
+        }
+      },
+      {
+        path: 'article',
+        name: 'ManageArticle',
+        component: () => import(/* webpackChunkName: "manage" */ '../views/ManageArticle.vue'),
+        meta: {
+          signIn: true,
+          admin: true,
+          title: 'DTNS - ManageArticle'
         }
       },
       {
@@ -113,6 +121,8 @@ const routes = [
         name: 'ManageTemplate',
         component: () => import(/* webpackChunkName: "manage" */ '../views/ManageTemplate.vue'),
         meta: {
+          signIn: true,
+          admin: true,
           title: 'DTNS - ManageTemplate'
         }
       },
@@ -121,6 +131,8 @@ const routes = [
         name: 'ManageReply',
         component: () => import(/* webpackChunkName: "manage" */ '../views/ManageReply.vue'),
         meta: {
+          signIn: true,
+          admin: true,
           title: 'DTNS - ManageReply'
         }
       },
@@ -129,7 +141,19 @@ const routes = [
         name: 'ManageSpecial',
         component: () => import(/* webpackChunkName: "manage" */ '../views/ManageSpecial.vue'),
         meta: {
+          signIn: true,
+          admin: true,
           title: 'DTNS - ManageSpecial'
+        }
+      },
+      {
+        path: 'editApp',
+        name: 'ManageEditApp',
+        component: () => import(/* webpackChunkName: "manage" */ '../views/ManageEditApp.vue'),
+        meta: {
+          signIn: true,
+          admin: true,
+          title: 'DTNS - ManageEditApp'
         }
       }
     ]
@@ -138,6 +162,22 @@ const routes = [
 
 const router = new VueRouter({
   routes
+})
+
+// .beforeEach 在進去每頁之前，判斷是否為登入狀態及是否有權限訪問該頁面
+// to 從哪頁來 / from 要去哪頁 / next 如果符合判斷條件要丟去哪裡
+router.beforeEach((to, from, next) => {
+  // 檢查要去的那個頁面是否需要登入
+  if (to.meta.signIn && store.state.jwt.token.length === 0) {
+    next('/') // 未登入者丟給登入頁面，直接觸發登入按鈕??
+  } else if (to.meta.admin && store.state.user.role !== 1) {
+    // 檢查要去的那個頁面是否需為管理員登入，且須有管理員權限 role = 1
+    next('/') // 不是管理員丟回首頁
+  } else {
+    // () 內有放路徑就是指定要跳去哪頁
+    // () 內沒放東西就是原本要去哪頁就直接去哪頁
+    next()
+  }
 })
 
 // .afterEach 在進去每頁之後，更改網頁標題
