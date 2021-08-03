@@ -14,7 +14,7 @@ export default new Vuex.Store({
       received: 0
     },
     user: {
-      role: 0, // 一般會員 0 / 管理者 1
+      role: -1, // 一般訪客 -1 / 一般會員 0 / 管理者 1
       account: '',
       name: '',
       avatar: ''
