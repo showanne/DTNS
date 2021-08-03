@@ -44,8 +44,8 @@
       <div id="tempEdit"
         class="md-layout-item md-xlarge-size-85 md-large-size-80 md-medium-size-66 md-small-size-100 md-xsmall-size-100"
       >
-        <form @reset="clearForm"
-          @submit.prevent="submitEdit">
+        <form @submit.prevent="submitEdit"
+             @reset="clearForm">
           <md-card>
             <md-card-header>
               <h4 class="title">
@@ -56,82 +56,102 @@
             </md-card-header>
 
             <md-card-content>
-              <form @submit.prevent="submitEdit" @reset="clearForm">
-                <div class="md-layout md-gutter">
-                  <div class="md-layout-item md-size-90 md-small-size-80 md-xsmall-size-100">
-                    <md-field>
-                      <label>Title</label>
-                      <md-textarea v-model="tempForm.title" md-autogrow></md-textarea>
-                    </md-field>
-                  </div>
-                  <div class="md-layout-item md-size-10 md-small-size-20 md-xsmall-size-25">
-                    <label class="label">share</label>
-                    <md-switch v-model="tempForm.share"
-                      class="md-primary" ></md-switch>
-                  </div>
-
-                  <div class="md-layout-item md-size-100 md-xsmall-size-75">
-                    <!-- <md-field>
-                      <label>images</label>
-                      <md-file v-model="tempForm.image" accept="image/*" />
-                    </md-field> -->
-                    <img-inputer v-model="tempForm.image"
-                      accept="image/*" theme="material"
-                      placeholder="點擊或拖曳選擇圖片"
-                      bottom-text="點擊或拖曳以修改" />
-                      <!-- 自動上傳 auto-upload="true" 尺寸 size="large" -->
-                  </div>
-
-                  <div class="md-layout-item md-size-100">
-                    <md-field>
-                      <label>Textarea</label>
-                      <md-textarea v-model="tempForm.textarea"></md-textarea>
-                    </md-field>
-                  </div>
-
-                  <div class="md-layout-item md-size-100">
-                    <md-field>
-                      <label>text</label>
-                      <md-input v-model="tempForm.text"></md-input>
-                      <span class="md-helper-text">Helper text</span>
-                    </md-field>
-                  </div>
-
-                  <div class="md-layout-item md-size-100">
-                    <md-field>
-                      <label for="tempForm.select">select</label>
-                      <md-select
-                        v-model="tempForm.select"
-                        name="select"
-                        id="select"
-                        placeholder="select" >
-                        <md-option
-                          v-for="(Sitem, s) in selectList[0]"
-                           :key="s" :value="s">
-                          {{ Sitem }}</md-option>
-                      </md-select>
-                    </md-field>
-                  </div>
-
-                  <div class="md-layout-item md-size-100">
-                    <md-datepicker
-                      v-model="tempForm.datepicker"
-                      md-immediately
-                    />
-                  </div>
+              <div class="md-layout md-gutter">
+                <div class="md-layout-item md-size-90 md-small-size-80 md-xsmall-size-100">
+                  <md-field>
+                    <label>Title</label>
+                    <md-textarea v-model="tempForm.title" md-autogrow></md-textarea>
+                  </md-field>
+                </div>
+                <div class="md-layout-item md-size-10 md-small-size-20 md-xsmall-size-25">
+                  <label class="label">share</label>
+                  <md-switch v-model="tempForm.share"
+                    class="md-primary" ></md-switch>
                 </div>
 
-                <div class="">
-                  <md-button class="md-raised" type="reset">
-                    RESET
-                  </md-button>
-                  <md-button class="md-raised" type="submit">
-                    Submit
-                  </md-button>
+                <div class="md-layout-item md-size-100 md-xsmall-size-75">
+                  <!-- <md-field>
+                    <label>images</label>
+                    <md-file v-model="tempForm.image" accept="image/*" />
+                  </md-field> -->
+                  <img-inputer v-model="tempForm.image"
+                    accept="image/*" theme="material"
+                    placeholder="點擊或拖曳選擇圖片"
+                    bottom-text="點擊或拖曳以修改" />
+                    <!-- 自動上傳 auto-upload="true" 尺寸 size="large" -->
                 </div>
-              </form>
+
+                <div class="md-layout-item md-size-100">
+                  <md-field>
+                    <label>Textarea</label>
+                    <md-textarea v-model="tempForm.textarea"></md-textarea>
+                  </md-field>
+                </div>
+
+                <div class="md-layout-item md-size-100">
+                  <md-field>
+                    <label>text</label>
+                    <md-input v-model="tempForm.text"></md-input>
+                    <span class="md-helper-text">Helper text</span>
+                  </md-field>
+                </div>
+
+                <div class="md-layout-item md-size-100">
+                  <md-field>
+                    <label for="tempForm.select">select</label>
+                    <md-select
+                      v-model="tempForm.select"
+                      name="select"
+                      id="select"
+                      placeholder="select" >
+                      <md-option
+                        v-for="(Sitem, s) in selectList[0]"
+                          :key="s" :value="s">
+                        {{ Sitem }}</md-option>
+                    </md-select>
+                  </md-field>
+                </div>
+
+                <div class="md-layout-item md-size-100">
+                  <md-datepicker
+                    v-model="tempForm.datepicker"
+                    md-immediately
+                  />
+                </div>
+              </div>
             </md-card-content>
+
+            <md-progress-bar md-mode="buffer" :md-value="29"
+              :md-buffer="66" v-if="sending" />
+              <!-- TODO: 調整 progress-bar 參數 -->
+
+            <md-card-actions>
+              <md-button type="reset" class="md-raised">
+                RESET
+              </md-button>
+              <md-button type="submit" class="md-raised"
+                :disabled="sending">
+                Submit
+              </md-button>
+            </md-card-actions>
           </md-card>
+
+          <!-- <md-snackbar :md-active.sync="formSaved">
+            The form {{ tempList[tempForm.template].name }} {{ tempForm.title }} was saved with success!
+          </md-snackbar> -->
+          <md-dialog :md-active.sync="formSaved">
+            <md-dialog-title>
+              {{ tempList[tempForm.template].name }} - {{ tempForm.title }}
+              <br>
+              <span class="md-caption">
+                was saved with success!
+              </span>
+            </md-dialog-title>
+            <md-dialog-actions>
+              <md-button class="md-primary" @click="successAlert = false">Close</md-button>
+              <md-button class="md-primary" @click="successAlert = false" to="/collection">GO</md-button>
+            </md-dialog-actions>
+          </md-dialog>
         </form>
       </div>
     </div>
@@ -165,9 +185,11 @@ export default {
         textarea: '',
         text: '',
         select: '',
-        datepicker: Number(new Date()),
-        date: new Date().toLocaleString('zh-TW', { hour12: false }) // "2021/8/3 12:28:23"
-      }
+        datepicker: Number(new Date())
+      },
+      sending: false,
+      formSaved: false,
+      successAlert: false
     }
   },
   methods: {
@@ -175,7 +197,13 @@ export default {
       console.log(num)
       this.tempForm.template = num
     },
-    submitEdit () {},
+    submitEdit () {
+      this.sending = true
+      this.formSaved = true
+
+      // date: new Date().toLocaleString('zh-TW', { hour12: false })
+      // 預設夾帶傳進資料庫當下的編輯日期 "2021/8/3 12:28:23"
+    },
     clearForm () {
       this.tempForm.template = ''
       this.tempForm.title = ''
