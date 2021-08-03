@@ -2,7 +2,7 @@
   <div id="edit" class="md-scrollbar">
     <!-- <h1>This is an edit page</h1> -->
 
-    <div class="md-layout md-gutter md-alignment-space-around">
+    <div class="md-layout md-alignment-space-around">
       <!-- 模板選擇 -->
       <div id="temp"
         class="md-layout-item md-xlarge-size-15 md-large-size-20 md-medium-size-33 md-small-size-100 md-xsmall-size-100"
