@@ -1,13 +1,15 @@
 import Vue from 'vue'
 // VueMaterial UI
 import VueMaterial from 'vue-material'
-
 import 'vue-material/dist/vue-material.min.css'
 // import 'vue-material/dist/theme/default.css'
+
 // axios
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import VueCarousel from 'vue-carousel'
+import ImgInputer from 'vue-img-inputer'
+import 'vue-img-inputer/dist/index.css'
 
 import App from './App.vue'
 import './registerServiceWorker'
@@ -21,10 +23,6 @@ import './style/style.scss'
 import './style/all.scss'
 import './style/style-custom.css'
 
-// material icon
-// import MenuIcon from 'vue-material-design-icons/Menu.vue'
-// Vue.component('menu-icon', MenuIcon)
-
 // 全域引用 mixin
 import mixin from './mixin.js'
 
@@ -37,6 +35,7 @@ Vue.use(VueMaterial)
 // axios.defaults.baseURL = process.env.VUE_APP_API
 Vue.use(VueAxios, axios)
 Vue.use(VueCarousel)
+Vue.component('ImgInputer', ImgInputer)
 
 // 全域引用 mixin 方便各分頁直接用變數
 Vue.mixin(mixin)

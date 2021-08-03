@@ -71,10 +71,15 @@
                   </div>
 
                   <div class="md-layout-item md-size-100 md-xsmall-size-75">
-                    <md-field>
+                    <!-- <md-field>
                       <label>images</label>
                       <md-file v-model="tempForm.image" accept="image/*" />
-                    </md-field>
+                    </md-field> -->
+                    <img-inputer v-model="tempForm.image"
+                      accept="image/*" theme="material"
+                      placeholder="點擊或拖曳選擇圖片"
+                      bottom-text="點擊或拖曳以修改" />
+                      <!-- 自動上傳 auto-upload="true" 尺寸 size="large" -->
                   </div>
 
                   <div class="md-layout-item md-size-100">
