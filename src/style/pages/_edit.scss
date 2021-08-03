@@ -18,7 +18,7 @@
     }
   }
 
-  .md-ratio-10-19 {
+  .md-ratio-4-3 {
     overflow: hidden;
     &:before {
       width: 100%;
@@ -26,20 +26,22 @@
       display: block;
       content: " ";
     }
-  }
-  
-  img {
-    padding: 16px;
-    position: absolute;
-    right: 0;
-    left: 0;
-    top: 0;
-    
-    @media (max-width: 960px){
-      top: 50%;
-      transform: translateY(-50%);
+
+    img {
+      padding: 16px;
+      position: absolute;
+      right: 0;
+      left: 0;
+      top: 0;
+      transform: translateY(0%);
+      
+      @media (max-width: 960px){
+        top: 50%;
+        transform: translateY(-50%);
+      }
     }
   }
+  
 
   .md-card-header{
     padding: unset;

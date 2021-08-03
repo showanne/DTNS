@@ -17,7 +17,7 @@
             <md-card md-with-hover v-if="temp.show">
               <md-ripple>
                 <md-card-media-cover>
-                  <md-card-media md-ratio="10:19">
+                  <md-card-media md-ratio="4:3">
                     <img
                       :src="
                         require('../assets/icon/temp-' + temp.subhead + '.svg')
@@ -99,18 +99,16 @@
 
                   <div class="md-layout-item md-size-100">
                     <md-field>
+                      <label for="tempForm.select">select</label>
                       <md-select
                         v-model="tempForm.select"
                         name="select"
                         id="select"
-                        placeholder="select"
-                      >
+                        placeholder="select" >
                         <md-option
-                          v-for="(Sitem, s) in selectList[tempForm.select]"
-                          :value="Sitem"
-                          :key="s"
-                          >{{ Sitem }}</md-option
-                        >
+                          v-for="(Sitem, s) in selectList[0]"
+                           :key="s" :value="s">
+                          {{ Sitem }}</md-option>
                       </md-select>
                     </md-field>
                   </div>
@@ -155,8 +153,8 @@ export default {
         { show: this.$store.getters.user.isSignIn, name: '儲物清單', subhead: 'storage' }
       ],
       selectList: [
-        ['開心', '不好', '傷心'], // mood
-        ['很重要', '近期須完成', '普通'] // finish
+        { 0: '開心', 1: '不好', 2: '傷心' }, // mood
+        { 0: '很重要', 1: '近期須完成', 2: '普通' } // finish
       ],
       tempForm: {
         _id: '', // 方便編輯
@@ -166,7 +164,7 @@ export default {
         image: null,
         textarea: '',
         text: '',
-        select: 1,
+        select: '',
         datepicker: Number(new Date()),
         date: new Date().toLocaleString('zh-TW', { hour12: false }) // "2021/8/3 12:28:23"
       }
