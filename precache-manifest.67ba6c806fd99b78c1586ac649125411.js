@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "9e6dd1ce63a21e598229",
+    "revision": "cfb1f7b11afadab90b17",
     "url": "/css/app.389e149b.css"
   },
   {
@@ -8,15 +8,15 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/css/chunk-vendors.eddc9766.css"
   },
   {
-    "revision": "96d6caea94b1e190212f",
+    "revision": "5786311ebc1d974b7e18",
     "url": "/css/collection.4a649337.css"
   },
   {
-    "revision": "d13f323896aaeffd376e",
+    "revision": "994f69b81783e6f0c58a",
     "url": "/css/contact.cb349bc0.css"
   },
   {
-    "revision": "3b09f991d2520ee5941c",
+    "revision": "d7b482bd322f5ce202e3",
     "url": "/css/member.4a649337.css"
   },
   {
@@ -120,44 +120,44 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/img/temp-todo.624bae4f.svg"
   },
   {
-    "revision": "817111a734110d37b160c83d9eeb109f",
+    "revision": "744c59e8ee06e52dd3f43d2c530d766d",
     "url": "/index.html"
   },
   {
-    "revision": "9e6dd1ce63a21e598229",
-    "url": "/js/app.13f8b4d9.js"
+    "revision": "cfb1f7b11afadab90b17",
+    "url": "/js/app.e4ca4283.js"
   },
   {
     "revision": "ef9c6e8ecce8dc43cb44",
     "url": "/js/chunk-vendors.b2004674.js"
   },
   {
-    "revision": "96d6caea94b1e190212f",
-    "url": "/js/collection.1965ac28.js"
+    "revision": "5786311ebc1d974b7e18",
+    "url": "/js/collection.9fd83c4b.js"
   },
   {
-    "revision": "d13f323896aaeffd376e",
-    "url": "/js/contact.10426721.js"
+    "revision": "994f69b81783e6f0c58a",
+    "url": "/js/contact.42ac474c.js"
   },
   {
-    "revision": "7df8d9511aa26bbacb89",
-    "url": "/js/edit.4b0883b1.js"
+    "revision": "0380998f415414860cf1",
+    "url": "/js/edit.9fd620a8.js"
   },
   {
-    "revision": "be520580e33b8d77b2e7",
-    "url": "/js/manage.4d2435d0.js"
+    "revision": "5646f88b2c0bf8eac13b",
+    "url": "/js/manage.c38358b8.js"
   },
   {
-    "revision": "3b09f991d2520ee5941c",
-    "url": "/js/member.94655cb0.js"
+    "revision": "d7b482bd322f5ce202e3",
+    "url": "/js/member.4e782a62.js"
   },
   {
-    "revision": "ed60886661bad29d09ef",
-    "url": "/js/news.1dd9cffa.js"
+    "revision": "7ac32dc796ad8f1a2b1d",
+    "url": "/js/news.83608b37.js"
   },
   {
-    "revision": "ec612198e3387c33bdc2",
-    "url": "/js/setting.96ef1885.js"
+    "revision": "7e24065a3803a28bd93f",
+    "url": "/js/setting.f25603db.js"
   },
   {
     "revision": "352e11ab125a1b14996bfdd2f0b92350",
