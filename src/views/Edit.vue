@@ -70,10 +70,6 @@
                 </div>
 
                 <div class="md-layout-item md-size-100 md-xsmall-size-75">
-                  <!-- <md-field>
-                    <label>images</label>
-                    <md-file v-model="tempForm.image" accept="image/*" />
-                  </md-field> -->
                   <img-inputer v-model="tempForm.image"
                     accept="image/*" theme="material"
                     placeholder="點擊或拖曳選擇圖片"
@@ -98,16 +94,20 @@
 
                 <div class="md-layout-item md-size-100">
                   <md-field>
-                    <label for="tempForm.select">select</label>
+                    <label for="select">select</label>
                     <md-select
                       v-model="tempForm.select"
                       name="select"
                       id="select"
                       placeholder="select" >
+                      <md-option>
+                        <!-- 第一個空白選項 -->
+                      </md-option>
                       <md-option
                         v-for="(Sitem, s) in selectList[0]"
-                          :key="s" :value="s">
-                        {{ Sitem }}</md-option>
+                        :key="s" :value="s">
+                        {{ Sitem }}
+                      </md-option>
                     </md-select>
                   </md-field>
                 </div>
@@ -121,9 +121,9 @@
               </div>
             </md-card-content>
 
-            <md-progress-bar md-mode="buffer" :md-value="29"
-              :md-buffer="66" v-if="sending" />
-              <!-- TODO: 調整 progress-bar 參數 -->
+            <md-progress-bar md-mode="indeterminate" v-if="sending" />
+              <!-- TODO: 調整 progress-bar 參數 md-mode="buffer" :md-value="29"
+              :md-buffer="66" -->
 
             <md-card-actions>
               <md-button type="reset" class="md-raised">
@@ -139,20 +139,16 @@
           <!-- <md-snackbar :md-active.sync="formSaved">
             The form {{ tempList[tempForm.template].name }} {{ tempForm.title }} was saved with success!
           </md-snackbar> -->
-          <md-dialog :md-active.sync="formSaved">
-            <md-dialog-title>
-              {{ tempList[tempForm.template].name }} - {{ tempForm.title }}
-              <br>
-              <span class="md-caption">
-                was saved with success!
-              </span>
-            </md-dialog-title>
-            <md-dialog-actions>
-              <md-button class="md-primary" @click="successAlert = false">Close</md-button>
-              <md-button class="md-primary" @click="successAlert = false" to="/collection">GO</md-button>
-            </md-dialog-actions>
-          </md-dialog>
         </form>
+
+        <md-dialog :md-active.sync="formSaved">
+          <md-dialog-title>{{ savedMsg }}</md-dialog-title>
+          <md-dialog-actions>
+            <md-button class="md-primary" @click="formSaved = false">Close</md-button>
+            <md-button class="md-primary" @click="formSaved = false"
+              to="/collection">GO</md-button>
+          </md-dialog-actions>
+        </md-dialog>
       </div>
     </div>
   </div>
@@ -185,34 +181,73 @@ export default {
         textarea: '',
         text: '',
         select: '',
-        datepicker: Number(new Date())
+        datepicker: Number(new Date()),
+        date: Number(new Date())
+        // date: new Date().toLocaleString('zh-TW', { hour12: false })
+        // 預設夾帶傳進資料庫當下的編輯日期 "2021/8/3 12:28:23"
       },
+      // 進度條
       sending: false,
+      // 提示框顯示控制
       formSaved: false,
-      successAlert: false
+      // 提示框訊息
+      savedMsg: ''
     }
   },
   methods: {
-    tempShow (num) {
-      console.log(num)
-      this.tempForm.template = num
+    tempShow (T) {
+      console.log(T)
+      this.tempForm.template = T
     },
-    submitEdit () {
+    async submitEdit () {
+      // 送出表單後 + 資料還在傳送進資料庫時 按鈕狀態設定為不能點擊，避免重複送出
       this.sending = true
-      this.formSaved = true
 
-      // date: new Date().toLocaleString('zh-TW', { hour12: false })
-      // 預設夾帶傳進資料庫當下的編輯日期 "2021/8/3 12:28:23"
+      try {
+        // 建立上傳格式 FormData
+        // FormData 可以傳送檔案也可以傳一般文字
+        // 前端送出的資料類型 FormData  後端接收資料型態為 multipart/form-data
+        const FD = new FormData()
+        // 將資料新增進 FormData 用 append('key 欄位名稱', 'value 資料的值')
+        for (const key in this.tempForm) {
+          FD.append(key, this.tempForm[key])
+        }
+        await this.axios.post(`${process.env.VUE_APP_API}/article`, FD, {
+          headers: {
+            // 驗證欄位 'Bearer ' + token  -> Bearer要空格
+            authorization: 'Bearer ' + this.$store.state.jwt.token
+          }
+        })
+
+        this.savedMsg = this.tempList[this.tempForm.template].name + '-' + this.tempForm.title + 'was saved with success!'
+        this.formSaved = true
+
+        this.clearForm()
+      } catch (error) {
+        console.log(error)
+        let errorMsg = ''
+        error.response.data.message === null ? errorMsg = error : errorMsg = error.response.data.message
+        this.savedMsg = 'Saved with ' + errorMsg
+        this.formSaved = true
+        this.sending = true
+      }
+      // 送出表單後 + 資料已傳進資料庫時 按鈕狀態設改為可以點擊
+      this.sending = false
     },
     clearForm () {
-      this.tempForm.template = ''
-      this.tempForm.title = ''
-      this.tempForm.share = true
-      this.tempForm.image = ''
-      this.tempForm.textarea = ''
-      this.tempForm.text = ''
-      this.tempForm.select = ''
-      this.tempForm.datepicker = ''
+      this.tempForm = {
+        _id: '', // 方便編輯
+        template: 0,
+        title: 'text',
+        share: true,
+        image: null,
+        textarea: '',
+        text: '',
+        select: '',
+        datepicker: Number(new Date())
+      }
+
+      this.sending = false
     }
   },
   computed: {
