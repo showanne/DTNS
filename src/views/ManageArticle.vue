@@ -17,26 +17,37 @@
       <md-table-empty-state
         md-label="No article found"
         :md-description="`No article found for this '${search}' query. Try a different search term .`">
-        <!-- newArticle 新增文章 -->
-        <!-- <md-button class="md-primary md-raised" @click="newArticle">Create New User</md-button> -->
       </md-table-empty-state>
 
       <md-table-row slot="md-table-row" slot-scope="{ item }">
         <!-- <md-table-cell md-label="ID" md-sort-by="id" md-numeric>{{ item.id }}</md-table-cell> -->
         <md-table-cell md-label="template" md-sort-by="template">{{ item.template }}</md-table-cell>
-        <md-table-cell md-label="date" md-sort-by="date">{{ item.date }}</md-table-cell>
+        <!-- <md-table-cell md-label="date" md-sort-by="date">{{ item.date }}</md-table-cell> -->
         <md-table-cell md-label="title" md-sort-by="title">{{ item.title }}</md-table-cell>
-        <md-table-cell md-label="datepicker" md-sort-by="datepicker">{{ item.datepicker }}</md-table-cell>
-        <md-table-cell md-label="image" md-sort-by="image">{{ item.image }}</md-table-cell>
-        <md-table-cell md-label="textarea" md-sort-by="textarea">{{ item.textarea }}</md-table-cell>
-        <md-table-cell md-label="text" md-sort-by="text">{{ item.text }}</md-table-cell>
+        <!-- <md-table-cell md-label="datepicker" md-sort-by="datepicker">{{ item.datepicker }}</md-table-cell> -->
+        <md-table-cell md-label="image" md-sort-by="image">
+          <img v-if="item" :src="item.image" alt="" width="90">
+        </md-table-cell>
+        <!-- <md-table-cell md-label="textarea" md-sort-by="textarea">{{ item.textarea }}</md-table-cell> -->
+        <!-- <md-table-cell md-label="text" md-sort-by="text">{{ item.text }}</md-table-cell> -->
         <md-table-cell md-label="share" md-sort-by="share">
           <md-switch v-model="item.share" class="md-primary">
             {{ item.share }}
           </md-switch>
         </md-table-cell>
+        <md-table-cell md-label="share" md-sort-by="share">
+          <md-switch v-model="item.share" class="md-primary">
+            下架
+            <!-- TODO:文章檢舉下架功能 -->
+          </md-switch>
+        </md-table-cell>
         <!-- <md-table-cell md-label="select" md-sort-by="select">{{ item.select }}</md-table-cell> -->
-        <md-table-cell md-label="_id" md-sort-by="_id">{{ item._id }}</md-table-cell>
+        <!-- <md-table-cell md-label="_id" md-sort-by="_id">{{ item._id }}</md-table-cell> -->
+        <md-table-cell md-label="edit" md-sort-by="edit">
+          <md-button class="md-accent" @click="edit">
+            <md-icon>edit</md-icon>
+          </md-button>
+        </md-table-cell>
       </md-table-row>
     </md-table>
 
@@ -66,10 +77,6 @@ export default {
     }
   },
   methods: {
-    // newArticle () {
-    // newArticle 新增文章
-    //   window.alert('Noop')
-    // },
     searchOnTable () {
       const searchByName = (items, term) => {
         if (term) {
@@ -86,8 +93,16 @@ export default {
   },
   async mounted () {
     try {
+      // 取得所有文章 /article
       const { data } = await this.axios.get(`${process.env.VUE_APP_API}/article`)
-      this.article = data.result
+      this.article = data.result.map(article => {
+        // 有圖片才更新網址
+        if (article.image) {
+          // 處理 image 路徑  因為 :src 會錯誤判別 process.env  / 取得上傳的圖片 /file
+          article.image = `${process.env.VUE_APP_API}/file/${article.image}`
+        }
+        return article
+      })
     } catch (error) {
       console.log(error)
       let errorMsg = ''
