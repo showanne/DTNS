@@ -15,6 +15,11 @@
 .h-unset {
   height: unset;
 }
+.w-unset {
+  width: unset;
+  min-width: unset;
+
+}
 .w-signBtn{
   min-width: 119px;
   .md-icon{

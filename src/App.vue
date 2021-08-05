@@ -33,7 +33,7 @@
           <div
             class="md-layout-item md-large-size-5 md-medium-size-5 md-xsmall-hide"
           >
-            <md-button class="md-menu-button">
+            <md-button class="md-menu-button w-unset h-unset">
               <md-icon>tungsten</md-icon>
             </md-button>
           </div>
