@@ -11,6 +11,17 @@
   // }
 }
 
+// For Btn
+.h-unset {
+  height: unset;
+}
+.w-signBtn{
+  min-width: 119px;
+  .md-icon{
+    margin: auto 8px;
+  }
+}
+
 // 調整卡片間距
 #collection .md-layout-item,
 #contact .md-layout-item {

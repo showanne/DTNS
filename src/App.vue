@@ -111,21 +111,19 @@
 
             <!-- Sign Up -->
             <md-list-item v-if="!user.isSignIn">
-              <md-button class="md-raised"
-                @click="signUpBtn = true" >
+              <md-button @click="signUpBtn = true"
+                class="md-raised">
+                <div class="md-layout md-alignment-center-space-around w-signBtn">
                 <md-icon :md-src="require('./assets/icon/signUp.svg')"></md-icon>
-                &nbsp; Sign Up
+                Sign Up
+                </div>
               </md-button>
 
               <md-dialog :md-active.sync="signUpBtn">
                 <md-dialog-content class="md-layout md-alignment-center-center">
-                  <md-button @click="signForLine">
-                    <div class="md-layout">
-                      <div class="md-layout-item">
-                        <md-icon :md-src="require('./assets/icon/line-logo.svg')"></md-icon>
-                      </div>
-                      <div class="md-layout-item">&nbsp; 快速註冊</div>
-                    </div>
+                  <md-button @click="signForLine" class="h-unset">
+                    <md-icon :md-src="require('./assets/icon/line-logo.svg')" class="md-size-5x"></md-icon>
+                    <span> 快速註冊 </span>
                   </md-button>
                 </md-dialog-content>
               </md-dialog>
@@ -133,9 +131,12 @@
 
             <!-- Sign In -->
             <md-list-item v-if="!user.isSignIn">
-              <md-button class="md-raised" @click="signInBtn = true">
+              <md-button @click="signInBtn = true"
+              class="md-raised">
+              <div class="md-layout md-alignment-center-space-around w-signBtn">
                 <md-icon :md-src="require('./assets/icon/signIn.svg')"></md-icon>
-                &nbsp; Sign In
+                Sign In
+              </div>
               </md-button>
               <SignModal
                 v-if="signInBtn"
@@ -148,20 +149,23 @@
 
             <!-- Sign out -->
             <md-list-item v-if="user.isSignIn">
-              <md-button
-                class="md-raised"
-                @click="signOutBtn">
+              <md-button @click="signOutBtn"
+                class="md-raised">
+                <div class="md-layout md-alignment-center-space-around w-signBtn">
                 <md-icon :md-src="require('./assets/icon/signOut.svg')"></md-icon>
-                &nbsp; Sign out
+                Sign out
+                </div>
               </md-button>
             </md-list-item>
 
           </md-list>
 
-          <md-button
-            class=" md-raised">
-            <md-icon :md-src="require('./assets/icon/icon-github.svg')"></md-icon>
-            &nbsp; Anne.
+          <!-- 個人連結 &copy;  -->
+          <md-button>
+            <div class="md-layout md-alignment-center-center">
+              <md-icon :md-src="require('./assets/icon/icon-github.svg')"></md-icon>
+              Anne.
+            </div>
           </md-button>
         </md-app-drawer>
 

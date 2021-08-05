@@ -20,13 +20,10 @@
 
           <md-tab exact id="tab-line" md-label="line" :md-icon="require('../assets/icon/line-logo.svg')">
             <div class="md-layout md-alignment-center-center">
-              <md-button @click="signForLine">
-                <div class="md-layout">
-                  <div class="md-layout-item">
-                    <md-icon :md-src="require('../assets/icon/line-logo.svg')"></md-icon>
-                  </div>
-                  <div class="md-layout-item">&nbsp; 快速登入</div>
-                </div>
+              <md-button @click="signForLine" class="h-unset">
+                <md-icon :md-src="require('../assets/icon/line-logo.svg')"
+                  class="md-size-5x"></md-icon>
+                <span> 快速登入 </span>
               </md-button>
             </div>
           </md-tab>
