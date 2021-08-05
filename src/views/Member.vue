@@ -4,9 +4,14 @@
     <div class="md-layout">
       <div class="md-layout-item md-size-80">
         member DATA TEMP ARTICLE
+        <transition>
+          <keep-alive>
+            <router-view></router-view>
+          </keep-alive>
+        </transition>
       </div>
       <div class="md-layout-item md-size-20">
-        <div class="full-control" style="border:solid 3px #ace; padding: 16px;">
+        <div class="full-control" style="border:dashed 2.5px #B3AB88; padding: 16px;">
           <!-- 會員資訊 -->
           <md-avatar v-if="user.avatar != null" class="md-large">
             <img :src="user.avatar" alt="avatar">
@@ -19,20 +24,34 @@
           <!-- 會員可用功能選單 -->
           <div class="list">
             <md-list :md-expand-single="expandSingle">
-              <md-list-item md-expand :md-expanded.sync="expandNews">
-                <md-icon>whatshot</md-icon>
-                <span class="md-list-item-text">News</span>
+              <md-list-item to="/member/memberAnalytics">
+                <md-icon>analytics</md-icon>
+                <span class="md-list-item-text">Analytics</span>
+              </md-list-item>
+
+              <md-list-item md-expand :md-expanded.sync="expandArticle">
+                <md-icon>feed</md-icon>
+                <span class="md-list-item-text">Article</span>
 
                 <md-list slot="md-expand">
-                  <md-list-item class="md-inset">World</md-list-item>
-                  <md-list-item class="md-inset">Europe</md-list-item>
-                  <md-list-item class="md-inset">South America</md-list-item>
+                  <md-list-item  to="/member/memberArticle" class="md-inset">postIt</md-list-item>
+                  <md-list-item  to="/member/memberArticle" class="md-inset">share</md-list-item>
+                  <md-list-item  to="/member/memberArticle" class="md-inset">todo</md-list-item>
+                  <md-list-item  to="/member/memberArticle" class="md-inset">diary</md-list-item>
+                  <md-list-item  to="/member/memberArticle" class="md-inset">notes</md-list-item>
+                  <md-list-item  to="/member/memberArticle" class="md-inset">novel</md-list-item>
+                  <md-list-item class="md-inset">storage</md-list-item>
                 </md-list>
               </md-list-item>
 
-              <md-list-item>
-                <md-icon>shopping_basket</md-icon>
-                <span class="md-list-item-text">Shop</span>
+              <md-list-item to="/member">
+                <md-icon>perm_contact_calendar</md-icon>
+                <span class="md-list-item-text">Profile</span>
+              </md-list-item>
+
+              <md-list-item to="/member/memberReply">
+                <md-icon>3p</md-icon>
+                <span class="md-list-item-text">Reply</span>
               </md-list-item>
             </md-list>
           </div>
@@ -55,7 +74,7 @@ export default {
   name: 'Member',
   data () {
     return {
-      expandNews: false,
+      expandArticle: false,
       expandSingle: false
     }
   },

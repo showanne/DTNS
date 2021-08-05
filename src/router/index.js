@@ -72,12 +72,48 @@ const routes = [
   },
   {
     path: '/member',
-    name: 'Member',
+    // name: 'Member',
     component: () => import(/* webpackChunkName: "member" */ '../views/Member.vue'),
-    meta: {
-      signIn: true,
-      title: 'DTNS - Member'
-    }
+    children: [
+      {
+      // path: '', 不打代表跟上面路徑相同
+      // /* webpackChunkName: "admin" */ 打包時 是否要單獨存 js 檔
+        path: '',
+        name: 'MemberProfile',
+        component: () => import(/* webpackChunkName: "member" */ '../views/MemberProfile.vue'),
+        meta: {
+          signIn: true,
+          title: 'DTNS - MemberProfile'
+        }
+      },
+      {
+        path: 'memberArticle',
+        name: 'MemberArticle',
+        component: () => import(/* webpackChunkName: "member" */ '../views/MemberArticle.vue'),
+        meta: {
+          signIn: true,
+          title: 'DTNS - MemberArticle'
+        }
+      },
+      {
+        path: 'memberAnalytics',
+        name: 'MemberAnalytics',
+        component: () => import(/* webpackChunkName: "member" */ '../views/MemberAnalytics.vue'),
+        meta: {
+          signIn: true,
+          title: 'DTNS - MemberAnalytics'
+        }
+      },
+      {
+        path: 'memberReply',
+        name: 'MemberReply',
+        component: () => import(/* webpackChunkName: "member" */ '../views/MemberReply.vue'),
+        meta: {
+          signIn: true,
+          title: 'DTNS - MemberReply'
+        }
+      }
+    ]
   },
   {
     path: '/manage',
