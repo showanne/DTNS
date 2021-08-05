@@ -19,15 +19,16 @@
         <md-tabs md-alignment="fixed">
 
           <md-tab exact id="tab-line" md-label="line" :md-icon="require('../assets/icon/line-logo.svg')">
-
-            <md-button>
-              <div class="md-layout">
-                <div class="md-layout-item">
-                  <md-icon :md-src="require('../assets/icon/line-logo.svg')"></md-icon>
+            <div class="md-layout md-alignment-center-center">
+              <md-button @click="signForLine">
+                <div class="md-layout">
+                  <div class="md-layout-item">
+                    <md-icon :md-src="require('../assets/icon/line-logo.svg')"></md-icon>
+                  </div>
+                  <div class="md-layout-item">&nbsp; 快速登入</div>
                 </div>
-                <div class="md-layout-item">&nbsp; 快速登入</div>
-              </div>
-            </md-button>
+              </md-button>
+            </div>
           </md-tab>
 
           <md-tab id="tab-manage" md-label="manage" md-icon="person">
