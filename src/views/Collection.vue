@@ -1,5 +1,37 @@
 <template>
   <div id="collection" class="md-layout md-alignment-center">
+    <div class="md-layout-item md-size-100">
+      <md-tabs  md-alignment="fixed">
+        <md-tab id="tab-home" md-label="postIt"
+                to="/collection/postIt"
+                :md-icon="require('../assets/icon/temp-postIt.svg')"></md-tab>
+        <md-tab id="tab-pages" md-label="share"
+                to="/collection" exact
+                :md-icon="require('../assets/icon/temp-share.svg')"></md-tab>
+        <md-tab id="tab-pages1" md-label="todo"
+                to="/collection/todo"
+                :md-icon="require('../assets/icon/temp-todo.svg')"></md-tab>
+        <md-tab id="tab-page2s" md-label="diary"
+                to="/collection/diary"
+                :md-icon="require('../assets/icon/temp-diary.svg')"></md-tab>
+        <md-tab id="tab-posts" md-label="notes"
+                to="/collection/notes"
+                :md-icon="require('../assets/icon/temp-notes.svg')"></md-tab>
+        <md-tab id="tab-favorites" md-label="novel"
+                to="/collection/novel"
+                :md-icon="require('../assets/icon/temp-novel.svg')"></md-tab>
+        <md-tab id="tab-favorites" md-label="storage"
+                to="/collection/storage"
+                :md-icon="require('../assets/icon/temp-storage.svg')"></md-tab>
+      </md-tabs>
+    </div>
+    <div class="md-layout-item md-size-100">
+      <transition>
+        <keep-alive>
+          <router-view></router-view>
+        </keep-alive>
+      </transition>
+    </div>
 
     <!-- 只有圖片的版型 -->
     <div class="md-layout-item md-medium-size-33 md-small-size-50 md-xsmall-size-100">
