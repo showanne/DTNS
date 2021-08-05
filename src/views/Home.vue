@@ -1,7 +1,14 @@
 <template>
   <div id="home">
     <div class="md-layout">
-      <div class="md-layout-item md-size-66 mx-auto md-small-size-100">
+      <div class="md-layout-item md-size-100">
+        <span class="md-headline">文字的溫度</span><br>
+        <span class="md-headline">每字美句每個你喜歡的瞬間</span><br>
+        <span class="md-subheading mx-small-3">隨時記錄</span>
+        <span class="md-subheading mx-small-3">方便儲存</span>
+        <span class="md-subheading mx-small-3">便捷分享</span>
+      </div>
+      <div class="md-layout-item md-size-100 mx-auto">
         <md-card>
           <carousel
             :per-page="1"
