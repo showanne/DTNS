@@ -232,8 +232,11 @@ export default {
           }
         }, 1500)
       } catch (error) {
+        console.log(error)
         this.messageShow = true
-        this.message = `${this.form.account}` + error
+        let errorMsg = ''
+        error.response.data.message === null ? errorMsg = error : errorMsg = error.response.data.message
+        this.message = `${this.form.account} ` + errorMsg
         this.sending = true
         // this.clearForm()
       }
