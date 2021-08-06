@@ -94,7 +94,7 @@
             </md-list-item>
 
             <!-- member -->
-            <md-list-item v-if="user.isSignIn" to="/member">
+            <md-list-item v-if="user.isSignIn && !user.isAdmin" to="/member">
               <md-icon
                 :md-src="require('./assets/icon/menu-Member.svg')"
               ></md-icon>
@@ -171,9 +171,9 @@
 
         <!-- Sign out alert 錯誤訊息 -->
         <md-dialog-alert
-        :md-active.sync="signOutMsg"
-        md-title="ERROR"
-        md-content="發生錯誤" />
+          :md-active.sync="signOutMsg"
+          md-title="ERROR"
+          md-content="發生錯誤" />
         <md-app-content class="h-content">
           <router-view />
         </md-app-content>
