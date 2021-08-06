@@ -3,53 +3,28 @@
     <!-- {{ article }} -->
 
     <!-- 資料呈現 table -->
-    <md-table v-model="article" md-sort="name" md-sort-order="asc" md-card md-fixed-header>
-      <md-table-toolbar>
-        <div class="md-toolbar-section-start">
-          <h1 class="md-title">ALL Article</h1>
-        </div>
-
-        <!-- <md-field md-clearable class="md-toolbar-section-end">
-          <md-input placeholder="Search by ..." v-model="search" @input="searchOnTable" />
-        </md-field> -->
-      </md-table-toolbar>
-
-      <md-table-empty-state
+    <ve-table
+    :columns="tableTitle"
+    :table-data="article.filter(item=>!searchText || item.name.includes(searchText))"
+    style="'word-break':break-all;"
+    max-height="calc(100vh - 190px)"
+    :fixed-header="true"
+    :border-around="false"
+    :border-x="true"
+    :border-y="false"
+    :cell-style-option="cellStyleOption"
+  />
+  <!-- 無資料時顯示
+    <md-table-empty-state
         md-label="No article found"
         :md-description="`No article found for this '${search}' query. Try a different search term .`">
-      </md-table-empty-state>
+      </md-table-empty-state> -->
 
-      <md-table-row slot="md-table-row" slot-scope="{ item }">
-        <!-- <md-table-cell md-label="ID" md-sort-by="id" md-numeric>{{ item.id }}</md-table-cell> -->
-        <md-table-cell md-label="template" md-sort-by="template">{{ item.template }}</md-table-cell>
-        <!-- <md-table-cell md-label="date" md-sort-by="date">{{ item.date }}</md-table-cell> -->
-        <md-table-cell md-label="title" md-sort-by="title">{{ item.title }}</md-table-cell>
-        <!-- <md-table-cell md-label="datepicker" md-sort-by="datepicker">{{ item.datepicker }}</md-table-cell> -->
-        <md-table-cell md-label="image" md-sort-by="image">
-          <img v-if="item" :src="item.image" alt="" width="90">
-        </md-table-cell>
-        <!-- <md-table-cell md-label="textarea" md-sort-by="textarea">{{ item.textarea }}</md-table-cell> -->
-        <!-- <md-table-cell md-label="text" md-sort-by="text">{{ item.text }}</md-table-cell> -->
-        <md-table-cell md-label="share" md-sort-by="share">
-          <md-switch v-model="item.share" class="md-primary">
-            {{ item.share }}
-          </md-switch>
-        </md-table-cell>
-        <md-table-cell md-label="share" md-sort-by="share">
-          <md-switch v-model="item.share" class="md-primary">
-            下架
-            <!-- TODO:文章檢舉下架功能 -->
-          </md-switch>
-        </md-table-cell>
-        <!-- <md-table-cell md-label="select" md-sort-by="select">{{ item.select }}</md-table-cell> -->
-        <!-- <md-table-cell md-label="_id" md-sort-by="_id">{{ item._id }}</md-table-cell> -->
-        <md-table-cell md-label="edit" md-sort-by="edit">
-          <md-button class="md-accent" @click="edit">
-            <md-icon>edit</md-icon>
-          </md-button>
-        </md-table-cell>
-      </md-table-row>
-    </md-table>
+<!-- TODO:文章檢舉下架功能
+     img 顯示
+     switch 切換分享
+     input 編輯文章功能
+ -->
 
     <!-- 訊息提示 modal -->
     <md-dialog :md-active.sync="msgModal">
@@ -67,6 +42,109 @@ export default {
   name: 'ManageArticle',
   data () {
     return {
+      // 設定表格行樣式
+      cellStyleOption: {
+        bodyCellClass: ({ row, column, rowIndex }) => {
+          return 'table-body-cell-class'
+        }
+      },
+      // 搜索
+      searchText: '',
+      tableTitle: [
+        {
+          field: '',
+          key: 'a',
+          title: 'No.',
+          width: '3%',
+          align: 'center',
+          renderBodyCell: ({ row, column, rowIndex }, h) => {
+            return (
+              <span style="color:#7876B3;">
+                {++rowIndex}
+              </span>
+            )
+          }
+        },
+        // { field: '_id', key: 'a', title: 'Id', width: '5%' },
+        {
+          field: 'template',
+          key: 'b',
+          title: 'temp',
+          width: '5%',
+          align: 'center',
+          fixed: 'left'
+          // renderHeaderCell: ({ column }, h) => {
+          //   return (
+          //     <input
+          //       // jsx 不能直接使用 v-model。此处为 jsx 实现 v-model，了解更多查看官方文档
+          //       value={this.searchText}
+          //       onInput={this.searchInputChange}
+          //       style="width:90%"
+          //       placeholder="主題"
+          //     />
+          //   )
+          // }
+        },
+        { field: 'title', key: 'c', title: 'title', width: '30%' },
+        {
+          field: 'share',
+          key: 'd',
+          title: 'share',
+          width: '5%',
+          renderBodyCell: ({ row, column, rowIndex }, h) => {
+            return (
+              <md-switch v-model={row[column.field]} class="md-primary">
+              </md-switch>
+            )
+          }
+        },
+        {
+          field: 'image',
+          key: 'e',
+          title: 'image',
+          width: '15%',
+          renderBodyCell: ({ row, column, rowIndex }, h) => {
+            return (
+              <img src={row[column.field]} />
+            )
+          }
+        },
+        {
+          field: 'textarea',
+          key: 'f',
+          title: 'textarea',
+          width: '20%',
+          ellipsis: {
+            showTitle: true,
+            lineClamp: 2
+          }
+        },
+        { field: 'text', key: 'g', title: 'text', width: '10%' },
+        { field: 'select', key: 'h', title: 'select', width: '5%' },
+        { field: 'datepicker', key: 'i', title: 'datepicker', width: '5%' },
+        { field: 'date', key: 'j', title: 'date', width: '5%' },
+        {
+          field: '',
+          key: 'k',
+          title: 'Action',
+          width: '10%',
+          // center: 'left',
+          align: 'center',
+          fixed: 'right',
+          renderBodyCell: ({ row, column, rowIndex }, h) => {
+            return (
+              <div class="md-layout md-alignment-center-center">
+                <md-button class="md-primary h-unset w-unset" on-click={() => this.editRow(rowIndex)}>
+                  <md-icon>edit</md-icon>
+                </md-button>
+                <md-button class="md-primary h-unset w-unset" on-click={() => this.deleteRow(rowIndex)}>
+                  <md-icon>delete</md-icon>
+                </md-button>
+              </div>
+            )
+          }
+        }
+      ],
       article: [],
       search: null,
       searched: [],
@@ -77,16 +155,26 @@ export default {
     }
   },
   methods: {
-    searchOnTable () {
-      const searchByName = (items, term) => {
-        if (term) {
-          return items.filter(item => item.name.includes(term))
-        }
-
-        return items
-      }
-      this.searched = searchByName(this.article, this.search)
+    editRow (rowIndex) {
+      alert(`eidt row number:${rowIndex}`)
+    },
+    deleteRow (rowIndex) {
+      this.tableData.splice(rowIndex, 1)
+    },
+    // search input change event
+    searchInputChange (e) {
+      this.searchText = e.target.value
     }
+    // searchOnTable () {
+    //   const searchByName = (items, term) => {
+    //     if (term) {
+    //       return items.filter(item => item.name.includes(term))
+    //     }
+
+    //     return items
+    //   }
+    //   this.searched = searchByName(this.article, this.search)
+    // }
   },
   created () {
     this.searched = this.article
