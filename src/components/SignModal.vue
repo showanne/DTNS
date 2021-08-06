@@ -213,7 +213,7 @@ export default {
     },
     async signIn () {
       try {
-        const { data } = await this.axios.post(`${process.env.VUE_APP_API}/users/signIn`, this.form)
+        const { data } = await this.axios.post('/users/signIn', this.form)
 
         this.sending = true
 

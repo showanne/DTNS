@@ -94,7 +94,7 @@ export default {
   async mounted () {
     try {
       // 取得所有文章 /article
-      const { data } = await this.axios.get(`${process.env.VUE_APP_API}/article`)
+      const { data } = await this.axios.get('/article')
       this.article = data.result.map(article => {
         // 有圖片才更新網址
         if (article.image) {

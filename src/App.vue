@@ -203,7 +203,7 @@ export default {
   methods: {
     async signOutBtn () {
       try {
-        await this.axios.delete(`${process.env.VUE_APP_API}/users/signOut`, {
+        await this.axios.delete('/users/signOut', {
           headers: {
             // 驗證欄位 'Bearer ' + token  -> Bearer要空格
             authorization: 'Bearer ' + this.$store.state.jwt.token
@@ -230,7 +230,7 @@ export default {
       // delete query.jwt
       // 把網址列的 jwt 清掉
       // this.$router.replace({ query: {} })
-      this.axios.get(`${process.env.VUE_APP_API}/users/signInLineData`, {
+      this.axios.get('/users/signInLineData', {
         headers: {
           authorization: 'Bearer ' + jwt
         }

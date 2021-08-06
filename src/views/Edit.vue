@@ -212,7 +212,7 @@ export default {
         for (const key in this.tempForm) {
           FD.append(key, this.tempForm[key])
         }
-        await this.axios.post(`${process.env.VUE_APP_API}/article`, FD, {
+        await this.axios.post('/article', FD, {
           headers: {
             // 驗證欄位 'Bearer ' + token  -> Bearer要空格
             authorization: 'Bearer ' + this.$store.state.jwt.token
