@@ -1,4 +1,15 @@
 #collection {
+  .masonry-container > .md-card{
+    max-width: 299px;
+    margin: 1rem;
+    @media (min-width: 1500px) {
+      max-width: 350px;
+    }
+    @include md-layout-xsmall {
+      max-width: 100%;
+    }   
+  }
+  
   .md-card-header .md-avatar {
     // float: left; 預設讓標題字不會貼邊
     margin: -35px 16px 5px -55px;
