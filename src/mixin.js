@@ -1,8 +1,27 @@
 export default {
+  // data () {
+  //   return {
+  //     tempList: [
+  //       { show: true, name: '便利貼', subhead: 'postIt' },
+  //       { show: true, name: '美字美句分享', subhead: 'share' },
+  //       { show: '', name: '待辦事項', subhead: 'todo' },
+  //       { show: '', name: '心情隨筆', subhead: 'diary' },
+  //       { show: '', name: '筆記', subhead: 'notes' },
+  //       { show: '', name: '小說', subhead: 'novel' },
+  //       { show: '', name: '儲物清單', subhead: 'storage' }
+  //       // show: `${this.user.isSignIn}`
+  //       // this.$store.getters.user.isSignIn
+  //     ]
+  //   }
+  // },
   computed: {
     user () {
       return this.$store.getters.user
     },
+    // show () {
+    //   this.tempList.show === null ? this.tempList.show = this.user.isSignIn : this.tempList.show = true
+    //   return this.tempList.show
+    // },
     randomState () {
       // Math.floor(Math.random() * 7)
       return 'DTNSLOGIN'

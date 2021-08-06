@@ -2,25 +2,27 @@
   <div id="collection" class="md-layout md-alignment-center">
     <div class="md-layout-item md-size-100">
       <md-tabs  md-alignment="fixed">
-        <md-tab id="tab-home" md-label="postIt"
+                <!-- v-for="(temp, T) in tempList"
+                :key="T" @click="tempShow(T)" -->
+        <md-tab id="tab-home" md-label="便利貼"
                 to="/collection/postIt"
                 :md-icon="require('../assets/icon/temp-postIt.svg')"></md-tab>
-        <md-tab id="tab-pages" md-label="share"
-                to="/collection" exact
+        <md-tab id="tab-pages" md-label="美字美句分享"
+                to="/collection"
                 :md-icon="require('../assets/icon/temp-share.svg')"></md-tab>
-        <md-tab id="tab-pages1" md-label="todo"
+        <md-tab id="tab-pages1" md-label="待辦事項"
                 to="/collection/todo"
                 :md-icon="require('../assets/icon/temp-todo.svg')"></md-tab>
-        <md-tab id="tab-page2s" md-label="diary"
+        <md-tab id="tab-page2s" md-label="心情隨筆"
                 to="/collection/diary"
                 :md-icon="require('../assets/icon/temp-diary.svg')"></md-tab>
-        <md-tab id="tab-posts" md-label="notes"
+        <md-tab id="tab-posts" md-label="筆記"
                 to="/collection/notes"
                 :md-icon="require('../assets/icon/temp-notes.svg')"></md-tab>
-        <md-tab id="tab-favorites" md-label="novel"
+        <md-tab id="tab-favorites" md-label="小說"
                 to="/collection/novel"
                 :md-icon="require('../assets/icon/temp-novel.svg')"></md-tab>
-        <md-tab id="tab-favorites" md-label="storage"
+        <md-tab id="tab-favorites" md-label="儲物清單"
                 to="/collection/storage"
                 :md-icon="require('../assets/icon/temp-storage.svg')"></md-tab>
       </md-tabs>
@@ -329,6 +331,25 @@ export default {
   name: 'Collection',
   components: {
     Avatar
+  },
+  data () {
+    return {
+      tempList: [
+        { show: true, name: '便利貼', subhead: 'postIt' },
+        { show: true, name: '美字美句分享', subhead: 'share' },
+        { show: this.$store.getters.user.isSignIn, name: '待辦事項', subhead: 'todo' },
+        { show: this.$store.getters.user.isSignIn, name: '心情隨筆', subhead: 'diary' },
+        { show: this.$store.getters.user.isSignIn, name: '筆記', subhead: 'notes' },
+        { show: this.$store.getters.user.isSignIn, name: '小說', subhead: 'novel' },
+        { show: this.$store.getters.user.isSignIn, name: '儲物清單', subhead: 'storage' }
+      ]
+    }
+  },
+  methods: {
+    tempShow (T) {
+      console.log(T)
+      // this.tempForm.template = T
+    }
   }
 }
 </script>

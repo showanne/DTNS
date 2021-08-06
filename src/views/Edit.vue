@@ -165,7 +165,7 @@ export default {
         { show: this.$store.getters.user.isSignIn, name: '待辦事項', subhead: 'todo' },
         { show: this.$store.getters.user.isSignIn, name: '心情隨筆', subhead: 'diary' },
         { show: this.$store.getters.user.isSignIn, name: '筆記', subhead: 'notes' },
-        // { show: this.$store.getters.user.isSignIn, name: '小說', subhead: 'novel' },
+        { show: this.$store.getters.user.isSignIn, name: '小說', subhead: 'novel' },
         { show: this.$store.getters.user.isSignIn, name: '儲物清單', subhead: 'storage' }
       ],
       selectList: [
