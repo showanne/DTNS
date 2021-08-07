@@ -67,46 +67,54 @@
         <accordion>
           <accordion-item>
             <template slot="accordion-trigger">
-              <div class="md-title">
+              <div class="md-subheading">
                 <md-icon :md-src="require('../assets/icon/question.svg')"></md-icon>
-                Question 1
+                為什麼我只能編輯2個模板？
               </div>
             </template>
             <template slot="accordion-content">
-              <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span>
+              <span>需登入解鎖更多模板唷 ^^</span>
             </template>
           </accordion-item>
 
           <accordion-item>
             <template slot="accordion-trigger">
-              <div class="md-title">
+              <div class="md-subheading">
                 <md-icon :md-src="require('../assets/icon/question.svg')"></md-icon>
-                Question 1
+                我該如何看到我剛新增的文章？
               </div>
             </template>
             <template slot="accordion-content">
-              <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span>
+              <span>
+                <ol>
+                  <li>最新編輯會在 <router-link to="/collection">分享牆</router-link> 隨機出現唷 ^^</li>
+                  <li>或是可以到會員中心的文章管理去檢視文章唷 ^^</li>
+                </ol>
+              </span>
             </template>
           </accordion-item>
 
           <accordion-item>
             <template slot="accordion-trigger">
-              <div class="md-title">
+              <div class="md-subheading">
                 <md-icon :md-src="require('../assets/icon/question.svg')"></md-icon>
-                Question 1
+                還沒打完不小心按到送出，該如何修改？
               </div>
             </template>
             <template slot="accordion-content">
-              <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span>
+              <span>
+                <ul>
+                  <li>如果您是會員，可以到會員中心的文章管理去編輯文章</li>
+                  <li>如果您不是會員，目前不支援對已送出的文章進行再編輯的唷！</li>
+                </ul>
+              </span>
             </template>
           </accordion-item>
       </accordion>
       </div>
 
-      <div class="md-layout-item md-large-size-66 md-medium-size-66 md-small-size-100  md-xsmall-size-100"
-      style="height: 60vh;"
-      >
-        <div class="md-layout md-gutter md-alignment-center" style="flex-direction: column;">
+      <div class="md-layout-item md-large-size-66 md-medium-size-66 md-small-size-100 md-xsmall-size-100">
+        <div class="md-layout md-alignment-center" style="flex-direction: column;">
         <!-- md-layout-nowrap w-contact-content -->
           <div class="md-layout-item md-large-size-50 md-medium-size-50 md-small-size-50 md-xsmall-size-100">
             <md-card class="md-accent" md-with-hover>
@@ -118,19 +126,18 @@
                 </div>
                 <div class="md-layout-item md-size-85">
                   <div class="md-layout md-alignment-center-space-between">
-                    <div class="md-title">Nick name</div>
-                    <div class="md-subhead">110.07.29</div>
+                    <div class="md-title">
+                      <Anonymous />
+                    </div>
+                    <div class="md-subhead">110.08.08</div>
                   </div>
-                  <span>
-                    Lorem adipisci aspernatur saepe quo possimus deserunt accusantium cum explicabo, vero cumque fugiat praesentium enim hic dolorem. Excepturi fuga mollitia alias?
-                  </span>
-                  <!-- <md-button class="md-icon-button">
-                    <md-icon>volunteer_activism</md-icon>
-                  </md-button>
-
-                  <md-button class="md-icon-button">
-                    <md-icon>cloud_download</md-icon>
-                  </md-button> -->
+                  <div class="md-subheading">
+                    輸入的欄位好像怪怪的...
+                  </div>
+                  <div class="md-body-2 mt-large-3" style="margin-top: 0.8rem; color: darkkhaki;">
+                    <md-icon>support_agent</md-icon>
+                    已做調整，再請您試試唷！
+                  </div>
                 </div>
               </md-card-content>
             </md-card>
@@ -145,7 +152,9 @@
                 </div>
                 <div class="md-layout-item md-size-85">
                   <div class="md-layout md-alignment-center-space-between">
-                    <div class="md-title">Nick name</div>
+                    <div class="md-title">
+                      <Anonymous />
+                    </div>
                     <div class="md-subhead">110.07.29</div>
                   </div>
                   <span>
@@ -201,6 +210,7 @@
 // components元件
 // import FormCard from '@/components/FormCard.vue'
 import Avatar from '@/components/Avatar.vue'
+import Anonymous from '@/components/Anonymous.vue'
 import Accordion from '@/components/accordion.vue'
 import AccordionItem from '@/components/accordion-item.vue'
 
@@ -219,6 +229,7 @@ export default {
   },
   components: {
     Avatar,
+    Anonymous,
     Accordion,
     AccordionItem
   }

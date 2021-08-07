@@ -18,3 +18,20 @@
 form.w-contact-modal {
   min-width: 299px;
 }
+
+.accordion{
+  .md-svg-loader {
+    display: inline-block;
+  }
+  .accordion__content{
+    ul{
+      margin: 16px 0;
+      ul, ol{
+        padding: 0;
+      }
+      ul{
+        list-style-type: "\15C8 "; // ᗈ
+      }
+    }
+  }
+}
