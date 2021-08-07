@@ -5,7 +5,7 @@
     <div class="md-layout md-alignment-space-around">
       <!-- 模板選擇 -->
       <div id="temp"
-        class="md-layout-item md-xlarge-size-15 md-large-size-20 md-medium-size-33 md-small-size-100 md-xsmall-size-100"
+        class="md-layout-item md-size-33 md-small-size-100 md-xsmall-size-100"
       >
         <div class="md-layout md-alignment-space-between-center">
           <!-- 有漸層背景及文字 <md-card-media-cover md-text-scrim> -->
@@ -42,10 +42,12 @@
 
       <!-- 編輯 -->
       <div id="tempEdit"
-        class="md-layout-item md-xlarge-size-85 md-large-size-80 md-medium-size-66 md-small-size-100 md-xsmall-size-100"
+        class="md-layout-item md-size-66 md-small-size-100 md-xsmall-size-100"
       >
-        <form @submit.prevent="submitEdit"
-             @reset="clearForm">
+      <div class="md-layout md-alignment-center-center" style="background: #FFFDF5; padding:2rem;">
+        <form class="md-layout-item md-size-66 md-xsmall-size-100"
+            @submit.prevent="submitEdit"
+            @reset="clearForm">
           <md-card>
             <md-card-header>
               <h4 class="title">
@@ -56,35 +58,34 @@
             </md-card-header>
 
             <md-card-content>
-              <div class="md-layout md-gutter">
+              <div class="md-layout md-alignment-center-center">
                 <div class="md-layout-item md-size-90 md-small-size-80 md-xsmall-size-100">
                   <md-field>
                     <label>Title</label>
                     <md-textarea v-model="tempForm.title" md-autogrow></md-textarea>
                   </md-field>
                 </div>
-                <div class="md-layout-item md-size-10 md-small-size-20 md-xsmall-size-25">
-                  <label class="label">share</label>
-                  <md-switch v-model="tempForm.share"
-                    class="md-primary" ></md-switch>
-                </div>
 
-                <div class="md-layout-item md-size-100 md-xsmall-size-75">
+                <div class="md-layout-item md-size-90">
                   <img-inputer v-model="tempForm.image"
                     accept="image/*" theme="material"
+                    auto-upload="true"
+                    capture="true"
                     placeholder="點擊或拖曳選擇圖片"
                     bottom-text="點擊或拖曳以修改" />
-                    <!-- 自動上傳 auto-upload="true" 尺寸 size="large" -->
+                    <!-- 尺寸 size="large"
+                     自動上傳 auto-upload="true"
+                     在手機中使用相機 capture="true"-->
                 </div>
 
-                <div class="md-layout-item md-size-100">
+                <div class="md-layout-item md-size-90">
                   <md-field>
                     <label>Textarea</label>
                     <md-textarea v-model="tempForm.textarea"></md-textarea>
                   </md-field>
                 </div>
 
-                <div class="md-layout-item md-size-100">
+                <div class="md-layout-item md-size-90">
                   <md-field>
                     <label>text</label>
                     <md-input v-model="tempForm.text"></md-input>
@@ -92,7 +93,7 @@
                   </md-field>
                 </div>
 
-                <div class="md-layout-item md-size-100">
+                <div class="md-layout-item md-size-90">
                   <md-field>
                     <label for="select">select</label>
                     <md-select
@@ -112,7 +113,7 @@
                   </md-field>
                 </div>
 
-                <div class="md-layout-item md-size-100">
+                <div class="md-layout-item md-size-90">
                   <md-datepicker
                     v-model="tempForm.datepicker"
                     md-immediately
@@ -125,14 +126,22 @@
               <!-- TODO: 調整 progress-bar 參數 md-mode="buffer" :md-value="29"
               :md-buffer="66" -->
 
-            <md-card-actions>
-              <md-button type="reset" class="md-raised">
-                RESET
-              </md-button>
-              <md-button type="submit" class="md-raised"
-                :disabled="sending">
-                Submit
-              </md-button>
+            <md-card-actions class="md-layout md-alignment-space-between-center">
+              <div class="md-layout-item md-size-25 md-xsmall-size-25">
+                <label class="label">share</label>
+                <md-switch v-model="tempForm.share"
+                  class="md-primary" ></md-switch>
+              </div>
+
+              <div class="md-layout-item md-size-35 md-xsmall-size-100">
+                <md-button type="reset" class="md-raised">
+                  RESET
+                </md-button>
+                <md-button type="submit" class="md-raised"
+                  :disabled="sending">
+                  Submit
+                </md-button>
+              </div>
             </md-card-actions>
           </md-card>
 
@@ -140,6 +149,7 @@
             The form {{ tempList[tempForm.template].name }} {{ tempForm.title }} was saved with success!
           </md-snackbar> -->
         </form>
+      </div>
 
         <md-dialog :md-active.sync="formSaved">
           <md-dialog-title>{{ savedMsg }}</md-dialog-title>
@@ -155,8 +165,13 @@
 </template>
 
 <script>
+// import Anonymous from '@/components/Anonymous.vue'
+
 export default {
   name: 'Edit',
+  // components: {
+  //   Anonymous
+  // },
   data () {
     return {
       tempList: [
@@ -166,7 +181,8 @@ export default {
         { show: this.$store.getters.user.isSignIn, name: '心情隨筆', subhead: 'diary' },
         { show: this.$store.getters.user.isSignIn, name: '筆記', subhead: 'notes' },
         { show: this.$store.getters.user.isSignIn, name: '小說', subhead: 'novel' },
-        { show: this.$store.getters.user.isSignIn, name: '儲物清單', subhead: 'storage' }
+        { show: this.$store.getters.user.isSignIn, name: '儲物清單', subhead: 'storage' },
+        { show: this.$store.getters.user.isSignIn, name: '敬請期待', subhead: 'continue' }
       ],
       selectList: [
         { 0: '開心', 1: '不好', 2: '傷心' }, // mood
