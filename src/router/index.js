@@ -80,7 +80,7 @@ const routes = [
       // /* webpackChunkName: "admin" */ 打包時 是否要單獨存 js 檔
         path: '',
         name: 'MemberProfile',
-        component: () => import(/* webpackChunkName: "member" */ '../views/MemberProfile.vue'),
+        component: () => import(/* webpackChunkName: "member" */ '../views/Member'),
         meta: {
           signIn: true,
           title: 'DTNS - MemberProfile'
@@ -89,7 +89,7 @@ const routes = [
       {
         path: 'memberArticle',
         name: 'MemberArticle',
-        component: () => import(/* webpackChunkName: "member" */ '../views/MemberArticle.vue'),
+        component: () => import(/* webpackChunkName: "member" */ '../views/Member/MemberArticle.vue'),
         meta: {
           signIn: true,
           title: 'DTNS - MemberArticle'
@@ -98,7 +98,7 @@ const routes = [
       {
         path: 'memberAnalytics',
         name: 'MemberAnalytics',
-        component: () => import(/* webpackChunkName: "member" */ '../views/MemberAnalytics.vue'),
+        component: () => import(/* webpackChunkName: "member" */ '../views/Member/MemberAnalytics.vue'),
         meta: {
           signIn: true,
           title: 'DTNS - MemberAnalytics'
@@ -107,7 +107,7 @@ const routes = [
       {
         path: 'memberReply',
         name: 'MemberReply',
-        component: () => import(/* webpackChunkName: "member" */ '../views/MemberReply.vue'),
+        component: () => import(/* webpackChunkName: "member" */ '../views/Member/MemberReply.vue'),
         meta: {
           signIn: true,
           title: 'DTNS - MemberReply'
@@ -125,7 +125,7 @@ const routes = [
       // /* webpackChunkName: "admin" */ 打包時 是否要單獨存 js 檔
         path: '',
         name: 'ManageHome',
-        component: () => import(/* webpackChunkName: "manage" */ '../views/ManageHome.vue'),
+        component: () => import(/* webpackChunkName: "manage" */ '../views/Manage/ManageHome.vue'),
         meta: {
           signIn: true,
           admin: true,
@@ -135,7 +135,7 @@ const routes = [
       {
         path: 'memberData',
         name: 'ManageMemberData',
-        component: () => import(/* webpackChunkName: "manage" */ '../views/ManageMemberData.vue'),
+        component: () => import(/* webpackChunkName: "manage" */ '../views/Manage/ManageMemberData.vue'),
         meta: {
           signIn: true,
           admin: true,
@@ -145,7 +145,7 @@ const routes = [
       {
         path: 'article',
         name: 'ManageArticle',
-        component: () => import(/* webpackChunkName: "manage" */ '../views/ManageArticle.vue'),
+        component: () => import(/* webpackChunkName: "manage" */ '../views/Manage/ManageArticle.vue'),
         meta: {
           signIn: true,
           admin: true,
@@ -155,7 +155,7 @@ const routes = [
       {
         path: 'template',
         name: 'ManageTemplate',
-        component: () => import(/* webpackChunkName: "manage" */ '../views/ManageTemplate.vue'),
+        component: () => import(/* webpackChunkName: "manage" */ '../views/Manage/ManageTemplate.vue'),
         meta: {
           signIn: true,
           admin: true,
@@ -165,7 +165,7 @@ const routes = [
       {
         path: 'reply',
         name: 'ManageReply',
-        component: () => import(/* webpackChunkName: "manage" */ '../views/ManageReply.vue'),
+        component: () => import(/* webpackChunkName: "manage" */ '../views/Manage/ManageReply.vue'),
         meta: {
           signIn: true,
           admin: true,
@@ -175,7 +175,7 @@ const routes = [
       {
         path: 'special',
         name: 'ManageSpecial',
-        component: () => import(/* webpackChunkName: "manage" */ '../views/ManageSpecial.vue'),
+        component: () => import(/* webpackChunkName: "manage" */ '../views/Manage/ManageSpecial.vue'),
         meta: {
           signIn: true,
           admin: true,
@@ -185,7 +185,7 @@ const routes = [
       {
         path: 'editApp',
         name: 'ManageEditApp',
-        component: () => import(/* webpackChunkName: "manage" */ '../views/ManageEditApp.vue'),
+        component: () => import(/* webpackChunkName: "manage" */ '../views/Manage/ManageEditApp.vue'),
         meta: {
           signIn: true,
           admin: true,
