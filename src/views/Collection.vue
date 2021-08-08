@@ -25,10 +25,14 @@
         v-masonry
         transition-duration="0.3s"
         item-selector=".masonry-container > .md-card"
-        fit-width="true"
-        v-for="item in article"
-        :key="item._id">
-        <TempCardShare v-if="item.template == tempCardShow" :item="item"></TempCardShare>
+        fit-width="true">
+        <TempCardShare
+          v-for="item in article"
+          :key="item._id"
+          :item="item"
+          @click="showCardById = true">
+        </TempCardShare>
+        <!-- v-if="item.template == tempCardShow" -->
       </div>
     </div>
   </div>
