@@ -29,7 +29,6 @@
         v-for="item in article"
         :key="item._id">
         <TempCardShare v-if="item.template == tempCardShow" :item="item"></TempCardShare>
-        <!--  -->
       </div>
     </div>
   </div>
@@ -58,18 +57,19 @@ export default {
         { show: this.$store.getters.user.isSignIn, name: '儲物清單', subhead: 'storage' }
       ],
       article: [],
-      tempCardShow: 0
+      tempCardShow: ''
     }
   },
   methods: {
     tempShow (T) {
       console.log(T)
-      this.tempCardShow = T
+      this.tempCardShow = parseInt(T)
+      console.log(this.tempCardShow)
     }
   },
   async mounted () {
     try {
-      // 取得所有文章 /article
+      // 取得文章 /article
       const { data } = await this.axios.get('/article')
       this.article = data.result.map(article => {
         // 有圖片才更新網址

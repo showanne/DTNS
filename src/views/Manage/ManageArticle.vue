@@ -181,8 +181,13 @@ export default {
   },
   async mounted () {
     try {
-      // 取得所有文章 /article
-      const { data } = await this.axios.get('/article')
+      // 取得所有文章 /article/all
+      const { data } = await this.axios.get('/article/all', {
+        headers: {
+          // 驗證欄位 'Bearer ' + token  -> Bearer要空格
+          authorization: 'Bearer ' + this.$store.state.jwt.token
+        }
+      })
       this.article = data.result.map(article => {
         // 有圖片才更新網址
         if (article.image) {
