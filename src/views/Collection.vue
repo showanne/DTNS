@@ -81,6 +81,12 @@ export default {
           // 處理 image 路徑  因為 :src 會錯誤判別 process.env  / 取得上傳的圖片 /file
           article.image = `${process.env.VUE_APP_API}/file/${article.image}`
         }
+        // 文章內有包含('\n')換行的，將 \n 轉換成 <br>
+        if (article.textarea.includes('\n')) {
+          console.log(article.textarea.includes('\n'))
+          console.log(article.textarea)
+          article.textarea.replace(/\n/g, '<br>')
+        }
         return article
       })
     } catch (error) {
