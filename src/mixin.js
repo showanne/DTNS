@@ -26,8 +26,7 @@ export default {
         { index: 3, show: this.user.isSignIn, name: '心情隨筆', subhead: 'diary', input: '' },
         { index: 4, show: this.user.isSignIn, name: '筆記', subhead: 'notes', input: '' },
         { index: 5, show: this.user.isSignIn, name: '小說', subhead: 'novel', input: '' },
-        { index: 6, show: this.user.isSignIn, name: '儲物清單', subhead: 'storage', input: '' },
-        { index: 7, show: this.user.isSignIn, name: '敬請期待', subhead: 'continue', input: '' }
+        { index: 6, show: this.user.isSignIn, name: '儲物清單', subhead: 'storage', input: '' }
         // show: this.user.isSignIn 因為要去動態抓user 是否有登入，所以不能放在 data 會是固定值
       ]
     },
