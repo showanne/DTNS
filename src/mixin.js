@@ -1,7 +1,7 @@
 export default {
   // data () {
-  //   return {
-  //     tempList: [
+  // return {
+  // tempList: []
   //       { show: true, name: '便利貼', subhead: 'postIt' },
   //       { show: true, name: '美字美句分享', subhead: 'share' },
   //       { show: '', name: '待辦事項', subhead: 'todo' },
@@ -11,12 +11,25 @@ export default {
   //       { show: '', name: '儲物清單', subhead: 'storage' }
   //       // show: `${this.user.isSignIn}`
   //       // this.$store.getters.user.isSignIn
-  //     ]
-  //   }
+
+  // }
   // },
   computed: {
     user () {
       return this.$store.getters.user
+    },
+    tempList () {
+      return [
+        { index: 0, show: true, name: '便利貼', subhead: 'postIt', input: '' },
+        { index: 1, show: true, name: '美字美句分享', subhead: 'share', input: '' },
+        { index: 2, show: this.user.isSignIn, name: '待辦事項', subhead: 'todo', input: '' },
+        { index: 3, show: this.user.isSignIn, name: '心情隨筆', subhead: 'diary', input: '' },
+        { index: 4, show: this.user.isSignIn, name: '筆記', subhead: 'notes', input: '' },
+        { index: 5, show: this.user.isSignIn, name: '小說', subhead: 'novel', input: '' },
+        { index: 6, show: this.user.isSignIn, name: '儲物清單', subhead: 'storage', input: '' },
+        { index: 7, show: this.user.isSignIn, name: '敬請期待', subhead: 'continue', input: '' }
+        // show: this.user.isSignIn 因為要去動態抓user 是否有登入，所以不能放在 data 會是固定值
+      ]
     },
     // show () {
     //   this.tempList.show === null ? this.tempList.show = this.user.isSignIn : this.tempList.show = true

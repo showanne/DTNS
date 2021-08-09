@@ -51,15 +51,6 @@ export default {
   },
   data () {
     return {
-      tempList: [
-        { show: true, name: '便利貼', subhead: 'postIt' },
-        { show: true, name: '美字美句分享', subhead: 'share' },
-        { show: this.$store.getters.user.isSignIn, name: '待辦事項', subhead: 'todo' },
-        { show: this.$store.getters.user.isSignIn, name: '心情隨筆', subhead: 'diary' },
-        { show: this.$store.getters.user.isSignIn, name: '筆記', subhead: 'notes' },
-        { show: this.$store.getters.user.isSignIn, name: '小說', subhead: 'novel' },
-        { show: this.$store.getters.user.isSignIn, name: '儲物清單', subhead: 'storage' }
-      ],
       article: [],
       tempCardShow: ''
     }

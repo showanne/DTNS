@@ -21,20 +21,6 @@
 
 <script>
 export default {
-  name: 'ManageTemplate',
-  data () {
-    return {
-      tempList: [
-        { index: 0, show: true, name: '便利貼', subhead: 'postIt', input: '' },
-        { index: 1, show: true, name: '美字美句分享', subhead: 'share', input: '' },
-        { index: 2, show: false, name: '待辦事項', subhead: 'todo', input: '' },
-        { index: 3, show: false, name: '心情隨筆', subhead: 'diary', input: '' },
-        { index: 4, show: false, name: '筆記', subhead: 'notes', input: '' },
-        { index: 5, show: false, name: '小說', subhead: 'novel', input: '' },
-        { index: 6, show: false, name: '儲物清單', subhead: 'storage', input: '' },
-        { index: 7, show: false, name: '敬請期待', subhead: 'continue', input: '' }
-      ]
-    }
-  }
+  name: 'ManageTemplate'
 }
 </script>

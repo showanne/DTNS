@@ -174,16 +174,6 @@ export default {
   // },
   data () {
     return {
-      tempList: [
-        { show: true, name: '便利貼', subhead: 'postIt' },
-        { show: true, name: '美字美句分享', subhead: 'share' },
-        { show: this.$store.getters.user.isSignIn, name: '待辦事項', subhead: 'todo' },
-        { show: this.$store.getters.user.isSignIn, name: '心情隨筆', subhead: 'diary' },
-        { show: this.$store.getters.user.isSignIn, name: '筆記', subhead: 'notes' },
-        { show: this.$store.getters.user.isSignIn, name: '小說', subhead: 'novel' },
-        { show: this.$store.getters.user.isSignIn, name: '儲物清單', subhead: 'storage' },
-        { show: this.$store.getters.user.isSignIn, name: '敬請期待', subhead: 'continue' }
-      ],
       selectList: [
         { 0: '開心', 1: '不好', 2: '傷心' }, // mood
         { 0: '很重要', 1: '近期須完成', 2: '普通' } // finish
