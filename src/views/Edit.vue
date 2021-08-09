@@ -228,12 +228,20 @@ export default {
         for (const key in this.tempForm) {
           FD.append(key, this.tempForm[key])
         }
-        await this.axios.post('/article', FD, {
-          headers: {
-            // 驗證欄位 'Bearer ' + token  -> Bearer要空格
-            authorization: 'Bearer ' + this.$store.state.jwt.token
-          }
-        })
+        // console.log(this.$store.state.user.role)
+        // 判斷身分為會員或管理員才做驗證後的新增文章
+        // THINK: 是否需再判斷新增的文章類型 ??
+        if (this.$store.state.user.role === 1 || this.$store.state.user.role === 0) {
+          // console.log(FD)
+          await this.axios.post('/article/member', FD, {
+            headers: {
+              // 驗證欄位 'Bearer ' + token  -> Bearer要空格
+              authorization: 'Bearer ' + this.$store.state.jwt.token
+            }
+          })
+        } else {
+          await this.axios.post('/article', FD)
+        }
 
         this.savedMsg = this.tempList[this.tempForm.template].name + '-' + this.tempForm.title + 'was saved with success!'
         this.formSaved = true
