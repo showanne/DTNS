@@ -18,9 +18,7 @@
       </md-card-media>
 
       <md-card-content class="md-layout">
-        <div class="md-body-1">
-          {{ item.textarea }}
-        </div>
+        <div class="md-body-1" v-html="item.textarea"></div>
 
         <!-- showCardById 顯示個別文章的 modal -->
         <md-button class="md-icon-button"

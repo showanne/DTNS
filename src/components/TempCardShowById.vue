@@ -38,7 +38,10 @@
           </md-card-media>
 
           <md-card-content class="md-layout">
-            <div class="md-body-1">{{ textarea }}</div>
+            <div class="md-body-1">
+              <!-- v-html="" -->
+              <pre>{{ textarea }}</pre>
+              </div>
           </md-card-content>
         </md-card>
       </md-dialog-content>

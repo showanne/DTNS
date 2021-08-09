@@ -86,12 +86,6 @@ export default {
           article.datepicker = new Date(article.datepicker).toLocaleDateString()
           article.date = new Date(article.date).toLocaleDateString()
         }
-        // 文章內有包含('\n')換行的，將 \n 轉換成 <br>
-        if (article.textarea.includes('\n')) {
-          console.log(article.textarea.includes('\n'))
-          console.log(article.textarea)
-          article.textarea = article.textarea.replace(/\n/g, '<br>')
-        }
         return article
       })
     } catch (error) {
