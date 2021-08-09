@@ -16,7 +16,7 @@
               <div class="md-layout-item md-size-70">
                 <div class="md-title">
                   {{ title }} By
-                  <div class="md-subhead d-medium-inline">{{ id }}</div>
+                  <div class="md-subhead d-medium-inline">{{ author }}</div>
                   </div>
 
                 <div class="md-subhead">
@@ -41,7 +41,11 @@
             <div class="md-body-1">
               <!-- v-html="" -->
               <pre>{{ textarea }}</pre>
-              </div>
+            </div>
+            <div class="md-body-1">
+              <pre>{{ text }}</pre>
+            </div>
+            <div class="md-subheading">{{ source }}</div>
           </md-card-content>
         </md-card>
       </md-dialog-content>
@@ -77,6 +81,8 @@ export default {
       id: '',
       template: 0,
       title: '',
+      author: '',
+      source: '',
       image: '',
       textarea: '',
       text: '',
@@ -105,6 +111,8 @@ export default {
       this.id = this.tempCardId
       this.template = data.result.template
       this.title = data.result.title
+      this.author = data.result.author
+      this.source = data.result.source
       if (data.result.image) {
         this.image = `${process.env.VUE_APP_API}/file/${data.result.image}`
       }

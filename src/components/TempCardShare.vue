@@ -6,7 +6,7 @@
         </md-avatar>
 
         <div class="md-title">{{ item.title }}</div>
-        <div class="md-subhead">{{ item._id }}</div>
+        <div class="md-subhead">{{ item.author }}</div>
         <div class="md-subhead">
           <md-icon :md-src="require('../assets/icon/dateS.svg')"></md-icon>
           <span>{{ item.date }}</span>
@@ -18,8 +18,13 @@
       </md-card-media>
 
       <md-card-content class="md-layout">
-        <div class="md-body-1" v-html="item.textarea"></div>
-
+        <div class="md-body-1">
+          <pre>{{ item.textarea }}</pre>
+        </div>
+        <div class="md-body-1">
+          <pre>{{ item.text }}</pre>
+        </div>
+        <div class="md-subheading">{{ item.source }}</div>
         <!-- showCardById 顯示個別文章的 modal -->
         <md-button class="md-icon-button"
           @click="showCardById = true">
