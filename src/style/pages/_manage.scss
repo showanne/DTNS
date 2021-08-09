@@ -20,3 +20,10 @@
     font-family: 'Roboto Mono', monospace;
   }
 }
+
+#manageTemplate{
+  .md-table{
+    // max-height: calc(100vh - 190px);
+    border: solid 1px #B3AB88;
+  }
+}
