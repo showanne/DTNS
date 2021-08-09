@@ -26,6 +26,18 @@
      input 編輯文章功能
  -->
 
+    <!-- 編輯 modal -->
+    <md-dialog :md-active.sync="editModal">
+      <md-dialog-title>編輯文章</md-dialog-title>
+      <md-dialog-content>
+
+      </md-dialog-content>
+      <md-dialog-actions>
+        <md-button class="md-primary" @click="editModal = false">Close</md-button>
+        <md-button class="md-primary" @click="editModal = false">SEE</md-button>
+      </md-dialog-actions>
+    </md-dialog>
+
     <!-- 訊息提示 modal -->
     <md-dialog :md-active.sync="msgModal">
       <md-dialog-title>{{ Msg }}</md-dialog-title>
@@ -148,6 +160,8 @@ export default {
       article: [],
       search: null,
       searched: [],
+      // 編輯 modal
+      editModal: false,
       // 提示框顯示控制
       msgModal: false,
       // 提示框訊息
@@ -157,6 +171,7 @@ export default {
   methods: {
     editRow (rowIndex) {
       alert(`eidt row number:${rowIndex}`)
+      // this.editModal = true
     },
     deleteRow (rowIndex) {
       this.tableData.splice(rowIndex, 1)
