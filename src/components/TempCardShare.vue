@@ -1,5 +1,5 @@
 <template>
-    <md-card md-with-hover>
+    <md-card md-with-hover class="tempCard">
       <md-card-header>
         <md-avatar class="md-large md-elevation-5">
           <Avatar />
@@ -8,8 +8,8 @@
         <div class="md-title">{{ item.title }}</div>
         <div class="md-subhead">{{ item._id }}</div>
         <div class="md-subhead">
-          <md-icon>event_note</md-icon>
-          {{ item.date }}
+          <md-icon :md-src="require('../assets/icon/dateS.svg')"></md-icon>
+          <span>{{ item.date }}</span>
         </div>
       </md-card-header>
 

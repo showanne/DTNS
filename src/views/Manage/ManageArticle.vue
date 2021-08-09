@@ -127,17 +127,17 @@ export default {
           field: '',
           key: 'k',
           title: 'Action',
-          width: '10%',
+          width: '20%',
           // center: 'left',
           align: 'center',
           fixed: 'right',
           renderBodyCell: ({ row, column, rowIndex }, h) => {
             return (
               <div class="md-layout md-alignment-center-center">
-                <md-button class="md-primary h-unset w-unset" on-click={() => this.editRow(rowIndex)}>
+                <md-button class="md-md-layout-item md-primary h-unset w-unset" on-click={() => this.editRow(rowIndex)}>
                   <md-icon>edit</md-icon>
                 </md-button>
-                <md-button class="md-primary h-unset w-unset" on-click={() => this.deleteRow(rowIndex)}>
+                <md-button class="md-md-layout-item md-primary h-unset w-unset" on-click={() => this.deleteRow(rowIndex)}>
                   <md-icon>delete</md-icon>
                 </md-button>
               </div>
@@ -193,6 +193,11 @@ export default {
         if (article.image) {
           // 處理 image 路徑  因為 :src 會錯誤判別 process.env  / 取得上傳的圖片 /file
           article.image = `${process.env.VUE_APP_API}/file/${article.image}`
+        }
+        // 處理日期格式
+        if (article.datepicker || article.date) {
+          article.datepicker = new Date(article.datepicker).toLocaleDateString()
+          article.date = new Date(article.date).toLocaleDateString()
         }
         return article
       })

@@ -52,8 +52,37 @@
   }
 }
 
+.tempCard{
+  .md-card-header .md-subhead {
+    // vertical-align: center;
+
+    .md-svg-loader {
+      display: inline-block;
+    }
+  }
+}
+
 .showCardModal{
   .md-card {
     box-shadow: unset;
+  }
+
+  .md-icon-dateL{
+    display: inline-block;
+    min-width: 99px;
+    height: 39px;
+    position: relative;
+  }
+  .md-icon-dateL + span {
+    position: absolute;
+    /* top: 50%; */
+    left: calc( 50% - 29px );
+    transform: translateY(49%);
+  }
+
+  .md-card-media{
+    img{
+      width: 600px;
+    }
   }
 }

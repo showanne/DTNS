@@ -20,9 +20,9 @@
                   </div>
 
                 <div class="md-subhead">
-                  <md-icon  class="md-size-4x" width="600"
+                  <md-icon class="md-icon-dateL"
                      :md-src="require('../assets/icon/dateL.svg')"></md-icon>
-                  {{ date }}
+                  <span>{{ date }}</span>
                 </div>
               </div>
               <div class="md-layout-item md-size-15">
@@ -102,12 +102,14 @@ export default {
       this.id = this.tempCardId
       this.template = data.result.template
       this.title = data.result.title
-      this.image = `${process.env.VUE_APP_API}/file/${data.result.image}`
+      if (data.result.image) {
+        this.image = `${process.env.VUE_APP_API}/file/${data.result.image}`
+      }
       this.textarea = data.result.textarea
       this.text = data.result.text
       this.select = data.result.select
-      this.datepicker = data.result.datepicker
-      this.date = data.result.date
+      this.datepicker = new Date(data.result.datepicker).toLocaleDateString()
+      this.date = new Date(data.result.date).toLocaleDateString()
     } catch (error) {
       // 找不到丟回原頁
       this.$router.push('/collection')
