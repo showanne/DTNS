@@ -1,8 +1,8 @@
 <template>
   <!-- showCardById 顯示個別文章的 modal -->
     <md-dialog class="showCardModal"
-      :md-active.sync="showCardModal"
-      :md-close-on-esc="true">
+      :md-active.sync="showCardById">
+      <!-- :md-close-on-esc="true" -->
       <!-- <md-dialog-title>{ item.title }</md-dialog-title> -->
       <md-dialog-content  class="md-scrollbar">
         <md-card>
@@ -61,7 +61,7 @@
         </md-button>
 
         <md-button class="md-layout-item md-primary"
-        @click="showCardById = false">Close</md-button>
+        @click="closeModal">Close</md-button>
       </md-dialog-actions>
     </md-dialog>
 </template>
@@ -73,7 +73,7 @@ export default {
   name: 'TempCardShowById',
   data () {
     return {
-      showCardById: false,
+      // modalAction: this.showCardById,
       id: '',
       template: 0,
       title: '',
@@ -91,14 +91,17 @@ export default {
     Avatar
   },
   props: {
-    showCardModal: {
+    // 外層傳入 用來控制 modal 顯示
+    showCardById: {
       type: Boolean,
       required: true
     },
+    // 外層傳入的 Id 用來丟請求給後端顯示對應的文章
     tempCardId: {
       type: String,
       required: true
     },
+    // 外層傳入的 icon name 給 svg 指定檔名用
     tempIcon: {
       type: String,
       required: true
@@ -124,6 +127,17 @@ export default {
     } catch (error) {
       // 找不到丟回原頁
       this.$router.push('/collection')
+    }
+  },
+  // watch: {
+  //   showCardById (val) {
+  //     this.modalAction = val
+  //   }
+  // },
+  methods: {
+    closeModal () {
+      // 傳資料給外層 TempCardShare.vue ，告訴他更改 showCardById 的值來關閉他
+      this.$emit('closeModal')
     }
   }
 }

@@ -73,12 +73,15 @@
         </md-button>
         <span>59</span> -->
       </md-card-actions>
+
       <TempCardShowById
         v-if="showCardById"
-        :showCardModal="showCardById"
+        :showCardById="showCardById"
         @closeModal="showCardById = false"
         :tempCardId="item._id"
         :tempIcon="tempIcon">
+        <!-- :showCardById="showCardById" 傳值進 TempCardShowById.vue -->
+        <!-- @closeModal="showCardById = false" 接收內層傳來的值 並做 "" 內動作是改 showCardById 的值 -->
       </TempCardShowById>
     </md-card>
 </template>
@@ -99,14 +102,24 @@ export default {
     TempCardShowById
   },
   props: {
+    // 外層傳入的 article[]
     item: {
       type: Object,
       required: true
     },
+    // 外層傳入的 icon name 給 svg 指定檔名用
     tempIcon: {
       type: String,
       required: true
     }
   }
+  // methods: {
+  // showModal () {
+  //   this.showCardById = true
+  // },
+  // closeModal (val) {
+  // this.showCardById = val
+  // }
+  // }
 }
 </script>

@@ -28,9 +28,9 @@
                 v-for="item in article"
                 :key="item._id"
                 :item="item"
-                :tempIcon="temp.subhead"
-                @click="showCardById = true">
+                :tempIcon="temp.subhead">
               </TempCardShare>
+                <!-- @click="showCardById = true" -->
             </div>
           </div>
         </md-tab>
