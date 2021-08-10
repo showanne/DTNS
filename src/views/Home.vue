@@ -2,11 +2,75 @@
   <div id="home">
     <div class="md-layout">
       <div class="md-layout-item md-size-100">
-        <span class="md-headline">文字的溫度</span><br>
-        <span class="md-headline">每字美句每個你喜歡的瞬間</span><br>
-        <span class="md-subheading mx-small-3">隨時記錄</span>
-        <span class="md-subheading mx-small-3">方便儲存</span>
-        <span class="md-subheading mx-small-3">便捷分享</span>
+        <div class="h-content">
+          <div class="md-display-3">文字的溫度</div>
+          <div class="md-display-2">每字美句每個你喜歡的瞬間</div>
+          <div class="md-layout">
+            <div class="md-layout-item md-size-33">
+              <md-card>
+                <md-card-media>
+                  <md-icon class="md-size-5x"
+                    :md-src="require('../assets/icon/action-addEdit.svg')"
+                  ></md-icon>
+                </md-card-media>
+                <md-card-header>
+                  <div class="md-title">隨時記錄</div>
+                  <div class="md-subhead">Lorem ipsum dolor sit amet consectetur adi incidunt.</div>
+                </md-card-header>
+                <md-card-actions>
+                  <md-button>一個置中的Action</md-button>
+                </md-card-actions>
+              </md-card>
+              <md-card>
+                <md-card-header>
+                  <md-button class="md-title">100 K+</md-button>
+                </md-card-header>
+              </md-card>
+            </div>
+            <div class="md-layout-item md-size-33">
+              <md-card>
+                <md-card-media>
+                  <md-icon class="md-size-5x"
+                    :md-src="require('../assets/icon/action-save.svg')"
+                  ></md-icon>
+                </md-card-media>
+                <md-card-header>
+                  <div class="md-title">方便儲存</div>
+                  <div class="md-subhead">Lorem ipsum dolor sit amet consectetur adi incidunt.</div>
+                </md-card-header>
+                <md-card-actions>
+                  <md-button>一個置中的Action</md-button>
+                </md-card-actions>
+              </md-card>
+              <md-card>
+                <md-card-header>
+                  <md-button class="md-title">100 W+</md-button>
+                </md-card-header>
+              </md-card>
+            </div>
+            <div class="md-layout-item md-size-33">
+              <md-card>
+                <md-card-media>
+                  <md-icon class="md-size-5x"
+                    :md-src="require('../assets/icon/action-share.svg')"
+                  ></md-icon>
+                </md-card-media>
+                <md-card-header>
+                  <div class="md-title">便捷分享</div>
+                  <div class="md-subhead">Lorem ipsum dolor sit amet consectetur adi incidunt.</div>
+                </md-card-header>
+                <md-card-actions>
+                  <md-button>一個置中的Action</md-button>
+                </md-card-actions>
+              </md-card>
+              <md-card>
+                <md-card-header>
+                  <md-button class="md-title">666 K+</md-button>
+                </md-card-header>
+              </md-card>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="md-layout-item md-size-100 mx-auto">
         <md-card>
