@@ -85,12 +85,40 @@
               <span class="md-list-item-text">News</span>
             </md-list-item>
 
-            <!-- setting -->
-            <md-list-item to="/setting">
+            <!-- setting to="/setting" -->
+            <md-list-item @click="settingTooltip = !settingTooltip">
               <md-icon
                 :md-src="require('./assets/icon/menu-Setting.svg')"
               ></md-icon>
               <span class="md-list-item-text">Setting</span>
+
+              <md-tooltip class="settingTooltip" md-delay="300"
+                md-direction="right"
+                :md-active.sync="settingTooltip">
+                <div class="md-layout md-alignment-bottom-left">
+                  <div class="md-layout md-alignment-bottom-left">
+                    <md-button class="h-button">
+                      <md-icon class="md-size-2x"
+                        :md-src="require('@/assets/icon/fontZoomIn.svg')"
+                      ></md-icon>
+                    </md-button>
+                    <md-button class="h-button">
+                      <md-icon class="md-size-2x"
+                        :md-src="require('@/assets/icon/fontOrign.svg')"
+                      ></md-icon>
+                    </md-button>
+                    <md-button class="h-button">
+                      <md-icon class="md-size-2x"
+                        :md-src="require('@/assets/icon/fontZoomOut.svg')"
+                      ></md-icon>
+                    </md-button>
+                  </div>
+                </div>
+                <div class="md-layout md-alignment-bottom-left">
+                  <md-icon class="md-size-2x md-layout-item">brightness_4</md-icon>
+                  <md-icon class="md-size-2x md-layout-item">brightness_5</md-icon>
+                </div>
+              </md-tooltip>
             </md-list-item>
 
             <!-- member -->
@@ -191,6 +219,7 @@ export default {
     return {
       search: '',
       menuVisible: false,
+      settingTooltip: false,
       signUpBtn: false,
       signInBtn: false,
       // alert 訊息控制 false 是不跳 alert
