@@ -27,7 +27,7 @@
               </div>
               <div class="md-layout-item md-size-15">
                 <md-icon class="md-size-3x"
-                  :md-src="require('../assets/icon/temp-novel.svg')">
+                  :md-src="require('../assets/icon/temp-'+tempIcon+'.svg')">
                 </md-icon>
               </div>
             </div>
@@ -38,13 +38,8 @@
           </md-card-media>
 
           <md-card-content class="md-layout">
-            <div class="md-body-1">
-              <!-- v-html="" -->
-              <pre>{{ textarea }}</pre>
-            </div>
-            <div class="md-body-1">
-              <pre>{{ text }}</pre>
-            </div>
+            <div class="md-body-1 text-pre" v-html="textarea"></div>
+            <div class="md-body-1 text-pre" v-html="text"></div>
             <div class="md-subheading">{{ source }}</div>
           </md-card-content>
         </md-card>
@@ -65,7 +60,8 @@
           <md-icon>cloud_download</md-icon>
         </md-button>
 
-        <md-button class="md-layout-item md-primary" @click="showCardById">Close</md-button>
+        <md-button class="md-layout-item md-primary"
+        @click="showCardById = false">Close</md-button>
       </md-dialog-actions>
     </md-dialog>
 </template>
@@ -100,6 +96,10 @@ export default {
       required: true
     },
     tempCardId: {
+      type: String,
+      required: true
+    },
+    tempIcon: {
       type: String,
       required: true
     }

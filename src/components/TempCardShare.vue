@@ -1,5 +1,5 @@
 <template>
-    <md-card md-with-hover class="tempCard" v-masonry-tile>
+    <md-card md-with-hover>
       <md-card-header>
         <md-avatar class="md-large md-elevation-5">
           <Avatar />
@@ -18,12 +18,8 @@
       </md-card-media>
 
       <md-card-content class="md-layout">
-        <div class="md-body-1">
-          <pre>{{ item.textarea }}</pre>
-        </div>
-        <div class="md-body-1">
-          <pre>{{ item.text }}</pre>
-        </div>
+        <div class="md-body-1 text-pre" v-html="item.textarea"></div>
+        <div class="md-body-1 text-pre" v-html="item.text"></div>
         <div class="md-subheading">{{ item.source }}</div>
         <!-- showCardById 顯示個別文章的 modal -->
         <md-button class="md-icon-button"
@@ -34,7 +30,7 @@
 
       <md-card-actions  md-alignment="space-between">
         <md-button class="md-icon-button">
-          <md-icon :md-src="require('../assets/icon/temp-novel.svg')"></md-icon>
+          <md-icon :md-src="require('../assets/icon/temp-'+tempIcon+'.svg')"></md-icon>
         </md-button>
 
         <md-speed-dial class="md-bottom-right" md-direction="top">
@@ -81,7 +77,8 @@
         v-if="showCardById"
         :showCardModal="showCardById"
         @closeModal="showCardById = false"
-        :tempCardId="item._id">
+        :tempCardId="item._id"
+        :tempIcon="tempIcon">
       </TempCardShowById>
     </md-card>
 </template>
@@ -104,6 +101,10 @@ export default {
   props: {
     item: {
       type: Object,
+      required: true
+    },
+    tempIcon: {
+      type: String,
       required: true
     }
   }

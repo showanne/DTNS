@@ -1,14 +1,37 @@
 #collection {
-  .masonry-container > .md-card{
+  .masonry-container {
+   .tempCard{
+    min-width: 299px;
     max-width: 299px;
-    margin: 1rem;
-    @media (min-width: 1500px) {
-      max-width: 350px;
+    margin: 1.5rem;
+      @media (min-width: 1500px) {
+        min-width: 350px;
+        max-width: 350px;
+      }
+      @include md-layout-xsmall {
+        min-width: 95%;
+        max-width: 95%;
+        margin: 1rem auto 1rem 1.5rem;
+      }   
     }
-    @include md-layout-xsmall {
-      max-width: 100%;
-    }   
   }
+
+  // .text-pre{
+  //   white-space: pre;
+  // }
+
+  .md-content.md-tabs-content{
+    height: unset !important;
+  }
+
+
+  // .md-tabs .md-tabs-container .md-tab{
+  //   min-height: calc(100vh - 72px);
+    
+  //   @include md-layout-xsmall {
+  //     min-height: calc(100vh - 64px);
+  //   }
+  // }
   
   .md-card-header .md-avatar {
     // float: left; 預設讓標題字不會貼邊
