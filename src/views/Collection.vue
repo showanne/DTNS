@@ -7,33 +7,32 @@
                 :id="'tab-'+temp.subhead"
                 :md-label="temp.name"
                 :md-icon="require('../assets/icon/temp-'+temp.subhead+'.svg')"
-                ></md-tab>
+                 md-scrollbar>
                 <!-- v-for="(temp, T) in tempList" :key="T" @click="tempShow(T) -->
                 <!-- :to="'/collection/'+temp.subhead" -->
                 <!-- v-if="+temp.show"  -->
+            <!-- v-if="item.template == tempCardShow" -->
+          <div
+            class="masonry-container"
+            v-masonry
+            transition-duration="0.3s"
+            item-selector=".tempCard"
+            fit-width="true">
+            <!-- v-masonry="containerId + T"
+                 官方Demo 也沒有給 containerId，可能下方 .$redrawVueMasonry 會自動抓取? 給了會有 errorMsg -->
+              <!-- v-masonry-tile class="tempCard"
+                   這2個套件所需屬性寫在 TempCardShare>md-card 上 -->
+            <TempCardShare
+              v-for="item in article"
+              :key="item._id"
+              :item="item"
+              :tempIcon="temp.subhead"
+              @click="showCardById = true">
+            </TempCardShare>
+            <!-- v-if="item.template == tempCardShow" -->
+          </div>
+        </md-tab>
       </md-tabs>
-    </div>
-    <div class="md-layout-item md-size-100">
-      <transition>
-        <!-- <keep-alive> -->
-          <!-- <router-view> -->
-          <!-- </router-view> -->
-        <!-- </keep-alive> -->
-      </transition>
-      <div
-        class="masonry-container"
-        v-masonry
-        transition-duration="0.3s"
-        item-selector=".masonry-container > .md-card"
-        fit-width="true">
-        <TempCardShare
-          v-for="item in article"
-          :key="item._id"
-          :item="item"
-          @click="showCardById = true">
-        </TempCardShare>
-        <!-- v-if="item.template == tempCardShow" -->
-      </div>
     </div>
   </div>
 </template>
@@ -79,6 +78,8 @@ export default {
         }
         return article
       })
+      // this.$redrawVueMasonry('containerId' + this.tempCardShow)
+      this.$redrawVueMasonry('containerId')
     } catch (error) {
       console.log(error)
       // let errorMsg = ''

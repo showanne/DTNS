@@ -1,5 +1,5 @@
 <template>
-    <md-card md-with-hover class="tempCard">
+    <md-card md-with-hover class="tempCard" v-masonry-tile>
       <md-card-header>
         <md-avatar class="md-large md-elevation-5">
           <Avatar />
