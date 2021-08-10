@@ -20,8 +20,8 @@ export default {
     },
     tempList () {
       return [
-        { index: 0, show: true, name: '便利貼', subhead: 'postIt', input: '' },
-        { index: 1, show: true, name: '美字美句分享', subhead: 'share', input: '' },
+        { index: 0, show: true, name: '美字美句分享', subhead: 'share', input: '' },
+        { index: 1, show: true, name: '便利貼', subhead: 'postIt', input: '' },
         { index: 2, show: this.user.isSignIn, name: '待辦事項', subhead: 'todo', input: '' },
         { index: 3, show: this.user.isSignIn, name: '心情隨筆', subhead: 'diary', input: '' },
         { index: 4, show: this.user.isSignIn, name: '筆記', subhead: 'notes', input: '' },
