@@ -80,7 +80,7 @@ const routes = [
       // /* webpackChunkName: "admin" */ 打包時 是否要單獨存 js 檔
         path: '',
         name: 'MemberProfile',
-        component: () => import(/* webpackChunkName: "member" */ '../views/Member'),
+        component: () => import(/* webpackChunkName: "member" */ '../views/Member/MemberProfile.vue'),
         meta: {
           signIn: true,
           title: 'DTNS - MemberProfile'

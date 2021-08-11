@@ -34,13 +34,13 @@
                 <span class="md-list-item-text">Article</span>
 
                 <md-list slot="md-expand">
-                  <md-list-item  to="/member/memberArticle" class="md-inset">postIt</md-list-item>
-                  <md-list-item  to="/member/memberArticle" class="md-inset">share</md-list-item>
-                  <md-list-item  to="/member/memberArticle" class="md-inset">todo</md-list-item>
-                  <md-list-item  to="/member/memberArticle" class="md-inset">diary</md-list-item>
-                  <md-list-item  to="/member/memberArticle" class="md-inset">notes</md-list-item>
-                  <md-list-item  to="/member/memberArticle" class="md-inset">novel</md-list-item>
-                  <md-list-item class="md-inset">storage</md-list-item>
+                  <md-list-item class="md-inset"
+                    to="/member/memberArticle"
+                    v-for="(temp, T) in tempList"
+                    :key="T"
+                    @click="tempShow(T)">
+                    {{ temp.subhead }}
+                  </md-list-item>
                 </md-list>
               </md-list-item>
 
@@ -85,7 +85,21 @@ export default {
   computed: {
     user () {
       return this.$store.state.user
+    },
+    tempCardShow () {
+      return this.$store.state.tempCardShow
+    }
+  },
+  methods: {
+    tempShow (T) {
+      this.$store.commit('tempShow', T)
     }
   }
+  // watch: {
+  //   tempCardShow: function (val) {
+  //     // console.log(val)
+  //     this.tempCardShow = val
+  //   }
+  // }
 }
 </script>
