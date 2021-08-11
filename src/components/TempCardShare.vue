@@ -33,25 +33,28 @@
           <md-icon :md-src="require('../assets/icon/temp-'+tempIcon+'.svg')"></md-icon>
         </md-button>
 
-        <md-speed-dial class="md-bottom-right" md-direction="top">
-          <md-speed-dial-target>
+        <md-speed-dial class="md-bottom-right" md-direction="top"  md-event="click">
+          <md-speed-dial-target class="md-dense">
             <md-icon class="md-morph-initial">add</md-icon>
             <md-icon class="md-morph-final">edit</md-icon>
           </md-speed-dial-target>
 
           <md-speed-dial-content>
 
-            <md-button class="md-icon-button">
-              <md-icon>volunteer_activism</md-icon>
+            <md-button class="md-icon-button md-dense">
+              <md-icon :md-src="require('../assets/icon/action-save.svg')"></md-icon>
+              <md-tooltip md-direction="right" md-delay="300">39</md-tooltip>
+
             </md-button>
 
-            <md-button class="md-icon-button">
-              <md-icon>thumb_up_alt</md-icon>
-              <span>59</span>
+            <md-button class="md-icon-button md-dense">
+              <md-icon :md-src="require('../assets/icon/action-good.svg')"></md-icon>
+              <md-tooltip md-direction="right" md-delay="300">59</md-tooltip>
             </md-button>
 
-            <md-button class="md-icon-button">
-              <md-icon>cloud_download</md-icon>
+            <md-button class="md-icon-button md-dense">
+              <md-icon :md-src="require('../assets/icon/action-share.svg')"></md-icon>
+              <md-tooltip md-direction="right" md-delay="300">109</md-tooltip>
             </md-button>
           </md-speed-dial-content>
         </md-speed-dial>

@@ -85,6 +85,28 @@
   }
 }
 
+.md-speed-dial{
+  .md-fab {
+    box-shadow: unset;
+    width: unset;
+    // height: unset;
+  }
+
+  .md-fab,
+  .md-fab .md-ripple,
+  .md-fab:before,
+  .md-icon-button,
+  .md-icon-button .md-ripple,
+  .md-icon-button:before {
+    border-radius: unset;
+  }
+
+  &.md-bottom-right{
+    right: 12px;
+    bottom: 12px;
+  }
+}
+
 .showCardModal{
   .md-card {
     box-shadow: unset;
