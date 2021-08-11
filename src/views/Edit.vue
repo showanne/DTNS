@@ -59,7 +59,7 @@
 
             <md-card-content>
               <div class="md-layout md-alignment-center-center">
-                <div class="md-layout-item md-size-90 md-small-size-80 md-xsmall-size-100">
+                <div class="md-layout-item md-size-90">
                   <md-field>
                     <label>Title</label>
                     <md-textarea v-model="tempForm.title" md-autogrow></md-textarea>
@@ -69,8 +69,8 @@
                 <div class="md-layout-item md-size-90">
                   <img-inputer v-model="tempForm.image"
                     accept="image/*" theme="material"
-                    auto-upload="true"
-                    capture="true"
+                    :auto-upload="true"
+                    :capture="true"
                     placeholder="點擊或拖曳選擇圖片"
                     bottom-text="點擊或拖曳以修改" />
                     <!-- 尺寸 size="large"
@@ -126,21 +126,25 @@
               <!-- TODO: 調整 progress-bar 參數 md-mode="buffer" :md-value="29"
               :md-buffer="66" -->
 
-            <md-card-actions class="md-layout md-alignment-space-between-center">
-              <div class="md-layout-item md-size-25 md-xsmall-size-25">
-                <label class="label">share</label>
-                <md-switch v-model="tempForm.share"
-                  class="md-primary" ></md-switch>
-              </div>
+            <md-card-actions class="md-layout md-alignment-center-center">
+              <div class="md-layout-item md-size-90">
+                <div class="md-layout md-alignment-center-space-between">
+                  <div class="md-layout-item md-size-25">
+                    <label class="label">share</label>
+                    <md-switch v-model="tempForm.share"
+                      class="md-primary" ></md-switch>
+                  </div>
 
-              <div class="md-layout-item md-size-35 md-xsmall-size-100">
-                <md-button type="reset" class="md-raised">
-                  RESET
-                </md-button>
-                <md-button type="submit" class="md-raised"
-                  :disabled="sending">
-                  Submit
-                </md-button>
+                  <div class="md-layout-item md-size-75 md-alignment-center-space-between">
+                    <md-button type="reset" class="md-raised">
+                      RESET
+                    </md-button>
+                    <md-button type="submit" class="md-raised"
+                      :disabled="sending">
+                      Submit
+                    </md-button>
+                  </div>
+                </div>
               </div>
             </md-card-actions>
           </md-card>

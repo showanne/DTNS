@@ -1,5 +1,9 @@
 /* home */
 #home {
+
+}
+
+.intro{
   // 調整卡片間距
   .md-card{
     margin-top: 1.5rem;
@@ -8,4 +12,32 @@
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;
   }
+}
+
+.VueCarousel{
+  max-height: calc(100vh - 64px);
+  //  ↑ 要多減 16 因為 margin 負的會撐開 -> 好像不用
+  // 抵銷 .md-app-content 的 padding: 16px;
+  margin: auto -16px -16px -16px;
+  
+  @include md-layout-small {
+    // min-height: calc(100vh - 64px);
+  }
+
+  h4{
+    margin: 0 0 32px 0;
+    padding-right: 79px;
+
+    @include md-layout-small {
+      margin: 0 0 -19px 0;
+      padding-right: 59px;
+    }
+  }
+
+  // img{
+  //   width: 100%;
+  //   height: 100%;
+  //   object-fit: cover;
+  // }
+
 }

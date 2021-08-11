@@ -1,14 +1,10 @@
 // 網頁內容高度
 .h-content{
-  // xsmall
-  min-height: calc(100vh - 64px);
-
-  @media (min-width: 600px) {
-    min-height: calc(100vh - 72px);
+  min-height: calc(100vh - 72px);
+  
+  @include md-layout-xsmall {
+   min-height: calc(100vh - 64px);
   }
-  // @include md-layout-xsmall {
-  //   min-height: calc(100vh - 72px);
-  // }
 }
 
 // For Btn

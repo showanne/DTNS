@@ -2,40 +2,30 @@
   <div id="app">
     <div id="nav" class="page-container" nav-pills-icons>
       <md-app md-waterfall md-mode="fixed">
-        <md-app-toolbar
-          class="md-accent md-layout md-gutter md-alignment-center-space-between"
-        >
-          <md-button class="md-menu-button">
-            <md-icon :md-src="require('./assets/icon/menu.svg')"></md-icon>
-          </md-button>
-          <!-- <md-button class="md-menu-button"
-            @click="toggleMenu" v-if="!menuVisible">
-            <md-icon>menu</md-icon>
-          </md-button> -->
-          <!-- <h3 class="md-title">DTNS</h3> md-collapse -->
-          <div
-            class="md-layout-item md-large-size-60 md-medium-size-60 md-xsmall-hide"
-          >
-            <h4>Hello user ^^</h4>
+        <md-app-toolbar class="md-accent md-layout md-alignment-center-space-between">
+          <div class="md-layout-item md-large-size-15 md-medium-size-25 md-small-50">
+            <md-button class="md-menu-button">
+              <md-icon :md-src="require('./assets/icon/menu.svg')"></md-icon>
+            </md-button>
+            <!-- <md-button class="md-menu-button"
+              @click="toggleMenu" v-if="!menuVisible">
+              <md-icon>menu</md-icon>
+            </md-button> -->
+            <!-- <h3 class="md-title">DTNS</h3> md-collapse -->
+          </div>
+          <div class="md-layout-item md-large-size-70 md-medium-size-60 md-small-50 md-xsmall-hide">
+            <h4 v-if="user.name != ''">HelloN {{ user.name }} ^^</h4>
+            <h4 v-else-if="user.name == '' && user.account != ''">HelloA {{ user.account }} ^^</h4>
+            <h4 v-else>HelloY <Anonymous style="display: inline-block; font-size: 1.5rem;" /> ^^</h4>
           </div>
 
-          <div
-            class="md-layout-item md-large-size-20 md-medium-size-33 md-xsmall-hide"
-          >
+          <div class="md-layout-item md-large-size-15 md-medium-size-15 md-xsmall-hide">
             <md-field>
               <label>Search...</label>
               <!-- search has-white -->
               <md-input v-model="search"></md-input>
               <!-- <span class="md-helper-text">Helper text</span> -->
             </md-field>
-          </div>
-
-          <div
-            class="md-layout-item md-large-size-5 md-medium-size-5 md-xsmall-hide"
-          >
-            <md-button class="md-menu-button w-unset h-unset">
-              <md-icon>tungsten</md-icon>
-            </md-button>
           </div>
         </md-app-toolbar>
 
@@ -92,32 +82,35 @@
               ></md-icon>
               <span class="md-list-item-text">Setting</span>
 
-              <md-tooltip class="settingTooltip" md-delay="300"
+              <md-tooltip class="settingTooltip md-layout md-alignment-center-center"
+                md-delay="300"
                 md-direction="right"
                 :md-active.sync="settingTooltip">
-                <div class="md-layout md-alignment-bottom-left">
-                  <div class="md-layout md-alignment-bottom-left">
-                    <md-button class="h-button">
-                      <md-icon class="md-size-2x"
-                        :md-src="require('@/assets/icon/fontZoomIn.svg')"
-                      ></md-icon>
-                    </md-button>
-                    <md-button class="h-button">
-                      <md-icon class="md-size-2x"
-                        :md-src="require('@/assets/icon/fontOrign.svg')"
-                      ></md-icon>
-                    </md-button>
-                    <md-button class="h-button">
-                      <md-icon class="md-size-2x"
-                        :md-src="require('@/assets/icon/fontZoomOut.svg')"
-                      ></md-icon>
-                    </md-button>
+                  <div class="md-layout-item md-size-100">
+                    <div class="md-layout">
+                      <md-button class="md-layout-item h-unset w-unset">
+                        <md-icon class="md-size-2x"
+                          :md-src="require('@/assets/icon/fontZoomIn.svg')"
+                        ></md-icon>
+                      </md-button>
+                      <md-button class="md-layout-item h-unset w-unset">
+                        <md-icon class="md-size-2x"
+                          :md-src="require('@/assets/icon/fontOrign.svg')"
+                        ></md-icon>
+                      </md-button>
+                      <md-button class="md-layout-item h-unset w-unset">
+                        <md-icon class="md-size-2x"
+                          :md-src="require('@/assets/icon/fontZoomOut.svg')"
+                        ></md-icon>
+                      </md-button>
+                    </div>
                   </div>
-                </div>
-                <div class="md-layout md-alignment-bottom-left">
-                  <md-icon class="md-size-2x md-layout-item">brightness_4</md-icon>
-                  <md-icon class="md-size-2x md-layout-item">brightness_5</md-icon>
-                </div>
+                  <div class="md-layout-item md-size-100">
+                    <div class="md-layout">
+                    <md-icon class="md-layout-item md-size-2x">brightness_4</md-icon>
+                    <md-icon class="md-layout-item md-size-2x">brightness_5</md-icon>
+                    </div>
+                  </div>
               </md-tooltip>
             </md-list-item>
 
@@ -213,6 +206,7 @@
 <script>
 // components元件
 import SignModal from '@/components/SignModal.vue'
+import Anonymous from '@/components/Anonymous.vue'
 
 export default {
   data () {
@@ -227,7 +221,13 @@ export default {
     }
   },
   components: {
-    SignModal
+    SignModal,
+    Anonymous
+  },
+  computed: {
+    user () {
+      return this.$store.state.user
+    }
   },
   methods: {
     async signOutBtn () {

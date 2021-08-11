@@ -2,7 +2,7 @@
   <div id="home">
     <div class="md-layout">
       <div class="md-layout-item md-size-100">
-        <div class="h-content">
+        <div class="intro h-content">
           <div class="md-display-3">文字的溫度</div>
           <div class="md-display-2">每字美句每個你喜歡的瞬間</div>
           <div class="md-layout">
@@ -73,7 +73,7 @@
         </div>
       </div>
       <div class="md-layout-item md-size-100 mx-auto">
-        <md-card>
+        <!-- <md-card> -->
           <carousel
             :per-page="1"
             loop
@@ -113,7 +113,7 @@
               <img :src="carousel3" alt="carousel3" />
             </slide>
           </carousel>
-        </md-card>
+        <!-- </md-card> -->
       </div>
     </div>
   </div>

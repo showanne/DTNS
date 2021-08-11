@@ -18,11 +18,11 @@
 .md-toolbar, .md-toolbar-row {
   min-height: 64px;
   
-  @media (max-width: 600px){
+  @include md-layout-xsmall{
       min-height: 56px;
   }
   
-  @media (max-width: 960px) {
+  @include md-layout-small {
       min-height: 48px;
   }
 
@@ -31,6 +31,7 @@
 }
 
 .settingTooltip{
-  height: 109px;
+  width: 259px;
+  height: 139px;
   // left: 199px !important;
 }
