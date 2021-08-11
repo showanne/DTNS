@@ -19,7 +19,8 @@ export default new Vuex.Store({
       name: '',
       avatar: ''
       // email: ''
-    }
+    },
+    tempCardShow: 0
   },
   // 修改狀態的 function
   // 呼叫 mutations this.$store.commit('', )
@@ -40,6 +41,9 @@ export default new Vuex.Store({
       state.user.role = 0
       state.user.name = ''
       state.user.avatar = ''
+    },
+    tempShow (state, data) {
+      state.tempCardShow = data
     }
   },
   // 修改狀態的 function，支援 async

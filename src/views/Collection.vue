@@ -52,20 +52,22 @@ export default {
   },
   data () {
     return {
-      article: [],
-      tempCardShow: 0
+      article: []
+    }
+  },
+  computed: {
+    tempCardShow () {
+      return this.$store.state.tempCardShow
     }
   },
   methods: {
     tempShow (T) {
-      // console.log(T)
-      this.tempCardShow = T
-      // console.log(this.tempCardShow)
+      this.$store.commit('tempShow', T)
     }
   },
   watch: {
     tempCardShow: async function (val) {
-      // console.log(val)
+      console.log(val)
       this.tempCardShow = val
 
       try {
