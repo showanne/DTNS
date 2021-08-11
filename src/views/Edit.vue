@@ -64,7 +64,7 @@
               <!-- share -->
               <md-card-content v-if="tempForm.template === 0">
                 <div class="md-layout md-alignment-center-center">
-                  <md-field class="md-layout-item md-size-90">
+                  <md-field md-clearable class="md-layout-item md-size-90">
                     <label>{{ tempList[tempForm.template].input[1].name }}</label>
                     <md-textarea v-model="tempForm.title" md-autogrow></md-textarea>
                   </md-field>
@@ -81,7 +81,7 @@
                       在手機中使用相機 capture="true"-->
                   </div>
 
-                  <md-field class="md-layout-item md-size-90">
+                  <md-field md-clearable class="md-layout-item md-size-90">
                     <label>{{ tempList[tempForm.template].input[4].name }}</label>
                     <md-input v-model="tempForm.text"></md-input>
                     <span class="md-helper-text">作者、書名、社團名稱或某個網站...</span>
@@ -94,12 +94,13 @@
               <!-- postIt -->
               <md-card-content v-if="tempForm.template === 1">
                 <div class="md-layout md-alignment-center-center">
-                  <md-field class="md-layout-item md-size-90">
+                  <md-field md-clearable class="md-layout-item md-size-90">
                     <label>{{ tempList[tempForm.template].input[1].name }}</label>
                     <md-textarea v-model="tempForm.title" md-autogrow></md-textarea>
                   </md-field>
 
-                  <md-field class="md-layout-item md-size-90">
+                  <md-field md-clearable :md-counter="true"
+                  class="md-layout-item md-size-90">
                     <label>{{ tempList[tempForm.template].input[3].name }}</label>
                     <md-input v-model="tempForm.text"></md-input>
                   </md-field>
@@ -109,7 +110,7 @@
               <!-- todo -->
               <md-card-content v-if="tempForm.template === 2">
                 <div class="md-layout md-alignment-center-center">
-                  <md-field class="md-layout-item md-size-90">
+                  <md-field md-clearable class="md-layout-item md-size-90">
                     <label>{{ tempList[tempForm.template].input[1].name }}</label>
                     <md-textarea v-model="tempForm.title" md-autogrow></md-textarea>
                   </md-field>
@@ -121,7 +122,7 @@
                       md-immediately />
                   </div>
 
-                  <md-field class="md-layout-item md-size-90">
+                  <md-field md-clearable class="md-layout-item md-size-90">
                     <label>{{ tempList[tempForm.template].input[4].name }}</label>
                     <md-input v-model="tempForm.text"></md-input>
                     <span class="md-helper-text">輸入待辦事項</span>
@@ -133,7 +134,7 @@
               <!-- diary -->
               <md-card-content v-if="tempForm.template === 3">
                 <div class="md-layout md-alignment-center-center">
-                  <md-field class="md-layout-item md-size-90">
+                  <md-field md-clearable class="md-layout-item md-size-90">
                     <label>{{ tempList[tempForm.template].input[1].name }}</label>
                     <md-textarea v-model="tempForm.title" md-autogrow></md-textarea>
                   </md-field>
@@ -145,12 +146,12 @@
                       md-immediately />
                   </div>
 
-                  <md-field class="md-layout-item md-size-90">
+                  <md-field md-clearable class="md-layout-item md-size-90">
                     <label>{{ tempList[tempForm.template].input[4].name }}</label>
                     <md-textarea v-model="tempForm.textarea"></md-textarea>
                   </md-field>
 
-                  <md-field class="md-layout-item md-size-90">
+                  <md-field md-clearable class="md-layout-item md-size-90">
                     <label for="select">{{ tempList[tempForm.template].input[5].name }}</label>
                     <md-select
                       v-model="tempForm.select"
@@ -172,12 +173,12 @@
               <!-- notes -->
               <md-card-content v-if="tempForm.template === 4">
                 <div class="md-layout md-alignment-center-center">
-                  <md-field class="md-layout-item md-size-90">
+                  <md-field md-clearable class="md-layout-item md-size-90">
                     <label>{{ tempList[tempForm.template].input[1].name }}</label>
                     <md-textarea v-model="tempForm.title" md-autogrow></md-textarea>
                   </md-field>
 
-                  <md-field class="md-layout-item md-size-90">
+                  <md-field md-clearable class="md-layout-item md-size-90">
                     <label>{{ tempList[tempForm.template].input[3].name }}</label>
                     <md-textarea v-model="tempForm.textarea"></md-textarea>
                   </md-field>
@@ -187,12 +188,12 @@
               <!-- novel -->
               <md-card-content v-if="tempForm.template === 5">
                 <div class="md-layout md-alignment-center-center">
-                  <md-field class="md-layout-item md-size-90">
+                  <md-field md-clearable class="md-layout-item md-size-90">
                     <label>{{ tempList[tempForm.template].input[1].name }}</label>
                     <md-textarea v-model="tempForm.title" md-autogrow></md-textarea>
                   </md-field>
 
-                  <md-field class="md-layout-item md-size-90">
+                  <md-field md-clearable class="md-layout-item md-size-90">
                     <label>{{ tempList[tempForm.template].input[3].name }}</label>
                     <md-input v-model="tempForm.text"></md-input>
                   </md-field>
@@ -209,12 +210,12 @@
                       在手機中使用相機 capture="true"-->
                   </div>
 
-                  <md-field class="md-layout-item md-size-90">
+                  <md-field md-clearable class="md-layout-item md-size-90">
                     <label>{{ tempList[tempForm.template].input[5].name }}</label>
                     <md-textarea v-model="tempForm.textarea"></md-textarea>
                   </md-field>
 
-                  <md-field class="md-layout-item md-size-90">
+                  <md-field md-clearable class="md-layout-item md-size-90">
                     <label for="select">{{ tempList[tempForm.template].input[6].name }}</label>
                     <md-select
                       v-model="tempForm.select"
@@ -244,7 +245,7 @@
               <!-- storage -->
               <md-card-content v-if="tempForm.template === 6">
                 <div class="md-layout md-alignment-center-center">
-                  <md-field class="md-layout-item md-size-90">
+                  <md-field md-clearable class="md-layout-item md-size-90">
                     <label>{{ tempList[tempForm.template].input[1].name }}</label>
                     <md-textarea v-model="tempForm.title" md-autogrow></md-textarea>
                   </md-field>
@@ -261,12 +262,12 @@
                       在手機中使用相機 capture="true"-->
                   </div>
 
-                  <md-field class="md-layout-item md-size-90">
+                  <md-field md-clearable class="md-layout-item md-size-90">
                     <label>{{ tempList[tempForm.template].input[3].name }}</label>
                     <md-textarea v-model="tempForm.textarea"></md-textarea>
                   </md-field>
 
-                  <md-field class="md-layout-item md-size-90">
+                  <md-field md-clearable class="md-layout-item md-size-90">
                     <label>{{ tempList[tempForm.template].input[4].name }}</label>
                     <md-input v-model="tempForm.text"></md-input>
                   </md-field>
