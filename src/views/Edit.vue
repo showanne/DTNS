@@ -341,8 +341,8 @@ export default {
         _id: '', // 方便編輯
         template: 0,
         title: '',
-        author: this.user.name,
-        avatar: this.user.avatar,
+        author: '',
+        avatar: '',
         share: true,
         image: null,
         textarea: '',
@@ -359,6 +359,14 @@ export default {
       formSaved: false,
       // 提示框訊息
       savedMsg: ''
+    }
+  },
+  watch: {
+    author: function () {
+      this.author = this.user.name
+    },
+    avatar: function () {
+      this.avatar = this.user.avatar
     }
   },
   methods: {
@@ -413,8 +421,7 @@ export default {
       this.tempForm = {
         _id: '', // 方便編輯
         template: 0,
-        title: 'text',
-        share: true,
+        title: '',
         image: null,
         textarea: '',
         text: '',
