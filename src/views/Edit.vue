@@ -44,123 +44,282 @@
       <div id="tempEdit"
         class="md-layout-item md-size-66 md-small-size-100 md-xsmall-size-100"
       >
-      <div class="md-layout md-alignment-center-center" style="background: #FFFDF5; padding:2rem;">
+      <div class="md-layout md-alignment-center-center" style="padding:2rem;">
         <form class="md-layout-item md-size-66 md-xsmall-size-100"
             @submit.prevent="submitEdit"
             @reset="clearForm">
-          <md-card>
-            <md-card-header>
-              <h4 class="title">
-                <!-- Edit temp name -->
-                {{ tempList[tempForm.template].name }}
-              </h4>
-              <!-- <p class="category">小標文字</p> -->
-            </md-card-header>
+            <md-card style="padding: 1.3rem 0 1rem 0;">
+              <md-card-header>
+                <h4 class="title">
+                  <!-- Edit temp name -->
+                  {{ tempList[tempForm.template].name }}
+                </h4>
+                <p class="category">
+                  <!-- author name -->
+                  {{ tempForm.author }}
+                  <!-- {{ tempList[tempForm.template].input[2].name }} -->
+                </p>
+              </md-card-header>
 
-            <md-card-content>
-              <div class="md-layout md-alignment-center-center">
-                <div class="md-layout-item md-size-90">
-                  <md-field>
-                    <label>Title</label>
+              <!-- share -->
+              <md-card-content v-if="tempForm.template === 0">
+                <div class="md-layout md-alignment-center-center">
+                  <md-field class="md-layout-item md-size-90">
+                    <label>{{ tempList[tempForm.template].input[1].name }}</label>
                     <md-textarea v-model="tempForm.title" md-autogrow></md-textarea>
                   </md-field>
+
+                  <div class="md-layout-item md-size-90">
+                    <img-inputer v-model="tempForm.image"
+                      accept="image/*" theme="material"
+                      :auto-upload="true"
+                      :capture="true"
+                      :placeholder="'點擊或拖曳選擇'+tempList[tempForm.template].input[3].name"
+                      bottom-text="點擊或拖曳以修改" />
+                      <!-- 尺寸 size="large"
+                      自動上傳 auto-upload="true"
+                      在手機中使用相機 capture="true"-->
+                  </div>
+
+                  <md-field class="md-layout-item md-size-90">
+                    <label>{{ tempList[tempForm.template].input[4].name }}</label>
+                    <md-input v-model="tempForm.text"></md-input>
+                    <span class="md-helper-text">作者、書名、社團名稱或某個網站...</span>
+                    <!-- <md-input v-model="tempForm.text"></md-input>
+                    <span class="md-helper-text">來源連結</span> -->
+                  </md-field>
+                </div>
+              </md-card-content>
+
+              <!-- postIt -->
+              <md-card-content v-if="tempForm.template === 1">
+                <div class="md-layout md-alignment-center-center">
+                  <md-field class="md-layout-item md-size-90">
+                    <label>{{ tempList[tempForm.template].input[1].name }}</label>
+                    <md-textarea v-model="tempForm.title" md-autogrow></md-textarea>
+                  </md-field>
+
+                  <md-field class="md-layout-item md-size-90">
+                    <label>{{ tempList[tempForm.template].input[3].name }}</label>
+                    <md-input v-model="tempForm.text"></md-input>
+                  </md-field>
+                </div>
+              </md-card-content>
+
+              <!-- todo -->
+              <md-card-content v-if="tempForm.template === 2">
+                <div class="md-layout md-alignment-center-center">
+                  <md-field class="md-layout-item md-size-90">
+                    <label>{{ tempList[tempForm.template].input[1].name }}</label>
+                    <md-textarea v-model="tempForm.title" md-autogrow></md-textarea>
+                  </md-field>
+
+                  <div class="md-layout-item md-size-90">
+                    <label class="label">{{ tempList[tempForm.template].input[3].name }}</label>
+                    <md-datepicker
+                      v-model="tempForm.datepicker"
+                      md-immediately />
+                  </div>
+
+                  <md-field class="md-layout-item md-size-90">
+                    <label>{{ tempList[tempForm.template].input[4].name }}</label>
+                    <md-input v-model="tempForm.text"></md-input>
+                    <span class="md-helper-text">輸入待辦事項</span>
+                  </md-field>
                 </div>
 
-                <div class="md-layout-item md-size-90">
-                  <img-inputer v-model="tempForm.image"
-                    accept="image/*" theme="material"
-                    :auto-upload="true"
-                    :capture="true"
-                    placeholder="點擊或拖曳選擇圖片"
-                    bottom-text="點擊或拖曳以修改" />
-                    <!-- 尺寸 size="large"
-                     自動上傳 auto-upload="true"
-                     在手機中使用相機 capture="true"-->
-                </div>
+              </md-card-content>
 
-                <div class="md-layout-item md-size-90">
-                  <md-field>
-                    <label>Textarea</label>
+              <!-- diary -->
+              <md-card-content v-if="tempForm.template === 3">
+                <div class="md-layout md-alignment-center-center">
+                  <md-field class="md-layout-item md-size-90">
+                    <label>{{ tempList[tempForm.template].input[1].name }}</label>
+                    <md-textarea v-model="tempForm.title" md-autogrow></md-textarea>
+                  </md-field>
+
+                  <div class="md-layout-item md-size-90">
+                    <label class="label">{{ tempList[tempForm.template].input[3].name }}</label>
+                    <md-datepicker
+                      v-model="tempForm.datepicker"
+                      md-immediately />
+                  </div>
+
+                  <md-field class="md-layout-item md-size-90">
+                    <label>{{ tempList[tempForm.template].input[4].name }}</label>
                     <md-textarea v-model="tempForm.textarea"></md-textarea>
                   </md-field>
-                </div>
 
-                <div class="md-layout-item md-size-90">
-                  <md-field>
-                    <label>text</label>
-                    <md-input v-model="tempForm.text"></md-input>
-                    <span class="md-helper-text">Helper text</span>
-                  </md-field>
-                </div>
-
-                <div class="md-layout-item md-size-90">
-                  <md-field>
-                    <label for="select">select</label>
+                  <md-field class="md-layout-item md-size-90">
+                    <label for="select">{{ tempList[tempForm.template].input[5].name }}</label>
                     <md-select
                       v-model="tempForm.select"
                       name="select"
-                      id="select"
-                      placeholder="select" >
+                      :placeholder="tempList[tempForm.template].input[5].name" >
                       <md-option>
                         <!-- 第一個空白選項 -->
                       </md-option>
                       <md-option
-                        v-for="(Sitem, s) in selectList[0]"
+                        v-for="(Sitem, s) in tempList[tempForm.template].input[5].selectList"
                         :key="s" :value="s">
                         {{ Sitem }}
                       </md-option>
                     </md-select>
                   </md-field>
                 </div>
+              </md-card-content>
 
+              <!-- notes -->
+              <md-card-content v-if="tempForm.template === 4">
+                <div class="md-layout md-alignment-center-center">
+                  <md-field class="md-layout-item md-size-90">
+                    <label>{{ tempList[tempForm.template].input[1].name }}</label>
+                    <md-textarea v-model="tempForm.title" md-autogrow></md-textarea>
+                  </md-field>
+
+                  <md-field class="md-layout-item md-size-90">
+                    <label>{{ tempList[tempForm.template].input[3].name }}</label>
+                    <md-textarea v-model="tempForm.textarea"></md-textarea>
+                  </md-field>
+                </div>
+              </md-card-content>
+
+              <!-- novel -->
+              <md-card-content v-if="tempForm.template === 5">
+                <div class="md-layout md-alignment-center-center">
+                  <md-field class="md-layout-item md-size-90">
+                    <label>{{ tempList[tempForm.template].input[1].name }}</label>
+                    <md-textarea v-model="tempForm.title" md-autogrow></md-textarea>
+                  </md-field>
+
+                  <md-field class="md-layout-item md-size-90">
+                    <label>{{ tempList[tempForm.template].input[3].name }}</label>
+                    <md-input v-model="tempForm.text"></md-input>
+                  </md-field>
+
+                  <div class="md-layout-item md-size-90">
+                    <img-inputer v-model="tempForm.image"
+                      accept="image/*" theme="material"
+                      :auto-upload="true"
+                      :capture="true"
+                      :placeholder="'點擊或拖曳選擇'+tempList[tempForm.template].input[2].name"
+                      bottom-text="點擊或拖曳以修改" />
+                      <!-- 尺寸 size="large"
+                      自動上傳 auto-upload="true"
+                      在手機中使用相機 capture="true"-->
+                  </div>
+
+                  <md-field class="md-layout-item md-size-90">
+                    <label>{{ tempList[tempForm.template].input[5].name }}</label>
+                    <md-textarea v-model="tempForm.textarea"></md-textarea>
+                  </md-field>
+
+                  <md-field class="md-layout-item md-size-90">
+                    <label for="select">{{ tempList[tempForm.template].input[6].name }}</label>
+                    <md-select
+                      v-model="tempForm.select"
+                      name="select"
+                      :placeholder="tempList[tempForm.template].input[6].name" >
+                      <md-option>
+                        <!-- 第一個空白選項 -->
+                      </md-option>
+                      <md-option
+                        v-for="(Sitem, s) in tempList[tempForm.template].input[6].selectList"
+                        :key="s" :value="s">
+                        {{ Sitem }}
+                      </md-option>
+                    </md-select>
+                  </md-field>
+
+                  <div class="md-layout-item md-size-90">
+                    <label class="label">{{ tempList[tempForm.template].input[7].name }}</label>
+                    <md-datepicker
+                      v-model="tempForm.datepicker"
+                      md-immediately />
+                  </div>
+                </div>
+
+              </md-card-content>
+
+              <!-- storage -->
+              <md-card-content v-if="tempForm.template === 6">
+                <div class="md-layout md-alignment-center-center">
+                  <md-field class="md-layout-item md-size-90">
+                    <label>{{ tempList[tempForm.template].input[1].name }}</label>
+                    <md-textarea v-model="tempForm.title" md-autogrow></md-textarea>
+                  </md-field>
+
+                  <div class="md-layout-item md-size-90">
+                    <img-inputer v-model="tempForm.image"
+                      accept="image/*" theme="material"
+                      :auto-upload="true"
+                      :capture="true"
+                      :placeholder="'點擊或拖曳選擇'+tempList[tempForm.template].input[2].name"
+                      bottom-text="點擊或拖曳以修改" />
+                      <!-- 尺寸 size="large"
+                      自動上傳 auto-upload="true"
+                      在手機中使用相機 capture="true"-->
+                  </div>
+
+                  <md-field class="md-layout-item md-size-90">
+                    <label>{{ tempList[tempForm.template].input[3].name }}</label>
+                    <md-textarea v-model="tempForm.textarea"></md-textarea>
+                  </md-field>
+
+                  <md-field class="md-layout-item md-size-90">
+                    <label>{{ tempList[tempForm.template].input[4].name }}</label>
+                    <md-input v-model="tempForm.text"></md-input>
+                  </md-field>
+
+                  <div class="md-layout-item md-size-90">
+                    <label class="label">{{ tempList[tempForm.template].input[5].name }}</label>
+                    <md-datepicker
+                      v-model="tempForm.datepicker"
+                      md-immediately />
+                  </div>
+                </div>
+
+              </md-card-content>
+
+              <md-progress-bar md-mode="indeterminate" v-if="sending" />
+                <!-- TODO: 調整 progress-bar 參數 md-mode="buffer" :md-value="29"
+                :md-buffer="66" -->
+
+              <md-card-actions class="md-layout md-alignment-center-center">
                 <div class="md-layout-item md-size-90">
-                  <md-datepicker
-                    v-model="tempForm.datepicker"
-                    md-immediately
-                  />
-                </div>
-              </div>
-            </md-card-content>
+                  <div class="md-layout md-alignment-center-space-between">
+                    <div class="md-layout-item md-size-25">
+                      <label class="label">share</label>
+                      <md-switch v-model="tempList[tempForm.template].input[0].value"
+                        class="md-primary" ></md-switch>
+                    </div>
 
-            <md-progress-bar md-mode="indeterminate" v-if="sending" />
-              <!-- TODO: 調整 progress-bar 參數 md-mode="buffer" :md-value="29"
-              :md-buffer="66" -->
-
-            <md-card-actions class="md-layout md-alignment-center-center">
-              <div class="md-layout-item md-size-90">
-                <div class="md-layout md-alignment-center-space-between">
-                  <div class="md-layout-item md-size-25">
-                    <label class="label">share</label>
-                    <md-switch v-model="tempForm.share"
-                      class="md-primary" ></md-switch>
-                  </div>
-
-                  <div class="md-layout-item md-size-75 md-alignment-center-space-between">
-                    <md-button type="reset" class="md-raised">
-                      RESET
-                    </md-button>
-                    <md-button type="submit" class="md-raised"
-                      :disabled="sending">
-                      Submit
-                    </md-button>
+                    <div class="md-layout-item md-size-75 md-alignment-center-space-between">
+                      <md-button type="reset" class="md-raised">
+                        RESET
+                      </md-button>
+                      <md-button type="submit" class="md-raised"
+                        :disabled="sending">
+                        Submit
+                      </md-button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </md-card-actions>
-          </md-card>
-
-          <!-- <md-snackbar :md-active.sync="formSaved">
-            The form {{ tempList[tempForm.template].name }} {{ tempForm.title }} was saved with success!
-          </md-snackbar> -->
+              </md-card-actions>
+            </md-card>
         </form>
       </div>
 
         <md-dialog :md-active.sync="formSaved">
           <md-dialog-title>{{ savedMsg }}</md-dialog-title>
           <md-dialog-actions>
-            <md-button class="md-primary" @click="formSaved = false">Close</md-button>
-            <md-button class="md-primary" @click="formSaved = false"
-              to="/collection">GO</md-button>
+            <md-button class="md-primary" @click="formSaved = false">關閉</md-button>
+
+            <md-button v-if="!user.isSignIn" class="md-primary" @click="formSaved = false"
+              to="/collection">去瞧瞧...</md-button>
+
+            <md-button v-else class="md-primary" @click="formSaved = false"
+              to="/member/memberArticle">去瞧瞧...</md-button>
           </md-dialog-actions>
         </md-dialog>
       </div>
@@ -178,14 +337,12 @@ export default {
   // },
   data () {
     return {
-      selectList: [
-        { 0: '開心', 1: '不好', 2: '傷心' }, // mood
-        { 0: '很重要', 1: '近期須完成', 2: '普通' } // finish
-      ],
       tempForm: {
         _id: '', // 方便編輯
         template: 0,
-        title: 'text',
+        title: '',
+        author: this.user.name,
+        avatar: this.user.avatar,
         share: true,
         image: null,
         textarea: '',
@@ -204,15 +361,6 @@ export default {
       savedMsg: ''
     }
   },
-  // created: {
-  //   pushTempList () {
-  //     return this.tempList.push({
-  //       show: true,
-  //       name: '敬請期待',
-  //       subhead: 'continue'
-  //     })
-  //   }
-  // },
   methods: {
     tempShow (T) {
       console.log(T)
@@ -278,7 +426,9 @@ export default {
     }
   },
   computed: {
-
+    user () {
+      return this.$store.getters.user
+    }
   }
 }
 </script>
