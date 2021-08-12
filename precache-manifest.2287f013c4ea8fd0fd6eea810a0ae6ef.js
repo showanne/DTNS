@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "29ab23a2c7fc9b6ec069",
+    "revision": "b88037f27e831e7dabb3",
     "url": "/css/app.cfbd0a8f.css"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/css/chunk-vendors.8814381e.css"
   },
   {
-    "revision": "4f7eb2f050a6f148b0e1",
+    "revision": "3bb8684ffc2e4e1e55c8",
     "url": "/css/contact.10023fb1.css"
   },
   {
@@ -144,44 +144,44 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/img/temp-todo.624bae4f.svg"
   },
   {
-    "revision": "c91fff1e780fe80118c5dcfd06a26931",
+    "revision": "a82d188f4b89d6844c3dcd2e82706ef9",
     "url": "/index.html"
   },
   {
-    "revision": "29ab23a2c7fc9b6ec069",
-    "url": "/js/app.63cf7c51.js"
+    "revision": "b88037f27e831e7dabb3",
+    "url": "/js/app.1fb4efcb.js"
   },
   {
     "revision": "e9477d6eb1096047d6ca",
     "url": "/js/chunk-vendors.34c1d882.js"
   },
   {
-    "revision": "fdb6d27b31584ff1a162",
-    "url": "/js/collection.7a118d68.js"
+    "revision": "4de450d5d3ea7c1db790",
+    "url": "/js/collection.7e3f70ff.js"
   },
   {
-    "revision": "4f7eb2f050a6f148b0e1",
-    "url": "/js/contact.96cf4502.js"
+    "revision": "3bb8684ffc2e4e1e55c8",
+    "url": "/js/contact.94dd0f4d.js"
   },
   {
-    "revision": "a1720886bb600779b363",
-    "url": "/js/edit.cd2cbf2a.js"
+    "revision": "ada6303925942ef77518",
+    "url": "/js/edit.d0115283.js"
   },
   {
-    "revision": "380578fd57e51dc47553",
-    "url": "/js/manage.8e1c74d1.js"
+    "revision": "e9344f1e4e9db58cf212",
+    "url": "/js/manage.95069855.js"
   },
   {
-    "revision": "bf63ea6dd342719a0283",
-    "url": "/js/member.ae5b2f7a.js"
+    "revision": "7ac861b42ce4a62cb58f",
+    "url": "/js/member.a962db07.js"
   },
   {
-    "revision": "2badb5fa02fc971e5b93",
-    "url": "/js/news.3e9b572c.js"
+    "revision": "c13614cde838f3a14f2f",
+    "url": "/js/news.5072db7e.js"
   },
   {
-    "revision": "80bd0e2deb56a030f34e",
-    "url": "/js/setting.6ea8746e.js"
+    "revision": "ae16e18e1bd1c5e6f011",
+    "url": "/js/setting.6e07d83e.js"
   },
   {
     "revision": "352e11ab125a1b14996bfdd2f0b92350",
