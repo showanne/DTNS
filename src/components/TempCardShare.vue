@@ -1,9 +1,7 @@
 <template>
     <md-card md-with-hover>
       <md-card-header class="md-layout">
-        <md-avatar class="md-large md-elevation-5">
-          <Avatar />
-        </md-avatar>
+        <Avatar class="md-large md-elevation-5" />
 
         <div class=" md-layout-item md-subhead">{{ item.author }}</div>
         <div class=" md-layout-item md-subhead">
@@ -17,9 +15,9 @@
           <img :src="item.image" alt="">
         </md-card-media>
 
-        <div class="md-title">{{ item.title }}</div>
-        <div class="md-body-1 text-pre word-break-all" v-html="item.textarea"></div>
-        <div class="md-body-1 text-pre word-break-all" v-html="item.text"></div>
+        <div class="md-title text-truncate">{{ item.title }}</div>
+        <div class="md-body-1 text-truncate word-break-all" v-html="item.textarea"></div>
+        <div class="md-body-1 text-truncate word-break-all" v-html="item.text"></div>
         <div class="md-subheading">{{ item.source }}</div>
         <!-- showCardById 顯示個別文章的 modal -->
         <span class="md-caption" @click="showCardById = true">more...</span>
@@ -78,7 +76,8 @@
         :showCardById="showCardById"
         @closeModal="showCardById = false"
         :tempCardId="item._id"
-        :tempIcon="tempIcon">
+        :tempIcon="tempIcon"
+        :tempNum="item.template">
         <!-- :showCardById="showCardById" 傳值進 TempCardShowById.vue -->
         <!-- @closeModal="showCardById = false" 接收內層傳來的值 並做 "" 內動作是改 showCardById 的值 -->
       </TempCardShowById>

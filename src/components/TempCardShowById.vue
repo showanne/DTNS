@@ -11,9 +11,7 @@
           <md-card-header>
             <div class="md-layout md-alignment-center-space-between">
               <div class="md-layout-item md-size-15">
-                <md-avatar class="md-large md-elevation-5">
-                  <Avatar />
-                </md-avatar>
+                <Avatar class="md-large md-elevation-5" />
               </div>
               <div class="md-layout-item md-size-70">
                   <div class="md-subhead d-medium-inline">{{ author }}</div>

@@ -13,13 +13,8 @@
       <div class="md-layout-item md-size-20">
         <div class="full-control" style="border:dashed 2.5px #B3AB88; padding: 16px;">
           <!-- 會員資訊 -->
-          <md-avatar v-if="user.avatar != null" class="md-large">
-            <img :src="user.avatar" alt="avatar">
-          </md-avatar>
-          <Avatar v-else />
-          <h2 v-if="user.name != null">{{ user.name }}</h2>
-          <h2 v-else-if="user.name == null && user.account != null">{{ user.account }}</h2>
-          <Anonymous v-else />
+          <Avatar class="md-large md-elevation-5" />
+          <Anonymous />
 
           <!-- 會員可用功能選單 -->
           <div class="list">

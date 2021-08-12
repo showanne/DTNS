@@ -130,7 +130,6 @@
     <md-dialog :md-active.sync="wellcomeMsg">
       <md-dialog-content>
         <Avatar />
-        <Anonymous />
         <div class="md-layout-item">
           Wellcome {{ form.account }}
           </div>
@@ -140,6 +139,8 @@
 </template>
 
 <script>
+import Avatar from '@/components/Avatar.vue'
+
 // vuelidate 驗證套件
 import { validationMixin } from 'vuelidate'
 import {
@@ -151,6 +152,9 @@ import {
 
 export default {
   name: 'SignModal',
+  components: {
+    Avatar
+  },
   mixins: [validationMixin],
   props: {
     signBtn: {
@@ -221,14 +225,15 @@ export default {
           this.wellcomeMsg = true
           this.sending = false
           // this.clearForm()
-
           this.$store.commit('signIn', data)
           if (this.user.isSignIn && this.user.isAdmin) {
             // 是管理者登入的話，登入成功後導向管理中心
             this.$router.push('/manage')
+            console.log(this.$store.state.jwt.token.length, this.$store.state.user.role, this.$store.state.jwt.token)
           } else {
             // 登入成功後導向會員中心
             this.$router.push('/member')
+            console.log(this.$store.state.jwt.token.length, this.$store.state.user.role, this.$store.state.jwt.token)
           }
         }, 1500)
       } catch (error) {

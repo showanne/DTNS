@@ -1,8 +1,11 @@
 <template>
-    <img class="avatar"
+  <md-avatar>
+    <img v-if="user.avatar != null" :src="user.avatar" alt="Avatar">
+    <img v-else class="avatar"
         :src="`https://source.boringavatars.com/${variant}/${size}/?colors=${colors[random()]},${colors[random()]}`"
         alt="Avatar"
       />
+  </md-avatar>
 </template>
 
 <style>
@@ -34,6 +37,11 @@ export default {
         // HEX 不需要 # (官方文件就沒有)
         return ['3B4058', '2A6E78', '7A907C', 'C9B180', '3E6B48', 'B5B479', 'F7E6A6']
       }
+    }
+  },
+  computed: {
+    user () {
+      return this.$store.state.user
     }
   },
   methods: {
