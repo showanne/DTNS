@@ -1,31 +1,28 @@
 <template>
     <md-card md-with-hover>
-      <md-card-header>
+      <md-card-header class="md-layout">
         <md-avatar class="md-large md-elevation-5">
           <Avatar />
         </md-avatar>
 
-        <div class="md-title">{{ item.title }}</div>
-        <div class="md-subhead">{{ item.author }}</div>
-        <div class="md-subhead">
+        <div class=" md-layout-item md-subhead">{{ item.author }}</div>
+        <div class=" md-layout-item md-subhead">
           <md-icon :md-src="require('../assets/icon/dateS.svg')"></md-icon>
           <span>{{ item.date }}</span>
         </div>
       </md-card-header>
 
-      <md-card-media v-if="item.image">
-        <img :src="item.image" alt="">
-      </md-card-media>
+      <md-card-content>
+        <md-card-media v-if="item.image">
+          <img :src="item.image" alt="">
+        </md-card-media>
 
-      <md-card-content class="md-layout">
-        <div class="md-body-1 text-pre" v-html="item.textarea"></div>
-        <div class="md-body-1 text-pre" v-html="item.text"></div>
+        <div class="md-title">{{ item.title }}</div>
+        <div class="md-body-1 text-pre word-break-all" v-html="item.textarea"></div>
+        <div class="md-body-1 text-pre word-break-all" v-html="item.text"></div>
         <div class="md-subheading">{{ item.source }}</div>
         <!-- showCardById 顯示個別文章的 modal -->
-        <md-button class="md-icon-button"
-          @click="showCardById = true">
-          <md-icon>more</md-icon>
-        </md-button>
+        <span class="md-caption" @click="showCardById = true">more...</span>
       </md-card-content>
 
       <md-card-actions  md-alignment="space-between">
@@ -40,7 +37,6 @@
           </md-speed-dial-target>
 
           <md-speed-dial-content>
-
             <md-button class="md-icon-button md-dense">
               <md-icon :md-src="require('../assets/icon/action-save.svg')"></md-icon>
               <md-tooltip md-direction="right" md-delay="300">39</md-tooltip>

@@ -17,8 +17,11 @@
   }
 
   // .text-pre{
-  //   white-space: pre;
+    // white-space: pre;
   // }
+  .word-break-all {
+		word-break: break-all;
+	}
 
   .md-content.md-tabs-content{
     height: unset !important;
@@ -129,5 +132,9 @@
     img{
       width: 600px;
     }
+  }
+
+  .md-svg-loader {
+    display: inline-block;
   }
 }

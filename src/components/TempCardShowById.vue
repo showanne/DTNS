@@ -1,7 +1,9 @@
 <template>
   <!-- showCardById 顯示個別文章的 modal -->
     <md-dialog class="showCardModal"
-      :md-active.sync="showCardById">
+      :md-active.sync="showCardById"
+      :md-click-outside-to-close="false"
+      :md-close-on-esc="false">
       <!-- :md-close-on-esc="true" -->
       <!-- <md-dialog-title>{ item.title }</md-dialog-title> -->
       <md-dialog-content  class="md-scrollbar">
@@ -45,19 +47,20 @@
         </md-card>
       </md-dialog-content>
       <md-dialog-actions class="md-layout md-alignment-space-around-center">
-        <md-button class="md-layout-item">
-          <md-icon>volunteer_activism</md-icon>
-          <span>19</span>
+        <md-button class="md-layout-item md-layout-nowrap">
+          <md-icon :md-src="require('@/assets/icon/action-save.svg')"></md-icon>
+          <span>&nbsp; 39</span>
+
         </md-button>
 
-        <md-button class="md-layout-item"
-          @click="1">
-          <md-icon>thumb_up_alt</md-icon>
-          <span>59</span>
+        <md-button class="md-layout-item md-layout-nowrap">
+          <md-icon :md-src="require('@/assets/icon/action-good.svg')"></md-icon>
+          <span>&nbsp; 59</span>
         </md-button>
 
-        <md-button class="md-layout-item">
-          <md-icon>cloud_download</md-icon>
+        <md-button class="md-layout-item md-layout-nowrap">
+          <md-icon :md-src="require('@/assets/icon/action-share.svg')"></md-icon>
+          <span>&nbsp; 109</span>
         </md-button>
 
         <md-button class="md-layout-item md-primary"
