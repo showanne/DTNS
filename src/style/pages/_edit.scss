@@ -28,16 +28,23 @@
     }
 
     img {
-      padding: 20px;
+      padding: 36px;
       position: absolute;
       right: 0;
       left: 0;
       top: 0;
       transform: translateY(0%);
       
-      @media (max-width: 960px){
+      @include md-layout-medium {
+        padding: 16px;
+      }
+      @include md-layout-small {
+        padding: 6px;
         top: 50%;
         transform: translateY(-50%);
+      }
+      @include md-layout-xsmall {
+        padding: unset;
       }
     }
   }

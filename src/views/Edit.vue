@@ -44,7 +44,7 @@
       <div id="tempEdit"
         class="md-layout-item md-size-66 md-small-size-100 md-xsmall-size-100"
       >
-      <div class="md-layout md-alignment-center-center" style="padding:2rem;">
+      <div class="md-layout md-alignment-center-center">
         <form class="md-layout-item md-size-66 md-xsmall-size-100"
             @submit.prevent="submitEdit"
             @reset="clearForm">

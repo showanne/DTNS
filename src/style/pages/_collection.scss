@@ -1,4 +1,13 @@
 #collection {
+  .md-tabs-navigation{
+    padding: 1rem;
+  }
+  
+  .md-tab-icon{
+    height: unset;
+    width: 3rem;
+  }
+
   .masonry-container {
    .tempCard{
     min-width: 299px;

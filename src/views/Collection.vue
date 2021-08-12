@@ -1,7 +1,7 @@
 <template>
   <div id="collection" class="md-layout md-alignment-center">
     <div class="md-layout-item md-size-100">
-      <md-tabs md-alignment="fixed">
+      <md-tabs md-elevation="1" md-alignment="fixed">
         <md-tab v-for="(temp, T) in tempList"
                 :key="T" @click="tempShow(T)"
                 :id="'tab-'+temp.subhead"
