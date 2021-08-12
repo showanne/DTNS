@@ -14,9 +14,9 @@
             <!-- <h3 class="md-title">DTNS</h3> md-collapse -->
           </div>
           <div class="md-layout-item md-large-size-70 md-medium-size-60 md-small-50 md-xsmall-hide">
-            <h4 v-if="user.name != ''">HelloN {{ user.name }} ^^</h4>
+            <!-- <h4 v-if="user.name != ''">HelloN {{ user.name }} ^^</h4>
             <h4 v-else-if="user.name == '' && user.account != ''">HelloA {{ user.account }} ^^</h4>
-            <h4 v-else>HelloY <Anonymous style="display: inline-block; font-size: 1.5rem;" /> ^^</h4>
+            <h4 v-else>HelloY <Anonymous style="display: inline-block; font-size: 1.5rem;" /> ^^</h4> -->
           </div>
 
           <div class="md-layout-item md-large-size-15 md-medium-size-15 md-xsmall-hide">
@@ -206,7 +206,7 @@
 <script>
 // components元件
 import SignModal from '@/components/SignModal.vue'
-import Anonymous from '@/components/Anonymous.vue'
+// import Anonymous from '@/components/Anonymous.vue'
 
 export default {
   data () {
@@ -221,8 +221,8 @@ export default {
     }
   },
   components: {
-    SignModal,
-    Anonymous
+    SignModal
+    // Anonymous
   },
   computed: {
     user () {
