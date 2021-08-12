@@ -66,9 +66,9 @@ export default {
     }
   },
   watch: {
-    tempCardShow: async function (val) {
-      console.log(val)
-      this.tempCardShow = val
+    tempCardShow: async function () {
+      // console.log(val)
+      // this.tempCardShow = val
 
       try {
         // 取得指定分類的文章 / getArticleByTemp
@@ -115,7 +115,7 @@ export default {
         return article
       })
       // this.$redrawVueMasonry('containerId' + this.tempCardShow)
-      this.$redrawVueMasonry('containerId')
+      this.$redrawVueMasonry()
     } catch (error) {
       console.log(error)
       // let errorMsg = ''
