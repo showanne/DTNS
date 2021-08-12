@@ -16,10 +16,7 @@
                 </md-avatar>
               </div>
               <div class="md-layout-item md-size-70">
-                <div class="md-title">
-                  {{ title }} By
                   <div class="md-subhead d-medium-inline">{{ author }}</div>
-                  </div>
 
                 <div class="md-subhead">
                   <md-icon class="md-icon-dateL"
@@ -35,15 +32,65 @@
             </div>
           </md-card-header>
 
-          <md-card-media v-if="image">
-            <img :src="image" :alt="title">
-          </md-card-media>
-
-          <md-card-content class="md-layout">
-            <div class="md-body-1 text-pre" v-html="textarea"></div>
-            <div class="md-body-1 text-pre" v-html="text"></div>
-            <div class="md-subheading">{{ source }}</div>
+          <!-- share -->
+          <md-card-content v-if="tempNum === 0">
+            <div class="md-title word-break-all">{{ title }}</div>
+            <md-card-media v-if="image">
+              <img :src="image" :alt="title">
+            </md-card-media>
+            <div class="md-body-1 word-break-all" v-html="text"></div>
           </md-card-content>
+
+          <!-- postIt -->
+          <md-card-content v-if="tempNum === 1">
+            <div class="md-title word-break-all">{{ title }}</div>
+            <div class="md-body-1 word-break-all" v-html="text"></div>
+          </md-card-content>
+
+          <!-- todo -->
+          <md-card-content v-if="tempNum === 2">
+            <div class="md-title word-break-all">{{ title }}</div>
+            <div class="md-caption text-medium-right">期限：{{ datepicker }}</div>
+            <div class="md-body-1 word-break-all" v-html="text"></div>
+          </md-card-content>
+
+          <!-- diary -->
+          <md-card-content v-if="tempNum === 3">
+            <div class="md-title word-break-all">{{ title }}</div>
+            <div class="md-caption text-medium-right">日期：{{ datepicker }}</div>
+            <div class="md-caption text-medium-right">心情：{{ select }}</div>
+            <div class="md-body-1 word-break-all" v-html="textarea"></div>
+          </md-card-content>
+
+          <!-- notes -->
+          <md-card-content v-if="tempNum === 4">
+            <div class="md-title word-break-all">{{ title }}</div>
+            <div class="md-body-1 word-break-all" v-html="textarea"></div>
+          </md-card-content>
+
+          <!-- novel -->
+          <md-card-content v-if="tempNum === 5">
+            <div class="md-title word-break-all">{{ title }}</div>
+            <div class="md-body-1 word-break-all" v-html="'作者：'+text"></div>
+            <div class="md-caption text-medium-right">完結日期：{{ datepicker }}</div>
+            <div class="md-caption text-medium-right">是否已完結：{{ select }}</div>
+            <md-card-media v-if="image">
+              <img :src="image" :alt="title" class="w-50">
+            </md-card-media>
+            <div class="md-body-1 word-break-all" v-html="textarea"></div>
+          </md-card-content>
+
+          <!-- storage -->
+          <md-card-content v-if="tempNum === 6">
+            <div class="md-title word-break-all">{{ title }}</div>
+            <div class="md-body-1 word-break-all" v-html="'存放地點：'+text"></div>
+            <div class="md-caption text-medium-right">購買日期：{{ datepicker }}</div>
+            <md-card-media v-if="image">
+              <img :src="image" :alt="title">
+            </md-card-media>
+            <div class="md-body-1 word-break-all" v-html="'物品狀況描述：'+textarea"></div>
+          </md-card-content>
+
         </md-card>
       </md-dialog-content>
       <md-dialog-actions class="md-layout md-alignment-space-around-center">
@@ -81,7 +128,6 @@ export default {
       template: 0,
       title: '',
       author: '',
-      source: '',
       image: '',
       textarea: '',
       text: '',
@@ -108,6 +154,11 @@ export default {
     tempIcon: {
       type: String,
       required: true
+    },
+    // 外層傳入的 template 指定用哪個模板顯示
+    tempNum: {
+      type: Number,
+      required: true
     }
   },
   async mounted () {
@@ -118,7 +169,6 @@ export default {
       this.template = data.result.template
       this.title = data.result.title
       this.author = data.result.author
-      this.source = data.result.source
       if (data.result.image) {
         this.image = `${process.env.VUE_APP_API}/file/${data.result.image}`
       }

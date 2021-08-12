@@ -16,13 +16,6 @@
     }
   }
 
-  // .text-pre{
-    // white-space: pre;
-  // }
-  .word-break-all {
-		word-break: break-all;
-	}
-
   .md-content.md-tabs-content{
     height: unset !important;
   }
@@ -40,6 +33,13 @@
     // float: left; 預設讓標題字不會貼邊
     margin: -35px 16px 5px -55px;
   }
+}
+
+.text-pre{
+  white-space: pre;
+}
+.word-break-all {
+  word-break: break-all;
 }
 
 .blockquote{
@@ -128,10 +128,10 @@
     transform: translateY(49%);
   }
 
-  .md-card-media{
-    img{
-      width: 600px;
-    }
+  .md-card-media,
+  .md-card-content{
+    width: 600px;
+    // img{}
   }
 
   .md-svg-loader {
