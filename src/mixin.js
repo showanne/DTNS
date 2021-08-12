@@ -73,6 +73,16 @@ export default {
         // show: this.user.isSignIn 因為要去動態抓user 是否有登入，所以不能放在 data 會是固定值
       ]
     },
+    menuList () {
+      return [
+        { index: 0, name: '編輯', subhead: 'Edit', show: true },
+        { index: 1, name: '分享牆', subhead: 'Collection', show: true },
+        { index: 2, name: '聯絡我們', subhead: 'Contact', show: true },
+        { index: 3, name: '最新消息', subhead: 'News', show: true }
+        // { index: 4, name: '會員中心', subhead: 'Member', show: this.user.isSignIn && !this.user.isAdmin },
+        // { index: 5, name: '管理中心', subhead: 'Manage', show: !this.user.isSignIn && this.user.isAdmin }
+      ]
+    },
     // authorName () {
     //   let authorName = ''
     //   if (this.user.name !== '' && this.user.account === '') {

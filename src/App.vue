@@ -41,36 +41,13 @@
               <h3 class="md-title">DTNS</h3>
               <!-- <img src="./assets/logo.png" alt="logo" width="90"> -->
             </md-list-item>
-            <!-- edit -->
-            <md-list-item to="/edit">
-              <md-icon
-                :md-src="require('./assets/icon/menu-Edit.svg')"
-              ></md-icon>
-              <span class="md-list-item-text">Edit</span>
-            </md-list-item>
 
-            <!-- collection -->
-            <md-list-item to="/collection">
+            <md-list-item v-for="(menu, m) in menuList" :key="m"
+             :to="'/'+menu.subhead">
               <md-icon
-                :md-src="require('./assets/icon/menu-Collection.svg')"
+                :md-src="require('./assets/icon/menu-'+menu.subhead+'.svg')"
               ></md-icon>
-              <span class="md-list-item-text">Collection</span>
-            </md-list-item>
-
-            <!-- contact -->
-            <md-list-item to="/contact">
-              <md-icon
-                :md-src="require('./assets/icon/menu-Contact.svg')"
-              ></md-icon>
-              <span class="md-list-item-text">Contact</span>
-            </md-list-item>
-
-            <!-- news -->
-            <md-list-item to="/news">
-              <md-icon
-                :md-src="require('./assets/icon/menu-News.svg')"
-              ></md-icon>
-              <span class="md-list-item-text">News</span>
+              <span class="md-list-item-text">{{ menu.name }}</span>
             </md-list-item>
 
             <!-- setting to="/setting" -->
@@ -78,7 +55,7 @@
               <md-icon
                 :md-src="require('./assets/icon/menu-Setting.svg')"
               ></md-icon>
-              <span class="md-list-item-text">Setting</span>
+              <span class="md-list-item-text">設定</span>
 
               <md-tooltip class="settingTooltip md-layout md-alignment-center-center"
                 md-delay="300"
@@ -117,7 +94,7 @@
               <md-icon
                 :md-src="require('./assets/icon/menu-Member.svg')"
               ></md-icon>
-              <span class="md-list-item-text">Member</span>
+              <span class="md-list-item-text">會員中心</span>
             </md-list-item>
 
             <!-- manage -->
@@ -125,7 +102,7 @@
               <md-icon
                 :md-src="require('./assets/icon/menu-Manage.svg')"
               ></md-icon>
-              <span class="md-list-item-text">Manage</span>
+              <span class="md-list-item-text">管理中心</span>
             </md-list-item>
 
             <!-- Sign Up -->
