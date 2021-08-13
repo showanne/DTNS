@@ -31,7 +31,7 @@
           <md-tab id="tab-manage" md-label="manage" md-icon="person">
             <form
               novalidate
-              class="md-layout"
+              class="md-layout md-small-hide"
               @submit.prevent="validateUser"
               @reset="clearForm"
             >
@@ -115,6 +115,14 @@
               :md-content="message" /> -->
 
             </form>
+
+            <!-- small 以下尺寸禁止管理者登入 -->
+            <md-empty-state
+              class="md-small-show"
+              md-icon="no_accounts"
+              md-label="為了您的管理體驗"
+              md-description="螢幕尺寸小於 960px 禁止管理者登入後台！">
+            </md-empty-state>
           </md-tab>
         </md-tabs>
       </md-dialog-content>

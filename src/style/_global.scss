@@ -29,3 +29,11 @@
   margin-top: 16px;
   margin-bottom: 16px;
 }
+
+// 登入的帳號密碼欄位在 960px 以下不顯示
+.md-small-show{
+  display: none;
+  @include md-layout-small {
+    display: flex;
+   }
+}
