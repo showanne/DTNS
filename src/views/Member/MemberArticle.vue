@@ -3,6 +3,20 @@
     memberArticlememberArticle
     <br> {{ tempCardShow }}
     {{ articleM }}
+    <md-button class="md-primary" @click="editArticle(index)">編輯</md-button>
+    <md-button class="md-primary" @click="deleteArticle(item)">刪除</md-button>
+
+    <!-- 編輯 modal -->
+    <md-dialog :md-active.sync="editArticleModal">
+      <md-dialog-title>編輯文章</md-dialog-title>
+      <md-dialog-content>
+
+      </md-dialog-content>
+      <md-dialog-actions>
+        <md-button class="md-primary" @click="submitArticle">確定</md-button>
+        <md-button class="md-primary" @click="editArticleModal = false">取消</md-button>
+      </md-dialog-actions>
+    </md-dialog>
   </div>
 </template>
 
@@ -11,7 +25,22 @@ export default {
   name: 'MemberArticle',
   data () {
     return {
-      articleM: []
+      articleM: [],
+      tempForm: {
+        _id: '', // 方便編輯
+        template: 0,
+        title: '',
+        author: '',
+        avatar: '',
+        share: true,
+        image: null,
+        textarea: '',
+        text: '',
+        select: '',
+        datepicker: Number(new Date()),
+        date: Number(new Date())
+      },
+      editArticleModal: false
     }
   },
   computed: {
@@ -22,6 +51,49 @@ export default {
   methods: {
     tempShow (T) {
       this.$store.commit('tempShow', T)
+    },
+    async editArticle (index) {
+      this.tempForm = {
+        _id: this.articleM[index]._id,
+        title: this.articleM[index].title,
+        share: this.articleM[index].share,
+        image: this.articleM[index].image,
+        textarea: this.articleM[index].textarea,
+        text: this.articleM[index].text,
+        select: this.articleM[index].select,
+        datepicker: this.articleM[index].datepicker,
+        date: this.articleM[index].date,
+        index
+      }
+      this.editArticleModal = true
+      // 建立上傳格式 FormData  後端接收資料型態為 multipart/form-data
+      const FD = new FormData()
+      // 將資料新增進 FormData 用 append('key 欄位名稱', 'value 資料的值')
+      for (const key in this.tempForm) {
+        FD.append(key, this.tempForm[key])
+      }
+      // 編輯文章 (會員)  /  editArticle
+      const { data } = await this.axios.patch('/article/member' + this.tempForm._id, FD, {
+        headers: {
+          // 驗證欄位 'Bearer ' + token  -> Bearer要空格
+          authorization: 'Bearer ' + this.$store.state.jwt.token
+        }
+      })
+      this.articleM[this.tempForm.index] = {
+        title: this.tempForm.title,
+        share: this.tempForm.share,
+        image: `${process.env.VUE_APP_API}/file/${data.result.image}`,
+        textarea: this.tempForm.textarea,
+        text: this.tempForm.text,
+        select: this.tempForm.select,
+        datepicker: new Date(this.tempForm.datepicker).toLocaleDateString(),
+        date: new Date(this.tempForm.datepicker).toLocaleDateString(),
+        _id: this.tempForm._id
+      }
+      // refresh 畫面 讓資料即時更新
+      // else {
+      //   console.log(error)
+      // }
     }
   },
   watch: {
@@ -58,7 +130,7 @@ export default {
   },
   async mounted () {
     try {
-      // 取得指定分類的文章 (會員)  / getArticleByTempForMember
+      // 取得指定分類的文章 (會員)  /  getArticleByTempForMember
       const { data } = await this.axios.get('/article/member/template/' + this.tempCardShow, {
         headers: {
           // 驗證欄位 'Bearer ' + token  -> Bearer要空格

@@ -33,8 +33,7 @@
 
       </md-dialog-content>
       <md-dialog-actions>
-        <md-button class="md-primary" @click="editModal = false">Close</md-button>
-        <md-button class="md-primary" @click="editModal = false">SEE</md-button>
+        <md-button class="md-primary" @click="editModal = false">關閉</md-button>
       </md-dialog-actions>
     </md-dialog>
 
@@ -147,10 +146,10 @@ export default {
             return (
               <div class="md-layout md-alignment-center-center">
                 <md-button class="md-md-layout-item md-primary h-unset w-unset" on-click={() => this.editRow(rowIndex)}>
-                  <md-icon>edit</md-icon>
+                  <md-icon>visibility</md-icon>
                 </md-button>
-                <md-button class="md-md-layout-item md-primary h-unset w-unset" on-click={() => this.deleteRow(rowIndex)}>
-                  <md-icon>delete</md-icon>
+                <md-button class="md-md-layout-item md-primary h-unset w-unset" on-click={() => this.publicOff(rowIndex)}>
+                  <md-icon>public_off</md-icon>
                 </md-button>
               </div>
             )
@@ -170,11 +169,14 @@ export default {
   },
   methods: {
     editRow (rowIndex) {
-      alert(`eidt row number:${rowIndex}`)
-      // this.editModal = true
+      // alert(`eidt row number:${rowIndex}`)
+      this.editModal = true
     },
-    deleteRow (rowIndex) {
-      this.tableData.splice(rowIndex, 1)
+    publicOff (rowIndex) {
+      this.tableTitle.splice(rowIndex, 1)
+      // this.tableTitle.report = false
+      // 將文章下架，不刪除
+      // 會員那邊會顯示成無法更動
     },
     // search input change event
     searchInputChange (e) {
