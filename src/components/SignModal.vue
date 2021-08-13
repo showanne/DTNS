@@ -236,11 +236,11 @@ export default {
           this.$store.commit('signIn', data)
           if (this.user.isSignIn && this.user.isAdmin) {
             // 是管理者登入的話，登入成功後導向管理中心
-            this.$router.push('/manage')
+            this.$router.push('/manage').catch((error) => { console.log(error) })
             console.log(this.$store.state.jwt.token.length, this.$store.state.user.role, this.$store.state.jwt.token)
           } else {
             // 登入成功後導向會員中心
-            this.$router.push('/member')
+            this.$router.push('/member').catch((error) => { console.log(error) })
             console.log(this.$store.state.jwt.token.length, this.$store.state.user.role, this.$store.state.jwt.token)
           }
         }, 1500)
