@@ -8,6 +8,7 @@
       ></md-icon>
     </md-button>
 
+    <!-- 輸入問題表格 modal -->
     <md-dialog :md-active.sync="contactBtn">
       <md-dialog-title style=" text-align:center; ">contact us</md-dialog-title>
       <md-dialog-content class="md-scrollbar">
@@ -20,17 +21,19 @@
                 name="majorIssue"
                 placeholder="MajorIssue"
               >
+                <md-option value="0"></md-option>
                 <md-option value="1">1</md-option>
                 <md-option value="2">2</md-option>
                 <md-option value="3">3</md-option>
+                <md-option value="4">其他</md-option>
               </md-select>
             </md-field>
 
-            <!-- account -->
+            <!-- nickname -->
             <md-field class="md-form-group">
               <md-icon>face</md-icon>
-              <label>Your Account...</label>
-              <md-input v-model="contactForm.account"></md-input>
+              <label>Your Nickname...</label>
+              <md-input v-model="contactForm.nickname"></md-input>
             </md-field>
 
             <!-- contactData -->
@@ -62,8 +65,11 @@
     </md-dialog>
 
     <div class="md-layout">
-      <div class="md-layout-item md-large-size-33 md-medium-size-33 md-small-size-100  md-xsmall-size-100">
-        <div class="md-headline">常見問題</div>
+      <!-- 常見問題 accordion -->
+      <div id="question" class="md-layout-item md-large-size-33 md-medium-size-33 md-small-size-100  md-xsmall-size-100">
+        <div class="md-headline">
+          常見問題
+          </div>
         <accordion>
           <accordion-item>
             <template slot="accordion-trigger">
@@ -113,19 +119,49 @@
       </accordion>
       </div>
 
-      <div class="md-layout-item md-large-size-66 md-medium-size-66 md-small-size-100 md-xsmall-size-100">
+      <!-- 各問題 card -->
+      <div id="questionCard" class="md-layout-item md-large-size-66 md-medium-size-66 md-small-size-100 md-xsmall-size-100">
+        <div class="md-headline">
+          問題討論
+          </div>
         <div class="md-layout md-alignment-center" style="flex-direction: column;">
         <!-- md-layout-nowrap w-contact-content -->
           <div class="md-layout-item md-large-size-50 md-medium-size-50 md-small-size-50 md-xsmall-size-100">
             <md-card class="md-accent" md-with-hover>
               <md-card-content class="md-layout md-alignment-center">
                 <div class="md-layout-item md-size-15">
-                <Avatar class="md-large md-elevation-5" />
+                  <Avatar class="md-large md-elevation-5" />
                 </div>
                 <div class="md-layout-item md-size-85">
                   <div class="md-layout md-alignment-center-space-between">
                     <div class="md-title">
-                      <Anonymous />
+                      Nickname
+                      <span class="md-caption">#1</span>
+                    </div>
+                    <div class="md-subhead">110.08.08</div>
+                  </div>
+                  <div class="md-subheading">
+                    輸入的欄位好像怪怪的...
+                  </div>
+                  <div class="md-body-2 mt-large-3" style="margin-top: 0.8rem; color: darkkhaki;">
+                    <md-icon>support_agent</md-icon>
+                    已做調整，再請您試試唷！
+                  </div>
+                </div>
+              </md-card-content>
+            </md-card>
+          </div>
+          <div class="md-layout-item md-large-size-50 md-medium-size-50 md-small-size-50 md-xsmall-size-100">
+            <md-card class="md-accent" md-with-hover>
+              <md-card-content class="md-layout md-alignment-center">
+                <div class="md-layout-item md-size-15">
+                  <Avatar class="md-large md-elevation-5" />
+                </div>
+                <div class="md-layout-item md-size-85">
+                  <div class="md-layout md-alignment-center-space-between">
+                    <div class="md-title">
+                      Nickname
+                      <span class="md-caption">#1</span>
                     </div>
                     <div class="md-subhead">110.08.08</div>
                   </div>
@@ -149,7 +185,8 @@
                 <div class="md-layout-item md-size-85">
                   <div class="md-layout md-alignment-center-space-between">
                     <div class="md-title">
-                      <Anonymous />
+                      Nickname
+                      <span class="md-caption">#1</span>
                     </div>
                     <div class="md-subhead">110.07.29</div>
                   </div>
@@ -175,7 +212,10 @@
                 </div>
                 <div class="md-layout-item md-size-85">
                   <div class="md-layout md-alignment-center-space-between">
-                    <div class="md-title">Nick name</div>
+                    <div class="md-title">
+                      Nickname
+                      <span class="md-caption">#1</span>
+                    </div>
                     <div class="md-subhead">110.07.29</div>
                   </div>
                   <span>
@@ -204,7 +244,7 @@
 // components元件
 // import FormCard from '@/components/FormCard.vue'
 import Avatar from '@/components/Avatar.vue'
-import Anonymous from '@/components/Anonymous.vue'
+// import Anonymous from '@/components/Anonymous.vue'
 import Accordion from '@/components/accordion.vue'
 import AccordionItem from '@/components/accordion-item.vue'
 
@@ -215,7 +255,7 @@ export default {
       contactBtn: false,
       contactForm: {
         majorIssue: '',
-        account: '',
+        nickname: '',
         contactData: '',
         issueDescription: ''
       }
@@ -223,7 +263,7 @@ export default {
   },
   components: {
     Avatar,
-    Anonymous,
+    // Anonymous,
     Accordion,
     AccordionItem
   }

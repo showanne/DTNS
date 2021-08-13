@@ -19,6 +19,26 @@ form.w-contact-modal {
   min-width: 299px;
 }
 
+#question,
+#questionCard{
+  padding: 1rem;
+
+  .md-headline{
+    display: inline-block;
+    position: relative;
+
+    &:before{
+      content: '';
+      background-color: $light1;
+      width: 99px;
+      height: 23px;
+      position: absolute;
+      top: 10px;
+      left: 10px;
+    }
+  }
+}
+
 .accordion{
   .md-svg-loader {
     display: inline-block;
@@ -33,5 +53,13 @@ form.w-contact-modal {
         list-style-type: "\15C8 "; // ᗈ
       }
     }
+  }
+}
+
+#questionCard{
+  span.md-caption{
+    background-color: $light1;
+    padding: 3px;
+    border-radius: 2px;
   }
 }
