@@ -4,25 +4,53 @@
     <br> {{ tempCardShow }}
     {{ articleM }}
     <md-button class="md-primary" @click="editArticle(index)">編輯</md-button>
-    <md-button class="md-primary" @click="deleteArticle(item)">刪除</md-button>
+    <md-button class="md-primary" @click="deleteArticle(index)">刪除</md-button>
+
+    <!-- 文章呈現區 -->
+    <div class="md-layout md-alignment-center">
+      <div
+        class="masonry-container"
+        v-masonry
+        transition-duration="0.3s"
+        item-selector=".tempCard"
+        fit-width="true">
+        <!-- v-masonry="containerId + T"
+            官方Demo 也沒有給 containerId，可能下方 .$redrawVueMasonry 會自動抓取? 給了會有 errorMsg -->
+          <!-- v-masonry-tile class="tempCard" 這2個是套件所需屬性 -->
+        <TempCardShare
+          class="tempCard" v-masonry-tile
+          v-for="item in articleM"
+          :key="item._id"
+          :item="item"
+          :tempIcon="tempList[tempCardShow].subhead">
+        </TempCardShare>
+          <!-- @click="showCardById = true" -->
+      </div>
+    </div>
 
     <!-- 編輯 modal -->
-    <md-dialog :md-active.sync="editArticleModal">
+    <!-- <md-dialog :md-active.sync="editArticleModal">
       <md-dialog-title>編輯文章</md-dialog-title>
       <md-dialog-content>
 
       </md-dialog-content>
       <md-dialog-actions>
-        <md-button class="md-primary" @click="submitArticle">確定</md-button>
+        <md-button class="md-primary" @click="submitArticle(index)">確定</md-button>
         <md-button class="md-primary" @click="editArticleModal = false">取消</md-button>
       </md-dialog-actions>
-    </md-dialog>
+    </md-dialog> -->
   </div>
 </template>
 
 <script>
+// components元件
+import TempCardShare from '@/components/TempCardShare.vue'
+
 export default {
   name: 'MemberArticle',
+  components: {
+    TempCardShare
+  },
   data () {
     return {
       articleM: [],
@@ -94,7 +122,9 @@ export default {
       // else {
       //   console.log(error)
       // }
-    }
+    },
+    deleteArticle (index) {},
+    submitArticle (index) {}
   },
   watch: {
     tempCardShow: async function () {

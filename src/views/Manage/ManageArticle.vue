@@ -28,7 +28,7 @@
 
     <!-- 編輯 modal -->
     <md-dialog :md-active.sync="editModal">
-      <md-dialog-title>編輯文章</md-dialog-title>
+      <md-dialog-title>查看文章</md-dialog-title>
       <md-dialog-content>
 
       </md-dialog-content>
@@ -110,8 +110,20 @@ export default {
           }
         },
         {
-          field: 'image',
+          field: 'publicOff',
           key: 'e',
+          title: 'publicOff',
+          width: '5%',
+          renderBodyCell: ({ row, column, rowIndex }, h) => {
+            return (
+              <md-switch v-model={row[column.field]} class="md-primary">
+              </md-switch>
+            )
+          }
+        },
+        {
+          field: 'image',
+          key: 'f',
           title: 'image',
           width: '15%',
           renderBodyCell: ({ row, column, rowIndex }, h) => {
@@ -122,7 +134,7 @@ export default {
         },
         {
           field: 'textarea',
-          key: 'f',
+          key: 'g',
           title: 'textarea',
           width: '20%',
           ellipsis: {
@@ -130,13 +142,13 @@ export default {
             lineClamp: 2
           }
         },
-        { field: 'text', key: 'g', title: 'text', width: '10%' },
-        { field: 'select', key: 'h', title: 'select', width: '5%' },
-        { field: 'datepicker', key: 'i', title: 'datepicker', width: '5%' },
-        { field: 'date', key: 'j', title: 'date', width: '5%' },
+        { field: 'text', key: 'h', title: 'text', width: '10%' },
+        { field: 'select', key: 'i', title: 'select', width: '5%' },
+        { field: 'datepicker', key: 'j', title: 'datepicker', width: '5%' },
+        { field: 'date', key: 'k', title: 'date', width: '5%' },
         {
           field: '',
-          key: 'k',
+          key: 'l',
           title: 'Action',
           width: '20%',
           // center: 'left',
@@ -172,11 +184,28 @@ export default {
       // alert(`eidt row number:${rowIndex}`)
       this.editModal = true
     },
-    publicOff (rowIndex) {
-      this.tableTitle.splice(rowIndex, 1)
-      // this.tableTitle.report = false
+    async publicOff (rowIndex) {
       // 將文章下架，不刪除
       // 會員那邊會顯示成無法更動
+      // 編輯文章 (會員)  /  editArticle
+      try {
+        console.log(this.$store.state.jwt.token)
+        // .patch('/users/cart', { product: this.cart[index]._id, amount: 0 },
+        await this.axios.patch('/article/all', {
+          article: this.article[rowIndex]._id,
+          publicOff: true,
+          share: false
+        }, {
+          headers: {
+          // 驗證欄位 'Bearer ' + token  -> Bearer要空格
+            authorization: 'Bearer ' + this.$store.state.jwt.token
+          }
+        })
+      } catch (error) {
+        console.log(error)
+      }
+      // this.tableTitle.splice(rowIndex, 1)
+      // this.tableTitle.report = false
     },
     // search input change event
     searchInputChange (e) {

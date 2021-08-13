@@ -14,7 +14,8 @@
         <router-view></router-view>
       </md-tab>
       <!-- article 文章管理頁 -->
-      <md-tab id="tab-article" md-label="article" to="/manage/article">
+      <md-tab id="tab-article" md-label="article" to="/manage/article"
+        :md-template-data="{ badge: articleTotal }">
         <router-view></router-view>
       </md-tab>
       <!-- template 模板管理頁&模板欄位管理 -->
@@ -43,6 +44,7 @@ export default {
   name: 'Manage',
   data () {
     return {
+      articleTotal: 0,
       newPosts: 0,
       checkInterval: null
     }
