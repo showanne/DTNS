@@ -63,7 +63,7 @@ export default {
     },
     tempList () {
       return [
-        { index: 0, show: true, name: '美字美句分享', subhead: 'share', input: this.share },
+        { index: 0, show: true, name: '美字美句', subhead: 'share', input: this.share },
         { index: 1, show: true, name: '便利貼', subhead: 'postIt', input: this.postIt },
         { index: 2, show: this.user.isSignIn, name: '待辦事項', subhead: 'todo', input: this.todo },
         { index: 3, show: this.user.isSignIn, name: '心情隨筆', subhead: 'diary', input: this.diary },
