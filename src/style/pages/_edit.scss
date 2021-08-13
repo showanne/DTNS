@@ -8,6 +8,11 @@
   }
 }
 
+#temp,
+#tempEdit{
+  padding:2rem;
+}
+
 #temp{
   .md-card {
     margin: 12px;
@@ -59,6 +64,7 @@
 }
 
 #tempEdit{
+  background-color: $light1;
   .img-inputer {
     width: 100%;
     margin: 4px 0 24px;
@@ -71,4 +77,9 @@
     font-size: 12px;
     line-height: 20px;
   }
+}
+
+.md-field.md-theme-default.md-invalid .md-error {
+  color: $warn;
+  color: var(--md-theme-default-fieldvariant, $warn);
 }

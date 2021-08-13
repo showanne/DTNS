@@ -57,6 +57,7 @@
                 <p class="category">
                   <!-- author name -->
                   {{ tempForm.author }}
+                  {{ authorName }}
                   <!-- {{ tempList[tempForm.template].input[2].name }} -->
                 </p>
               </md-card-header>
@@ -64,9 +65,10 @@
               <!-- share -->
               <md-card-content v-if="tempForm.template === 0">
                 <div class="md-layout md-alignment-center-center">
-                  <md-field md-clearable class="md-layout-item md-size-90">
+                  <md-field md-clearable :class="errorClass('title')" class="md-layout-item md-size-90">
                     <label>{{ tempList[tempForm.template].input[1].name }}</label>
-                    <md-textarea v-model="tempForm.title" md-autogrow></md-textarea>
+                    <md-textarea v-model="tempForm.title" md-autogrow required></md-textarea>
+                    <span class="md-error" v-if="!$v.tempForm.title.required">此欄位為必填</span>
                   </md-field>
 
                   <div class="md-layout-item md-size-90">
@@ -94,9 +96,10 @@
               <!-- postIt -->
               <md-card-content v-if="tempForm.template === 1">
                 <div class="md-layout md-alignment-center-center">
-                  <md-field md-clearable class="md-layout-item md-size-90">
+                  <md-field md-clearable :class="errorClass('title')" class="md-layout-item md-size-90">
                     <label>{{ tempList[tempForm.template].input[1].name }}</label>
-                    <md-textarea v-model="tempForm.title" md-autogrow></md-textarea>
+                    <md-textarea v-model="tempForm.title" md-autogrow required></md-textarea>
+                    <span class="md-error" v-if="!$v.tempForm.title.required">此欄位為必填</span>
                   </md-field>
 
                   <md-field md-clearable :md-counter="true"
@@ -110,9 +113,10 @@
               <!-- todo -->
               <md-card-content v-if="tempForm.template === 2">
                 <div class="md-layout md-alignment-center-center">
-                  <md-field md-clearable class="md-layout-item md-size-90">
+                  <md-field md-clearable :class="errorClass('title')" class="md-layout-item md-size-90">
                     <label>{{ tempList[tempForm.template].input[1].name }}</label>
-                    <md-textarea v-model="tempForm.title" md-autogrow></md-textarea>
+                    <md-textarea v-model="tempForm.title" md-autogrow required></md-textarea>
+                    <span class="md-error" v-if="!$v.tempForm.title.required">此欄位為必填</span>
                   </md-field>
 
                   <div class="md-layout-item md-size-90">
@@ -134,9 +138,10 @@
               <!-- diary -->
               <md-card-content v-if="tempForm.template === 3">
                 <div class="md-layout md-alignment-center-center">
-                  <md-field md-clearable class="md-layout-item md-size-90">
+                  <md-field md-clearable :class="errorClass('title')" class="md-layout-item md-size-90">
                     <label>{{ tempList[tempForm.template].input[1].name }}</label>
-                    <md-textarea v-model="tempForm.title" md-autogrow></md-textarea>
+                    <md-textarea v-model="tempForm.title" md-autogrow required></md-textarea>
+                    <span class="md-error" v-if="!$v.tempForm.title.required">此欄位為必填</span>
                   </md-field>
 
                   <div class="md-layout-item md-size-90">
@@ -173,9 +178,10 @@
               <!-- notes -->
               <md-card-content v-if="tempForm.template === 4">
                 <div class="md-layout md-alignment-center-center">
-                  <md-field md-clearable class="md-layout-item md-size-90">
+                  <md-field md-clearable :class="errorClass('title')" class="md-layout-item md-size-90">
                     <label>{{ tempList[tempForm.template].input[1].name }}</label>
-                    <md-textarea v-model="tempForm.title" md-autogrow></md-textarea>
+                    <md-textarea v-model="tempForm.title" md-autogrow required></md-textarea>
+                    <span class="md-error" v-if="!$v.tempForm.title.required">此欄位為必填</span>
                   </md-field>
 
                   <md-field md-clearable class="md-layout-item md-size-90">
@@ -188,9 +194,10 @@
               <!-- novel -->
               <md-card-content v-if="tempForm.template === 5">
                 <div class="md-layout md-alignment-center-center">
-                  <md-field md-clearable class="md-layout-item md-size-90">
+                  <md-field md-clearable :class="errorClass('title')" class="md-layout-item md-size-90">
                     <label>{{ tempList[tempForm.template].input[1].name }}</label>
-                    <md-textarea v-model="tempForm.title" md-autogrow></md-textarea>
+                    <md-textarea v-model="tempForm.title" md-autogrow required></md-textarea>
+                    <span class="md-error" v-if="!$v.tempForm.title.required">此欄位為必填</span>
                   </md-field>
 
                   <md-field md-clearable class="md-layout-item md-size-90">
@@ -245,9 +252,10 @@
               <!-- storage -->
               <md-card-content v-if="tempForm.template === 6">
                 <div class="md-layout md-alignment-center-center">
-                  <md-field md-clearable class="md-layout-item md-size-90">
+                  <md-field md-clearable :class="errorClass('title')" class="md-layout-item md-size-90">
                     <label>{{ tempList[tempForm.template].input[1].name }}</label>
-                    <md-textarea v-model="tempForm.title" md-autogrow></md-textarea>
+                    <md-textarea v-model="tempForm.title" md-autogrow required></md-textarea>
+                    <span class="md-error" v-if="!$v.tempForm.title.required">此欄位為必填</span>
                   </md-field>
 
                   <div class="md-layout-item md-size-90">
@@ -330,9 +338,12 @@
 
 <script>
 // import Anonymous from '@/components/Anonymous.vue'
+import { validationMixin } from 'vuelidate'
+import { required } from 'vuelidate/lib/validators'
 
 export default {
   name: 'Edit',
+  mixins: [validationMixin],
   // components: {
   //   Anonymous
   // },
@@ -362,12 +373,39 @@ export default {
       savedMsg: ''
     }
   },
-  watch: {
-    author: function () {
-      this.author = this.user.name
+  validations: {
+    tempForm: {
+      title: {
+        required
+      }
+    }
+  },
+  // watch: {
+  //   author: function () {
+  //     this.tempForm.author = this.user.name
+  //   },
+  //   avatar: function () {
+  //     this.tempForm.avatar = this.user.avatar
+  //   }
+  // },
+  computed: {
+    user () {
+      return this.$store.getters.user
     },
-    avatar: function () {
-      this.avatar = this.user.avatar
+    // FIXED: 使用者名稱塞入表單中呈現 & 傳送
+    authorName () {
+      let authorName = this.tempForm.author
+      if (this.user.name !== null) {
+        authorName = this.user.name
+        console.log(authorName)
+      } else if (this.user.name === null || this.user.account !== null) {
+        authorName = this.user.account
+        console.log(authorName)
+      } else {
+        authorName = 'this.a'
+        console.log(authorName)
+      }
+      return authorName
     }
   },
   methods: {
@@ -375,9 +413,31 @@ export default {
       console.log(T)
       this.tempForm.template = T
     },
+    // FIXED: 驗證不會出現驗證文字
+    errorClass (fieldName) {
+      const field = this.$v.tempForm[fieldName]
+      console.log(field)
+      if (field) {
+        return {
+          'md-invalid': field.$invalid && field.$dirty
+        }
+      }
+    },
     async submitEdit () {
       // 送出表單後 + 資料還在傳送進資料庫時 按鈕狀態設定為不能點擊，避免重複送出
       this.sending = true
+
+      let authorName = this.tempForm.author
+      if (this.user.name !== null) {
+        authorName = this.user.name
+        console.log(authorName)
+      } else if (this.user.name === null || this.user.account !== null) {
+        authorName = this.user.account
+        console.log(authorName)
+      } else {
+        authorName = 'this.a'
+        console.log(authorName)
+      }
 
       try {
         // 建立上傳格式 FormData
@@ -432,11 +492,7 @@ export default {
 
       this.sending = false
     }
-  },
-  computed: {
-    user () {
-      return this.$store.getters.user
-    }
+
   }
 }
 </script>
