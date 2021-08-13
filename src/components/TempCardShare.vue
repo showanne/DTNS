@@ -10,6 +10,16 @@
           <md-icon :md-src="require('../assets/icon/dateS.svg')"></md-icon>
           <span>{{ item.date }}</span>
         </div>
+        <!-- <div class="line-it-button" data-lang="zh_Hant" data-type="share-b" data-ver="3" data-url="http://192.168.0.6:8080/#/Collection" data-color="grey" data-size="small" data-count="true"></div>
+
+        <div class="line-it-button" data-lang="zh_Hant" data-type="friend" data-lineid="@661mbqmr" data-count="true" style="display: none;"></div>-->
+        <a href="http://line.naver.jp/R/msg/text/?大家跟我一起用Line分享吧!%0D%0Ahttps://showanne.github.io/">
+          <img src="https://social-plugins.line.me/img/button/ja/20x20.png" />
+        </a>
+        <!-- <a expr:href='&amp;quot;http://line.naver.jp/R/msg/text/?&amp;quot; + data:post.title +
+        &amp;quot;%0D%0A&amp;quot; + data:post.url + &amp;quot;&amp;quot;'>
+          <img src='https://social-plugins.line.me/img/button/ja/20x20.png'/>
+        </a> -->
       </md-card-header>
 
       <!-- share -->
@@ -117,6 +127,7 @@
               <md-icon :md-src="require('../assets/icon/action-share.svg')"></md-icon>
               <md-tooltip md-direction="right" md-delay="300">109</md-tooltip>
             </md-button>
+
           </md-speed-dial-content>
         </md-speed-dial>
       </md-card-actions>
@@ -133,6 +144,8 @@
       </TempCardShowById>
     </md-card>
 </template>
+
+<script src="https://www.line-website.com/social-plugins/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
 
 <script>
 import Avatar from '@/components/Avatar.vue'
