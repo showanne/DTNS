@@ -1,24 +1,91 @@
 <template>
     <md-card md-with-hover>
       <md-card-header class="md-layout">
-        <Avatar class="md-large md-elevation-5" />
-
-        <div class=" md-layout-item md-subhead">{{ item.author }}</div>
-        <div class=" md-layout-item md-subhead">
+        <md-avatar v-if="item.avatar != null || item.avatar != ''" class="md-large md-elevation-5">
+          <img :src="item.avatar" alt="Avatar">
+        </md-avatar>
+        <Avatar v-else />
+        <div class="md-layout-item md-subhead">{{ item.author }}</div>
+        <div class="md-layout-item md-subhead">
           <md-icon :md-src="require('../assets/icon/dateS.svg')"></md-icon>
           <span>{{ item.date }}</span>
         </div>
       </md-card-header>
 
-      <md-card-content>
+      <!-- share -->
+      <md-card-content v-if="item.template === 0">
         <md-card-media v-if="item.image">
           <img :src="item.image" alt="">
         </md-card-media>
 
         <div class="md-title text-truncate">{{ item.title }}</div>
-        <div class="md-body-1 text-truncate word-break-all" v-html="item.textarea"></div>
         <div class="md-body-1 text-truncate word-break-all" v-html="item.text"></div>
-        <div class="md-subheading">{{ item.source }}</div>
+        <!-- showCardById 顯示個別文章的 modal -->
+        <span class="md-caption" @click="showCardById = true">more...</span>
+      </md-card-content>
+
+      <!-- postIt -->
+      <md-card-content v-if="item.template === 1">
+        <div class="md-title text-truncate">{{ item.title }}</div>
+        <div class="md-body-1 text-truncate word-break-all" v-html="item.text"></div>
+        <!-- showCardById 顯示個別文章的 modal -->
+        <span class="md-caption" @click="showCardById = true">more...</span>
+      </md-card-content>
+
+      <!-- todo -->
+      <md-card-content v-if="item.template === 2">
+        <div class="md-title text-truncate">{{ item.title }}</div>
+        <div class="md-subhead">期限：{{ item.datepicker }}</div>
+        <div class="md-body-1 text-truncate word-break-all" v-html="item.text"></div>
+        <!-- showCardById 顯示個別文章的 modal -->
+        <span class="md-caption" @click="showCardById = true">more...</span>
+      </md-card-content>
+
+      <!-- diary -->
+      <md-card-content v-if="item.template === 3">
+        <div class="md-title text-truncate">{{ item.title }}</div>
+        <div class="md-subhead">期限：{{ item.datepicker }}</div>
+        <div class="md-subhead">心情：{{ item.select }}</div>
+        <div class="md-body-1 text-truncate word-break-all" v-html="item.textarea"></div>
+        <!-- showCardById 顯示個別文章的 modal -->
+        <span class="md-caption" @click="showCardById = true">more...</span>
+      </md-card-content>
+
+      <!-- notes -->
+      <md-card-content v-if="item.template === 4">
+        <div class="md-title text-truncate">{{ item.title }}</div>
+        <div class="md-body-1 text-truncate word-break-all" v-html="item.textarea"></div>
+        <!-- showCardById 顯示個別文章的 modal -->
+        <span class="md-caption" @click="showCardById = true">more...</span>
+      </md-card-content>
+
+      <!-- novel -->
+      <md-card-content v-if="item.template === 5">
+        <md-card-media v-if="item.image">
+          <img :src="item.image" alt="">
+        </md-card-media>
+
+        <div class="md-title text-truncate">{{ item.title }}</div>
+        <div class="md-subhead">作者：{{ item.text }}</div>
+        <div class="md-subhead">是否已完結：{{ item.select }}</div>
+        <div class="md-subhead">完結日期：{{ item.datepicker }}</div>
+        <div class="md-body-1 text-truncate word-break-all" v-html="item.textarea"></div>
+        <!-- showCardById 顯示個別文章的 modal -->
+        <span class="md-caption" @click="showCardById = true">more...</span>
+      </md-card-content>
+
+      <!-- storage -->
+      <md-card-content v-if="item.template === 6">
+        <md-card-media v-if="item.image">
+          <img :src="item.image" alt="">
+        </md-card-media>
+        <div class="md-title text-truncate">{{ item.title }}</div>
+        <div class="md-subhead">購買日期：{{ item.datepicker }}</div>
+        <div class="md-subhead">
+          <md-icon>share_location</md-icon>
+          存放地點：{{ item.text }}
+        </div>
+        <div class="md-body-1 text-truncate word-break-all" v-html="item.textarea"></div>
         <!-- showCardById 顯示個別文章的 modal -->
         <span class="md-caption" @click="showCardById = true">more...</span>
       </md-card-content>
@@ -52,23 +119,6 @@
             </md-button>
           </md-speed-dial-content>
         </md-speed-dial>
-        <!-- <md-button class="md-icon-button">
-          <md-icon :md-src="require('../assets/icon/temp-novel.svg')"></md-icon>
-        </md-button>
-
-        <md-button class="md-icon-button">
-          <md-icon>event_note</md-icon>
-        </md-button>
-        <span>110.07.23</span>
-
-        <md-button class="md-icon-button">
-          <md-icon>volunteer_activism</md-icon>
-        </md-button>
-
-        <md-button class="md-icon-button">
-          <md-icon>thumb_up_alt</md-icon>
-        </md-button>
-        <span>59</span> -->
       </md-card-actions>
 
       <TempCardShowById
