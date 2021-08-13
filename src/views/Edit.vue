@@ -57,7 +57,6 @@
                 <p class="category">
                   <!-- author name -->
                   {{ tempForm.author }}
-                  {{ authorName }}
                   <!-- {{ tempList[tempForm.template].input[2].name }} -->
                 </p>
               </md-card-header>
@@ -339,7 +338,7 @@
 <script>
 // import Anonymous from '@/components/Anonymous.vue'
 import { validationMixin } from 'vuelidate'
-import { required } from 'vuelidate/lib/validators'
+import { required, minLength } from 'vuelidate/lib/validators'
 
 export default {
   name: 'Edit',
@@ -356,6 +355,7 @@ export default {
         author: '',
         avatar: '',
         share: true,
+        publicOff: false,
         image: null,
         textarea: '',
         text: '',
@@ -376,37 +376,50 @@ export default {
   validations: {
     tempForm: {
       title: {
-        required
+        required,
+        minLength: minLength(1)
       }
     }
   },
-  // watch: {
-  //   author: function () {
-  //     this.tempForm.author = this.user.name
-  //   },
-  //   avatar: function () {
-  //     this.tempForm.avatar = this.user.avatar
-  //   }
-  // },
+  watch: {
+    author: function () {
+      console.log(this.tempForm.author)
+      console.log(this.user.name)
+      console.log(this.user.account)
+      if (this.user.name != null) {
+        this.tempForm.author = this.user.name
+        console.log(this.tempForm.author)
+      } else if (this.user.name == null || this.user.account != null) {
+        this.tempForm.author = this.user.account
+        console.log(this.tempForm.author)
+      } else {
+        this.tempForm.author = 'this.a'
+        console.log(this.tempForm.author)
+      }
+    },
+    avatar: function () {
+      this.tempForm.avatar = this.user.avatar
+    }
+  },
   computed: {
     user () {
       return this.$store.getters.user
-    },
-    // FIXED: 使用者名稱塞入表單中呈現 & 傳送
-    authorName () {
-      let authorName = this.tempForm.author
-      if (this.user.name !== null) {
-        authorName = this.user.name
-        console.log(authorName)
-      } else if (this.user.name === null || this.user.account !== null) {
-        authorName = this.user.account
-        console.log(authorName)
-      } else {
-        authorName = 'this.a'
-        console.log(authorName)
-      }
-      return authorName
     }
+    // FIXED: 使用者名稱塞入表單中呈現 & 傳送
+    // authorName () {
+    //   let authorName = this.tempForm.author
+    //   if (this.user.name !== null) {
+    //     authorName = this.user.name
+    //     console.log(authorName)
+    //   } else if (this.user.name === null || this.user.account !== null) {
+    //     authorName = this.user.account
+    //     console.log(authorName)
+    //   } else {
+    //     authorName = 'this.a'
+    //     console.log(authorName)
+    //   }
+    //   return authorName
+    // }
   },
   methods: {
     tempShow (T) {
@@ -416,7 +429,7 @@ export default {
     // FIXED: 驗證不會出現驗證文字
     errorClass (fieldName) {
       const field = this.$v.tempForm[fieldName]
-      console.log(field)
+      // console.log(field)
       if (field) {
         return {
           'md-invalid': field.$invalid && field.$dirty
@@ -426,18 +439,6 @@ export default {
     async submitEdit () {
       // 送出表單後 + 資料還在傳送進資料庫時 按鈕狀態設定為不能點擊，避免重複送出
       this.sending = true
-
-      let authorName = this.tempForm.author
-      if (this.user.name !== null) {
-        authorName = this.user.name
-        console.log(authorName)
-      } else if (this.user.name === null || this.user.account !== null) {
-        authorName = this.user.account
-        console.log(authorName)
-      } else {
-        authorName = 'this.a'
-        console.log(authorName)
-      }
 
       try {
         // 建立上傳格式 FormData
