@@ -17,6 +17,7 @@ import 'vue-img-inputer/dist/index.css'
 // vue-easytable 表格套件
 import 'vue-easytable/libs/theme-default/index.css'
 import VueEasytable from 'vue-easytable'
+import VueGtag from 'vue-gtag'
 
 import App from './App.vue'
 import './registerServiceWorker'
@@ -47,6 +48,11 @@ Vue.use(VueEasytable)
 
 // 全域引用 mixin 方便各分頁直接用變數
 Vue.mixin(mixin)
+
+// google analytics 評估 ID
+Vue.use(VueGtag, {
+  config: { id: 'G-LZVEQGZREJ' }
+})
 
 Vue.config.productionTip = false
 
