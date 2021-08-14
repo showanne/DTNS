@@ -1,0 +1,101 @@
+/* font */
+
+// Noto Sans TC
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap');
+
+// Patrick Hand
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+
+body {
+  font-family: 'Noto Sans TC', sans-serif;
+  // font-family: 'Patrick Hand', cursive;
+}
+
+$font-size-base: 1rem !default; // Browser 16px
+
+$fz: (
+  1: $font-size-base * 2.25, // 36px
+  2: $font-size-base * 2, // 32px
+  3: $font-size-base * 1.75, // 28px
+  4: $font-size-base * 1.5, // 24px
+  5: $font-size-base * 1.25, // 20px
+  6: $font-size-base
+  );
+  
+// Map (key: value) 一對(pair)的特性
+@each $key, $value in $fz {
+  .fz-#{$key} {
+    font-size: $value;
+  }
+}
+@each $key, $value in $fz {
+  h#{$key} {
+    font-size: $value;
+  }
+}
+
+small {
+  font-size: 0.875rem;
+}
+
+$lh: (
+  1: 1,
+  2: 1.25,
+  3: 1.5,
+  4: 2,
+  5: 2.5
+  );
+@each $key, $value in $lh {
+  .lh-#{$key} {
+    line-height: $value;
+  }
+}
+
+$fw: (
+  light: lighter,
+  lighter: 300,
+  normal: 400,
+  bold: 700,
+  bolder: bolder
+  );
+@each $key, $value in $fw {
+  .fw-#{$key} {
+    font-weight: $value;
+  }
+}
+
+
+// 使用 @each...in  從 list 取值做出 class，也可以用在 map 物件
+$fs: italic, normal;
+@each $value in $fs {
+  .fs-#{$value} {
+    font-style: $value;
+  }
+}
+
+$ta: left, right, center;
+@each $value in $ta {
+  .text-#{$value} {
+    text-align: $value;
+  }
+}
+$tva: baseline, top, middle, bottom, text-bottom, text-top;
+@each $value in $tva {
+  .vertical-#{$value} {
+    vertical-align: $value;
+  }
+}
+
+$tt: lowercase, uppercase, capitalize;
+@each $value in $tt {
+  .text-#{$value} {
+    text-transform: $value;
+  }
+}
+
+$td: none, underline, line-through;
+@each $value in $td {
+  .td-#{$value} {
+    text-decoration: $value;
+  }
+}

@@ -1,0 +1,37 @@
+/* other */
+
+// 使用 @each...in  從 list 取值做出 class，也可以用在 map 物件
+$display: inline, inline-block, block, grid, table, table-row, table-cell, flex, inline-flex, none;
+@each $value in $display {
+  .d-#{$value} {
+    display: $value;
+  }
+}
+
+$overflow: auto, hidden, visible, scroll;
+@each $value in $overflow {
+  .overflow-#{$value} {
+    overflow: $value;
+  }
+  .overflow-x-#{$value} {
+    overflow-x: $value;
+  }
+  .overflow-y-#{$value} {
+    overflow-y: $value;
+  }
+}
+
+$float: left, right;
+@each $value in $float {
+  .float-#{$value} {
+    float: $value;
+  }
+}
+
+.clearfix {
+  &::after {
+    display: block;
+    clear: both;
+    content: "";
+  }
+}

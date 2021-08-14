@@ -1,0 +1,68 @@
+/* spacer */
+
+$spacer: 1rem;
+
+$spacers: (
+  0: 0,
+  1: $spacer * 0.25, // 4px
+  2: $spacer * 0.5,  // 8px
+  3: $spacer,        // 16px
+  4: $spacer * 1.5,  // 21px
+  5: $spacer * 2,    // 32px
+  6: $spacer * 3,    // 48px
+  7: $spacer * 4,    // 64px
+  8: $spacer * 5,     // 80px
+  auto: auto
+);
+  
+// Map (key: value) 一對(pair)的特性
+@each $key, $value in $spacers {
+  .m-#{$key} {
+    margin: $value;
+  }
+  .mx-#{$key} {
+    margin-right: $value;
+    margin-left: $value;
+  }
+  .my-#{$key} {
+    margin-top: $value;
+    margin-bottom: $value;
+  }
+  .mr-#{$key} {
+    margin-right: $value;
+  }
+  .ml-#{$key} {
+    margin-left: $value;
+  }
+  .mt-#{$key} {
+    margin-top: $value;
+  }
+  .mb-#{$key} {
+    margin-bottom: $value;
+  }
+}
+@each $key, $value in $spacers {
+  .p-#{$key} {
+    padding: $value;
+  }
+  .px-#{$key} {
+    padding-right: $value;
+    padding-left: $value;
+  }
+  .py-#{$key} {
+    padding-top: $value;
+    padding-bottom: $value;
+  }
+  .pr-#{$key} {
+    padding-right: $value;
+  }
+  .pl-#{$key} {
+    padding-left: $value;
+  }
+  .pt-#{$key} {
+    padding-top: $value;
+  }
+  .pb-#{$key} {
+    padding-bottom: $value;
+  }
+}

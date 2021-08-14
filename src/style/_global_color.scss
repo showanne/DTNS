@@ -1,3 +1,5 @@
+/* color */
+
 $light1:   #FFFDF5;
 $light2:   #FFF9DB;
 $light3:   #DDDBFF;
@@ -7,3 +9,23 @@ $dark3:    #7876B3;
 $warn:     #FFD2CF;
 $success:  #C2FFDB;
 $success2: #C2FFFE;
+
+$colorList: (
+  light1: $light1,
+  light2: $light2,
+  light3: $light3,
+  dark1: $dark1,
+  dark2: $dark2,
+  dark3: $dark3,
+  warn: $warn,
+  success: $success,
+  success2: $success2
+  );
+@each $key, $value in $colorList {
+  .bg-#{$key} {
+    background-color: $value;
+  }
+  .tc-#{$key} {
+    color: $value;
+  }
+}

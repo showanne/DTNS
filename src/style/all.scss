@@ -6,20 +6,13 @@
 
 
 // 通用設定
-// @import './helpers/color';
-// @import './helpers/spacing';
-// @import './helpers/font';
-// @import './helpers/sizing';
-// @import './helpers/flex';
-// @import './helpers/display';
-// @import './helpers/position';
-// @import './helpers/other';
-
-// @import './mixins/utilities_api';
+@import './global_color';
+@import './global_font';
+@import './global_size';
+@import './global_other';
 
 // 全域設定
-@import './global';
-@import './global_color';
+@import './global'; // 網頁其他元件的共用設定
 
 // 區塊結構
 @import './pages/app';
