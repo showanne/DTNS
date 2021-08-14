@@ -23,9 +23,12 @@ $colorList: (
   );
 @each $key, $value in $colorList {
   .bg-#{$key} {
-    background-color: $value;
+    background-color: $value !important;
   }
   .tc-#{$key} {
-    color: $value;
+    color: $value !important;
+    .md-icon-font{
+      color: $value !important;
+    }
   }
 }
