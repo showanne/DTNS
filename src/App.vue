@@ -194,11 +194,6 @@ export default {
   components: {
     SignModal
   },
-  computed: {
-    user () {
-      return this.$store.getters.user
-    }
-  },
   methods: {
     async signOutBtn () {
       try {

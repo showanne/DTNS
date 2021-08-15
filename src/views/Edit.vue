@@ -22,9 +22,7 @@
                 <md-card-media-cover>
                   <md-card-media md-ratio="4:3">
                     <img
-                      :src="
-                        require('../assets/icon/temp-' + temp.subhead + '.svg')
-                      "
+                      :src="require('../assets/icon/temp-' + temp.subhead + '.svg')"
                       :alt="temp.subhead"
                     />
                   </md-card-media>
@@ -384,11 +382,6 @@ export default {
     }
   },
   watch: {},
-  computed: {
-    user () {
-      return this.$store.getters.user
-    }
-  },
   methods: {
     tempShow (T) {
       console.log(T)
@@ -464,6 +457,10 @@ export default {
       this.sending = false
     }
 
+  },
+  mounted () {
+    // console.log(this.user)
+    // console.log(this.user.isSignIn)
   }
 }
 </script>
