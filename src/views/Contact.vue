@@ -12,20 +12,23 @@
     <md-dialog :md-active.sync="contactBtn">
       <md-dialog-title style=" text-align:center; ">contact us</md-dialog-title>
       <md-dialog-content class="md-scrollbar">
-        <form class="w-contact-modal">
+        <form class="w-contact-modal"
+          @submit.prevent="submitIssue"
+          @reset="clearForm">
             <!-- majorIssue -->
             <md-field class="md-form-group">
-              <label>Major Issue...</label>
+              <label>
+                <md-icon>help_outline</md-icon>
+                Major Issue...
+              </label>
               <md-select
                 v-model="contactForm.majorIssue"
-                name="majorIssue"
-                placeholder="MajorIssue"
-              >
-                <md-option value="0"></md-option>
-                <md-option value="1">1</md-option>
-                <md-option value="2">2</md-option>
-                <md-option value="3">3</md-option>
-                <md-option value="4">其他</md-option>
+                name="majorIssue">
+                <md-option><!-- 第一個空白選項 --></md-option>
+                <md-option value="&nbsp; 編輯權限">&nbsp; 編輯權限</md-option>
+                <md-option value="&nbsp; 網頁功能">&nbsp; 網頁功能</md-option>
+                <md-option value="&nbsp; 文章編輯">&nbsp; 文章編輯</md-option>
+                <md-option value="&nbsp; 其他">&nbsp; 其他</md-option>
               </md-select>
             </md-field>
 
@@ -36,26 +39,19 @@
               <md-input v-model="contactForm.nickname"></md-input>
             </md-field>
 
-            <!-- contactData -->
-            <md-field class="md-form-group">
-              <md-icon>phone</md-icon>
-              <label>Contact Data...</label>
-              <md-input v-model="contactForm.contactData" type="contactData"></md-input>
-            </md-field>
-
             <!-- issueDescription -->
             <md-field class="md-form-group">
               <label>Issue description ...</label>
-              <md-textarea v-model="contactForm.issueDescription"></md-textarea>
+              <md-textarea v-model="contactForm.issueDescription"  md-counter="40"></md-textarea>
             </md-field>
 
             <!-- button -->
             <div class="md-layout md-alignment-center-space-between">
-              <md-button type="reset" class=" md-layout-item md-size-45 md-raised md-primary">
+              <md-button type="reset" class="md-layout-item md-size-45 md-raised md-primary" :disabled="sending">
                 <!-- <md-icon>reset</md-icon> -->
                 reset
               </md-button>
-              <md-button type="submit" class=" md-layout-item md-size-45 md-raised md-accent">
+              <md-button type="submit" class="md-layout-item md-size-45 md-raised md-accent">
                 <!-- <md-icon>submit</md-icon> -->
                 submit
               </md-button>
@@ -124,13 +120,39 @@
         <div class="md-headline">
           問題討論
           </div>
-        <div class="md-layout md-alignment-center" style="flex-direction: column;">
+        <div class="md-layout md-alignment-center">
+          <!-- style="flex-direction: column;" -->
         <!-- md-layout-nowrap w-contact-content -->
           <div class="md-layout-item md-large-size-50 md-medium-size-50 md-small-size-50 md-xsmall-size-100">
             <md-card class="md-accent" md-with-hover>
               <md-card-content class="md-layout md-alignment-center">
                 <div class="md-layout-item md-size-15">
-                  <Avatar class="md-large md-elevation-5" />
+                    <Avatar class="md-large md-elevation-5" />
+                </div>
+                <div class="md-layout-item md-size-85">
+                  <div class="md-layout md-alignment-center-space-between">
+                    <div class="md-title">
+                      Nickname
+                      <span class="md-caption">#1</span>
+                    </div>
+                    <div class="md-subhead">110.08.08</div>
+                  </div>
+                  <div class="md-subheading">
+                    輸入的欄位輸入的欄位輸入的欄位輸入的欄位輸入的輸入的欄位的欄位輸入的欄位的欄位位
+                  </div>
+                  <div class="md-body-2 mt-large-3" style="margin-top: 0.8rem; color: darkkhaki;">
+                    <md-icon>support_agent</md-icon>
+                    已做調整，再請您試試唷！
+                  </div>
+                </div>
+              </md-card-content>
+            </md-card>
+          </div>
+          <div class="md-layout-item md-large-size-50 md-medium-size-50 md-small-size-50 md-xsmall-size-100">
+            <md-card class="md-accent" md-with-hover>
+              <md-card-content class="md-layout md-alignment-center">
+                <div class="md-layout-item md-size-15">
+                    <Avatar class="md-large md-elevation-5" />
                 </div>
                 <div class="md-layout-item md-size-85">
                   <div class="md-layout md-alignment-center-space-between">
@@ -156,31 +178,6 @@
               <md-card-content class="md-layout md-alignment-center">
                 <div class="md-layout-item md-size-15">
                   <Avatar class="md-large md-elevation-5" />
-                </div>
-                <div class="md-layout-item md-size-85">
-                  <div class="md-layout md-alignment-center-space-between">
-                    <div class="md-title">
-                      Nickname
-                      <span class="md-caption">#1</span>
-                    </div>
-                    <div class="md-subhead">110.08.08</div>
-                  </div>
-                  <div class="md-subheading">
-                    輸入的欄位好像怪怪的...
-                  </div>
-                  <div class="md-body-2 mt-large-3" style="margin-top: 0.8rem; color: darkkhaki;">
-                    <md-icon>support_agent</md-icon>
-                    已做調整，再請您試試唷！
-                  </div>
-                </div>
-              </md-card-content>
-            </md-card>
-          </div>
-          <div class="md-layout-item md-large-size-50 md-medium-size-50 md-small-size-50 md-xsmall-size-100">
-            <md-card class="md-accent" md-with-hover>
-              <md-card-content class="md-layout md-alignment-center">
-                <div class="md-layout-item md-size-15">
-                <Avatar class="md-large md-elevation-5" />
                 </div>
                 <div class="md-layout-item md-size-85">
                   <div class="md-layout md-alignment-center-space-between">
@@ -208,7 +205,7 @@
             <md-card class="md-accent" md-with-hover>
               <md-card-content class="md-layout md-alignment-center">
                 <div class="md-layout-item md-size-15">
-                <Avatar class="md-large md-elevation-5" />
+                  <Avatar class="md-large md-elevation-5" />
                 </div>
                 <div class="md-layout-item md-size-85">
                   <div class="md-layout md-alignment-center-space-between">
@@ -242,6 +239,8 @@
 
 <script>
 // components元件
+import { validationMixin } from 'vuelidate'
+import { required, minLength, maxLength } from 'vuelidate/lib/validators'
 // import FormCard from '@/components/FormCard.vue'
 import Avatar from '@/components/Avatar.vue'
 // import Anonymous from '@/components/Anonymous.vue'
@@ -250,14 +249,25 @@ import AccordionItem from '@/components/accordion-item.vue'
 
 export default {
   name: 'Contact',
+  mixins: [validationMixin],
   data () {
     return {
       contactBtn: false,
       contactForm: {
         majorIssue: '',
         nickname: '',
-        contactData: '',
         issueDescription: ''
+      },
+      // 送出訊息
+      sending: false
+    }
+  },
+  validations: {
+    contactForm: {
+      tiissueDescriptiontle: {
+        required,
+        maxLength: maxLength(40),
+        minLength: minLength(1)
       }
     }
   },
@@ -266,6 +276,19 @@ export default {
     // Anonymous,
     Accordion,
     AccordionItem
+  },
+  methods: {
+    async submitIssue () {
+      this.sending = true
+      await this.axios.post('/post', this.contactForm)
+    },
+    clearForm () {
+      this.contactForm = {
+        majorIssue: '',
+        nickname: '',
+        issueDescription: ''
+      }
+    }
   }
 }
 </script>
