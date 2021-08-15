@@ -106,8 +106,9 @@
         </md-button>
 
         <md-button class="md-layout-item md-layout-nowrap">
-          <md-icon :md-src="require('@/assets/icon/action-share.svg')"></md-icon>
-          <span>&nbsp; 109</span>
+          <a :href="'http://line.naver.jp/R/msg/text/?DTNS分享吧！–' + title + '&nbsp;%0D%0Ahttps://showanne.github.io/DTNS'">
+            <md-icon :md-src="require('../assets/icon/action-share.svg')"></md-icon>
+          </a>
         </md-button>
 
         <md-button class="md-layout-item md-primary"
@@ -165,6 +166,7 @@ export default {
       this.template = data.result.template
       this.title = data.result.title
       this.author = data.result.author
+      this.avatar = data.result.avatar
       if (data.result.image) {
         this.image = `${process.env.VUE_APP_API}/file/${data.result.image}`
       }
