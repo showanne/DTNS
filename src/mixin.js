@@ -87,11 +87,14 @@ export default {
     },
     userName () {
       let userName = ''
-      if (this.user.name !== '') {
+      if (this.user.name !== '' && this.user.account === '') {
+        // console.log('name')
         userName = this.user.name
       } else if (this.user.account !== '') {
+        // console.log('account')
         userName = this.user.account
       } else {
+        // console.log('anonymous')
         const anonymous = ['水獺', '烏龜', '玫瑰', '貓咪', '犀牛', '小鹿', '大魚', '獵豹', '老虎', '海豚', '熊貓', '鴿子', '刺蝟', '黑狗', '小兔', '天鵝', '烏鴉', '小雞', '海鷗']
         userName = '匿名' + anonymous[Math.floor(Math.random() * 19)]
       }
@@ -99,11 +102,13 @@ export default {
     },
     avatarImg () {
       let avatarImg = ''
-      if (this.user.avatar !== '') {
-        avatarImg = this.user.avatar
-      } else {
+      if (this.user.avatar === '' || this.user.avatar === undefined) {
+        // console.log('avatarImg')
         const avatarColors = ['3B4058', '2A6E78', '7A907C', 'C9B180', '3E6B48', 'B5B479', 'F7E6A6']
         avatarImg = `https://source.boringavatars.com/beam/80/?colors=${avatarColors[Math.floor(Math.random() * 7)]},${avatarColors[Math.floor(Math.random() * 7)]}`
+      } else {
+        // console.log('avatar')
+        avatarImg = this.user.avatar
       }
       return avatarImg
     },

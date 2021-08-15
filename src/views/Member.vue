@@ -14,7 +14,7 @@
         <div class="full-control" style="border:dashed 2.5px #B3AB88; padding: 16px;">
           <!-- 會員資訊 -->
           <md-avatar class="md-large md-elevation-5">
-            <img :src="user.avatar" alt="">
+            <img :src="avatarImg" alt="">
           </md-avatar>
           <h2>{{ userName }}</h2>
 

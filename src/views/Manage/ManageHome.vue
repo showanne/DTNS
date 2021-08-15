@@ -2,7 +2,7 @@
   <div id="manageHome">
     <!-- 管理者資訊 -->
     <md-avatar class="md-large md-elevation-5">
-      <img :src="user.avatar" alt="">
+      <img :src="avatarImg" alt="">
     </md-avatar>
     <h2>{{ userName }}</h2>
   </div>
