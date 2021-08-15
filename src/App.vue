@@ -196,7 +196,7 @@ export default {
   },
   computed: {
     user () {
-      return this.$store.state.user
+      return this.$store.getters.user
     }
   },
   methods: {
@@ -243,6 +243,10 @@ export default {
         this.$store.commit('signOut')
       })
     }
+  },
+  mounted () {
+    // console.log(this.user)
+    // console.log(this.user.isSignIn)
   }
 }
 </script>
