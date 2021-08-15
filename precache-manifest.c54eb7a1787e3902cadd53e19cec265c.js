@@ -1,15 +1,15 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "980c83ae3d8e19330bf2",
-    "url": "css/app.78506f2a.css"
+    "revision": "7ec0509ab2bcc3a81b16",
+    "url": "css/app.55ff7cde.css"
   },
   {
-    "revision": "b20d3830cc646a8ea45a",
+    "revision": "fbe305264692dcbbf0dc",
     "url": "css/chunk-vendors.8814381e.css"
   },
   {
-    "revision": "ec279d2e5a26b85cb777",
-    "url": "css/contact.10023fb1.css"
+    "revision": "ad54df22c90de1c7a8d7",
+    "url": "css/contact.cb349bc0.css"
   },
   {
     "revision": "a6a668f10dd54e2fe64d0676841269a2",
@@ -18,6 +18,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "bc71d4653604e489d47980b0295cd500",
     "url": "img/action-addEdit.bc71d465.svg"
+  },
+  {
+    "revision": "3dbfa11b5743cb8d8ce19d82c3b78238",
+    "url": "img/action-delete.3dbfa11b.svg"
   },
   {
     "revision": "3bb245ab70386fbaff2c73b9bd2ed183",
@@ -144,36 +148,36 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "img/temp-todo.624bae4f.svg"
   },
   {
-    "revision": "c286bb19017f0fe0fbdceeb44c5eb9a1",
+    "revision": "8c0b6e5fcd2727d14a954461e3700030",
     "url": "index.html"
   },
   {
-    "revision": "980c83ae3d8e19330bf2",
-    "url": "js/app.652596f5.js"
+    "revision": "7ec0509ab2bcc3a81b16",
+    "url": "js/app.eefc21f2.js"
   },
   {
-    "revision": "b20d3830cc646a8ea45a",
-    "url": "js/chunk-vendors.2f957b48.js"
+    "revision": "fbe305264692dcbbf0dc",
+    "url": "js/chunk-vendors.b1cb86f1.js"
   },
   {
-    "revision": "3f4027169206da9da632",
-    "url": "js/collection.c95c272a.js"
+    "revision": "82e744bab857b86134c6",
+    "url": "js/collection.9c8211ce.js"
   },
   {
-    "revision": "ec279d2e5a26b85cb777",
-    "url": "js/contact.b2b6eee0.js"
+    "revision": "ad54df22c90de1c7a8d7",
+    "url": "js/contact.4d590041.js"
   },
   {
-    "revision": "d6b9cd76e0d4242039b4",
-    "url": "js/edit.1d214869.js"
+    "revision": "d5c23bd765d35e73f2f4",
+    "url": "js/edit.3a32a5a6.js"
   },
   {
-    "revision": "e1f5f4054847c4f6b3a2",
-    "url": "js/manage.1d753f1f.js"
+    "revision": "3f4ffb63266081c273ba",
+    "url": "js/manage.7223b139.js"
   },
   {
-    "revision": "58a666b53492fa60fca3",
-    "url": "js/member.250b8e1b.js"
+    "revision": "582a6078e4aa16e37da2",
+    "url": "js/member.45643def.js"
   },
   {
     "revision": "66834c78b70a20c1c7ec",
