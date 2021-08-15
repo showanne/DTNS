@@ -61,6 +61,7 @@ export default {
     user () {
       return this.$store.getters.user
     },
+    // 編輯主題清單
     tempList () {
       return [
         { index: 0, show: true, name: '美字美句', subhead: 'share', input: this.share },
@@ -73,6 +74,7 @@ export default {
         // show: this.user.isSignIn 因為要去動態抓user 是否有登入，所以不能放在 data 會是固定值
       ]
     },
+    // 選單列清單
     menuList () {
       return [
         { index: 0, name: '編輯', subhead: 'Edit', show: true },
@@ -83,18 +85,39 @@ export default {
         // { index: 5, name: '管理中心', subhead: 'Manage', show: !this.user.isSignIn && this.user.isAdmin }
       ]
     },
-    // authorName () {
-    //   let authorName = ''
-    //   if (this.user.name !== '' && this.user.account === '') {
-    //     authorName = this.user.name
-    //   } else if (this.user.account !== '' && this.user.name === '') {
-    //     authorName = this.user.account
-    //   } else {
-    //     const anonymous = ['水獺', '烏龜', '玫瑰', '貓咪', '犀牛', '小鹿', '大魚', '獵豹', '老虎', '海豚', '熊貓', '鴿子', '刺蝟', '黑狗', '小兔', '天鵝', '烏鴉', '小雞', '海鷗']
-    //     authorName = '匿名' + anonymous[Math.floor(Math.random() * 19)]
-    //   }
-    //   return authorName
-    // },
+    authorName () {
+      let authorName = ''
+      if (this.user.name !== '') {
+        authorName = this.user.name
+      } else if (this.user.account !== '') {
+        authorName = this.user.account
+      } else {
+        const anonymous = ['水獺', '烏龜', '玫瑰', '貓咪', '犀牛', '小鹿', '大魚', '獵豹', '老虎', '海豚', '熊貓', '鴿子', '刺蝟', '黑狗', '小兔', '天鵝', '烏鴉', '小雞', '海鷗']
+        authorName = '匿名' + anonymous[Math.floor(Math.random() * 19)]
+      }
+      return authorName
+
+      // let authorName = ''
+      // if (this.user.name != '' || this.user.name !== undefined) {
+      //   authorName = this.user.name
+      // } else if (this.user.account != '' || this.user.account !== undefined) {
+      //   authorName = this.user.account
+      // } else {
+      //   const anonymous = ['水獺', '烏龜', '玫瑰', '貓咪', '犀牛', '小鹿', '大魚', '獵豹', '老虎', '海豚', '熊貓', '鴿子', '刺蝟', '黑狗', '小兔', '天鵝', '烏鴉', '小雞', '海鷗']
+      //   authorName = '匿名' + anonymous[Math.floor(Math.random() * 19)]
+      // }
+      // return authorName
+    },
+    avatarImg () {
+      let avatarImg = ''
+      if (this.user.avatar !== '' || this.user.avatar !== undefined) {
+        avatarImg = this.user.avatar
+      } else {
+        const avatarColors = ['3B4058', '2A6E78', '7A907C', 'C9B180', '3E6B48', 'B5B479', 'F7E6A6']
+        avatarImg = `https://source.boringavatars.com/beam/80/?colors=${avatarColors[Math.floor(Math.random() * 7)]},${avatarColors[Math.floor(Math.random() * 7)]}`
+      }
+      return avatarImg
+    },
     // show () {
     //   this.tempList.show === null ? this.tempList.show = this.user.isSignIn : this.tempList.show = true
     //   return this.tempList.show
@@ -105,6 +128,9 @@ export default {
     }
   },
   methods: {
+    random (R) {
+      return Math.floor(Math.random() * R)
+    },
     async signForLine () {
       let link = 'https://access.line.me/oauth2/v2.1/authorize?'
       link += 'response_type=code' // 使用者登入後，請LINE回傳「code」（授權碼）

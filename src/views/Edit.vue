@@ -58,10 +58,11 @@
                   {{ tempList[tempForm.template].name }}
                 </h4>
                 <p class="category">
-                  <!-- author name -->
-                  {{ tempForm.author }}
-                  <!-- {{ tempList[tempForm.template].input[2].name }} -->
+                  {{ authorName }}
                 </p>
+                <!-- <md-avatar>
+                  <img :src="avatarImg" alt="">
+                </md-avatar> -->
               </md-card-header>
 
               <!-- share -->
@@ -351,12 +352,13 @@ export default {
   // },
   data () {
     return {
+      // 編輯欄位
       tempForm: {
         _id: '', // 方便編輯
         template: 0,
         title: '',
-        author: '',
-        avatar: '',
+        // author: '',
+        // avatar: '',
         share: true,
         publicOff: false,
         image: null,
@@ -384,44 +386,37 @@ export default {
       }
     }
   },
-  watch: {
-    author: function () {
-      console.log(this.tempForm.author)
-      console.log(this.user.name)
-      console.log(this.user.account)
-      if (this.user.name != null) {
-        this.tempForm.author = this.user.name
-        console.log(this.tempForm.author)
-      } else if (this.user.name == null || this.user.account != null) {
-        this.tempForm.author = this.user.account
-        console.log(this.tempForm.author)
-      } else {
-        this.tempForm.author = 'this.a'
-        console.log(this.tempForm.author)
-      }
-    },
-    avatar: function () {
-      this.tempForm.avatar = this.user.avatar
-    }
-  },
+  watch: {},
   computed: {
     user () {
       return this.$store.getters.user
     }
-    // FIXED: 使用者名稱塞入表單中呈現 & 傳送
-    // authorName () {
-    //   let authorName = this.tempForm.author
-    //   if (this.user.name !== null) {
-    //     authorName = this.user.name
-    //     console.log(authorName)
-    //   } else if (this.user.name === null || this.user.account !== null) {
-    //     authorName = this.user.account
-    //     console.log(authorName)
-    //   } else {
-    //     authorName = 'this.a'
-    //     console.log(authorName)
+    // 編輯欄位
+    // tempForm: {
+    //   // getter
+    //   get: function () {
+    //     return {
+    //       _id: '', // 方便編輯
+    //       template: 0,
+    //       title: '',
+    //       author: this.authorName,
+    //       avatar: this.avatarImg,
+    //       share: true,
+    //       publicOff: false,
+    //       image: null,
+    //       textarea: '',
+    //       text: '',
+    //       select: '',
+    //       datepicker: Number(new Date()),
+    //       date: Number(new Date())
+    //       // date: new Date().toLocaleString('zh-TW', { hour12: false })
+    //       // 預設夾帶傳進資料庫當下的編輯日期 "2021/8/3 12:28:23"
+    //     }
+    //   },
+    //   // setter
+    //   set: function (newValue) {
+    //     this.template = this.tempShow
     //   }
-    //   return authorName
     // }
   },
   methods: {
@@ -452,6 +447,8 @@ export default {
         for (const key in this.tempForm) {
           FD.append(key, this.tempForm[key])
         }
+        FD.append('author', this.authorName)
+        FD.append('avatar', this.avatarImg)
         // console.log(this.$store.state.user.role)
         // 判斷身分為會員或管理員才做驗證後的新增文章
         // THINK: 是否需再判斷新增的文章類型 ??
