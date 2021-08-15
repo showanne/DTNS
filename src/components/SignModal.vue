@@ -232,6 +232,7 @@ export default {
           this.sending = false
           // this.clearForm()
           this.$store.commit('signIn', data)
+          this.$emit('closeModal') // emitting to parent
           if (this.user.isSignIn && this.user.isAdmin) {
             // 是管理者登入的話，登入成功後導向管理中心
             this.$router.push('/manage').catch((error) => { console.log(error) })
