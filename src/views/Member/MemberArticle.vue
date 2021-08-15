@@ -1,10 +1,8 @@
 <template>
   <div id="memberArticle">
-    memberArticlememberArticle
-    <br> {{ tempCardShow }}
-    {{ articleM }}
-    <md-button class="md-primary" @click="editArticle(index)">編輯</md-button>
-    <md-button class="md-primary" @click="deleteArticle(index)">刪除</md-button>
+    <!-- {{ tempCardShow }} -->
+    <!-- <md-button class="md-primary" @click="editArticle(index)">編輯</md-button> -->
+    <!-- <md-button class="md-primary" @click="deleteArticle(index)">刪除</md-button> -->
 
     <!-- 文章呈現區 -->
     <div class="md-layout md-alignment-center">
@@ -12,19 +10,14 @@
         class="masonry-container"
         v-masonry
         transition-duration="0.3s"
-        item-selector=".tempCard"
+        item-selector=".tempCardForMember"
         fit-width="true">
-        <!-- v-masonry="containerId + T"
-            官方Demo 也沒有給 containerId，可能下方 .$redrawVueMasonry 會自動抓取? 給了會有 errorMsg -->
-          <!-- v-masonry-tile class="tempCard" 這2個是套件所需屬性 -->
-        <TempCardShare
-          class="tempCard" v-masonry-tile
+        <TempCardForMember
+          class="tempCardForMember" v-masonry-tile
           v-for="item in articleM"
           :key="item._id"
-          :item="item"
-          :tempIcon="tempList[tempCardShow].subhead">
-        </TempCardShare>
-          <!-- @click="showCardById = true" -->
+          :item="item">
+        </TempCardForMember>
       </div>
     </div>
 
@@ -44,12 +37,12 @@
 
 <script>
 // components元件
-import TempCardShare from '@/components/TempCardShare.vue'
+import TempCardForMember from '@/components/TempCardForMember.vue'
 
 export default {
   name: 'MemberArticle',
   components: {
-    TempCardShare
+    TempCardForMember
   },
   data () {
     return {

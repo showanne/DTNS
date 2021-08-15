@@ -1,4 +1,15 @@
 /* member */
 #member{
-
+  .masonry-container {
+    .tempCardForMember{
+     min-width: 350px;
+     max-width: 350px;
+     margin: 1.5rem;
+       @include md-layout-xsmall {
+         min-width: 95%;
+         max-width: 95%;
+         margin: 1rem auto 1rem 1.5rem;
+       }   
+     }
+   }
 }

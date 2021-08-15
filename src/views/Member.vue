@@ -26,10 +26,11 @@
                 <span class="md-list-item-text">Analytics</span>
               </md-list-item>
 
-              <md-list-item md-expand :md-expanded.sync="expandArticle">
+              <md-list-item to="/member/memberArticle">
                 <md-icon>feed</md-icon>
                 <span class="md-list-item-text">Article</span>
 
+                <!-- TODO: 分主題檢視
                 <md-list slot="md-expand">
                   <md-list-item class="md-inset"
                     to="/member/memberArticle"
@@ -38,7 +39,7 @@
                     @click="tempShow(T)">
                     {{ temp.subhead }}
                   </md-list-item>
-                </md-list>
+                </md-list> -->
               </md-list-item>
 
               <md-list-item to="/member">
