@@ -44,14 +44,14 @@
           <!-- postIt -->
           <md-card-content v-if="tempNum === 1">
             <div class="md-title word-break-all">{{ title }}</div>
-            <div class="md-body-1 word-break-all" v-html="text"></div>
+            <div class="md-body-1 word-break-all" v-html="textarea"></div>
           </md-card-content>
 
           <!-- todo -->
           <md-card-content v-if="tempNum === 2">
             <div class="md-title word-break-all">{{ title }}</div>
             <div class="md-caption text-medium-right">期限：{{ datepicker }}</div>
-            <div class="md-body-1 word-break-all" v-html="text"></div>
+            <div class="md-body-1 word-break-all" v-html="textarea"></div>
           </md-card-content>
 
           <!-- diary -->

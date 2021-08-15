@@ -12,14 +12,16 @@ export default {
         { field: 'share', name: '分享', value: false }, // 預設分享 x
         { field: 'title', name: '本次發想主題' },
         { field: 'author', name: '作者' }, // 系統自行帶入
-        { field: 'text', name: '寫點什麼...' } // 輸完會自動增加一個 input
+        { field: 'textarea', name: '寫點什麼...' }
+        // TODO: 改為 Input:text，並且輸完會自動增加一個 input，送出型態希望為陣列
       ],
       todo: [
         { field: 'share', name: '分享', value: false }, // 預設分享 x
         { field: 'title', name: '待辦事項主題' },
         { field: 'author', name: '作者' }, // 系統自行帶入
         { field: 'datepicker', name: '期限' },
-        { field: 'text', name: '寫點什麼...' } // 輸完會自動增加一個 input
+        { field: 'textarea', name: '寫點什麼...' }
+        // TODO: 改為 Input:text，並且輸完會自動增加一個 input，送出型態希望為陣列
         // { field: 'select', name: '重要程度', selectList: [] },
       ],
       diary: [

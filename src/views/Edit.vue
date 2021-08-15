@@ -103,7 +103,7 @@
                   <md-field md-clearable :md-counter="true"
                   class="md-layout-item md-size-90">
                     <label>{{ tempList[tempForm.template].input[3].name }}</label>
-                    <md-input v-model="tempForm.text"></md-input>
+                    <md-textarea v-model="tempForm.textarea" md-autogrow></md-textarea>
                   </md-field>
                 </div>
               </md-card-content>
@@ -126,7 +126,7 @@
 
                   <md-field md-clearable class="md-layout-item md-size-90">
                     <label>{{ tempList[tempForm.template].input[4].name }}</label>
-                    <md-input v-model="tempForm.text"></md-input>
+                    <md-textarea v-model="tempForm.textarea" md-autogrow></md-textarea>
                     <span class="md-helper-text">輸入待辦事項</span>
                   </md-field>
                 </div>

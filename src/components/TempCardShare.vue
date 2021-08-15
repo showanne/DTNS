@@ -26,7 +26,7 @@
       <!-- postIt -->
       <md-card-content v-if="item.template === 1">
         <div class="md-title text-truncate">{{ item.title }}</div>
-        <div class="md-body-1 text-truncate word-break-all" v-html="item.text"></div>
+        <div class="md-body-1 text-truncate word-break-all" v-html="item.textarea"></div>
         <!-- showCardById 顯示個別文章的 modal -->
         <span class="md-caption" @click="showCardById = true">more...</span>
       </md-card-content>
@@ -35,7 +35,7 @@
       <md-card-content v-if="item.template === 2">
         <div class="md-title text-truncate">{{ item.title }}</div>
         <div class="md-subhead">期限：{{ item.datepicker }}</div>
-        <div class="md-body-1 text-truncate word-break-all" v-html="item.text"></div>
+        <div class="md-body-1 text-truncate word-break-all" v-html="item.textarea"></div>
         <!-- showCardById 顯示個別文章的 modal -->
         <span class="md-caption" @click="showCardById = true">more...</span>
       </md-card-content>
