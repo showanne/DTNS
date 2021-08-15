@@ -135,20 +135,20 @@
       md-title="ERROR"
       :md-content="message" />
 
-    <md-dialog :md-active.sync="wellcomeMsg">
-      <md-dialog-content>
-        <Avatar />
+    <!-- <md-dialog :md-active.sync="wellcomeMsg">
+      <md-dialog-content class="md-alignment-centered">
+        <md-avatar class="md-large md-elevation-5">
+          <img :src="avatarImg" alt="">
+        </md-avatar>
         <div class="md-layout-item">
           Wellcome {{ form.account }}
           </div>
       </md-dialog-content>
-    </md-dialog>
+    </md-dialog> -->
   </div>
 </template>
 
 <script>
-import Avatar from '@/components/Avatar.vue'
-
 // vuelidate 驗證套件
 import { validationMixin } from 'vuelidate'
 import {
@@ -160,9 +160,7 @@ import {
 
 export default {
   name: 'SignModal',
-  components: {
-    Avatar
-  },
+  components: {},
   mixins: [validationMixin],
   props: {
     signBtn: {
@@ -181,7 +179,7 @@ export default {
       // 送出後的進度條 false 是不跑
       sending: false,
       // 登入的歡迎訊息
-      wellcomeMsg: false,
+      // wellcomeMsg: false,
       // alert 訊息控制 false 是不跳 alert
       messageShow: false,
       // 登入訊息
@@ -230,18 +228,18 @@ export default {
         this.sending = true
 
         window.setTimeout(() => {
-          this.wellcomeMsg = true
+          // this.wellcomeMsg = true
           this.sending = false
           // this.clearForm()
           this.$store.commit('signIn', data)
           if (this.user.isSignIn && this.user.isAdmin) {
             // 是管理者登入的話，登入成功後導向管理中心
             this.$router.push('/manage').catch((error) => { console.log(error) })
-            console.log(this.$store.state.jwt.token.length, this.$store.state.user.role, this.$store.state.jwt.token)
+            // console.log(this.$store.state.jwt.token.length, this.$store.state.user.role, this.$store.state.jwt.token)
           } else {
             // 登入成功後導向會員中心
             this.$router.push('/member').catch((error) => { console.log(error) })
-            console.log(this.$store.state.jwt.token.length, this.$store.state.user.role, this.$store.state.jwt.token)
+            // console.log(this.$store.state.jwt.token.length, this.$store.state.user.role, this.$store.state.jwt.token)
           }
         }, 1500)
       } catch (error) {
