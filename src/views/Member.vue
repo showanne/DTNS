@@ -13,8 +13,10 @@
       <div class="md-layout-item md-size-20">
         <div class="full-control" style="border:dashed 2.5px #B3AB88; padding: 16px;">
           <!-- 會員資訊 -->
-          <Avatar class="md-large md-elevation-5" />
-          <Anonymous />
+          <md-avatar class="md-large md-elevation-5">
+            <img :src="user.avatar" alt="">
+          </md-avatar>
+          <h2>{{ userName }}</h2>
 
           <!-- 會員可用功能選單 -->
           <div class="list">
@@ -58,9 +60,6 @@
 </template>
 
 <script>
-// components元件
-import Avatar from '@/components/Avatar.vue'
-import Anonymous from '@/components/Anonymous.vue'
 
 // import Qs from 'qs' // 將回傳的 JSON 轉 form-urlencoded
 // import jwtDecode from 'jwt-decode' // 解析回傳的 id_Token
@@ -74,8 +73,7 @@ export default {
     }
   },
   components: {
-    Avatar,
-    Anonymous
+
   },
   computed: {
     user () {

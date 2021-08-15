@@ -58,11 +58,8 @@
                   {{ tempList[tempForm.template].name }}
                 </h4>
                 <p class="category">
-                  {{ authorName }}
+                  {{ userName }}
                 </p>
-                <!-- <md-avatar>
-                  <img :src="avatarImg" alt="">
-                </md-avatar> -->
               </md-card-header>
 
               <!-- share -->
@@ -391,33 +388,6 @@ export default {
     user () {
       return this.$store.getters.user
     }
-    // 編輯欄位
-    // tempForm: {
-    //   // getter
-    //   get: function () {
-    //     return {
-    //       _id: '', // 方便編輯
-    //       template: 0,
-    //       title: '',
-    //       author: this.authorName,
-    //       avatar: this.avatarImg,
-    //       share: true,
-    //       publicOff: false,
-    //       image: null,
-    //       textarea: '',
-    //       text: '',
-    //       select: '',
-    //       datepicker: Number(new Date()),
-    //       date: Number(new Date())
-    //       // date: new Date().toLocaleString('zh-TW', { hour12: false })
-    //       // 預設夾帶傳進資料庫當下的編輯日期 "2021/8/3 12:28:23"
-    //     }
-    //   },
-    //   // setter
-    //   set: function (newValue) {
-    //     this.template = this.tempShow
-    //   }
-    // }
   },
   methods: {
     tempShow (T) {
@@ -447,7 +417,7 @@ export default {
         for (const key in this.tempForm) {
           FD.append(key, this.tempForm[key])
         }
-        FD.append('author', this.authorName)
+        FD.append('author', this.userName)
         FD.append('avatar', this.avatarImg)
         // console.log(this.$store.state.user.role)
         // 判斷身分為會員或管理員才做驗證後的新增文章

@@ -1,9 +1,5 @@
 <template>
-  <h2>
-  <span v-if="user.name != null">{{ user.name }}</span>
-  <span v-else-if="user.name == null && user.account != null">{{ user.account }}</span>
-  <span v-else>匿名{{ anonymous[random()] }}</span>
-  </h2>
+  <span>匿名{{ anonymous[random()] }}</span>
 </template>
 
 <script>

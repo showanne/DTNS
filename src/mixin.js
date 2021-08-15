@@ -85,32 +85,21 @@ export default {
         // { index: 5, name: '管理中心', subhead: 'Manage', show: !this.user.isSignIn && this.user.isAdmin }
       ]
     },
-    authorName () {
-      let authorName = ''
+    userName () {
+      let userName = ''
       if (this.user.name !== '') {
-        authorName = this.user.name
+        userName = this.user.name
       } else if (this.user.account !== '') {
-        authorName = this.user.account
+        userName = this.user.account
       } else {
         const anonymous = ['水獺', '烏龜', '玫瑰', '貓咪', '犀牛', '小鹿', '大魚', '獵豹', '老虎', '海豚', '熊貓', '鴿子', '刺蝟', '黑狗', '小兔', '天鵝', '烏鴉', '小雞', '海鷗']
-        authorName = '匿名' + anonymous[Math.floor(Math.random() * 19)]
+        userName = '匿名' + anonymous[Math.floor(Math.random() * 19)]
       }
-      return authorName
-
-      // let authorName = ''
-      // if (this.user.name != '' || this.user.name !== undefined) {
-      //   authorName = this.user.name
-      // } else if (this.user.account != '' || this.user.account !== undefined) {
-      //   authorName = this.user.account
-      // } else {
-      //   const anonymous = ['水獺', '烏龜', '玫瑰', '貓咪', '犀牛', '小鹿', '大魚', '獵豹', '老虎', '海豚', '熊貓', '鴿子', '刺蝟', '黑狗', '小兔', '天鵝', '烏鴉', '小雞', '海鷗']
-      //   authorName = '匿名' + anonymous[Math.floor(Math.random() * 19)]
-      // }
-      // return authorName
+      return userName
     },
     avatarImg () {
       let avatarImg = ''
-      if (this.user.avatar !== '' || this.user.avatar !== undefined) {
+      if (this.user.avatar !== '') {
         avatarImg = this.user.avatar
       } else {
         const avatarColors = ['3B4058', '2A6E78', '7A907C', 'C9B180', '3E6B48', 'B5B479', 'F7E6A6']

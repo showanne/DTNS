@@ -41,13 +41,11 @@
 
 <script>
 // components元件
-// import Avatar from '@/components/Avatar.vue'
 import TempCardShare from '@/components/TempCardShare.vue'
 
 export default {
   name: 'Collection',
   components: {
-    // Avatar,
     TempCardShare
   },
   data () {

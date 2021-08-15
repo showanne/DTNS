@@ -1,21 +1,19 @@
 <template>
   <div id="manageHome">
     <!-- 管理者資訊 -->
-    <Avatar class="md-large md-elevation-5" />
-    <Anonymous />
+    <md-avatar class="md-large md-elevation-5">
+      <img :src="user.avatar" alt="">
+    </md-avatar>
+    <h2>{{ userName }}</h2>
   </div>
 </template>
 
 <script>
-// components元件
-import Avatar from '@/components/Avatar.vue'
-import Anonymous from '@/components/Anonymous.vue'
 
 export default {
   name: 'ManageHome',
   components: {
-    Avatar,
-    Anonymous
+
   },
   computed: {
     user () {

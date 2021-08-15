@@ -13,9 +13,6 @@
             </md-button> -->
             <!-- <h3 class="md-title">DTNS</h3> md-collapse -->
           </div>
-          <div class="md-layout-item md-large-size-70 md-medium-size-60 md-small-50 md-xsmall-hide">
-            <h4>Hello <Anonymous style="display: inline-block; font-size: 1.5rem;" /> ^^</h4>
-          </div>
 
           <div class="md-layout-item md-large-size-15 md-medium-size-15 md-xsmall-hide">
             <md-field>
@@ -181,7 +178,6 @@
 <script>
 // components元件
 import SignModal from '@/components/SignModal.vue'
-import Anonymous from '@/components/Anonymous.vue'
 
 export default {
   data () {
@@ -196,8 +192,7 @@ export default {
     }
   },
   components: {
-    SignModal,
-    Anonymous
+    SignModal
   },
   computed: {
     user () {

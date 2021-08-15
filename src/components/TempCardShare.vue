@@ -4,7 +4,6 @@
         <md-avatar v-if="item.avatar != null || item.avatar != ''" class="md-large md-elevation-5">
           <img :src="item.avatar" alt="Avatar">
         </md-avatar>
-        <Avatar v-else />
         <div class="md-layout-item md-subhead">{{ item.author }}</div>
         <div class="md-layout-item md-subhead">
           <md-icon :md-src="require('../assets/icon/dateS.svg')"></md-icon>
@@ -148,7 +147,6 @@
 <script src="https://www.line-website.com/social-plugins/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
 
 <script>
-import Avatar from '@/components/Avatar.vue'
 import TempCardShowById from '@/components/TempCardShowById.vue'
 
 export default {
@@ -159,7 +157,6 @@ export default {
     }
   },
   components: {
-    Avatar,
     TempCardShowById
   },
   props: {

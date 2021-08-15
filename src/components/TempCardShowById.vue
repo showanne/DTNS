@@ -11,7 +11,9 @@
           <md-card-header>
             <div class="md-layout md-alignment-center-space-between">
               <div class="md-layout-item md-size-15">
-                <Avatar class="md-large md-elevation-5" />
+                <md-avatar class="md-large md-elevation-5">
+                  <img :src="avatar" alt="">
+                </md-avatar>
               </div>
               <div class="md-layout-item md-size-70">
                   <div class="md-subhead d-medium-inline">{{ author }}</div>
@@ -115,8 +117,6 @@
 </template>
 
 <script>
-import Avatar from '@/components/Avatar.vue'
-
 export default {
   name: 'TempCardShowById',
   data () {
@@ -134,9 +134,7 @@ export default {
       date: ''
     }
   },
-  components: {
-    Avatar
-  },
+  components: {},
   props: {
     // 外層傳入 用來控制 modal 顯示
     showCardById: {

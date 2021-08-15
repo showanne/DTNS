@@ -1,7 +1,6 @@
 <template>
   <md-avatar>
-    <img v-if="user.avatar != null" :src="user.avatar" alt="Avatar">
-    <img v-else class="avatar"
+    <img class="avatar"
         :src="`https://source.boringavatars.com/${variant}/${size}/?colors=${colors[random()]},${colors[random()]}`"
         alt="Avatar"
       />
