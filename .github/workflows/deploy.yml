@@ -21,9 +21,11 @@ jobs:
         run: |
           npm install
           npm run build
-        # env:
-        #   VUE_APP_TIME: 1500
-        #   VUE_APP_TIME_BREAK: 300
+        env:
+          VUE_APP_API: ${{ secret.VUE_APP_API }}
+          VUE_APP_CHANNEL_ID: ${{ secret.VUE_APP_CHANNEL_ID }}
+          VUE_APP_CHANNEL_SECRET: ${{ secret.VUE_APP_CHANNEL_SECRET }}
+          VUE_APP_CALLBACK_URL: ${{ secret.VUE_APP_CALLBACK_URL }}
       # 步驟三：部署
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@4.1.1
