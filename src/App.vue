@@ -21,7 +21,9 @@
         </md-app-toolbar>
 
         <md-app-drawer :md-active.sync="menuVisible"
-          :md-permanent="permanent" :md-persistent="persistent">
+          md-permanent="full">
+          <!-- :md-permanent="permanent"
+          :md-persistent="persistent" -->
         <!-- <md-app-drawer :md-active.sync="menuVisible" md-permanent="full" md-persistent="mini"> -->
 
           <md-list>
@@ -263,6 +265,7 @@ export default {
     }
   },
   mounted () {
+    console.log(document.body.clientWidth)
     // console.log(this.user)
     // console.log(this.user.isSignIn)
   }
