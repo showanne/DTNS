@@ -1,12 +1,44 @@
 #collection {
   .md-tabs-navigation{
     padding: 1rem;
+    // 為了釘住 tabs
+    position: fixed;
+    z-index: 19;
+    top: $toolbar-h + 5px;
+    
+    @include md-layout-small {
+      top: $toolbar-h-small + 5px;
+      width: calc(100vw - 2.5rem - #{$drawer-w-small});
+      overflow-x: scroll;
+      overflow-y: hidden;
+    }
+    
+    @include md-layout-xsmall{
+      width: calc(100vw - 2.5rem);
+      top: $toolbar-h-xsmall + 5px;
+    }
+
+    // tabs 的按鈕寬度
+    .md-button{
+      min-width: calc((100vw - 4.5rem - #{$drawer-w}) / 7);
+      max-width: calc((100vw - 4.5rem - #{$drawer-w}) / 7);
+
+      @include md-layout-small {
+        min-width: calc((150vw - #{$drawer-w-small}) / 7);
+        max-width: calc((150vw - #{$drawer-w-small}) / 7);
+      }
+    }
   }
   
+  .md-content.md-tabs-content{
+    height: unset !important;
+    margin-top: 90px;
+  }
   .md-tab-icon{
     height: unset;
     width: 3rem;
   }
+
 
   .masonry-container {
    .tempCard{
@@ -24,19 +56,6 @@
       }   
     }
   }
-
-  .md-content.md-tabs-content{
-    height: unset !important;
-  }
-
-
-  // .md-tabs .md-tabs-container .md-tab{
-  //   min-height: calc(100vh - 72px);
-    
-  //   @include md-layout-xsmall {
-  //     min-height: calc(100vh - 64px);
-  //   }
-  // }
   
   .md-card-header .md-avatar {
     // float: left; 預設讓標題字不會貼邊

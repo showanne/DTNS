@@ -6,24 +6,47 @@
     // width: 20%;
     height: 100vh;
   }
+  // 電腦螢幕尺寸會出現奇怪空白
+  // .md-app-container{
+  //   overflow-x: hidden;
+  // }
   // .md-content {
   //   width: 80%;
   // }
-  .md-drawer {
-    // .md-persistent-mini:not(.md-active)
-    width: 190px!important;
+}
+
+// 網頁內容寬度 100vw - $drawer-w
+// 側邊欄 drawer 190px
+$drawer-w: 190px;
+$drawer-w-small: 80px;
+$drawer-w-xsmall: 100vw;
+.md-drawer {
+  // .md-persistent-mini:not(.md-active)
+  width: $drawer-w !important;
+
+  @include md-layout-small {
+    width: $drawer-w-small !important;
+  }
+
+  @include md-layout-xsmall{
+    width: $drawer-w-xsmall !important;
   }
 }
 
+// 網頁內容高度 100vh - $toolbar-h
+// 上方列 toolbar 64px
+$toolbar-h: 64px;
+$toolbar-h-small: 48px;
+$toolbar-h-xsmall: 56px;
 .md-toolbar, .md-toolbar-row {
-  min-height: 64px;
-  
-  @include md-layout-xsmall{
-      min-height: 56px;
-  }
+  min-height: $toolbar-h;
   
   @include md-layout-small {
-      min-height: 48px;
+      min-height: $toolbar-h-small;
+  }
+  
+  @include md-layout-xsmall{
+      min-height: $toolbar-h-xsmall;
   }
 
     // transition-property: opacity,background-color,box-shadow,transform,color,min-height;
