@@ -22,10 +22,11 @@ jobs:
           npm install
           npm run build
         env:
-          VUE_APP_API: ${{ secret.VUE_APP_API }}
-          VUE_APP_CHANNEL_ID: ${{ secret.VUE_APP_CHANNEL_ID }}
-          VUE_APP_CHANNEL_SECRET: ${{ secret.VUE_APP_CHANNEL_SECRET }}
-          VUE_APP_CALLBACK_URL: ${{ secret.VUE_APP_CALLBACK_URL }}
+          VUE_APP_API: ${{ secrets.VUE_APP_API }}
+          VUE_APP_CHANNEL_ID: ${{ secrets.VUE_APP_CHANNEL_ID }}
+          VUE_APP_CHANNEL_SECRET: ${{ secrets.VUE_APP_CHANNEL_SECRET }}
+          VUE_APP_CALLBACK_URL: ${{ secrets.VUE_APP_CALLBACK_URL }}
+          # github -> settings -> secrets
       # 步驟三：部署
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@4.1.1
