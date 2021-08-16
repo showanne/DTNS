@@ -24,13 +24,13 @@ $drawer-w-xsmall: 100vw;
   // .md-persistent-mini:not(.md-active)
   width: $drawer-w !important;
 
-  @include md-layout-small {
-    width: $drawer-w-small !important;
-  }
+  // @include md-layout-small {
+  //   width: $drawer-w-small !important;
+  // }
 
-  @include md-layout-xsmall{
-    width: $drawer-w-xsmall !important;
-  }
+  // @include md-layout-xsmall{
+  //   width: $drawer-w-xsmall !important;
+  // }
 }
 
 // 網頁內容高度 100vh - $toolbar-h

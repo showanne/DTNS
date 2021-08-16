@@ -4,14 +4,10 @@
       <md-app md-waterfall md-mode="fixed">
         <md-app-toolbar class="md-accent md-layout md-alignment-center-space-between">
           <div class="md-layout-item md-large-size-15 md-medium-size-25 md-small-50">
-            <md-button class="md-menu-button">
+            <md-button class="md-menu-button"
+              @click="toggleMenu" v-if="!menuVisible">
               <md-icon :md-src="require('./assets/icon/menu.svg')"></md-icon>
             </md-button>
-            <!-- <md-button class="md-menu-button"
-              @click="toggleMenu" v-if="!menuVisible">
-              <md-icon>menu</md-icon>
-            </md-button> -->
-            <!-- <h3 class="md-title">DTNS</h3> md-collapse -->
           </div>
 
           <div class="md-layout-item md-large-size-15 md-medium-size-15 md-xsmall-hide">
@@ -24,19 +20,17 @@
           </div>
         </md-app-toolbar>
 
-        <md-app-drawer md-permanent="full">
-          <!-- <md-app-drawer :md-active.sync="menuVisible" md-permanent="full" md-persistent="mini"> -->
-          <!-- <md-toolbar class="md-transparent" md-elevation="3" to="/">
-            DTNS Logo
-            <md-button class="md-menu-button md-dense" @click="toggleMenu">
-              <md-icon>keyboard_arrow_left</md-icon>
-            </md-button>
-          </md-toolbar> -->
+        <md-app-drawer md-permanent="full"
+           :md-active.sync="menuVisible">
+        <!-- <md-app-drawer :md-active.sync="menuVisible" md-permanent="full" md-persistent="mini"> -->
 
           <md-list>
             <md-list-item to="/">
-              <h3 class="md-title">DTNS</h3>
-              <!-- <img src="./assets/logo.png" alt="logo" width="90"> -->
+              <h3 class="md-title fw-bold">DTNS</h3>
+              <!-- <md-button class="md-menu-button md-dense w-unset"
+               v-if="menuVisible" @click="toggleMenu">
+                <md-icon>keyboard_arrow_left</md-icon>
+              </md-button> -->
             </md-list-item>
 
             <md-list-item v-for="(menu, m) in menuList" :key="m"
@@ -213,6 +207,21 @@ export default {
     },
     toggleMenu () {
       this.menuVisible = !this.menuVisible
+    },
+    screenWidth () {
+      addEventListener('resize', () => {
+        const clientWidth = document.body.clientWidth
+        // TODO: 根據螢幕大小去調整 md-permanent="full" md-persistent="mini" 的值 及 menuVisible 的開關
+        // 當螢幕 ... 時
+        if (clientWidth) {
+          this.menuVisible = !this.menuVisible
+          //  < 900 md-permanent="full" md-persistent="mini"
+        } else {
+          this.menuVisible = !this.menuVisible
+          //  < 600 md-persistent="full"
+        }
+        // > 900 md-permanent="full"
+      })
     }
   },
   created () {
