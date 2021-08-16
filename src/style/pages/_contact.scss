@@ -23,20 +23,20 @@ form.w-contact-modal {
 #questionCard{
   padding: 1rem;
 
-  .md-headline{
-    display: inline-block;
-    position: relative;
+  // .md-headline{
+  //   display: inline-block;
+  //   position: relative;
 
-    &:before{
-      content: '';
-      background-color: $light1;
-      width: 99px;
-      height: 23px;
-      position: absolute;
-      top: 10px;
-      left: 10px;
-    }
-  }
+  //   &:before{
+  //     content: '';
+  //     background-color: $light1;
+  //     width: 99px;
+  //     height: 23px;
+  //     position: absolute;
+  //     top: 10px;
+  //     left: 10px;
+  //   }
+  // }
 }
 
 .accordion{
@@ -57,6 +57,11 @@ form.w-contact-modal {
 }
 
 #questionCard{
+  .md-layout-item {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding-right: 1rem;
+  }
   span.md-caption{
     background-color: $light1;
     padding: 3px;

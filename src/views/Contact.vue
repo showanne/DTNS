@@ -10,6 +10,7 @@
 
     <!-- 輸入問題表格 modal -->
     <md-dialog :md-active.sync="contactBtn">
+      <md-progress-bar md-mode="indeterminate" v-if="sending" />
       <md-dialog-title style=" text-align:center; ">contact us</md-dialog-title>
       <md-dialog-content class="md-scrollbar">
         <form class="w-contact-modal"
@@ -25,10 +26,10 @@
                 v-model="contactForm.majorIssue"
                 name="majorIssue">
                 <md-option><!-- 第一個空白選項 --></md-option>
-                <md-option value="&nbsp; 編輯權限">&nbsp; 編輯權限</md-option>
-                <md-option value="&nbsp; 網頁功能">&nbsp; 網頁功能</md-option>
-                <md-option value="&nbsp; 文章編輯">&nbsp; 文章編輯</md-option>
-                <md-option value="&nbsp; 其他">&nbsp; 其他</md-option>
+                <md-option value="編輯權限">編輯權限</md-option>
+                <md-option value="網頁功能">網頁功能</md-option>
+                <md-option value="文章編輯">文章編輯</md-option>
+                <md-option value="其他">其他</md-option>
               </md-select>
             </md-field>
 
@@ -123,8 +124,9 @@
         <div class="md-layout md-alignment-center">
           <!-- style="flex-direction: column;" -->
         <!-- md-layout-nowrap w-contact-content -->
-          <div class="md-layout-item md-large-size-50 md-medium-size-50 md-small-size-50 md-xsmall-size-100">
-            <md-card class="md-accent" md-with-hover>
+          <div v-for="(issue, i) in questionCardReply" :key="i"
+           class="md-layout-item md-large-size-50 md-medium-size-50 md-small-size-50 md-xsmall-size-100">
+            <md-card class="md-accent">
               <md-card-content class="md-layout md-alignment-center">
                 <div class="md-layout-item md-size-15">
                     <Avatar class="md-large md-elevation-5" />
@@ -132,100 +134,20 @@
                 <div class="md-layout-item md-size-85">
                   <div class="md-layout md-alignment-center-space-between">
                     <div class="md-title">
-                      Nickname
-                      <span class="md-caption">#1</span>
+                      {{ issue.nickname }}
+                      <span class="md-caption">#{{ i+1 }}</span>
                     </div>
-                    <div class="md-subhead">110.08.08</div>
+                    <div class="md-subhead">
+                      {{ issue.date }}
+                    </div>
                   </div>
                   <div class="md-subheading">
-                    輸入的欄位輸入的欄位輸入的欄位輸入的欄位輸入的輸入的欄位的欄位輸入的欄位的欄位位
+                    {{ issue.issueDescription }}
                   </div>
-                  <div class="md-body-2 mt-large-3" style="margin-top: 0.8rem; color: darkkhaki;">
+                  <div v-if="issue.replyIssue" class="md-body-2 mt-large-3" style="margin-top: 0.8rem; color: darkkhaki;">
                     <md-icon>support_agent</md-icon>
-                    已做調整，再請您試試唷！
+                    {{ issue.replyIssue }}
                   </div>
-                </div>
-              </md-card-content>
-            </md-card>
-          </div>
-          <div class="md-layout-item md-large-size-50 md-medium-size-50 md-small-size-50 md-xsmall-size-100">
-            <md-card class="md-accent" md-with-hover>
-              <md-card-content class="md-layout md-alignment-center">
-                <div class="md-layout-item md-size-15">
-                    <Avatar class="md-large md-elevation-5" />
-                </div>
-                <div class="md-layout-item md-size-85">
-                  <div class="md-layout md-alignment-center-space-between">
-                    <div class="md-title">
-                      Nickname
-                      <span class="md-caption">#1</span>
-                    </div>
-                    <div class="md-subhead">110.08.08</div>
-                  </div>
-                  <div class="md-subheading">
-                    輸入的欄位好像怪怪的...
-                  </div>
-                  <div class="md-body-2 mt-large-3" style="margin-top: 0.8rem; color: darkkhaki;">
-                    <md-icon>support_agent</md-icon>
-                    已做調整，再請您試試唷！
-                  </div>
-                </div>
-              </md-card-content>
-            </md-card>
-          </div>
-          <div class="md-layout-item md-large-size-50 md-medium-size-50 md-small-size-50 md-xsmall-size-100">
-            <md-card class="md-accent" md-with-hover>
-              <md-card-content class="md-layout md-alignment-center">
-                <div class="md-layout-item md-size-15">
-                  <Avatar class="md-large md-elevation-5" />
-                </div>
-                <div class="md-layout-item md-size-85">
-                  <div class="md-layout md-alignment-center-space-between">
-                    <div class="md-title">
-                      Nickname
-                      <span class="md-caption">#1</span>
-                    </div>
-                    <div class="md-subhead">110.07.29</div>
-                  </div>
-                  <span>
-                    Lorem adipisci aspernatur saepe quo possimus deserunt accusantium cum explicabo, vero cumque fugiat praesentium enim hic dolorem. Excepturi fuga mollitia alias?
-                  </span>
-                  <!-- <md-button class="md-icon-button">
-                    <md-icon>volunteer_activism</md-icon>
-                  </md-button>
-
-                  <md-button class="md-icon-button">
-                    <md-icon>cloud_download</md-icon>
-                  </md-button> -->
-                </div>
-              </md-card-content>
-            </md-card>
-          </div>
-          <div class="md-layout-item md-large-size-50 md-medium-size-50 md-small-size-50 md-xsmall-size-100">
-            <md-card class="md-accent" md-with-hover>
-              <md-card-content class="md-layout md-alignment-center">
-                <div class="md-layout-item md-size-15">
-                  <Avatar class="md-large md-elevation-5" />
-                </div>
-                <div class="md-layout-item md-size-85">
-                  <div class="md-layout md-alignment-center-space-between">
-                    <div class="md-title">
-                      Nickname
-                      <span class="md-caption">#1</span>
-                    </div>
-                    <div class="md-subhead">110.07.29</div>
-                  </div>
-                  <span>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium
-                    quod neque optio et delectus obcaecati  laudantium!
-                  </span>
-                  <!-- <md-button class="md-icon-button">
-                    <md-icon>volunteer_activism</md-icon>
-                  </md-button>
-
-                  <md-button class="md-icon-button">
-                    <md-icon>cloud_download</md-icon>
-                  </md-button> -->
                 </div>
               </md-card-content>
             </md-card>
@@ -256,7 +178,15 @@ export default {
       contactForm: {
         majorIssue: '',
         nickname: '',
-        issueDescription: ''
+        issueDescription: '',
+        date: Date.now()
+      },
+      questionCardReply: {
+        majorIssue: '',
+        nickname: '',
+        issueDescription: '',
+        replyIssue: '',
+        date: ''
       },
       // 送出訊息
       sending: false
@@ -280,7 +210,13 @@ export default {
   methods: {
     async submitIssue () {
       this.sending = true
-      await this.axios.post('/post', this.contactForm)
+      // 新增問題 (訪客)  /issue
+      await this.axios.post('/issue', this.contactForm)
+      this.sending = false
+      this.contactBtn = false
+      this.clearForm()
+      // 表單成功送出後 重新跳轉頁面
+      this.$router.go()
     },
     clearForm () {
       this.contactForm = {
@@ -288,6 +224,17 @@ export default {
         nickname: '',
         issueDescription: ''
       }
+    }
+  },
+  async mounted () {
+    try {
+      // 取得問題 (訪客)  /issue
+      const { data } = await this.axios.get('/issue')
+      this.questionCardReply = data.result.map(item => {
+        return item
+      })
+    } catch (error) {
+      console.log(error)
     }
   }
 }
