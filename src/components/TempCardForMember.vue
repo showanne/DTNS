@@ -76,11 +76,13 @@
 
       <md-card-actions md-alignment="space-between">
 
-        <md-button class="md-icon-button md-dense">
+        <md-button class="md-icon-button md-dense"
+           @click="editArticle(index)">
           <md-icon :md-src="require('../assets/icon/action-addEdit.svg')"></md-icon>
         </md-button>
 
-        <md-button class="md-icon-button md-dense">
+        <md-button class="md-icon-button md-dense"
+          @click="deleteArticle(index)">
           <md-icon :md-src="require('../assets/icon/action-delete.svg')"></md-icon>
         </md-button>
 
@@ -133,8 +135,67 @@ export default {
       required: true
     }
   },
+  methods: {
+    async editArticle (index) {
+      alert('editArticle', index)
+      this.tempForm = {
+        _id: this.articleM[index]._id,
+        title: this.articleM[index].title,
+        share: this.articleM[index].share,
+        image: this.articleM[index].image,
+        textarea: this.articleM[index].textarea,
+        text: this.articleM[index].text,
+        select: this.articleM[index].select,
+        datepicker: this.articleM[index].datepicker,
+        date: this.articleM[index].date,
+        index
+      }
+      this.editArticleModal = true
+      // 建立上傳格式 FormData  後端接收資料型態為 multipart/form-data
+      const FD = new FormData()
+      // 將資料新增進 FormData 用 append('key 欄位名稱', 'value 資料的值')
+      for (const key in this.tempForm) {
+        FD.append(key, this.tempForm[key])
+      }
+      // 編輯文章 (會員)  /  editArticle
+      const { data } = await this.axios.patch('/article/member' + this.tempForm._id, FD, {
+        headers: {
+          // 驗證欄位 'Bearer ' + token  -> Bearer要空格
+          authorization: 'Bearer ' + this.$store.state.jwt.token
+        }
+      })
+      this.articleM[this.tempForm.index] = {
+        title: this.tempForm.title,
+        share: this.tempForm.share,
+        image: `${process.env.VUE_APP_API}/file/${data.result.image}`,
+        textarea: this.tempForm.textarea,
+        text: this.tempForm.text,
+        select: this.tempForm.select,
+        datepicker: new Date(this.tempForm.datepicker).toLocaleDateString(),
+        date: new Date(this.tempForm.datepicker).toLocaleDateString(),
+        _id: this.tempForm._id
+      }
+      // refresh 畫面 讓資料即時更新
+      // else {
+      //   console.log(error)
+      // }
+    },
+    deleteArticle (index) {
+      alert('deleteArticle', index)
+    }
+  },
   mounted () {
-    // console.log(this.item.article.template)
+    // 有圖片才更新網址
+    if (this.item.article.image) {
+      // 處理 image 路徑  因為 :src 會錯誤判別 process.env  / 取得上傳的圖片 /file
+      this.item.article.image = `${process.env.VUE_APP_API}/file/${this.item.article.image}`
+    }
+    // 處理日期格式
+    if (this.item.article.datepicker || this.item.article.date) {
+      this.item.article.datepicker = new Date(this.item.article.datepicker).toLocaleDateString()
+      this.item.article.date = new Date(this.item.article.date).toLocaleDateString()
+    }
+    console.log(this.item.article)
     // console.log(this.tempList[this.item.article.template].subhead)
   }
 }

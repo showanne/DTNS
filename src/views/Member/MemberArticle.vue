@@ -1,5 +1,6 @@
 <template>
   <div id="memberArticle">
+    <!-- {{ articleM[6].article.image }} -->
     <!-- {{ tempCardShow }} -->
     <!-- <md-button class="md-primary" @click="editArticle(index)">編輯</md-button> -->
     <!-- <md-button class="md-primary" @click="deleteArticle(index)">刪除</md-button> -->
@@ -120,36 +121,36 @@ export default {
     submitArticle (index) {}
   },
   watch: {
-    tempCardShow: async function () {
-      // console.log(val)
-      // this.tempCardShow = val
+    // tempCardShow: async function () {
+    //   // console.log(val)
+    //   // this.tempCardShow = val
 
-      try {
-      // 取得指定分類的文章 (會員)  / getArticleByTempForMember
-        const { data } = await this.axios.get('/article/member/template/' + this.tempCardShow, {
-          headers: {
-          // 驗證欄位 'Bearer ' + token  -> Bearer要空格
-            authorization: 'Bearer ' + this.$store.state.jwt.token
-          }
-        })
+    //   try {
+    //   // 取得指定分類的文章 (會員)  / getArticleByTempForMember
+    //     const { data } = await this.axios.get('/article/member/template/' + this.tempCardShow, {
+    //       headers: {
+    //       // 驗證欄位 'Bearer ' + token  -> Bearer要空格
+    //         authorization: 'Bearer ' + this.$store.state.jwt.token
+    //       }
+    //     })
 
-        this.articleM = data.result.map(articleM => {
-        // 有圖片才更新網址
-          if (articleM.image) {
-          // 處理 image 路徑  因為 :src 會錯誤判別 process.env  / 取得上傳的圖片 /file
-            articleM.image = `${process.env.VUE_APP_API}/file/${articleM.image}`
-          }
-          // 處理日期格式
-          if (articleM.datepicker || articleM.date) {
-            articleM.datepicker = new Date(articleM.datepicker).toLocaleDateString()
-            articleM.date = new Date(articleM.date).toLocaleDateString()
-          }
-          return articleM
-        })
-      } catch (error) {
-        console.log(error)
-      }
-    }
+    //     this.articleM = data.result.map(articleM => {
+    //       // 有圖片才更新網址
+    //       if (articleM.article.image) {
+    //       // 處理 image 路徑  因為 :src 會錯誤判別 process.env  / 取得上傳的圖片 /file
+    //         articleM.article.image = `${process.env.VUE_APP_API}/file/${articleM.article.image}`
+    //       }
+    //       // 處理日期格式
+    //       if (articleM.article.datepicker || articleM.article.date) {
+    //         articleM.article.datepicker = new Date(articleM.article.datepicker).toLocaleDateString()
+    //         articleM.article.date = new Date(articleM.article.date).toLocaleDateString()
+    //       }
+    //       return articleM
+    //     })
+    //   } catch (error) {
+    //     console.log(error)
+    //   }
+    // }
   },
   async mounted () {
     try {
@@ -162,16 +163,17 @@ export default {
       })
 
       this.articleM = data.result.map(articleM => {
+        // console.log(articleM)
         // 有圖片才更新網址
-        if (articleM.image) {
-          // 處理 image 路徑  因為 :src 會錯誤判別 process.env  / 取得上傳的圖片 /file
-          articleM.image = `${process.env.VUE_APP_API}/file/${articleM.image}`
-        }
+        // if (articleM.article.image) {
+        // 處理 image 路徑  因為 :src 會錯誤判別 process.env  / 取得上傳的圖片 /file
+        // articleM.article.image = `${process.env.VUE_APP_API}/file/${articleM.article.image}`
+        // }
         // 處理日期格式
-        if (articleM.datepicker || articleM.date) {
-          articleM.datepicker = new Date(articleM.datepicker).toLocaleDateString()
-          articleM.date = new Date(articleM.date).toLocaleDateString()
-        }
+        // if (articleM.article.datepicker || articleM.article.date) {
+        // articleM.article.datepicker = new Date(articleM.article.datepicker).toLocaleDateString()
+        // articleM.article.date = new Date(articleM.article.date).toLocaleDateString()
+        // }
         return articleM
       })
     } catch (error) {
