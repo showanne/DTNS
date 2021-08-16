@@ -14,11 +14,16 @@
     :border-y="false"
     :cell-style-option="cellStyleOption"
   />
-  <!-- 無資料時顯示
+  <!-- 載入 loading 動畫" -->
+      <md-progress-spinner class="md-accent loading" v-if="loading"
+        :md-diameter="100" :md-stroke="10"
+        md-mode="indeterminate"></md-progress-spinner>
+
+  <!-- 無資料時顯示 -->
     <md-table-empty-state
         md-label="No article found"
         :md-description="`No article found for this '${search}' query. Try a different search term .`">
-      </md-table-empty-state> -->
+      </md-table-empty-state>
 
 <!-- TODO:文章檢舉下架功能
      img 顯示
@@ -176,7 +181,9 @@ export default {
       // 提示框顯示控制
       msgModal: false,
       // 提示框訊息
-      Msg: ''
+      Msg: '',
+      // 載入時 loading 動畫
+      loading: false
     }
   },
   methods: {
@@ -193,14 +200,15 @@ export default {
         // .patch('/users/cart', { product: this.cart[index]._id, amount: 0 },
         await this.axios.patch('/article/all', {
           article: this.article[rowIndex]._id,
-          publicOff: true,
-          share: false
+          share: false,
+          publicOff: true
         }, {
           headers: {
           // 驗證欄位 'Bearer ' + token  -> Bearer要空格
             authorization: 'Bearer ' + this.$store.state.jwt.token
           }
         })
+        alert(this.article[rowIndex]._id)
       } catch (error) {
         console.log(error)
       }
@@ -226,6 +234,8 @@ export default {
     this.searched = this.article
   },
   async mounted () {
+    // 載入時 loading 動畫
+    this.loading = true
     try {
       // 取得所有文章 /article/all
       const { data } = await this.axios.get('/article/all', {
@@ -247,6 +257,8 @@ export default {
         }
         return article
       })
+      // 頁面載完時 動畫消失
+      this.loading = false
     } catch (error) {
       console.log(error)
       let errorMsg = ''

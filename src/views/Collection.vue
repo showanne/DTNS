@@ -13,6 +13,12 @@
                 <!-- :to="'/collection/'+temp.subhead" -->
                 <!-- v-if="+temp.show"  -->
             <!-- v-if="item.template == tempCardShow" -->
+
+          <!-- 載入 loading 動畫" -->
+          <md-progress-spinner class="md-accent loading" v-if="loading"
+            :md-diameter="100" :md-stroke="10"
+            md-mode="indeterminate"></md-progress-spinner>
+
           <div class="md-layout md-alignment-center">
             <div
               class="masonry-container"
@@ -50,7 +56,9 @@ export default {
   },
   data () {
     return {
-      article: []
+      article: [],
+      // 載入時 loading 動畫
+      loading: false
     }
   },
   computed: {
@@ -65,8 +73,8 @@ export default {
   },
   watch: {
     tempCardShow: async function () {
-      // console.log(val)
-      // this.tempCardShow = val
+      // 載入時 loading 動畫
+      this.loading = true
 
       try {
         // 取得指定分類的文章 / getArticleByTemp
@@ -84,8 +92,11 @@ export default {
           }
           return article
         })
-        // this.$redrawVueMasonry('containerId' + this.tempCardShow)
+
         this.$redrawVueMasonry()
+
+        // 頁面載完時 動畫消失
+        this.loading = false
       } catch (error) {
         console.log(error)
         // let errorMsg = ''
@@ -96,6 +107,9 @@ export default {
     }
   },
   async mounted () {
+    // 載入時 loading 動畫
+    this.loading = true
+
     try {
       // 取得指定分類的文章 / getArticleByTemp
       const { data } = await this.axios.get('/article/template/' + this.tempCardShow)
@@ -112,8 +126,10 @@ export default {
         }
         return article
       })
-      // this.$redrawVueMasonry('containerId' + this.tempCardShow)
       this.$redrawVueMasonry()
+
+      // 頁面載完時 動畫消失
+      this.loading = false
     } catch (error) {
       console.log(error)
       // let errorMsg = ''

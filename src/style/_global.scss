@@ -43,3 +43,16 @@
   word-break: break-all;
   overflow-wrap: break-word;
 }
+
+.loading{
+  margin: auto;
+  position: absolute;
+  /* left: 50%; */
+  z-index: 9;
+  display: flex;
+  /* background: #c2ffdbbb; */
+  width: 100%;
+  height: 50%;
+  justify-content: center;
+  align-items: center;
+}

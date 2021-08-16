@@ -5,6 +5,11 @@
     <!-- <md-button class="md-primary" @click="editArticle(index)">編輯</md-button> -->
     <!-- <md-button class="md-primary" @click="deleteArticle(index)">刪除</md-button> -->
 
+    <!-- 載入 loading 動畫" -->
+    <md-progress-spinner class="md-accent loading" v-if="loading"
+      :md-diameter="100" :md-stroke="10"
+      md-mode="indeterminate"></md-progress-spinner>
+
     <!-- 文章呈現區 -->
     <div class="md-layout md-alignment-center">
       <div
@@ -62,7 +67,9 @@ export default {
         datepicker: Number(new Date()),
         date: Number(new Date())
       },
-      editArticleModal: false
+      editArticleModal: false,
+      // 載入時 loading 動畫
+      loading: false
     }
   },
   computed: {
@@ -153,6 +160,8 @@ export default {
     // }
   },
   async mounted () {
+    // 載入時 loading 動畫
+    this.loading = true
     try {
       // 取得指定分類的文章 (會員)  /  getArticleByTempForMember
       const { data } = await this.axios.get('/article/member/template/' + this.tempCardShow, {
@@ -176,6 +185,8 @@ export default {
         // }
         return articleM
       })
+      // 頁面載完時 動畫消失
+      this.loading = false
     } catch (error) {
       console.log(error)
     }
