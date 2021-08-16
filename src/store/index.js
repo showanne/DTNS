@@ -1,7 +1,11 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
+// 將 Vuex 資料存 localstorage
+import createPersistedState from 'vuex-persistedstate'
+
 Vue.use(Vuex)
+// Vuex 可以儲存網頁的狀態，讓元件間的資料共享更方便
 
 export default new Vuex.Store({
   // 狀態
@@ -65,5 +69,11 @@ export default new Vuex.Store({
       }
       // ...state.user 其餘運算子 將 state: {user} 展開
     }
-  }
+  },
+  // 將 Vuex 資料存 localstorage
+  plugins: [
+    createPersistedState({
+      key: 'DTNS'
+    })
+  ]
 })
