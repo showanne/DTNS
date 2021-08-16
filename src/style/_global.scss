@@ -36,3 +36,10 @@
     display: flex;
    }
 }
+
+// 為了解決 v-html 渲染時發生的無法換行及斷句的問題
+.text-v-html{
+  white-space: pre-line;
+  word-break: break-all;
+  overflow-wrap: break-word;
+}

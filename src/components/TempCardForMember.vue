@@ -17,35 +17,35 @@
         <md-card-media v-if="item.article.image">
           <img :src="item.article.image" alt="">
         </md-card-media>
-        <div class="md-title text-truncate">{{ item.article.title }}</div>
-        <div class="md-body-1 text-truncate word-break-all" v-html="item.article.text"></div>
+        <div class="md-title">{{ item.article.title }}</div>
+        <div class="md-body-1 text-v-html" v-html="item.article.text"></div>
       </md-card-content>
 
       <!-- postIt -->
       <md-card-content v-if="item.article.template === 1">
-        <div class="md-title text-truncate">{{ item.article.title }}</div>
-        <div class="md-body-1 text-truncate word-break-all" v-html="item.article.text"></div>
+        <div class="md-title">{{ item.article.title }}</div>
+        <div class="md-body-1 text-v-html" v-html="item.article.text"></div>
       </md-card-content>
 
       <!-- todo -->
       <md-card-content v-if="item.article.template === 2">
-        <div class="md-title text-truncate">{{ item.article.title }}</div>
+        <div class="md-title">{{ item.article.title }}</div>
         <div class="md-subhead">期限：{{ item.article.datepicker }}</div>
-        <div class="md-body-1 text-truncate word-break-all" v-html="item.article.text"></div>
+        <div class="md-body-1 text-v-html" v-html="item.article.text"></div>
       </md-card-content>
 
       <!-- diary -->
       <md-card-content v-if="item.article.template === 3">
-        <div class="md-title text-truncate">{{ item.article.title }}</div>
+        <div class="md-title">{{ item.article.title }}</div>
         <div class="md-subhead">期限：{{ item.article.datepicker }}</div>
         <div class="md-subhead">心情：{{ item.article.select }}</div>
-        <div class="md-body-1 text-truncate word-break-all" v-html="item.article.textarea"></div>
+        <div class="md-body-1 text-v-html" v-html="item.article.textarea"></div>
       </md-card-content>
 
       <!-- notes -->
       <md-card-content v-if="item.article.template === 4">
-        <div class="md-title text-truncate">{{ item.article.title }}</div>
-        <div class="md-body-1 text-truncate word-break-all" v-html="item.article.textarea"></div>
+        <div class="md-title">{{ item.article.title }}</div>
+        <div class="md-body-1 text-v-html" v-html="item.article.textarea"></div>
       </md-card-content>
 
       <!-- novel -->
@@ -53,11 +53,11 @@
         <md-card-media v-if="item.article.image">
           <img :src="item.article.image" alt="">
         </md-card-media>
-        <div class="md-title text-truncate">{{ item.article.title }}</div>
+        <div class="md-title">{{ item.article.title }}</div>
         <div class="md-subhead">作者：{{ item.article.text }}</div>
         <div class="md-subhead">是否已完結：{{ item.article.select }}</div>
         <div class="md-subhead">完結日期：{{ item.article.datepicker }}</div>
-        <div class="md-body-1 text-truncate word-break-all" v-html="item.article.textarea"></div>
+        <div class="md-body-1 text-v-html" v-html="item.article.textarea"></div>
       </md-card-content>
 
       <!-- storage -->
@@ -65,13 +65,13 @@
         <md-card-media v-if="item.article.image">
           <img :src="item.article.image" alt="">
         </md-card-media>
-        <div class="md-title text-truncate">{{ item.article.title }}</div>
+        <div class="md-title">{{ item.article.title }}</div>
         <div class="md-subhead">購買日期：{{ item.article.datepicker }}</div>
         <div class="md-subhead">
           <md-icon>share_location</md-icon>
           存放地點：{{ item.article.text }}
         </div>
-        <div class="md-body-1 text-truncate word-break-all" v-html="item.article.textarea"></div>
+        <div class="md-body-1 text-v-html" v-html="item.article.textarea"></div>
       </md-card-content>
 
       <md-card-actions md-alignment="space-between">

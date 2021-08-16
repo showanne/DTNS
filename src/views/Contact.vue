@@ -141,8 +141,8 @@
                       {{ issue.date }}
                     </div>
                   </div>
-                  <div class="md-subheading">
-                    {{ issue.issueDescription }}
+                  <div class="md-subheading text-v-html"
+                       v-html="issue.issueDescription">
                   </div>
                   <div v-if="issue.replyIssue" class="md-body-2 mt-large-3" style="margin-top: 0.8rem; color: darkkhaki;">
                     <md-icon>support_agent</md-icon>
