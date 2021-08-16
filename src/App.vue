@@ -20,17 +20,17 @@
           </div>
         </md-app-toolbar>
 
-        <md-app-drawer md-permanent="full"
-           :md-active.sync="menuVisible">
+        <md-app-drawer :md-active.sync="menuVisible"
+          :md-permanent="permanent" :md-persistent="persistent">
         <!-- <md-app-drawer :md-active.sync="menuVisible" md-permanent="full" md-persistent="mini"> -->
 
           <md-list>
             <md-list-item to="/">
-              <h3 class="md-title fw-bold">DTNS</h3>
-              <!-- <md-button class="md-menu-button md-dense w-unset"
+              <h3 class="md-title lh-5 fw-bold">DTNS</h3>
+              <md-button class="md-menu-button md-dense w-unset"
                v-if="menuVisible" @click="toggleMenu">
                 <md-icon>keyboard_arrow_left</md-icon>
-              </md-button> -->
+              </md-button>
             </md-list-item>
 
             <md-list-item v-for="(menu, m) in menuList" :key="m"
@@ -178,6 +178,8 @@ export default {
     return {
       search: '',
       menuVisible: false,
+      permanent: '',
+      persistent: '',
       settingTooltip: false,
       signUpBtn: false,
       signInBtn: false,
@@ -211,16 +213,28 @@ export default {
     screenWidth () {
       addEventListener('resize', () => {
         const clientWidth = document.body.clientWidth
+        console.log(clientWidth)
         // TODO: 根據螢幕大小去調整 md-permanent="full" md-persistent="mini" 的值 及 menuVisible 的開關
         // 當螢幕 ... 時
-        if (clientWidth) {
+        if (clientWidth > 900) {
+          this.menuVisible = true
+          // > 900 md-permanent="full"
+          this.permanent = 'full'
+          this.persistent = null
+          // console.log(this.permanent, this.persistent)
+        } else if (clientWidth > 600 && clientWidth < 900) {
           this.menuVisible = !this.menuVisible
           //  < 900 md-permanent="full" md-persistent="mini"
+          this.permanent = 'full'
+          this.persistent = 'mini'
+          // console.log(this.permanent, this.persistent)
         } else {
           this.menuVisible = !this.menuVisible
           //  < 600 md-persistent="full"
+          this.permanent = null
+          this.persistent = 'full'
+          // console.log(this.permanent, this.persistent)
         }
-        // > 900 md-permanent="full"
       })
     }
   },
