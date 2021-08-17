@@ -13,7 +13,14 @@
           <!-- {{ item.show === 'true' ? '開放' : '僅登入可見' }} -->
           <md-switch v-model="item.show" class="md-primary"></md-switch>
         </md-table-cell>
-        <md-table-cell md-label="Input" md-sort-by="input">{{ item.input }}</md-table-cell>
+        <md-table-cell md-label="Input" md-sort-by="input">
+          <!-- {{ item.input }} -->
+            <md-chip class="md-accent"
+             v-for="(input, i) in item.input"
+             :key="i" md-deletable>
+              {{ input.field }}
+            </md-chip>
+        </md-table-cell>
       </md-table-row>
     </md-table>
   </div>
