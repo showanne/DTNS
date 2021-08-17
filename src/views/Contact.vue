@@ -11,7 +11,7 @@
     <!-- 輸入問題表格 modal -->
     <md-dialog :md-active.sync="contactBtn">
       <md-progress-bar md-mode="indeterminate" v-if="sending" />
-      <md-dialog-title style=" text-align:center; ">contact us</md-dialog-title>
+      <md-dialog-title class="text-center">聯絡我們</md-dialog-title>
       <md-dialog-content class="md-scrollbar">
         <form class="w-contact-modal"
           @submit.prevent="submitIssue"
@@ -24,7 +24,7 @@
               </label>
               <md-select
                 v-model="contactForm.majorIssue"
-                name="majorIssue">
+                name="majorIssue" required>
                 <md-option><!-- 第一個空白選項 --></md-option>
                 <md-option value="編輯權限">編輯權限</md-option>
                 <md-option value="網頁功能">網頁功能</md-option>
@@ -37,13 +37,20 @@
             <md-field class="md-form-group">
               <md-icon>face</md-icon>
               <label>您的暱稱...</label>
-              <md-input v-model="contactForm.nickname"></md-input>
+              <md-input v-model="contactForm.nickname" required></md-input>
             </md-field>
 
             <!-- issueDescription -->
             <md-field class="md-form-group">
               <label>問題描述 ...</label>
-              <md-textarea v-model="contactForm.issueDescription"  md-counter="40"></md-textarea>
+              <md-textarea v-model="contactForm.issueDescription"
+                md-counter="40" required></md-textarea>
+              <span class="md-error" v-if="!$v.contactForm.issueDescription.required"
+                >必填欄位</span
+              >
+              <span class="md-error" v-else-if="!$v.contactForm.issueDescription.maxlength"
+                >最少須 1 個字，至多 40 個字</span
+              >
             </md-field>
 
             <!-- button -->
@@ -204,7 +211,7 @@ export default {
   },
   validations: {
     contactForm: {
-      tiissueDescriptiontle: {
+      issueDescription: {
         required,
         maxLength: maxLength(40),
         minLength: minLength(1)
