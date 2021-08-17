@@ -20,7 +20,7 @@
             <md-field class="md-form-group">
               <label>
                 <md-icon>help_outline</md-icon>
-                Major Issue...
+                主要問題...
               </label>
               <md-select
                 v-model="contactForm.majorIssue"
@@ -36,13 +36,13 @@
             <!-- nickname -->
             <md-field class="md-form-group">
               <md-icon>face</md-icon>
-              <label>Your Nickname...</label>
+              <label>您的暱稱...</label>
               <md-input v-model="contactForm.nickname"></md-input>
             </md-field>
 
             <!-- issueDescription -->
             <md-field class="md-form-group">
-              <label>Issue description ...</label>
+              <label>問題描述 ...</label>
               <md-textarea v-model="contactForm.issueDescription"  md-counter="40"></md-textarea>
             </md-field>
 
@@ -50,11 +50,11 @@
             <div class="md-layout md-alignment-center-space-between">
               <md-button type="reset" class="md-layout-item md-size-45 md-raised md-primary" :disabled="sending">
                 <!-- <md-icon>reset</md-icon> -->
-                reset
+                重設
               </md-button>
               <md-button type="submit" class="md-layout-item md-size-45 md-raised md-accent">
                 <!-- <md-icon>submit</md-icon> -->
-                submit
+                送出
               </md-button>
             </div>
         </form>
@@ -231,6 +231,11 @@ export default {
       // 取得問題 (訪客)  /issue
       const { data } = await this.axios.get('/issue')
       this.questionCardReply = data.result.map(item => {
+        // 處理日期格式
+        if (item.date) {
+          item.datepicker = new Date(item.datepicker).toLocaleDateString()
+          item.date = new Date(item.date).toLocaleDateString()
+        }
         return item
       })
     } catch (error) {
