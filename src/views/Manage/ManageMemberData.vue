@@ -149,8 +149,7 @@ export default {
       signUp: {
         account: '',
         password: '',
-        avatar: '',
-        email: '' // 為了 MongoError E11000 { email: null }
+        avatar: ''
       },
       // 送出後的進度條 false 是不跑
       sending: false,
@@ -198,7 +197,6 @@ export default {
     },
     async addUser () {
       try {
-        this.signUp.email = this.signUp.account + '@dtns.com'
         this.signUp.avatar = this.avatarImg
         await this.axios.post('/users', this.signUp)
 
