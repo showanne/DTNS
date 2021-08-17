@@ -15,7 +15,7 @@
     </md-empty-state>
 
     <!-- 文章呈現區 -->
-    <div class="md-layout md-alignment-center">
+    <div v-else class="md-layout md-alignment-center">
       <div
         class="masonry-container"
         v-masonry

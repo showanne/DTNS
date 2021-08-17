@@ -138,7 +138,7 @@
             md-mode="indeterminate"></md-progress-spinner>
         </md-empty-state>
 
-        <div class="md-layout md-alignment-space-around-left">
+        <div v-else class="md-layout md-alignment-space-around-left">
           <!-- style="flex-direction: column;" -->
         <!-- md-layout-nowrap w-contact-content -->
           <div v-for="(issue, i) in questionCardReply" :key="i"
