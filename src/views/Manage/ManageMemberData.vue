@@ -28,8 +28,8 @@
             <img :src="item.avatar" :alt="item.name" width="90">
           </md-avatar>
         </md-table-cell>
-        <md-table-cell md-label="Name">{{ item.name || item.account }}</md-table-cell>
-        <md-table-cell md-label="Role">{{ item.role }}</md-table-cell>
+        <md-table-cell md-label="Name" md-sort-by="name">{{ item.name || item.account }}</md-table-cell>
+        <md-table-cell md-label="Role" md-sort-by="role">{{ item.role }}</md-table-cell>
         <!-- <md-table-cell md-label="Account">{{ item.account }}</md-table-cell> -->
         <md-table-cell md-label="Tokens">{{ item.tokens }}</md-table-cell>
         <md-table-cell md-label="Editor">{{ item.editor }}</md-table-cell>
