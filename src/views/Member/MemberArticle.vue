@@ -5,10 +5,14 @@
     <!-- <md-button class="md-primary" @click="editArticle(index)">編輯</md-button> -->
     <!-- <md-button class="md-primary" @click="deleteArticle(index)">刪除</md-button> -->
 
-    <!-- 載入 loading 動畫" -->
-    <md-progress-spinner class="md-accent loading" v-if="loading"
-      :md-diameter="100" :md-stroke="10"
-      md-mode="indeterminate"></md-progress-spinner>
+    <!-- 無資料時顯示 or 載入 loading 動畫 -->
+    <md-empty-state
+      md-icon="submit"
+      md-label="Loading...">
+      <md-progress-spinner class="md-accent loading" v-if="loading"
+        :md-diameter="100" :md-stroke="10"
+        md-mode="indeterminate"></md-progress-spinner>
+    </md-empty-state>
 
     <!-- 文章呈現區 -->
     <div class="md-layout md-alignment-center">

@@ -14,16 +14,15 @@
     :border-y="false"
     :cell-style-option="cellStyleOption"
   />
-  <!-- 載入 loading 動畫" -->
-      <md-progress-spinner class="md-accent loading" v-if="loading"
-        :md-diameter="100" :md-stroke="10"
-        md-mode="indeterminate"></md-progress-spinner>
 
-  <!-- 無資料時顯示 -->
-    <md-table-empty-state
-        md-label="No article found"
-        :md-description="`No article found for this '${search}' query. Try a different search term .`">
-      </md-table-empty-state>
+  <!-- 無資料時顯示 or 載入 loading 動畫 -->
+  <md-table-empty-state
+    md-icon="submit"
+    md-label="Loading...">
+    <md-progress-spinner class="md-primary loading" v-if="loading"
+      :md-diameter="100" :md-stroke="10"
+      md-mode="indeterminate"></md-progress-spinner>
+  </md-table-empty-state>
 
 <!-- TODO:文章檢舉下架功能
      img 顯示

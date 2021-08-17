@@ -11,11 +11,13 @@
         </md-field> -->
       </md-table-toolbar>
 
+      <!-- 無資料時顯示 or 載入 loading 動畫 -->
       <md-table-empty-state
-        md-label="Not Found"
-        md-icon="youtube_searched_for">
-        <!-- :md-description="`沒有找到 '${search}' 相關的搜尋結果！`" -->
-        <!-- <md-button class="md-primary md-raised" @click="clearSearch">清除搜尋解果</md-button> -->
+        md-icon="submit"
+        md-label="Loading...">
+        <md-progress-spinner class="md-primary loading" v-if="loading"
+          :md-diameter="100" :md-stroke="10"
+          md-mode="indeterminate"></md-progress-spinner>
       </md-table-empty-state>
 
       <md-table-row slot="md-table-row" slot-scope="{ item }">
@@ -43,6 +45,8 @@ export default {
   name: 'ManageReply',
   data () {
     return {
+      // 載入時 loading 動畫
+      loading: false,
       search: null,
       searched: [],
       editReply: false,
@@ -72,6 +76,8 @@ export default {
   //   this.searched = this.replyForm
   // },
   async mounted () {
+    // 載入時 loading 動畫
+    this.loading = true
     try {
       //  取得問題 (管理)  /issue/all
       const { data } = await this.axios.get('/issue/all', {
@@ -95,6 +101,8 @@ export default {
         }
         return item
       })
+      // 頁面載完時 動畫消失
+      this.loading = false
     } catch (error) {
       console.log(error)
     }

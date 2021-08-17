@@ -16,8 +16,13 @@
         </div>
       </md-table-toolbar>
 
+      <!-- 無資料時顯示 or 載入 loading 動畫 -->
       <md-table-empty-state
-        md-label="No users" md-icon="person_search">
+        md-icon="submit"
+        md-label="Loading...">
+        <md-progress-spinner class="md-primary loading" v-if="loading"
+          :md-diameter="100" :md-stroke="10"
+          md-mode="indeterminate"></md-progress-spinner>
       </md-table-empty-state>
 
       <md-table-row slot="md-table-row" slot-scope="{ item }">
@@ -141,6 +146,8 @@ export default {
   mixins: [validationMixin],
   data () {
     return {
+      // 載入時 loading 動畫
+      loading: false,
       selected: {},
       memberData: [],
       // rowsPerPage: 3
@@ -230,24 +237,32 @@ export default {
   //   this.updatePagination(1, this.rowsPerPage)
   // },
   async mounted () {
-    const { data } = await this.axios.get('/users', {
-      headers: {
-        // 驗證欄位 'Bearer ' + token  -> Bearer要空格
-        authorization: 'Bearer ' + this.$store.state.jwt.token
-      }
-    })
-    this.memberData = data.result.map(data => {
-      if (data.tokens) {
-        data.tokens = data.tokens.length
-      }
-      // if (data.tokens[data.tokens.length].access_token) {
-      //   data.tokens[data.tokens.length].access_token = true
-      // }
-      if (data.editor) {
-        data.editor = data.editor.length
-      }
-      return data
-    })
+    // 載入時 loading 動畫
+    this.loading = true
+    try {
+      const { data } = await this.axios.get('/users', {
+        headers: {
+          // 驗證欄位 'Bearer ' + token  -> Bearer要空格
+          authorization: 'Bearer ' + this.$store.state.jwt.token
+        }
+      })
+      this.memberData = data.result.map(data => {
+        if (data.tokens) {
+          data.tokens = data.tokens.length
+        }
+        // if (data.tokens[data.tokens.length].access_token) {
+        //   data.tokens[data.tokens.length].access_token = true
+        // }
+        if (data.editor) {
+          data.editor = data.editor.length
+        }
+        return data
+      })
+      // 頁面載完時 動畫消失
+      this.loading = false
+    } catch (error) {
+      console.log(error)
+    }
   }
 }
 </script>
