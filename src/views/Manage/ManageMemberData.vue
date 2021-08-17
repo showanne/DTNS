@@ -1,6 +1,8 @@
 <template>
   <div id="manageMemberData">
-    <md-table v-model="memberData" md-card  md-fixed-header>
+    <md-table md-card v-model="memberData"
+      md-sort="name" md-sort-order="asc"
+      md-fixed-header>
       <md-table-toolbar>
         <div class="md-toolbar-section-start">
           <h1 class="md-title">使用者清單</h1>
@@ -20,15 +22,15 @@
 
       <md-table-row slot="md-table-row" slot-scope="{ item }">
         <!-- <md-table-cell md-label="ID" md-numeric>{{ item._id }}</md-table-cell> -->
-        <md-table-cell md-label="No">{{ item.id }}</md-table-cell>
-        <md-table-cell md-label="Role">{{ item.role }}</md-table-cell>
-        <md-table-cell md-label="Name">{{ item.name || item.account }}</md-table-cell>
-        <!-- <md-table-cell md-label="Account">{{ item.account }}</md-table-cell> -->
+        <!-- <md-table-cell md-label="No">{{ item.id }}</md-table-cell> -->
         <md-table-cell class="avatar" md-label="Avatar">
-          <md-avatar v-if="item.avatar" class="md-large">
+          <md-avatar v-if="item.avatar" class="">
             <img :src="item.avatar" :alt="item.name" width="90">
           </md-avatar>
         </md-table-cell>
+        <md-table-cell md-label="Name">{{ item.name || item.account }}</md-table-cell>
+        <md-table-cell md-label="Role">{{ item.role }}</md-table-cell>
+        <!-- <md-table-cell md-label="Account">{{ item.account }}</md-table-cell> -->
         <md-table-cell md-label="Tokens">{{ item.tokens }}</md-table-cell>
         <md-table-cell md-label="Editor">{{ item.editor }}</md-table-cell>
       </md-table-row>
@@ -65,14 +67,14 @@
                 <md-input
                   name="account"
                   autocomplete="account"
-                  v-model="form.account"
+                  v-model="signUp.account"
                   placeholder="Your Account..."
                   :disabled="sending"
                 />
-                <span class="md-error" v-if="!$v.form.account.required"
+                <span class="md-error" v-if="!$v.signUp.account.required"
                   >帳號是必填欄位</span
                 >
-                <span class="md-error" v-else-if="!$v.form.account.minlength"
+                <span class="md-error" v-else-if="!$v.signUp.account.minlength"
                   >帳號最少須 5 個字，最多 20 個字</span
                 >
               </md-field>
@@ -84,14 +86,14 @@
                   type="password"
                   name="password"
                   autocomplete="password"
-                  v-model="form.password"
+                  v-model="signUp.password"
                   placeholder="password..."
                   :disabled="sending"
                 />
-                <span class="md-error" v-if="!$v.form.password.required"
+                <span class="md-error" v-if="!$v.signUp.password.required"
                   >密碼是必填欄位</span
                 >
-                <span class="md-error" v-else-if="!$v.form.password.minlength"
+                <span class="md-error" v-else-if="!$v.signUp.password.minlength"
                   >密碼最少須 4 個字，最多 20 個字</span
                 >
               </md-field>
@@ -104,19 +106,15 @@
                 關閉
               </md-button>
               <md-button type="reset" class="md-primary">重設</md-button>
-              <md-button type="submit" class="md-primary" :disabled="sending">
-                創建</md-button>
+              <md-button type="submit" class="md-primary"
+               :disabled="sending">創建
+              </md-button>
             </md-card-actions>
           </md-card>
 
-          <md-snackbar :md-active.sync="messageShow">
-            {{ user }} was created with {{ message }}!
+          <md-snackbar :md-active.sync="messageSussess">
+            新帳號 {{ user }} 創建成功！
           </md-snackbar>
-
-        <!-- <md-dialog-alert
-          :md-active.sync="messageShow"
-          md-title="ERROR"
-          :md-content="message" /> -->
 
         </form>
       </md-dialog-content>
@@ -134,7 +132,6 @@
 import { validationMixin } from 'vuelidate'
 import {
   required,
-  // email,
   minLength,
   maxLength
 } from 'vuelidate/lib/validators'
@@ -149,22 +146,24 @@ export default {
       // rowsPerPage: 3
       addUserBtn: false,
       // 新增使用者表單
-      form: {
+      signUp: {
         account: '',
-        password: ''
+        password: '',
+        avatar: '',
+        email: '' // 為了 MongoError E11000 { email: null }
       },
       // 送出後的進度條 false 是不跑
       sending: false,
-      // 登入的歡迎訊息
-      // wellcomeMsg: false,
+      // 創建成功訊息
+      messageSussess: false,
       // alert 訊息控制 false 是不跳 alert
       messageShow: false,
-      // 登入訊息
+      // 提示訊息
       message: ''
     }
   },
   validations: {
-    form: {
+    signUp: {
       account: {
         required,
         minLength: minLength(5),
@@ -182,7 +181,7 @@ export default {
     //   console.log('pagination has updated', page, pageSize, sort, sortOrder)
     // },
     getValidationClass (fieldName) {
-      const field = this.$v.form[fieldName]
+      const field = this.$v.signUp[fieldName]
 
       if (field) {
         return {
@@ -199,37 +198,34 @@ export default {
     },
     async addUser () {
       try {
+        this.signUp.email = this.signUp.account + '@dtns.com'
+        this.signUp.avatar = this.avatarImg
         await this.axios.post('/users', this.signUp)
 
         this.sending = true
 
-        // Instead of this timeout, here you can call your API
         window.setTimeout(() => {
-          this.user = `${this.signUp.account}`
-          this.message = 'success'
-          this.userSaved = true
+          this.messageSussess = true
           this.sending = false
-          // this.clearForm()
+          this.clearForm()
 
-          // 註冊成功後導回首頁
-          // this.$router.push('/')
+          // 創建成功後 重新跳轉頁面
+          this.$router.go()
         }, 1500)
       } catch (error) {
         window.setTimeout(() => {
-          this.user = `${this.signUp.account}`
+          this.messageShow = true
           this.message = error
-          this.userSaved = true
           this.sending = true
-          // this.clearForm()
+          this.clearForm()
         }, 1500)
       }
     },
     clearForm () {
       this.$v.$reset()
       this.sending = false
-      this.form.account = ''
-      this.form.password = ''
-      // this.form.email = ''
+      this.signUp.account = ''
+      this.signUp.password = ''
     }
   },
   // created () {
