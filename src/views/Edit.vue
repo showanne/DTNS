@@ -10,7 +10,7 @@
       <div id="temp"
         class="md-layout-item md-size-33 md-small-size-100 md-xsmall-size-100"
       >
-        <div class="md-layout md-md-alignment-space-around-left ">
+        <div class="md-layout md-alignment-space-around-left">
           <!-- 有漸層背景及文字 <md-card-media-cover md-text-scrim> -->
 
           <div v-for="(temp, T) in tempList"
