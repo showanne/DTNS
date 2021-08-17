@@ -72,7 +72,6 @@
                   <div class="md-layout-item md-size-90">
                     <img-inputer v-model="tempForm.image"
                       accept="image/*" theme="material"
-                      :auto-upload="true"
                       :capture="true"
                       :placeholder="'點擊或拖曳選擇'+tempList[tempForm.template].input[3].name"
                       bottom-text="點擊或拖曳以修改" />
@@ -206,7 +205,6 @@
                   <div class="md-layout-item md-size-90">
                     <img-inputer v-model="tempForm.image"
                       accept="image/*" theme="material"
-                      :auto-upload="true"
                       :capture="true"
                       :placeholder="'點擊或拖曳選擇'+tempList[tempForm.template].input[2].name"
                       bottom-text="點擊或拖曳以修改" />
@@ -259,7 +257,6 @@
                   <div class="md-layout-item md-size-90">
                     <img-inputer v-model="tempForm.image"
                       accept="image/*" theme="material"
-                      :auto-upload="true"
                       :capture="true"
                       :placeholder="'點擊或拖曳選擇'+tempList[tempForm.template].input[2].name"
                       bottom-text="點擊或拖曳以修改" />
