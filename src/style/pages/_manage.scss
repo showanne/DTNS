@@ -27,3 +27,9 @@
     border: solid 1px #B3AB88;
   }
 }
+
+#manageReply{
+  .md-table-head, .md-table-cell{
+    max-width: 300px;
+  }
+}
