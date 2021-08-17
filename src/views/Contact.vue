@@ -120,8 +120,18 @@
       <div id="questionCard" class="md-layout-item md-large-size-66 md-medium-size-66 md-small-size-100 md-xsmall-size-100">
         <div class="md-headline">
           問題討論
-          </div>
-        <div class="md-layout md-alignment-center">
+        </div>
+
+        <!-- 無資料時顯示 or 載入 loading 動畫 -->
+        <md-empty-state v-if="loading"
+          md-icon="submit"
+          md-label="Loading...">
+          <md-progress-spinner class="md-accent loading"
+            :md-diameter="100" :md-stroke="10"
+            md-mode="indeterminate"></md-progress-spinner>
+        </md-empty-state>
+
+        <div class="md-layout md-alignment-space-around-left">
           <!-- style="flex-direction: column;" -->
         <!-- md-layout-nowrap w-contact-content -->
           <div v-for="(issue, i) in questionCardReply" :key="i"

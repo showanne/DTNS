@@ -6,10 +6,10 @@
     <!-- <md-button class="md-primary" @click="deleteArticle(index)">刪除</md-button> -->
 
     <!-- 無資料時顯示 or 載入 loading 動畫 -->
-    <md-empty-state
+    <md-empty-state v-if="loading"
       md-icon="submit"
       md-label="Loading...">
-      <md-progress-spinner class="md-accent loading" v-if="loading"
+      <md-progress-spinner class="md-accent loading"
         :md-diameter="100" :md-stroke="10"
         md-mode="indeterminate"></md-progress-spinner>
     </md-empty-state>
