@@ -6,7 +6,7 @@
         <!-- 上方列 toolbar -->
         <md-app-toolbar class="md-accent md-layout md-alignment-center-space-between">
           <div class="md-layout-item md-large-size-15 md-medium-size-25 md-small-50">
-            <md-button class="md-menu-button w-unset"
+            <md-button class="md-menu-button btn-menu w-unset"
               @click="toggleMenu" v-if="!menuVisible">
               <md-icon :md-src="require('./assets/icon/menu.svg')"></md-icon>
             </md-button>
@@ -40,7 +40,6 @@
             <md-list-item to="/">
               <h1 class="text-dtns">DTNS</h1>
             </md-list-item>
-              <!-- TODO: 按鈕用釘選的 -->
             <md-button class="btn-toggleMenu md-menu-button md-dense w-unset h-unset"
               v-if="menuVisible" @click="toggleMenu">
               <md-icon>keyboard_arrow_left</md-icon>

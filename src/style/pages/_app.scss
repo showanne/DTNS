@@ -48,14 +48,23 @@ $drawer-w-xsmall: 100vw;
     }
   }
 
-  // 縮小版型時按鈕定位
-  .btn-toggleMenu{
-    position: absolute;
-    right: -24px;
-    top: 12px;
-    @include md-layout-small {
-      top: 20px;
-    }
+}
+
+// 縮小版型時選單按鈕才出現
+.btn-menu{
+  display: none;
+  @include md-layout-xsmall{
+    display: inline-block;
+  }
+}
+
+// 縮小版型時按鈕定位
+.btn-toggleMenu{
+  position: absolute;
+  right: -24px;
+  top: 12px;
+  @include md-layout-small {
+    top: 20px;
   }
 }
 
