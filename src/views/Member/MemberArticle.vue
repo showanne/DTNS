@@ -5,13 +5,22 @@
     <!-- <md-button class="md-primary" @click="editArticle(index)">編輯</md-button> -->
     <!-- <md-button class="md-primary" @click="deleteArticle(index)">刪除</md-button> -->
 
-    <!-- 無資料時顯示 or 載入 loading 動畫 -->
+    <!-- 載入 loading 動畫 -->
     <md-empty-state v-if="loading"
       md-icon="submit"
       md-label="Loading...">
       <md-progress-spinner class="md-accent loading"
         :md-diameter="100" :md-stroke="10"
         md-mode="indeterminate"></md-progress-spinner>
+    </md-empty-state>
+
+    <!-- 無資料時顯示 -->
+    <md-empty-state v-else-if="articleM == ''"
+      class="md-primary"
+      md-icon="travel_explore"
+      md-label="快來開始吧！">
+      <md-button to="/edit" class="md-accent md-raised h-unset p-3 fz-5 ls-2">紀錄讓你感動的瞬間</md-button>
+      <md-button to="/collection" class="md-primary md-raised h-unset p-3 fz-5 ls-2">在文字的世界裡遨遊</md-button>
     </md-empty-state>
 
     <!-- 文章呈現區 -->
@@ -168,7 +177,7 @@ export default {
     this.loading = true
     try {
       // 取得指定分類的文章 (會員)  /  getArticleByTempForMember
-      const { data } = await this.axios.get('/article/member/template/' + this.tempCardShow, {
+      const { data } = await this.axios.get('/article/member/template/', {
         headers: {
           // 驗證欄位 'Bearer ' + token  -> Bearer要空格
           authorization: 'Bearer ' + this.$store.state.jwt.token
