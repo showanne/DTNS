@@ -46,6 +46,18 @@ export default new Vuex.Store({
       state.user.name = ''
       state.user.avatar = ''
     },
+    extend (state, data) {
+      // 更新 jwt
+      state.jwt.token = data
+      state.jwt.received = new Date().getTime()
+    },
+    getInfo (state, data) {
+      // 進入網頁時重新取一次使用者資料
+      state.user.account = data.account
+      state.user.role = data.role
+      state.user.name = data.name
+      state.user.avatar = data.avatar
+    },
     tempShow (state, data) {
       state.tempCardShow = data
     }
@@ -73,6 +85,7 @@ export default new Vuex.Store({
   // 將 Vuex 資料存 localstorage
   plugins: [
     createPersistedState({
+      // paths: ['jwt'] // 可以指定 Vuex 存 localstorage 只存 jwt
       key: 'DTNS'
     })
   ]

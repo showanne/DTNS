@@ -221,6 +221,7 @@ export default {
   methods: {
     async signOutBtn () {
       try {
+        //  登出 / signOut
         await this.axios.delete('/users/signOut', {
           headers: {
             // 驗證欄位 'Bearer ' + token  -> Bearer要空格
@@ -297,8 +298,41 @@ export default {
       })
     }
   },
-  mounted () {
-    console.log(document.body.clientWidth)
+  async mounted () {
+    // 判斷 Vuex 裡有沒有存 jwt ，沒有就不跑接下來的程式
+    if (this.$store.state.jwt.token.length === 0) return
+
+    // 檢查上一次收到 jwt 是什麼時候，然後快過期要換新的
+    // 計算收到 jwt 的時間 (現在 - 收到的時間)
+    const diff = Date.now() - this.$store.state.jwt.received
+    try {
+      // 如果進入網頁時，距離收到 jwt 過了六天，重新取得一次新的 jwt
+      // 現在的時間距離上次收到 jwt 的時間大於 6 天 1000 * 60 * 60 * 24 * 6 = 6 天的毫秒數
+      if (diff > 1000 * 60 * 60 * 24 * 6) {
+        // 更新 jwt  /  extend
+        const { data } = await this.axios.post('/users/extend', {
+          headers: {
+            // 驗證欄位 'Bearer ' + token  -> Bearer要空格
+            authorization: 'Bearer ' + this.$store.state.jwt.token
+          }
+        })
+        this.$store.commit('extend', data.result)
+      }
+      // 進入網頁時重新取一次使用者資料
+      // 抓取使用者資料  /  getUserInfo
+      const { data } = await this.axios.get('/users/', {
+        headers: {
+          // 驗證欄位 'Bearer ' + token  -> Bearer要空格
+          authorization: 'Bearer ' + this.$store.state.jwt.token
+        }
+      })
+      this.$store.commit('getInfo', data.result)
+    } catch (error) {
+      console.log(error)
+      // 如果有錯誤直接登出
+      this.$store.commit('signOut')
+    }
+    // console.log(document.body.clientWidth)
     // console.log(this.user)
     // console.log(this.user.isSignIn)
   }
