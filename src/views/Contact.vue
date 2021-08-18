@@ -206,7 +206,9 @@ export default {
         date: ''
       },
       // 送出訊息
-      sending: false
+      sending: false,
+      // 載入時 loading 動畫
+      loading: false
     }
   },
   validations: {
@@ -244,6 +246,8 @@ export default {
     }
   },
   async mounted () {
+    // 載入時 loading 動畫
+    this.loading = true
     try {
       // 取得問題 (訪客)  /issue
       const { data } = await this.axios.get('/issue')
@@ -255,6 +259,8 @@ export default {
         }
         return item
       })
+      // 頁面載完時 動畫消失
+      this.loading = false
     } catch (error) {
       console.log(error)
     }
