@@ -1,14 +1,14 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "bd2b022e2b6eb415411d",
-    "url": "css/app.30ef6591.css"
+    "revision": "1bcc2262bcafde82db71",
+    "url": "css/app.bc4fd9ef.css"
   },
   {
-    "revision": "e506ce43adf901f616f8",
+    "revision": "4aaaa0aebe60a919f760",
     "url": "css/chunk-vendors.8814381e.css"
   },
   {
-    "revision": "00d562e999a64b283c2c",
+    "revision": "c1c8d67b4c35fec2b473",
     "url": "css/contact.cb349bc0.css"
   },
   {
@@ -26,6 +26,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "3bb245ab70386fbaff2c73b9bd2ed183",
     "url": "img/action-good.3bb245ab.svg"
+  },
+  {
+    "revision": "554430e4a6d9c5c037d3a0f196b0a4b5",
+    "url": "img/action-record.554430e4.svg"
   },
   {
     "revision": "0c8ae3d538fe8cfc3d4bfe144942cd32",
@@ -148,36 +152,36 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "img/temp-todo.624bae4f.svg"
   },
   {
-    "revision": "4b31ecc5c25a7013e58687db6ed162db",
+    "revision": "401b2b8e7810d4c840b6c083ee2d831e",
     "url": "index.html"
   },
   {
-    "revision": "bd2b022e2b6eb415411d",
-    "url": "js/app.a7cd210e.js"
+    "revision": "1bcc2262bcafde82db71",
+    "url": "js/app.bb3d9c0a.js"
   },
   {
-    "revision": "e506ce43adf901f616f8",
-    "url": "js/chunk-vendors.3b9e116b.js"
+    "revision": "4aaaa0aebe60a919f760",
+    "url": "js/chunk-vendors.fb33c2b6.js"
   },
   {
-    "revision": "260ff779ac74df5aa574",
-    "url": "js/collection.9e0cbd1d.js"
+    "revision": "ab7d4a4455839e62ca7d",
+    "url": "js/collection.d08be555.js"
   },
   {
-    "revision": "00d562e999a64b283c2c",
-    "url": "js/contact.b4bc443d.js"
+    "revision": "c1c8d67b4c35fec2b473",
+    "url": "js/contact.78a8f90c.js"
   },
   {
     "revision": "0876f703fe9894fee620",
     "url": "js/edit.713749b5.js"
   },
   {
-    "revision": "02ced0243dc9ff25fd11",
-    "url": "js/manage.88f05648.js"
+    "revision": "234399d88178bed27df1",
+    "url": "js/manage.2e31aecd.js"
   },
   {
-    "revision": "27c0ce1b806f0f535f0c",
-    "url": "js/member.748d0dc0.js"
+    "revision": "7a9a7980c3736452a370",
+    "url": "js/member.9507f8df.js"
   },
   {
     "revision": "c7da1ba3e6c9e57e12a0",
