@@ -59,7 +59,7 @@
                 <!-- <md-icon>reset</md-icon> -->
                 重設
               </md-button>
-              <md-button type="submit" class="md-layout-item md-size-45 md-raised md-accent">
+              <md-button type="submit" class="md-layout-item md-size-45 md-raised md-accent" :disabled="sending">
                 <!-- <md-icon>submit</md-icon> -->
                 送出
               </md-button>
