@@ -38,13 +38,13 @@
 
           <md-list class="mb-auto">
             <md-list-item to="/">
-              <h3 class="md-title lh-5 fw-bold">DTNS</h3>
-              <!-- TODO: 按鈕用釘選的 -->
-              <md-button class="md-menu-button md-dense w-unset h-unset"
-               v-if="menuVisible" @click="toggleMenu">
-                <md-icon>keyboard_arrow_left</md-icon>
-              </md-button>
+              <h1 class="text-dtns">DTNS</h1>
             </md-list-item>
+              <!-- TODO: 按鈕用釘選的 -->
+            <md-button class="btn-toggleMenu md-menu-button md-dense w-unset h-unset"
+              v-if="menuVisible" @click="toggleMenu">
+              <md-icon>keyboard_arrow_left</md-icon>
+            </md-button>
 
             <md-list-item v-for="(menu, m) in menuList" :key="m"
              :to="'/'+menu.subhead">
