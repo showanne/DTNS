@@ -15,7 +15,6 @@ import { VueMasonryPlugin } from 'vue-masonry'
 import ImgInputer from 'vue-img-inputer'
 import 'vue-img-inputer/dist/index.css'
 // vue-easytable 表格套件
-import 'vue-easytable/libs/theme-default/index.css'
 import VueEasytable from 'vue-easytable'
 import VueGtag from 'vue-gtag'
 

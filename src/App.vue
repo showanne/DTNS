@@ -199,8 +199,11 @@
 <script>
 // components元件
 import SignModal from '@/components/SignModal.vue'
+// vue-easytable 表格 切換黑暗模式 JS
+import ThemeSwitchMixins from './theme-switch-mixins.js'
 
 export default {
+  mixins: [ThemeSwitchMixins],
   data () {
     return {
       search: '',
@@ -269,8 +272,10 @@ export default {
     toggleMode () {
       if (this.toggleDark) {
         this.$material.theming.theme = 'default'
+        this.switchThemeMix('theme-default')
       } else {
         this.$material.theming.theme = 'dark'
+        this.switchThemeMix('theme-dark')
       }
     }
   },
