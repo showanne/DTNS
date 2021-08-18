@@ -3,22 +3,19 @@
 @include md-register-theme("default", (
   primary: #7876B3, // The primary color of your brand
   accent: #FFF9DB, // The secondary color of your brand
-  // black: #B3AB88,
-  // white: #FFFDF5,
-  // primary-light: #DDDBFF,
   // theme: dark // This can be dark or light
 ));
 
-@include md-register-theme("secondary", (
-  primary: #B3AB88, // The primary color of your brand
-  accent: #DDDBFF, // The secondary color of your brand
-  // theme: dark // This can be dark or light
+@include md-register-theme("dark", (
+  primary: #B3AB88,
+  accent: #757159, 
+  theme: dark
 ));
 
 // @include md-register-theme("thirdly ", (
-//   primary: #B3AB88, // The primary color of your brand
-//   accent: #DDDBFF, // The secondary color of your brand
-//   theme: dark // This can be dark or light
+//   primary: #B3AB88,
+//   accent: #DDDBFF, 
+  // theme: dark
 // ));
 
 

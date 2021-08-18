@@ -163,7 +163,8 @@
           <div class="mt-auto mx-auto">
             <!-- mode toggle -->
               <div id="modeToggle">
-                <input type="checkbox" v-model="toggleDark" id="toggleDark"/>
+                <input type="checkbox" id="toggleDark"
+                  v-model="toggleDark" @click="toggleMode" />
                 <label for="toggleDark"></label>
                 <!-- <span>{{ toggleDark }}</span> -->
               </div>
@@ -205,7 +206,7 @@ export default {
     return {
       search: '',
       menuVisible: false,
-      toggleDark: '',
+      toggleDark: false,
       permanent: '',
       persistent: '',
       settingTooltip: false,
@@ -264,6 +265,13 @@ export default {
           // console.log(this.permanent, this.persistent)
         }
       })
+    },
+    toggleMode () {
+      if (this.toggleDark) {
+        this.$material.theming.theme = 'default'
+      } else {
+        this.$material.theming.theme = 'dark'
+      }
     }
   },
   created () {
