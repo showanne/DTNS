@@ -34,7 +34,11 @@
           </md-avatar>
         </md-table-cell>
         <md-table-cell md-label="Name" md-sort-by="name">{{ item.name || item.account }}</md-table-cell>
-        <md-table-cell md-label="Role" md-sort-by="role">{{ item.role }}</md-table-cell>
+        <md-table-cell md-label="Role" md-sort-by="role">
+          <span v-if="item.role == 0">會員（{{ item.role }}）</span>
+          <span v-else-if="item.role == 1">管理員（{{ item.role }}）</span>
+          <span v-else-if="item.role == -1">訪客（{{ item.role }}）</span>
+        </md-table-cell>
         <!-- <md-table-cell md-label="Account">{{ item.account }}</md-table-cell> -->
         <md-table-cell md-label="Tokens">{{ item.tokens }}</md-table-cell>
         <md-table-cell md-label="Editor">{{ item.editor }}</md-table-cell>
@@ -155,6 +159,7 @@ export default {
       // 新增使用者表單
       signUp: {
         account: '',
+        name: '',
         password: '',
         avatar: ''
       },
@@ -205,6 +210,9 @@ export default {
     async addUser () {
       try {
         this.signUp.avatar = this.avatarImg
+        this.signUp.name = this.signUp.account
+
+        //  註冊 / signUp
         await this.axios.post('/users', this.signUp)
 
         this.sending = true
@@ -240,7 +248,8 @@ export default {
     // 載入時 loading 動畫
     this.loading = true
     try {
-      const { data } = await this.axios.get('/users', {
+      // 取得所有使用者資料  /  getUsers
+      const { data } = await this.axios.get('/users/all', {
         headers: {
           // 驗證欄位 'Bearer ' + token  -> Bearer要空格
           authorization: 'Bearer ' + this.$store.state.jwt.token
