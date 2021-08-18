@@ -16,13 +16,13 @@
   />
 
   <!-- 無資料時顯示 or 載入 loading 動畫 -->
-  <md-table-empty-state v-if="loading"
+  <md-empty-state v-if="loading"
     md-icon="submit"
     md-label="Loading...">
     <md-progress-spinner class="md-primary loading"
       :md-diameter="100" :md-stroke="10"
       md-mode="indeterminate"></md-progress-spinner>
-  </md-table-empty-state>
+  </md-empty-state>
 
 <!-- TODO:文章檢舉下架功能
      img 顯示
@@ -69,8 +69,8 @@ export default {
         {
           field: '',
           key: 'a',
-          title: 'No.',
-          width: '3%',
+          title: '項次',
+          width: '5%',
           align: 'center',
           renderBodyCell: ({ row, column, rowIndex }, h) => {
             return (
@@ -84,28 +84,32 @@ export default {
         {
           field: 'template',
           key: 'b',
-          title: 'temp',
+          title: '主題',
           width: '5%',
           align: 'center',
           fixed: 'left'
-          // renderHeaderCell: ({ column }, h) => {
+          // renderHeaderCell: ({ row, column }, h) => {
+          //   // jsx 不能直接使用 v-model。此处为 jsx 实现 v-model，了解更多查看官方文档
           //   return (
-          //     <input
-          //       // jsx 不能直接使用 v-model。此处为 jsx 实现 v-model，了解更多查看官方文档
-          //       value={this.searchText}
-          //       onInput={this.searchInputChange}
-          //       style="width:90%"
-          //       placeholder="主題"
-          //     />
+          //     row[column.field] === 0 ? <span>美字美句</span> : <span>fu</span>
           //   )
           // }
         },
-        { field: 'title', key: 'c', title: 'title', width: '30%' },
+        {
+          field: 'title',
+          key: 'c',
+          title: '標題',
+          width: '30%',
+          renderBodyCell: ({ row, column, rowIndex }, h) => {
+          // v-html 指令在JSX的寫法是 domPropsInnerHTML
+            return <div class="text-truncate" domPropsInnerHTML={row[column.field]}></div>
+          }
+        },
         {
           field: 'share',
           key: 'd',
-          title: 'share',
-          width: '5%',
+          title: '公開',
+          width: '7.5%',
           renderBodyCell: ({ row, column, rowIndex }, h) => {
             return (
               <md-switch v-model={row[column.field]} class="md-primary">
@@ -116,8 +120,8 @@ export default {
         {
           field: 'publicOff',
           key: 'e',
-          title: 'publicOff',
-          width: '5%',
+          title: '下架',
+          width: '7.5%',
           renderBodyCell: ({ row, column, rowIndex }, h) => {
             return (
               <md-switch v-model={row[column.field]} class="md-primary">
@@ -128,33 +132,33 @@ export default {
         {
           field: 'image',
           key: 'f',
-          title: 'image',
-          width: '15%',
+          title: '圖片',
+          width: '30%',
           renderBodyCell: ({ row, column, rowIndex }, h) => {
             return (
               <img src={row[column.field]} />
             )
           }
         },
-        {
-          field: 'textarea',
-          key: 'g',
-          title: 'textarea',
-          width: '20%',
-          ellipsis: {
-            showTitle: true,
-            lineClamp: 2
-          }
-        },
-        { field: 'text', key: 'h', title: 'text', width: '10%' },
-        { field: 'select', key: 'i', title: 'select', width: '5%' },
-        { field: 'datepicker', key: 'j', title: 'datepicker', width: '5%' },
-        { field: 'date', key: 'k', title: 'date', width: '5%' },
+        // {
+        //   field: 'textarea',
+        //   key: 'g',
+        //   title: '內文',
+        //   width: '20%',
+        //   ellipsis: {
+        //     showTitle: true,
+        //     lineClamp: 2
+        //   }
+        // },
+        // { field: 'text', key: 'h', title: '內文', width: '10%' },
+        // { field: 'select', key: 'i', title: '選項', width: '5%' },
+        // { field: 'datepicker', key: 'j', title: '日期', width: '5%' },
+        { field: 'date', key: 'k', title: '日期', width: '5%' },
         {
           field: '',
           key: 'l',
-          title: 'Action',
-          width: '20%',
+          title: '動作',
+          width: '15%',
           // center: 'left',
           align: 'center',
           fixed: 'right',

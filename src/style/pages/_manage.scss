@@ -21,6 +21,20 @@
   }
 }
 
+#manageArticle{
+  .table-body-cell-class {
+    padding: 8px 0;
+    border: 10px;
+
+    img{
+      padding: 3rem;
+      @include md-layout-xsmall {
+        padding: 1rem;
+      }
+    }
+  }
+}
+
 #manageTemplate{
   .md-table{
     // max-height: calc(100vh - 190px);
