@@ -29,7 +29,7 @@ import './style/_variables.scss'
 // style
 import './style/style.scss'
 import './style/all.scss'
-import './style/style-custom.css'
+// import './style/style-custom.css'
 
 // 全域引用 mixin
 import mixin from './mixin.js'
