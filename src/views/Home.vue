@@ -1,5 +1,8 @@
 <template>
   <div id="home">
+    <div class="md-layout">{{ carousel }}</div>
+    <div class="md-layout"  v-for="(c ,i) in carousel" :key="i"><span v-if="c !== ''">{{ i }}{{ c.author }}{{ c.image }}</span>
+    </div>
     <div class="md-layout">
       <div class="md-layout-item md-size-100">
         <div class="intro h-content">
@@ -85,15 +88,16 @@
             navigationNextLabel="<i class='material-icons'>keyboard_arrow_right</i>"
             navigationPrevLabel="<i class='material-icons'>keyboard_arrow_left</i>"
           >
-            <slide>
+            <!-- <slide v-for="(c ,i) in carousel" :key="i">
               <div class="carousel-caption">
                 <h4>
                   <md-icon>person</md-icon>
-                  Beyond
+                  {{ c.author }}
                 </h4>
               </div>
-              <img :src="carousel1" alt="carousel1" />
-            </slide>
+              <img :src="c.image" :alt="c.title" />
+            </slide> -->
+
             <slide>
               <div class="carousel-caption">
                 <h4>
@@ -125,12 +129,28 @@ export default {
   components: {},
   data () {
     return {
+      carousel: [],
       carousel1: 'https://picsum.photos/1920/1080/?random=1',
       carousel2: 'https://picsum.photos/1920/1080/?random=2',
       carousel3: 'https://picsum.photos/1920/1080/?random=3'
       // carousel1: require("@/assets/img/nature-2.jpg"),
       // carousel2: require("@/assets/img/nature.jpg"),
       // carousel3: require("@/assets/img/nature-3.jpg")
+    }
+  },
+  async mounted () {
+    try {
+      const { data } = await this.axios.get('/article/carousel')
+      this.carousel = data.result.map(item => {
+        if (item.image) {
+          item.image = `${process.env.VUE_APP_API}/file/${item.image}`
+        }
+        if (item.image !== '') {
+          return item
+        }
+      })
+    } catch (error) {
+      console.log(error)
     }
   }
 }
