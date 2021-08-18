@@ -2,34 +2,45 @@
   <div id="app">
     <div id="nav" class="page-container" nav-pills-icons>
       <md-app md-waterfall md-mode="fixed">
+
+        <!-- 上方列 toolbar -->
         <md-app-toolbar class="md-accent md-layout md-alignment-center-space-between">
           <div class="md-layout-item md-large-size-15 md-medium-size-25 md-small-50">
-            <md-button class="md-menu-button"
+            <md-button class="md-menu-button w-unset"
               @click="toggleMenu" v-if="!menuVisible">
               <md-icon :md-src="require('./assets/icon/menu.svg')"></md-icon>
             </md-button>
           </div>
 
-          <div class="md-layout-item md-large-size-15 md-medium-size-15 md-xsmall-hide">
-            <md-field>
-              <label>Search...</label>
-              <!-- search has-white -->
-              <md-input v-model="search"></md-input>
-              <!-- <span class="md-helper-text">Helper text</span> -->
-            </md-field>
+          <div class="md-layout-item md-large-size-15 md-medium-size-20 md-small-size-30">
+            <div class="md-layout md-alignment-center-right">
+              <md-field class="md-layout-item md-size-50 md-xsmall-hide">
+                <label>Search...</label>
+                <md-input v-model="search"></md-input>
+              </md-field>
+
+              <!-- mode toggle -->
+              <div id="modeToggle" class="md-layout-item md-size-50">
+                <input type="checkbox" v-model="toggleDark" id="toggleDark"/>
+                <label for="toggleDark"></label>
+                <!-- <span>{{ toggleDark }}</span> -->
+              </div>
+            </div>
           </div>
         </md-app-toolbar>
 
+        <!-- 側邊欄 drawer -->
         <md-app-drawer :md-active.sync="menuVisible"
-          md-permanent="full">
+          md-permanent="full" class="md-layout">
           <!-- :md-permanent="permanent"
           :md-persistent="persistent" -->
         <!-- <md-app-drawer :md-active.sync="menuVisible" md-permanent="full" md-persistent="mini"> -->
 
-          <md-list>
+          <md-list class="mb-auto">
             <md-list-item to="/">
               <h3 class="md-title lh-5 fw-bold">DTNS</h3>
-              <md-button class="md-menu-button md-dense w-unset"
+              <!-- TODO: 按鈕用釘選的 -->
+              <md-button class="md-menu-button md-dense w-unset h-unset"
                v-if="menuVisible" @click="toggleMenu">
                 <md-icon>keyboard_arrow_left</md-icon>
               </md-button>
@@ -149,13 +160,25 @@
 
           </md-list>
 
-          <!-- 個人連結 &copy;  -->
-          <md-button>
-            <div class="md-layout md-alignment-center-center">
-              <md-icon :md-src="require('./assets/icon/icon-github.svg')"></md-icon>
-              Anne.
-            </div>
-          </md-button>
+          <div class="mt-auto mx-auto">
+            <!-- mode toggle -->
+              <div id="modeToggle">
+                <input type="checkbox" v-model="toggleDark" id="toggleDark"/>
+                <label for="toggleDark"></label>
+                <!-- <span>{{ toggleDark }}</span> -->
+              </div>
+
+            <!-- 個人連結 &copy;  -->
+            <!-- <md-button> -->
+              <a href="https://showanne.github.io/"
+              class="td-none lh-5">
+                <div class="md-layout md-alignment-center-center">
+                  <md-icon :md-src="require('./assets/icon/icon-github.svg')"></md-icon>
+                  Anne.
+                </div>
+              </a>
+            <!-- </md-button> -->
+          </div>
         </md-app-drawer>
 
         <!-- Sign out alert 錯誤訊息 -->
@@ -163,6 +186,8 @@
           :md-active.sync="signOutMsg"
           md-title="ERROR"
           md-content="發生錯誤" />
+
+        <!-- 內容 content -->
         <md-app-content class="h-content">
           <router-view />
         </md-app-content>
@@ -180,6 +205,7 @@ export default {
     return {
       search: '',
       menuVisible: false,
+      toggleDark: '',
       permanent: '',
       persistent: '',
       settingTooltip: false,

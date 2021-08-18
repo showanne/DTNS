@@ -58,3 +58,56 @@ $toolbar-h-xsmall: 56px;
   height: 139px;
   // left: 199px !important;
 }
+
+// 黑暗模式切換按鈕
+#modeToggle{
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+#toggleDark{
+  display: none;
+  &:checked + label {
+    &:before {
+      background-color: $light1;
+      transform: translateX(29px);
+    }
+    
+    &:after {
+      transform: translateX(83px) scale(1);
+    }
+  }
+}
+#toggleDark + label {
+  position: relative;
+  display: block;
+  width: 60px;
+  height: 29px;
+  border-radius: 100px;
+  background-color: #000839;
+  overflow: hidden;
+  cursor: pointer;
+  &:before,
+  &:after {
+    display: block;
+    position: absolute;
+    content: "";		
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    top: 4.5px;
+    left: 6px;
+    transition: .5s ease;
+  }
+  &:before {
+    background-color: #ffa41b;
+
+  }
+
+  &:after {
+    background-color: #000839;
+    left: -58px;
+    transform: scale(0.00001);
+  }
+}
