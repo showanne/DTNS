@@ -4,10 +4,10 @@
     // 為了釘住 tabs
     position: fixed;
     z-index: 19;
-    top: $toolbar-h + 5px;
+    top: $toolbar-h + 10px;
     
     @include md-layout-small {
-      top: $toolbar-h-small + 5px;
+      top: $toolbar-h-small + 20px;
       width: calc(100vw - 2.5rem - #{$drawer-w-small});
       overflow-x: scroll;
       overflow-y: hidden;
@@ -15,7 +15,7 @@
     
     @include md-layout-xsmall{
       width: calc(100vw - 2.5rem);
-      top: $toolbar-h-xsmall + 5px;
+      top: $toolbar-h-xsmall + 12px;
     }
 
     // tabs 的按鈕寬度
@@ -32,8 +32,16 @@
   
   .md-content.md-tabs-content{
     height: unset !important;
-    margin-top: 90px;
+    margin-top: $toolbar-h + 16px ;
+    
+    @include md-layout-small {
+      margin-top: $toolbar-h-small * 2;
+    }
+    @include md-layout-xsmall{
+      margin-top: $toolbar-h-xsmall * 2;
+    }
   }
+
   .md-tab-icon{
     height: unset;
     width: 3rem;
@@ -50,16 +58,20 @@
         max-width: 350px;
       }
       @include md-layout-xsmall {
-        min-width: 95%;
-        max-width: 95%;
-        margin: 1rem auto 1rem 1.5rem;
+        min-width: 100%;
+        max-width: 100%;
+        margin: 1rem auto;
       }   
     }
   }
   
   .md-card-header .md-avatar {
     // float: left; 預設讓標題字不會貼邊
-    margin: -35px 16px 5px -55px;
+    margin: -35px 25px 0px -35px;
+    
+    @include md-layout-xsmall {
+      margin: -35px 25px 0px -19px;
+    }
   }
 }
 
