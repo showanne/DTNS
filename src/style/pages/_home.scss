@@ -1,18 +1,5 @@
 /* home */
 #home {
-
-}
-
-// scss 的 預設集 給變數 自動產生樣式 
-@mixin sizeIcon($px) {
-  width: $px;
-  min-width: $px;
-  height: $px;
-  font-size: $px!important;
-}
-
-.intro{
-  margin-bottom: 1.5rem;
   // 調整卡片間距
   .md-card{
     margin-top: 1.5rem;
@@ -34,47 +21,28 @@
       }
     }
   }
-  .md-icon.md-home-icon {
-    @include sizeIcon(120px);
-    
-    @include md-layout-medium {
-      @include sizeIcon(100px);
-    }
-    
-    @include md-layout-small {
-      @include sizeIcon(90px);
-    }
-    
-    @include md-layout-xsmall {
-      @include sizeIcon(60px);
-    }
-  }
 }
 
-.VueCarousel{
-  max-height: calc(100vh - 64px);
-  //  ↑ 要多減 16 因為 margin 負的會撐開 -> 好像不用
-  // 抵銷 .md-app-content 的 padding: 16px;
-  margin: auto -16px -16px -16px;
+// scss 的 預設集 給變數 自動產生樣式 
+@mixin sizeIcon($px) {
+  width: $px;
+  min-width: $px;
+  height: $px;
+  font-size: $px!important;
+}
+
+.md-icon.md-home-icon {
+  @include sizeIcon(120px);
+  
+  @include md-layout-medium {
+    @include sizeIcon(100px);
+  }
   
   @include md-layout-small {
-    // min-height: calc(100vh - 64px);
+    @include sizeIcon(90px);
   }
-
-  h4{
-    margin: 0 0 32px 0;
-    padding-right: 79px;
-
-    @include md-layout-small {
-      margin: 0 0 -19px 0;
-      padding-right: 59px;
-    }
+  
+  @include md-layout-xsmall {
+    @include sizeIcon(60px);
   }
-
-  // img{
-  //   width: 100%;
-  //   height: 100%;
-  //   object-fit: cover;
-  // }
-
 }
