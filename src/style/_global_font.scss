@@ -77,7 +77,7 @@ $fw: (
   );
 @each $key, $value in $fw {
   .fw-#{$key} {
-    font-weight: $value;
+    font-weight: $value !important;
   }
 }
 
@@ -86,7 +86,7 @@ $fw: (
 $fs: italic, normal;
 @each $value in $fs {
   .fs-#{$value} {
-    font-style: $value;
+    font-style: $value !important;
   }
 }
 

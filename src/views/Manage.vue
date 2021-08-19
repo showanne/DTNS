@@ -1,37 +1,39 @@
 <template>
   <div id="manage">
-    <md-tabs md-sync-route @md-changed="checkNewPosts">
+    <md-tabs md-alignment="fixed" md-sync-route @md-changed="checkNewPosts">
       <template slot="md-tab" slot-scope="{ tab }">
         {{ tab.label }} <i class="badge" v-if="tab.data.badge">{{ tab.data.badge }}</i>
       </template>
 
       <!-- Home 管理員身分顯示頁面 -->
-      <md-tab id="tab-Home" md-label="Home" to="/manage" exact>
+      <md-tab id="tab-Home" md-label="管理員身分資訊" to="/manage" exact>
         <router-view></router-view>
       </md-tab>
       <!-- memberData 會員資料管理頁 -->
-      <md-tab id="tab-memberData" md-label="memberData" to="/manage/memberData">
+      <md-tab id="tab-memberData" md-label="會員資料管理" to="/manage/memberData"
+        :md-template-data="{ badge: newPosts }" @click="clearNewPosts">
         <router-view></router-view>
       </md-tab>
       <!-- article 文章管理頁 -->
-      <md-tab id="tab-article" md-label="article" to="/manage/article"
-        :md-template-data="{ badge: articleTotal }">
+      <md-tab id="tab-article" md-label="文章管理" to="/manage/article"
+        :md-template-data="{ badge: newPosts }" @click="clearNewPosts">
         <router-view></router-view>
       </md-tab>
       <!-- template 模板管理頁&模板欄位管理 -->
-      <md-tab id="tab-template" md-label="template" to="/manage/template">
+      <md-tab id="tab-template" md-label="文章模板管理" to="/manage/template">
         <router-view></router-view>
       </md-tab>
       <!-- reply 問題回復 -->
-      <md-tab id="tab-reply" md-label="reply" to="/manage/reply" :md-template-data="{ badge: newPosts }" @click="clearNewPosts">
+      <md-tab id="tab-reply" md-label="問題回復" to="/manage/reply"
+        :md-template-data="{ badge: newPosts }" @click="clearNewPosts">
         <router-view></router-view>
       </md-tab>
       <!-- special 最新消息或優惠訊息 -->
-      <md-tab id="tab-special" md-label="special" to="/manage/special">
+      <md-tab id="tab-special" md-label="最新消息" to="/manage/special">
         <router-view></router-view>
       </md-tab>
       <!-- editApp 網頁版面及內容編輯 -->
-      <md-tab id="tab-editApp" md-label="editApp" to="/manage/editApp">
+      <md-tab id="tab-editApp" md-label="網頁內容編輯" to="/manage/editApp">
         <router-view></router-view>
       </md-tab>
     </md-tabs>

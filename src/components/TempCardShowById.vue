@@ -15,8 +15,8 @@
                   <img :src="avatar" alt="">
                 </md-avatar>
               </div>
-              <div class="md-layout-item md-size-70">
-                  <div class="md-subhead d-medium-inline">{{ author }}</div>
+              <div class="md-layout-item md-size-70 text-center">
+                <div class="md-subhead d-inline">{{ author }}</div>
 
                 <div class="md-subhead">
                   <md-icon class="md-icon-dateL"

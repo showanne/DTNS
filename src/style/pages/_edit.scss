@@ -11,18 +11,40 @@
   }
 }
 
-#temp,
-#tempEdit{
-  padding:2rem;
-}
-
 #temp{
+  padding: 2rem;
+
+  @include md-layout-small {
+    padding: unset;
+
+    .md-layout:first-child{
+      flex-wrap: nowrap !important;
+    }
+    .md-small-size-temp {
+      min-width: (99% / 7);
+      max-width: (99% / 7);
+      flex: 0 1 (99% / 7);
+    }
+  }
+  
+  @include md-layout-xsmall{
+    // overflow-x: scroll;
+    // overflow-y: hidden;
+    width: calc(100vw - 2.5rem);
+  }
+
   .md-card {
     margin: 12px;
+    @include md-layout-small {
+      margin: 6px;
+    }
     &:hover{
       span{
-        color: #B3AB88;
+        color: $dark2;
       }
+    }
+    span{
+      color: $dark3;
     }
   }
 
@@ -56,21 +78,13 @@
       }
     }
   }
-  
-
-  .md-card-header{
-    padding: unset;
-    span{
-      color: #7876B3;
-    }
-  }
 }
 
 #tempEdit{
-  background-color: $light1;
+  padding: 2rem;
   .img-inputer {
     width: 100%;
-    margin: 4px 0 24px;
+    margin: 1rem 0 -0.2rem 0;
   }
   .label {
     display: block;

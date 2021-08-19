@@ -68,3 +68,11 @@ form.w-contact-modal {
     border-radius: 2px;
   }
 }
+
+.md-theme-dark{
+  #questionCard{
+    span.md-caption{
+      background-color: $dark1;
+    }
+  }
+}

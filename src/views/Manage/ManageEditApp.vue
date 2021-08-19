@@ -3,8 +3,8 @@
     <md-card>
       <md-card-header class="md-secondary">
       <!-- :data-background-color="dataBackgroundColor" -->
-        <h4 class="title">Edit Profile</h4>
-        <p class="category">Complete your profile</p>
+        <h4 class="md-title fw-bold">Edit Profile</h4>
+        <p class="md-body-1 m-1">Complete your profile</p>
       </md-card-header>
 
       <md-card-content>

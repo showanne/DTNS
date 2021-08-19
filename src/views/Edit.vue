@@ -15,7 +15,7 @@
 
           <div v-for="(temp, T) in tempList"
             :key="T" @click="tempShow(T)"
-            class="md-layout-item md-xlarge-size-50 md-large-size-50 md-medium-size-50 md-small-size-15 md-xsmall-size-15"
+            class="md-layout-item md-xlarge-size-50 md-large-size-50 md-medium-size-50 md-small-size-temp"
           >
             <md-card md-with-hover v-if="temp.show">
               <md-ripple>
@@ -51,11 +51,11 @@
             @reset="clearForm">
             <md-card style="padding: 1.3rem 0 1rem 0;">
               <md-card-header>
-                <h4 class="title">
+                <p class="md-title fw-bold">
                   <!-- Edit temp name -->
                   {{ tempList[tempForm.template].name }}
-                </h4>
-                <p class="category">
+                </p>
+                <p class="md-body-1 m-1">
                   {{ userName }}
                 </p>
               </md-card-header>

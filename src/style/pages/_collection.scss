@@ -139,6 +139,12 @@
 }
 
 .showCardModal{
+  .md-dialog-container {
+    min-width: 600px;
+    @media (max-width: 768px) {
+      min-width: 500px;
+    }
+  }
   .md-card {
     box-shadow: unset;
   }
