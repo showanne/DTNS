@@ -1,8 +1,58 @@
 /* home */
 #home {
+  .text-title {
+    color: #0000008a;
+    font-size: 56px;
+    font-weight: 400;
+    line-height: 1.5;
+    padding-left: 1.5rem;
+    letter-spacing: 2px;
+    
+    @include md-layout-medium {
+      font-size: 50px;
+    }
+  
+    @include md-layout-small {
+      font-size: 42px;
+      padding-left: 1rem;
+    }
+    
+    @include md-layout-xsmall {
+      font-size: 36px;
+    }
+  }
+  .text-subhead {
+    color: #0000008a;
+    font-size: 34px;
+    font-weight: 400;
+    line-height: 1.25;
+    padding-left: 1.5rem;
+    letter-spacing: 2px;
+    
+    @include md-layout-medium {
+      font-size: 30px;
+    }
+    
+    @include md-layout-small {
+      font-size: 26px;
+      padding-left: 1rem;
+    }
+    
+    @include md-layout-xsmall {
+      font-size: 22px;
+    }
+
+    @media (max-width: 300px) {
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+  }
   // 調整卡片間距
   .md-card{
     margin-top: 1.5rem;
+    margin-right: 18px;
+    margin-left: 18px;
+    padding: 1rem 0;
   }
   .md-layout-item.md-size-33 {
     margin-top: 1.5rem;
