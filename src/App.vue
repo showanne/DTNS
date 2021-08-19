@@ -12,7 +12,7 @@
             </md-button>
           </div>
 
-          <div class="md-layout-item md-large-size-15 md-medium-size-20 md-small-size-30">
+          <div class="md-layout-item md-large-size-25 md-medium-size-30 md-small-size-50">
             <div class="md-layout md-alignment-center-right">
               <md-field class="md-layout-item md-size-50 md-xsmall-hide">
                 <label>Search...</label>
@@ -21,7 +21,8 @@
 
               <!-- mode toggle -->
               <div id="modeToggle" class="md-layout-item md-size-50">
-                <input type="checkbox" v-model="toggleDark" id="toggleDark"/>
+                <input type="checkbox" id="toggleDark"
+                  v-model="toggleDark" @click="toggleMode"/>
                 <label for="toggleDark"></label>
                 <!-- <span>{{ toggleDark }}</span> -->
               </div>
@@ -37,6 +38,7 @@
         <!-- <md-app-drawer :md-active.sync="menuVisible" md-permanent="full" md-persistent="mini"> -->
 
           <md-list class="mb-auto">
+
             <md-list-item to="/">
               <h1 class="text-dtns">DTNS</h1>
             </md-list-item>
@@ -54,7 +56,7 @@
             </md-list-item>
 
             <!-- setting to="/setting" -->
-            <md-list-item @click="settingTooltip = !settingTooltip">
+            <!-- <md-list-item @click="settingTooltip = !settingTooltip">
               <md-icon
                 :md-src="require('./assets/icon/menu-Setting.svg')"
               ></md-icon>
@@ -90,7 +92,7 @@
                     </div>
                   </div>
               </md-tooltip>
-            </md-list-item>
+            </md-list-item> -->
 
             <!-- member -->
             <md-list-item v-if="user.isSignIn && !user.isAdmin" to="/member">
@@ -109,14 +111,10 @@
             </md-list-item>
 
             <!-- Sign Up -->
-            <md-list-item v-if="!user.isSignIn">
-              <md-button @click="signUpBtn = true"
-                class="md-raised">
-                <div class="md-layout md-alignment-center-space-around w-signBtn">
+            <md-list-item v-if="!user.isSignIn"
+              @click="signUpBtn = true">
                 <md-icon :md-src="require('./assets/icon/signUp.svg')"></md-icon>
-                Sign Up
-                </div>
-              </md-button>
+                <span class="md-list-item-text">註冊</span>
 
               <md-dialog :md-active.sync="signUpBtn">
                 <md-dialog-content class="md-layout md-alignment-center-center">
@@ -129,14 +127,11 @@
             </md-list-item>
 
             <!-- Sign In -->
-            <md-list-item v-if="!user.isSignIn">
-              <md-button @click="signInBtn = true"
-              class="md-raised">
-              <div class="md-layout md-alignment-center-space-around w-signBtn">
+            <md-list-item v-if="!user.isSignIn"
+              @click="signInBtn = true">
                 <md-icon :md-src="require('./assets/icon/signIn.svg')"></md-icon>
-                Sign In
-              </div>
-              </md-button>
+                <span class="md-list-item-text">登入</span>
+
               <SignModal
                 v-if="signInBtn"
                 :signBtn="signInBtn"
@@ -147,37 +142,24 @@
             </md-list-item>
 
             <!-- Sign out -->
-            <md-list-item v-if="user.isSignIn">
-              <md-button @click="signOutBtn"
-                class="md-raised">
-                <div class="md-layout md-alignment-center-space-around w-signBtn">
-                <md-icon :md-src="require('./assets/icon/signOut.svg')"></md-icon>
-                Sign out
-                </div>
-              </md-button>
+            <md-list-item v-if="user.isSignIn"
+              @click="signOutBtn">
+              <md-icon :md-src="require('./assets/icon/signOut.svg')"></md-icon>
+              <span class="md-list-item-text">登出</span>
             </md-list-item>
 
           </md-list>
 
-          <div class="mt-auto mx-auto">
-            <!-- mode toggle -->
-              <div id="modeToggle">
-                <input type="checkbox" id="toggleDark"
-                  v-model="toggleDark" @click="toggleMode" />
-                <label for="toggleDark"></label>
-                <!-- <span>{{ toggleDark }}</span> -->
-              </div>
-
-            <!-- 個人連結 &copy;  -->
-            <!-- <md-button> -->
-              <a href="https://showanne.github.io/"
-              class="td-none lh-5">
-                <div class="md-layout md-alignment-center-center">
-                  <md-icon :md-src="require('./assets/icon/icon-github.svg')"></md-icon>
-                  Anne.
-                </div>
-              </a>
-            <!-- </md-button> -->
+          <div class="mt-auto mx-auto mb-3">
+            <!-- 個人連結 &copy; -->
+            <a href="https://showanne.github.io/"
+               class="td-none lh-5">
+              <!-- <div class="md-layout md-alignment-center-center"> -->
+                <md-icon :md-src="require('./assets/icon/icon-github.svg')"
+                  class="d-inline-block"></md-icon>
+                Anne.
+              <!-- </div> -->
+            </a>
           </div>
         </md-app-drawer>
 
