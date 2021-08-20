@@ -1,6 +1,6 @@
 // 網頁內容高度
 .h-content{
-  min-height: calc(100vh - 72px);
+  min-height: 100vh;
   
   @include md-layout-xsmall {
    min-height: calc(100vh - 64px);
@@ -20,6 +20,18 @@
   min-width: 119px;
   .md-icon{
     margin: auto 8px;
+  }
+}
+
+// For modal close Btn
+.closeBtn{
+  position: fixed;
+  left: 16px;
+  top: 16px;
+  z-index: 3;
+  filter: drop-shadow(1px 2px 2px $light1);
+  .md-ripple{
+    padding: 0;
   }
 }
 
@@ -55,4 +67,9 @@
   height: 50%;
   justify-content: center;
   align-items: center;
+}
+
+// For img upload bg
+.img-inputer {
+  background: inherit;
 }
