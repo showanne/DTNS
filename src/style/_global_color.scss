@@ -6,8 +6,10 @@ $light3:   #DDDBFF;
 $dark1:    #403E37; // $black
 $dark2:    #B3AB88; // $primary-dark
 $dark3:    #7876B3; // $primary-default
-$dark4:    #757159; // $accent-dark
+$dark4:    #807D6E; // $accent-dark
+$dark5:    #757159;
 $warn:     #FFD2CF;
+$warn2:    #ffe4cf;
 $success:  #C2FFDB;
 $success2: #C2FFFE;
 
@@ -19,7 +21,9 @@ $colorList: (
   dark2:    $dark2,
   dark3:    $dark3,
   dark4:    $dark4,
+  dark5:    $dark5,
   warn:     $warn,
+  warn2:    $warn2,
   success:  $success,
   success2: $success2
   );
