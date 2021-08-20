@@ -7,38 +7,31 @@
       <!-- :md-close-on-esc="true" -->
       <!-- <md-dialog-title>{ item.title }</md-dialog-title> -->
       <md-dialog-content  class="md-scrollbar">
-        <md-card>
-          <md-card-header>
-            <div class="md-layout md-alignment-center-space-between">
-              <div class="md-layout-item md-size-15">
-                <md-avatar class="md-large md-elevation-5">
-                  <img :src="avatar" alt="">
-                </md-avatar>
-              </div>
-              <div class="md-layout-item md-size-70 text-center">
-                <div class="md-subhead d-inline">{{ author }}</div>
-
-                <div class="md-subhead">
-                  <md-icon class="md-icon-dateL"
-                     :md-src="require('../assets/icon/dateL.svg')"></md-icon>
-                  <span>{{ date }}</span>
-                </div>
-              </div>
-              <div class="md-layout-item md-size-15">
-                <md-icon class="md-size-3x"
-                  :md-src="require('../assets/icon/temp-'+tempIcon+'.svg')">
-                </md-icon>
-              </div>
-            </div>
-          </md-card-header>
+        <md-card class="pt-4">
+          <md-button class="closeBtn w-unset h-unset md-primary"
+            @click="closeModal">
+            <md-icon>close</md-icon>
+          </md-button>
+          <div class="md-icon-dateL">{{ date }}</div>
 
           <!-- share -->
-          <md-card-content v-if="tempNum === 0">
-            <div class="md-title text-v-html">{{ title }}</div>
+          <md-card-content v-if="tempNum === 0"
+            class="card-share">
             <md-card-media v-if="image">
               <img :src="image" :alt="title">
             </md-card-media>
-            <div class="md-body-1 text-v-html" v-html="text"></div>
+             <figure>
+              <blockquote>
+                <p class="text-v-html">{{ title }}</p>
+
+                <figcaption>
+                  <cite>
+                  –– <span class="text-v-html" v-html="text"></span>
+                  <!-- ， <a href="">出處 Brave New World</a> -->
+                  </cite>
+                </figcaption>
+              </blockquote>
+            </figure>
           </md-card-content>
 
           <!-- postIt -->
@@ -95,14 +88,20 @@
       </md-dialog-content>
       <md-dialog-actions class="md-layout md-alignment-space-around-center">
         <md-button class="md-layout-item md-layout-nowrap">
+          <md-avatar class=" md-small md-elevation-3 mr-2">
+            <img :src="avatar" :alt="author">
+          </md-avatar>
+          <span class="md-subhead">{{ author }}</span>
+        </md-button>
+        <md-button class="md-layout-item md-layout-nowrap">
           <md-icon :md-src="require('@/assets/icon/action-save.svg')"></md-icon>
-          <span>&nbsp; 39</span>
+          <span class="pl-1">--</span>
 
         </md-button>
 
         <md-button class="md-layout-item md-layout-nowrap">
           <md-icon :md-src="require('@/assets/icon/action-good.svg')"></md-icon>
-          <span>&nbsp; 59</span>
+          <span class="pl-1">--</span>
         </md-button>
 
         <md-button class="md-layout-item md-layout-nowrap">
@@ -110,9 +109,6 @@
             <md-icon :md-src="require('../assets/icon/action-share.svg')"></md-icon>
           </a>
         </md-button>
-
-        <md-button class="md-layout-item md-primary"
-        @click="closeModal">Close</md-button>
       </md-dialog-actions>
     </md-dialog>
 </template>

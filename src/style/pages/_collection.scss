@@ -82,39 +82,52 @@
   word-break: break-all;
 }
 
-.blockquote{
+.card-share{
+  figure {
+    margin: unset;
+  }
   blockquote {
-    background: #fffef1;
+    background: darken( $light1 ,5% );
     border-radius: 3px;
-    margin: 16px 0 6px 0;
+    margin: 8px 0 6px 0;
+
+    &::before {
+      position: absolute;
+      content: '\201C';
+      font-size: 3rem;
+      color: $dark2;
+      // top: 10px;
+      left: 10px;
+      margin-top: 20px;
+    }
 
     p {
-      padding: 15px;
+      text-align: center;
+      font-size: 1.2rem;
+      letter-spacing: 1px;
+      line-height: 1.75;
+      padding: 1.5rem 0;
       margin: 0;
-
-      &::before {
-        content: '\201C';
-      }
-
+      
       &::after {
+        position: absolute;
         content: '\201D';
+        font-size: 3rem;
+        color: $dark2;
+        // bottom: 10px;
+        right: 10px;
       }
     }
-  }
-  
-  figcaption{
-    padding: 0 15px;
 
-    cite {
-      // margin:16px;
-      a{
-        text-decoration: none;
+    figcaption{
+      text-align: right;
+      // padding: 0 15px;
+      padding: 0 15px 15px 0;
+      cite {
+        color: #757165;
+        // margin: 16px;
       }
     }
-  }
-  
-  [contenteditable='true'] {
-    caret-color: #bb6697;
   }
 }
 
@@ -161,17 +174,36 @@
     box-shadow: unset;
   }
 
-  .md-icon-dateL{
-    display: inline-block;
-    min-width: 99px;
-    height: 39px;
-    position: relative;
+  // .md-icon-dateL{
+  //   display: inline-block;
+  //   min-width: 99px;
+  //   height: 39px;
+  //   position: relative;
+  // }
+  // .md-icon-dateL + span {
+  //   position: absolute;
+  //   // top: 50%;
+  //   left: calc( 50% - 0px );
+  //   // transform: translateY(29%);
+  // }
+  .closeBtn{
+    position: fixed;
+    left: 16px;
+    top: 16px;
+    z-index: 3;
+    filter: drop-shadow(1px 2px 2px $light1);
+    .md-ripple{
+      padding: 0;
+    }
   }
-  .md-icon-dateL + span {
+  .md-icon-dateL{
     position: absolute;
-    /* top: 50%; */
-    left: calc( 50% - 29px );
-    transform: translateY(49%);
+    right: 9px;
+    top: -10px;
+    display: inline-block;
+    padding: 0.6rem 0.8rem 0.65rem 0.7rem;
+    margin-left: -0.3rem;
+    background: url(../assets/icon/dateL.svg) no-repeat center;
   }
 
   .md-card-media,
