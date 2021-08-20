@@ -14,8 +14,9 @@
     }
     
     @include md-layout-xsmall{
-      width: calc(100vw - 2.5rem);
+      width: 100vw;
       top: $toolbar-h-xsmall + 12px;
+      overflow: scroll;
     }
 
     // tabs 的按鈕寬度
@@ -24,18 +25,23 @@
       max-width: calc((100vw - 4.5rem - #{$drawer-w}) / 7);
 
       @include md-layout-small {
-        min-width: calc((150vw - #{$drawer-w-small}) / 7);
-        max-width: calc((150vw - #{$drawer-w-small}) / 7);
+        min-width: calc((90vw - #{$drawer-w-small}) / 7);
+        max-width: calc((90vw - #{$drawer-w-small}) / 7);
+      }
+
+      @include md-layout-xsmall {
+        min-width: calc(130vw / 7);
+        max-width: calc(130vw / 7);
       }
     }
   }
   
   .md-content.md-tabs-content{
     height: unset !important;
-    margin-top: $toolbar-h + 16px ;
+    margin-top: 99px ;
     
     @include md-layout-small {
-      margin-top: $toolbar-h-small * 2;
+      margin-top: 119px;
     }
     @include md-layout-xsmall{
       margin-top: $toolbar-h-xsmall * 2;
@@ -124,9 +130,20 @@
       // padding: 0 15px;
       padding: 0 15px 15px 0;
       cite {
-        color: #757165;
+        color: $dark4;
         // margin: 16px;
       }
+    }
+  }
+}
+
+.md-theme-dark{
+  .card-share{
+    blockquote {
+      background: lighten( $dark1 ,2% );
+    }
+    cite {
+      color: lighten($dark4, 20%);
     }
   }
 }
@@ -186,16 +203,6 @@
   //   left: calc( 50% - 0px );
   //   // transform: translateY(29%);
   // }
-  .closeBtn{
-    position: fixed;
-    left: 16px;
-    top: 16px;
-    z-index: 3;
-    filter: drop-shadow(1px 2px 2px $light1);
-    .md-ripple{
-      padding: 0;
-    }
-  }
   .md-icon-dateL{
     position: absolute;
     right: 9px;
