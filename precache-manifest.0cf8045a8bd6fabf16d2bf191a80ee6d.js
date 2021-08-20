@@ -1,14 +1,14 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "bf88a9939368667cea00",
-    "url": "css/app.248c25de.css"
+    "revision": "69e50ea15fe803ef8247",
+    "url": "css/app.009ca88d.css"
   },
   {
     "revision": "f4b9352287304a6acfb1",
     "url": "css/chunk-vendors.8814381e.css"
   },
   {
-    "revision": "0c332988f3595eeafb5d",
+    "revision": "a4ae61e6a124d08d52c6",
     "url": "css/contact.cb349bc0.css"
   },
   {
@@ -46,18 +46,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "1dcfda2d08e574980fba510b9dd0a18f",
     "url": "img/dateS.1dcfda2d.svg"
-  },
-  {
-    "revision": "f2de8a71534a669639dd7a62a20c4670",
-    "url": "img/fontOrign.f2de8a71.svg"
-  },
-  {
-    "revision": "124916aa04a8ff938282170b3339b340",
-    "url": "img/fontZoomIn.124916aa.svg"
-  },
-  {
-    "revision": "23089d5dbef2a0b9ff17ebcd9c664a86",
-    "url": "img/fontZoomOut.23089d5d.svg"
   },
   {
     "revision": "c99d90cf8cd09cf8b3cd97d85a9f795d",
@@ -152,12 +140,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "img/temp-todo.624bae4f.svg"
   },
   {
-    "revision": "6316fd9cc1424f07e503c4c7039852ac",
+    "revision": "0a2cb0bfa156abb476d69405f93674ad",
     "url": "index.html"
   },
   {
-    "revision": "bf88a9939368667cea00",
-    "url": "js/app.e39611cd.js"
+    "revision": "69e50ea15fe803ef8247",
+    "url": "js/app.780b05ef.js"
   },
   {
     "revision": "f4b9352287304a6acfb1",
@@ -168,28 +156,24 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "js/collection.0b5a6ec6.js"
   },
   {
-    "revision": "0c332988f3595eeafb5d",
-    "url": "js/contact.0734f5b9.js"
+    "revision": "a4ae61e6a124d08d52c6",
+    "url": "js/contact.26d70acf.js"
   },
   {
-    "revision": "0cc7935203e587544aa1",
-    "url": "js/edit.af4b4d23.js"
+    "revision": "1d0bb6909d20593ea1a0",
+    "url": "js/edit.60346eed.js"
   },
   {
     "revision": "29516ad90a5376ae173c",
     "url": "js/manage.766e160d.js"
   },
   {
-    "revision": "8c4daad5849d542516ec",
-    "url": "js/member.496641d3.js"
+    "revision": "bd198c8fb58fc31c55aa",
+    "url": "js/member.a4eb195f.js"
   },
   {
     "revision": "c3098e86ae75e107f376",
     "url": "js/news.b6029106.js"
-  },
-  {
-    "revision": "b2a5f91246e06a150785",
-    "url": "js/setting.ae2d9eb6.js"
   },
   {
     "revision": "352e11ab125a1b14996bfdd2f0b92350",
