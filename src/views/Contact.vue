@@ -11,6 +11,12 @@
     <!-- 輸入問題表格 modal -->
     <md-dialog :md-active.sync="contactBtn">
       <md-progress-bar md-mode="indeterminate" v-if="sending" />
+
+      <md-button class="closeBtn w-unset h-unset md-primary"
+        @click="contactBtn = false">
+        <md-icon>close</md-icon>
+      </md-button>
+
       <md-dialog-title class="text-center">聯絡我們</md-dialog-title>
       <md-dialog-content class="md-scrollbar">
         <form class="w-contact-modal"
