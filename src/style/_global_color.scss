@@ -1,24 +1,26 @@
 /* color */
 
-$light1:   #FFFDF5;
-$light2:   #FFF9DB;
+$light1:   #FFFDF5; // $white
+$light2:   #FFF9DB; // $accent-default
 $light3:   #DDDBFF;
-$dark1:    #403E37;
-$dark2:    #B3AB88;
-$dark3:    #7876B3;
+$dark1:    #403E37; // $black
+$dark2:    #B3AB88; // $primary-dark
+$dark3:    #7876B3; // $primary-default
+$dark4:    #757159; // $accent-dark
 $warn:     #FFD2CF;
 $success:  #C2FFDB;
 $success2: #C2FFFE;
 
 $colorList: (
-  light1: $light1,
-  light2: $light2,
-  light3: $light3,
-  dark1: $dark1,
-  dark2: $dark2,
-  dark3: $dark3,
-  warn: $warn,
-  success: $success,
+  light1:   $light1,
+  light2:   $light2,
+  light3:   $light3,
+  dark1:    $dark1,
+  dark2:    $dark2,
+  dark3:    $dark3,
+  dark4:    $dark4,
+  warn:     $warn,
+  success:  $success,
   success2: $success2
   );
 @each $key, $value in $colorList {
