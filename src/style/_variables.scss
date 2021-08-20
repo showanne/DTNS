@@ -12,11 +12,11 @@
  * @group themes
  */
 
-// $md-default-palette: (
-//   primary: md-get-palette-color(blue, A200),
-//   accent: md-get-palette-color(red, A200),
-//   theme: "light"
-// ) !default;
+$md-default-palette: (
+  primary: md-get-palette-color(blue, A200),
+  accent: md-get-palette-color(red, A200),
+  theme: "light"
+) !default;
 
 
 /**
@@ -69,19 +69,35 @@ $md-theme-name: null;
  * @group themes
  */
 
+// custom
+$light1:   #FFFDF5; // $white
+$light2:   #FFF9DB; // $accent-default
+$light3:   #DDDBFF;
+$dark1:    #403E37; // $black
+$dark2:    #B3AB88; // $primary-dark
+$dark3:    #7876B3; // $primary-default
+$dark4:    #757159; // $accent-dark
+$warn:     #FFD2CF;
+$success:  #C2FFDB;
+$success2: #C2FFFE;
+
+$black: $dark1; $rgb-black: "66,66,66" !default;
+$white: $light1; $rgb-white: "255, 253, 245" !default;
+
+
 $md-color-levels: (
   light: (
-    background: #FFFDF5,
+    background: $white,
     background-variant: #fafafa,
-    text-primary: rgba(#000, .87),
-    text-accent: rgba(#000, .54),
-    text-hint: rgba(#000, .38),
-    disabled: rgba(#000, .26),
-    disabled-background: rgba(#000, .12),
-    highlight: rgba(#000, .12),
-    icon: rgba(#000, .54),
-    icon-disabled: rgba(#000, .38),
-    divider: rgba(#000, .12),
+    text-primary: rgba($black, .87),
+    text-accent: rgba($black, .54),
+    text-hint: rgba($black, .38),
+    disabled: rgba($black, .26),
+    disabled-background: rgba($black, .12),
+    highlight: rgba($black, .12),
+    icon: rgba($black, .54),
+    icon-disabled: rgba($black, .38),
+    divider: rgba($black, .12),
     scrollbar: #757575,
     scrollbar-background: darken(#eee, 5%),
     tooltip: #616161
@@ -89,17 +105,17 @@ $md-color-levels: (
   dark: (
     background: #424242,
     background-variant: #303030,
-    text-primary: #FFFDF5,
-    text-accent: rgba(#FFFDF5, .7),
-    text-hint: rgba(#FFFDF5, .5),
-    disabled: rgba(#FFFDF5, .3),
-    disabled-background: rgba(#FFFDF5, .12),
-    highlight: rgba(#FFFDF5, .12),
-    icon: #FFFDF5,
-    icon-disabled: rgba(#FFFDF5, .5),
-    divider: rgba(#FFFDF5, .12),
+    text-primary: $white,
+    text-accent: rgba($white, .7),
+    text-hint: rgba($white, .5),
+    disabled: rgba($white, .3),
+    disabled-background: rgba($white, .12),
+    highlight: rgba($white, .12),
+    icon: $white,
+    icon-disabled: rgba($white, .5),
+    divider: rgba($white, .12),
     scrollbar: #9E9E9E,
     scrollbar-background: #212121,
-    tooltip: #FFFDF5
+    tooltip: $white
   )
 );

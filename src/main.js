@@ -3,6 +3,7 @@ import Vue from 'vue'
 import VueMaterial from 'vue-material'
 import 'vue-material/dist/vue-material.min.css'
 // import 'vue-material/dist/theme/default.css'
+import './style/style.scss' // vue-material theme
 
 // axios
 import axios from 'axios'
@@ -27,7 +28,6 @@ import store from './store'
 // vue-material variables
 import './style/_variables.scss'
 // style
-import './style/style.scss'
 import './style/all.scss'
 // import './style/style-custom.css'
 
