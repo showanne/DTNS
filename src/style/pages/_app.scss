@@ -38,7 +38,7 @@ $drawer-w-xsmall: 66vw;
     .router-link-active {
       // transition: .5s;
       .md-list-item-content {
-    
+        background-color: $light3;
         &::before{
           content: '';
           position: absolute;
@@ -51,6 +51,8 @@ $drawer-w-xsmall: 66vw;
     }
     .md-list-item:first-child {
       .md-list-item-content {
+        background-color: $dark3;
+        color: $light1;
         &::before{
           width: unset !important;
         }
@@ -105,14 +107,13 @@ $drawer-w-xsmall: 66vw;
 // 網頁內容高度 100vh - $toolbar-h
 // 上方列 toolbar 64px
 $toolbar-h: 0px;
-$toolbar-h-small: 48px;
+$toolbar-h-small: 0px;
 $toolbar-h-xsmall: 56px;
 .md-toolbar, .md-toolbar-row {
-  min-height: $toolbar-h;
-  
-  @include md-layout-small {
-      min-height: $toolbar-h-small;
-  }
+  // min-height: $toolbar-h;  
+  // @include md-layout-small {
+  //     min-height: $toolbar-h-small;
+  // }
   
   @include md-layout-xsmall{
       min-height: $toolbar-h-xsmall;
@@ -148,6 +149,7 @@ $toolbar-h-xsmall: 56px;
     font-family: $font-en;
     font-size: 19px;
     letter-spacing: 1px;
+    color: $light1 !important;
     &:hover{
       text-decoration: none;
     }

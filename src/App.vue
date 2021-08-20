@@ -4,7 +4,7 @@
       <md-app md-waterfall md-mode="fixed">
 
         <!-- 上方列 toolbar -->
-        <md-app-toolbar class="btn-menu md-accent md-layout md-alignment-center-space-between">
+        <md-app-toolbar class="btn-menu md-primary md-layout md-alignment-center-space-between">
           <div class="md-layout-item">
             <md-button class="md-menu-button w-unset"
               @click="toggleMenu" v-if="!menuVisible">
@@ -25,12 +25,13 @@
 
         <!-- 側邊欄 drawer -->
         <md-app-drawer :md-active.sync="menuVisible"
-          md-permanent="full" class="md-accent md-layout">
+          md-permanent="full" class="md-accent bg-dark3  md-layout">
           <!-- :md-permanent="permanent"
           :md-persistent="persistent" -->
         <!-- <md-app-drawer :md-active.sync="menuVisible" md-permanent="full" md-persistent="mini"> -->
 
-          <md-list class="mb-auto">
+          <md-list :md-expand-single="expandSingle"
+            class="mb-auto bg-dark3 tc-light1">
 
             <md-list-item to="/">
               <h1 class="text-dtns">DTNS</h1>
@@ -88,11 +89,41 @@
             </md-list-item> -->
 
             <!-- member -->
-            <md-list-item v-if="user.isSignIn && !user.isAdmin" to="/member">
+            <md-list-item md-expand :md-expanded.sync="expandMember"
+              v-if="user.isSignIn && !user.isAdmin" to="/member">
               <md-icon
                 :md-src="require('./assets/icon/menu-Member.svg')"
               ></md-icon>
               <span class="md-list-item-text">會員中心</span>
+
+              <md-list slot="md-expand" class="bg-light3">
+                <!-- 會員資訊 -->
+                <md-avatar class="md-elevation-4 mt-2">
+                  <img :src="avatarImg" :alt="userName">
+                </md-avatar>
+                <div class="md-body-2 d-inline-block">{{ userName }}</div>
+
+                <!-- 會員可用功能選單 -->
+                <md-list-item to="/member/memberAnalytics">
+                  <md-icon>analytics</md-icon>
+                  <span class="md-list-item-text">Analytics</span>
+                </md-list-item>
+
+                <md-list-item to="/member/memberArticle">
+                  <md-icon>feed</md-icon>
+                  <span class="md-list-item-text">Article</span>
+                </md-list-item>
+
+                <md-list-item to="/member/memberProfile">
+                  <md-icon>perm_contact_calendar</md-icon>
+                  <span class="md-list-item-text">Profile</span>
+                </md-list-item>
+
+                <md-list-item to="/member/memberReply">
+                  <md-icon>3p</md-icon>
+                  <span class="md-list-item-text">Reply</span>
+                </md-list-item>
+              </md-list>
             </md-list-item>
 
             <!-- manage -->
@@ -159,7 +190,7 @@
                   class="d-inline-block"></md-icon>
                 <span> Anne.</span>
             </a>
-            <div class="md-caption">&copy; 2021 Anne.</div>
+            <div class="md-caption tc-light3">&copy; 2021 Anne.</div>
           </div>
         </md-app-drawer>
 
@@ -191,9 +222,9 @@ export default {
       search: '',
       menuVisible: false,
       toggleDark: false,
-      permanent: '',
-      // persistent: '',
-      settingTooltip: false,
+      expandSingle: false,
+      expandMember: false,
+      // settingTooltip: false,
       signUpBtn: false,
       signInBtn: false,
       // alert 訊息控制 false 是不跳 alert
@@ -224,30 +255,6 @@ export default {
     toggleMenu () {
       this.menuVisible = !this.menuVisible
     },
-    screenWidth () {
-      addEventListener('resize', () => {
-        const clientWidth = document.body.clientWidth
-        console.log(clientWidth)
-        // TODO: 根據螢幕大小去調整 md-permanent="full" md-persistent="mini" 的值 及 menuVisible 的開關
-        // 當螢幕 ... 時
-        if (clientWidth > 900) {
-          this.menuVisible = true
-          // > 900 md-permanent="full"
-          this.permanent = 'full'
-          // console.log(this.permanent, this.persistent)
-        } else if (clientWidth > 600 && clientWidth < 900) {
-          this.menuVisible = !this.menuVisible
-          //  < 900 md-permanent="full" md-persistent="mini"
-          this.permanent = 'full'
-          // console.log(this.permanent, this.persistent)
-        } else {
-          this.menuVisible = !this.menuVisible
-          //  < 600 md-persistent="full"
-          this.permanent = null
-          // console.log(this.permanent, this.persistent)
-        }
-      })
-    },
     toggleMode () {
       if (this.toggleDark) {
         this.$material.theming.theme = 'default'
@@ -275,7 +282,7 @@ export default {
         // console.log(res)
         this.$store.commit('signIn', res.data)
         // 登入成功後導向會員中心 / 網址列的 jwt 清不掉用跳轉到會員頁代替
-        this.$router.push('/member')
+        this.$router.push('/member/memberProfile')
       }).catch((error) => {
         console.log(error)
         this.$store.commit('signOut')
