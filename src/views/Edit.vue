@@ -1,7 +1,7 @@
 <template>
   <div id="edit" class="md-scrollbar">
     <!-- <h1>This is an edit page</h1> -->
-    <div class="tc-warn md-body-1 lh-5"  v-if="!user.isSignIn">
+    <div class="tc-dark3 md-body-1 lh-5"  v-if="!user.isSignIn">
       <md-icon>error_outline</md-icon>
       提醒您！您目前尚未登入會員，您的編輯內容將以匿名形式發出，並且不會被記錄！</div>
 
