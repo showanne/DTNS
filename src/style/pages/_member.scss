@@ -1,15 +1,20 @@
 /* member */
 #member{
-  .masonry-container {
-    .tempCardForMember{
-     min-width: 350px;
-     max-width: 350px;
-     margin: 1.5rem;
-       @include md-layout-xsmall {
-         min-width: 95%;
-         max-width: 95%;
-         margin: 1rem auto 1rem 1.5rem;
-       }   
-     }
-   }
+  .tempCardForMember{
+    min-width: 350px;
+    max-width: 350px;
+    margin: 1.5rem;
+    @include md-layout-xsmall {
+      min-width: 95%;
+      max-width: 95%;
+      margin: 1rem auto 1rem 1.5rem;
+    }
+    
+    .md-card-content{
+      cursor: copy;
+      padding: 1rem;
+      border-top: $dark2 1px solid;
+      border-bottom: $dark2 1px solid;
+    }
+  }
 }

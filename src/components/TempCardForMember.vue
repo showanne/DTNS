@@ -1,14 +1,16 @@
 <template>
-    <md-card md-with-hover>
-      <md-card-header class="md-layout">
+    <!-- .tempCardForMember -->
+    <md-card md-with-hover class="px-3 py-2">
+      <md-card-header
+        class="md-layout md-alignment-center-space-around">
         <div class="md-layout-item">
-          <md-button class="md-icon-button">
-            <md-icon :md-src="require('../assets/icon/temp-'+tempList[item.article.template].subhead+'.svg')"></md-icon>
-          </md-button>
+          <md-icon class="d-inline-block"
+            :md-src="require('../assets/icon/temp-'+tempList[item.article.template].subhead+'.svg')"></md-icon>
+          <span class="pl-2">{{ tempList[item.article.template].name }}</span>
         </div>
-        <div class="md-layout-item md-subhead">
-          <md-icon :md-src="require('../assets/icon/dateS.svg')"></md-icon>
-          <span>{{ item.article.date }}</span>
+        <div class="md-layout-item text-right md-subhead">
+          <md-icon class="d-inline-block" :md-src="require('../assets/icon/dateS.svg')"></md-icon>
+          <span class="pl-2">{{ item.article.date }}</span>
         </div>
       </md-card-header>
 
@@ -76,28 +78,24 @@
 
       <md-card-actions md-alignment="space-between">
 
-        <md-button class="md-icon-button md-dense"
+        <md-button class="md-button w-unset md-dense"
            @click="editArticle(index)">
           <md-icon :md-src="require('../assets/icon/action-addEdit.svg')"></md-icon>
         </md-button>
 
-        <md-button class="md-icon-button md-dense"
+        <md-button class="md-button w-unset md-dense"
           @click="deleteArticle(index)">
           <md-icon :md-src="require('../assets/icon/action-delete.svg')"></md-icon>
         </md-button>
 
-        <md-button class="md-icon-button">
-          <div class="md-layout md-alignment-center-space-around">
-            <md-icon :md-src="require('../assets/icon/action-save.svg')"></md-icon>
-            <span>19</span>
-          </div>
+        <md-button class="md-button w-unset">
+            <md-icon class="d-inline-block" :md-src="require('../assets/icon/action-save.svg')"></md-icon>
+            <span class="px-1">--</span>
         </md-button>
 
-        <md-button class="md-icon-button">
-          <div class="md-layout md-alignment-center-space-around">
-            <md-icon :md-src="require('../assets/icon/action-good.svg')"></md-icon>
-            <span>19</span>
-          </div>
+        <md-button class="md-button w-unset">
+            <md-icon class="d-inline-block" :md-src="require('../assets/icon/action-good.svg')"></md-icon>
+            <span class="px-1">--</span>
         </md-button>
 
         <!-- <div class="line-it-button" data-lang="zh_Hant" data-type="share-b" data-ver="3" data-url="http://192.168.0.6:8080/#/Collection" data-color="grey" data-size="small" data-count="true"></div>
@@ -111,8 +109,8 @@
         &amp;quot;%0D%0A&amp;quot; + data:post.url + &amp;quot;&amp;quot;'>
           <img src='https://social-plugins.line.me/img/button/ja/20x20.png'/>
         </a> -->
-        <md-button class="md-icon-button md-dense">
-          <a :href="'http://line.naver.jp/R/msg/text/?DTNS分享吧！–' + item.article.title + '&nbsp;%0D%0Ahttps://showanne.github.io/DTNS'">
+        <md-button class="md-button w-unset md-dense">
+          <a :href="'http://line.naver.jp/R/msg/text/?DTNS分享吧！– ' + item.article.title + '%0D%0Ahttps://showanne.github.io/DTNS'">
             <md-icon :md-src="require('../assets/icon/action-share.svg')"></md-icon>
           </a>
         </md-button>
