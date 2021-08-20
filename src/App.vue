@@ -4,35 +4,28 @@
       <md-app md-waterfall md-mode="fixed">
 
         <!-- 上方列 toolbar -->
-        <md-app-toolbar class="md-accent md-layout md-alignment-center-space-between">
-          <div class="md-layout-item md-large-size-15 md-medium-size-25 md-small-50">
-            <md-button class="md-menu-button btn-menu w-unset"
+        <md-app-toolbar class="btn-menu md-accent md-layout md-alignment-center-space-between">
+          <div class="md-layout-item">
+            <md-button class="md-menu-button w-unset"
               @click="toggleMenu" v-if="!menuVisible">
               <md-icon :md-src="require('./assets/icon/menu.svg')"></md-icon>
             </md-button>
           </div>
 
-          <div class="md-layout-item md-large-size-25 md-medium-size-30 md-small-size-50">
-            <div class="md-layout md-alignment-center-right">
-              <md-field class="md-layout-item md-size-50 md-xsmall-hide">
-                <label>Search...</label>
-                <md-input v-model="search"></md-input>
-              </md-field>
+          <h1 class="md-layout-item text-dtns">DTNS</h1>
 
-              <!-- mode toggle -->
-              <div id="modeToggle" class="md-layout-item md-size-50">
-                <input type="checkbox" id="toggleDark"
-                  v-model="toggleDark" @click="toggleMode"/>
-                <label for="toggleDark"></label>
-                <!-- <span>{{ toggleDark }}</span> -->
-              </div>
-            </div>
+          <!-- mode toggle -->
+          <div class="modeToggle md-layout-item">
+            <input type="checkbox" id="toggleDark"
+              v-model="toggleDark" @click="toggleMode"/>
+            <label for="toggleDark"></label>
+            <!-- <span>{{ toggleDark }}</span> -->
           </div>
         </md-app-toolbar>
 
         <!-- 側邊欄 drawer -->
         <md-app-drawer :md-active.sync="menuVisible"
-          md-permanent="full" class="md-layout">
+          md-permanent="full" class="md-accent md-layout">
           <!-- :md-permanent="permanent"
           :md-persistent="persistent" -->
         <!-- <md-app-drawer :md-active.sync="menuVisible" md-permanent="full" md-persistent="mini"> -->
@@ -150,16 +143,23 @@
 
           </md-list>
 
-          <div class="mt-auto mx-auto mb-3">
+          <div class="mt-auto mx-auto mb-2">
+            <!-- mode toggle -->
+            <div class="modeToggle md-layout-item mb-2">
+              <input type="checkbox" id="toggleDark"
+                v-model="toggleDark" @click="toggleMode"/>
+              <label for="toggleDark"></label>
+              <!-- <span>{{ toggleDark }}</span> -->
+            </div>
+
             <!-- 個人連結 &copy; -->
             <a href="https://showanne.github.io/"
-               class="td-none lh-5">
-              <!-- <div class="md-layout md-alignment-center-center"> -->
+               class="text-Anne">
                 <md-icon :md-src="require('./assets/icon/icon-github.svg')"
                   class="d-inline-block"></md-icon>
-                Anne.
-              <!-- </div> -->
+                <span> Anne.</span>
             </a>
+            <div class="md-caption">&copy; 2021 Anne.</div>
           </div>
         </md-app-drawer>
 
@@ -192,7 +192,7 @@ export default {
       menuVisible: false,
       toggleDark: false,
       permanent: '',
-      persistent: '',
+      // persistent: '',
       settingTooltip: false,
       signUpBtn: false,
       signInBtn: false,
@@ -234,19 +234,16 @@ export default {
           this.menuVisible = true
           // > 900 md-permanent="full"
           this.permanent = 'full'
-          this.persistent = null
           // console.log(this.permanent, this.persistent)
         } else if (clientWidth > 600 && clientWidth < 900) {
           this.menuVisible = !this.menuVisible
           //  < 900 md-permanent="full" md-persistent="mini"
           this.permanent = 'full'
-          this.persistent = 'mini'
           // console.log(this.permanent, this.persistent)
         } else {
           this.menuVisible = !this.menuVisible
           //  < 600 md-persistent="full"
           this.permanent = null
-          this.persistent = 'full'
           // console.log(this.permanent, this.persistent)
         }
       })

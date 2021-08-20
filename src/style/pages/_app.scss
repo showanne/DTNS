@@ -19,18 +19,18 @@
 // 側邊欄 drawer 190px
 $drawer-w: 190px;
 $drawer-w-small: 80px;
-$drawer-w-xsmall: 100vw;
+$drawer-w-xsmall: 66vw;
 .md-drawer {
   // .md-persistent-mini:not(.md-active)
   width: $drawer-w !important;
 
-  // @include md-layout-small {
-  //   width: $drawer-w-small !important;
-  // }
+  @include md-layout-small {
+    width: $drawer-w-small !important;
+  }
 
-  // @include md-layout-xsmall{
-  //   width: $drawer-w-xsmall !important;
-  // }
+  @include md-layout-xsmall{
+    width: $drawer-w-xsmall !important;
+  }
 
   // 清單的 active 效果
   .md-list.md-theme-default{
@@ -82,7 +82,16 @@ $drawer-w-xsmall: 100vw;
     }
   }
 
-  // 首頁 logo 字
+  .md-list{
+    width: 100%;
+
+    .md-list-item {
+      @include md-layout-small {
+        // padding-left: 20%;
+      }
+    }
+  }
+
   .md-list-item-content>.md-icon:first-child {
     margin-right: 2rem;
     margin-left: 1rem;
@@ -90,37 +99,12 @@ $drawer-w-xsmall: 100vw;
 
   .md-list-item-content:first-child {
     justify-content: center;
-    .text-dtns{
-      margin-top: 0;
-      margin-bottom: 0;
-      font-size: 30px;
-      font-weight: 700;
-      line-height: 1.9;
-    }
-  }
-}
-
-// 縮小版型時選單按鈕才出現
-.btn-menu{
-  display: none;
-  @include md-layout-xsmall{
-    display: inline-block;
-  }
-}
-
-// 縮小版型時按鈕定位
-.btn-toggleMenu{
-  position: absolute;
-  right: -24px;
-  top: 12px;
-  @include md-layout-small {
-    top: 20px;
   }
 }
 
 // 網頁內容高度 100vh - $toolbar-h
 // 上方列 toolbar 64px
-$toolbar-h: 64px;
+$toolbar-h: 0px;
 $toolbar-h-small: 48px;
 $toolbar-h-xsmall: 56px;
 .md-toolbar, .md-toolbar-row {
@@ -138,15 +122,61 @@ $toolbar-h-xsmall: 56px;
     // will-change: opacity,background-color,box-shadow,transform,color,min-height;
 }
 
-.settingTooltip{
-  width: 259px;
-  height: 139px;
-  // left: 199px !important;
-}
+// .settingTooltip{
+//   width: 259px;
+//   height: 139px;
+//   left: 199px !important;
+// }
 
+
+  // 首頁 logo 字
+  .text-dtns{
+    font-family: $font-en;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1.9;
+    letter-spacing: 2px;
+  
+    &.md-layout-item{
+      font-size: 22px;
+    }
+  }
+  
+  a.text-Anne{
+    font-family: $font-en;
+    font-size: 19px;
+    letter-spacing: 1px;
+    &:hover{
+      text-decoration: none;
+    }
+  }
+  
+  // 縮小版型時選單按鈕才出現
+  .btn-menu{
+    display: none;
+    @include md-layout-xsmall{
+      display: flex;
+    }
+    .modeToggle{
+      justify-content: flex-end;
+      padding-right: 1rem;
+    }
+  }
+  
+  // 縮小版型時按鈕定位
+  .btn-toggleMenu{
+    position: absolute;
+    right: -24px;
+    top: 12px;
+    @include md-layout-small {
+      top: 20px;
+    }
+  }
+  
 // 黑暗模式切換按鈕
-#modeToggle{
-
+.modeToggle{
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -163,36 +193,55 @@ $toolbar-h-xsmall: 56px;
       transform: translateX(83px) scale(1);
     }
   }
-}
-#toggleDark + label {
-  position: relative;
-  display: block;
-  width: 60px;
-  height: 29px;
-  border-radius: 100px;
-  background-color: #000839;
-  overflow: hidden;
-  cursor: pointer;
-  &:before,
-  &:after {
+   + label {
+    position: relative;
     display: block;
-    position: absolute;
-    content: "";		
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    top: 4.5px;
-    left: 6px;
-    transition: .5s ease;
-  }
-  &:before {
-    background-color: #ffa41b;
-
-  }
-
-  &:after {
+    width: 60px;
+    height: 29px;
+    border-radius: 100px;
     background-color: #000839;
-    left: -58px;
-    transform: scale(0.00001);
+    overflow: hidden;
+    cursor: pointer;
+    &:before,
+    &:after {
+      display: block;
+      position: absolute;
+      content: "";		
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      top: 4.5px;
+      left: 6px;
+      transition: .5s ease;
+    }
+    &:before {
+      background-color: #ffa41b;
+    }
+    &:after {
+      background-color: #000839;
+      left: -58px;
+      transform: scale(0.00001);
+    }
+  }
+
+  @media (max-width: 768px) {
+    &:checked + label {
+      &:before {
+        transform: translateX(19px);
+      }
+      
+      &:after {
+        transform: translateX(78px) scale(1);
+      }
+    }
+     + label {
+      width: 39px;
+      height: 19px;
+      &:before,
+      &:after {
+        width: 10px;
+        height: 10px;
+      }
+    }
   }
 }
