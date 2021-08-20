@@ -1,44 +1,60 @@
 @import "~vue-material/dist/theme/engine"; // Import the theme engine
+
 // 自訂主題顏色
 @include md-register-theme("default", (
   primary: #7876B3, // The primary color of your brand
   accent: #FFF9DB, // The secondary color of your brand
   // theme: dark // This can be dark or light
-));
-
+  ));
+  
 @include md-register-theme("dark", (
   primary: #B3AB88,
   accent: #757159, 
   theme: dark
-));
-
-// @include md-register-theme("thirdly ", (
-//   primary: #B3AB88,
-//   accent: #DDDBFF, 
-  // theme: dark
-// ));
-
-
+  ));
+  
+  // @include md-register-theme("thirdly ", (
+    //   primary: #B3AB88,
+    //   accent: #DDDBFF, 
+    // theme: dark
+    // ));
+    
 @import "~vue-material/dist/theme/all"; // Apply the theme
+    
+// $black: #424242; $rgb-black: "66,66,66" !default;
+// $white: #FFFDF5; $rgb-white: "255, 253, 245" !default;
 
 
-.md-drawer.md-theme-default,
-.md-content.md-theme-default,
-.md-list.md-theme-default {
-  background-color: #FFFDF5;
-  background-color: var(--md-theme-default-background, #FFFDF5);
-  color: rgba(0, 0, 0, 0.87);
-  color: var(--md-theme-default-text-primary-on-background, rgba(0, 0, 0, 0.87));
+// 背景色更改
+.md-drawer, .md-content, .md-list{
+  &.md-theme-default {
+    background-color: #FFFDF5;
+    background-color: var(--md-theme-default-background, #FFFDF5);
+  }
 }
-
-.myself-color {
-  color: #B3AB88;
-  color: #FFF9DB;
-  color: #7876B3;
-  color: #DDDBFF;
-  color: #403E37;
-  color: #FFFDF5;
-  color: #FFD2CF;
-  color: #C2FFDB;
-  color: #C2FFFE;
+.md-card, .md-dialog-container{
+  &.md-theme-dark {
+    background-color: #33312c;
+    background-color: var(--md-theme-default-background, #33312c);
+  }
+}
+.md-drawer, .md-content, .md-list , .md-card{
+  &.md-theme-default {
+    color: #424242de;
+    color: var(--md-theme-default-text-primary-on-background, #424242de);
+    .md-list-item-container{
+      color: #424242de;
+      color: var(--md-theme-default-text-primary-on-background, #424242de);
+    }
+  }
+  &.md-theme-dark {
+    // background-color: #FFFDF5;
+    // background-color: var(--md-theme-default-background, #FFFDF5);
+    color: #FFFDF5de !important;
+    color: var(--md-theme-default-text-primary-on-background, #FFFDF5de) !important;
+    .md-list-item-container{
+      color: #FFFDF5de !important;
+      color: var(--md-theme-default-text-primary-on-background, #FFFDF5de) !important;
+    }
+  }
 }
