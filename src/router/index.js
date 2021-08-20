@@ -62,14 +62,14 @@ const routes = [
       title: 'DTNS - News'
     }
   },
-  {
-    path: '/setting',
-    name: 'Setting',
-    component: () => import(/* webpackChunkName: "setting" */ '../views/Setting.vue'),
-    meta: {
-      title: 'DTNS - Setting'
-    }
-  },
+  // {
+  //   path: '/setting',
+  //   name: 'Setting',
+  //   component: () => import(/* webpackChunkName: "setting" */ '../views/Setting.vue'),
+  //   meta: {
+  //     title: 'DTNS - Setting'
+  //   }
+  // },
   {
     path: '/member',
     // name: 'Member',
@@ -78,7 +78,7 @@ const routes = [
       {
       // path: '', 不打代表跟上面路徑相同
       // /* webpackChunkName: "admin" */ 打包時 是否要單獨存 js 檔
-        path: '',
+        path: 'memberProfile',
         name: 'MemberProfile',
         component: () => import(/* webpackChunkName: "member" */ '../views/Member/MemberProfile.vue'),
         meta: {
