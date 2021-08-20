@@ -32,11 +32,62 @@ $drawer-w-xsmall: 100vw;
   //   width: $drawer-w-xsmall !important;
   // }
 
+  // 清單的 active 效果
+  .md-list.md-theme-default{
+    .md-selected,
+    .router-link-active {
+      // transition: .5s;
+      .md-list-item-content {
+    
+        &::before{
+          content: '';
+          position: absolute;
+          left: 0;
+          background-color: var(--md-theme-default-primary-on-background, #7876B3);
+          width: 5px;
+          height: 100%;
+        }
+      }
+    }
+    .md-list-item:first-child {
+      .md-list-item-content {
+        &::before{
+          width: unset !important;
+        }
+      }
+    }
+  }
+  
+  .md-list.md-theme-dark{
+    .md-selected,
+    .router-link-active {
+      .md-list-item-content {
+        // transition: .5s;
+        &::before{
+          content: '';
+          position: absolute;
+          left: 0;
+          background-color: var(--md-theme-dark-primary-on-background, #B3AB88);
+          width: 5px;
+          height: 100%;
+        }
+      }
+    }
+    .md-list-item:first-child {
+      .md-list-item-content {
+        &::before{
+          width: unset !important;
+        }
+      }
+    }
+  }
+
   // 首頁 logo 字
   .md-list-item-content>.md-icon:first-child {
     margin-right: 2rem;
     margin-left: 1rem;
   }
+
   .md-list-item-content:first-child {
     justify-content: center;
     .text-dtns{
@@ -47,7 +98,6 @@ $drawer-w-xsmall: 100vw;
       line-height: 1.9;
     }
   }
-
 }
 
 // 縮小版型時選單按鈕才出現
