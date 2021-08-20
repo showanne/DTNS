@@ -8,7 +8,7 @@ import 'vue-material/dist/vue-material.min.css'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 // vue-carousel 輪播套件
-import VueCarousel from 'vue-carousel'
+// import VueCarousel from 'vue-carousel'
 // vue-masonry 瀑布流套件 ->解決 card 排版問題
 import { VueMasonryPlugin } from 'vue-masonry'
 // vue-img-inputer 圖片上傳套件
@@ -41,7 +41,7 @@ axios.defaults.baseURL = process.env.VUE_APP_API
 // VueMaterial UI
 Vue.use(VueMaterial)
 Vue.use(VueAxios, axios)
-Vue.use(VueCarousel)
+// Vue.use(VueCarousel)
 Vue.use(VueMasonryPlugin)
 Vue.component('ImgInputer', ImgInputer)
 Vue.use(VueEasytable)
