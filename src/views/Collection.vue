@@ -69,19 +69,22 @@ export default {
   },
   data () {
     return {
+      tempCardShow: 0,
       article: [],
       // 載入時 loading 動畫
       loading: false
     }
   },
-  computed: {
-    tempCardShow () {
-      return this.$store.state.tempCardShow
-    }
-  },
+  // computed: {
+  //   tempCardShow () {
+  //     return this.$store.state.tempCardShow
+  //   }
+  // },
   methods: {
     tempShow (T) {
-      this.$store.commit('tempShow', T)
+      // this.$store.commit('tempShow', T)
+      console.log('Collection ' + T)
+      this.tempCardShow = T
     }
   },
   watch: {

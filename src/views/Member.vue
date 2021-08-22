@@ -10,29 +10,29 @@
 
 <script>
 export default {
-  name: 'Member',
-  data () {
-    return {
-      expandArticle: false,
-      expandSingle: false
-    }
-  },
-  components: {
+  name: 'Member'
+  // data () {
+  //   return {
+  //     expandArticle: false,
+  //     expandSingle: false
+  //   }
+  // },
+  // components: {
 
-  },
-  computed: {
-    user () {
-      return this.$store.state.user
-    },
-    tempCardShow () {
-      return this.$store.state.tempCardShow
-    }
-  },
-  methods: {
-    tempShow (T) {
-      this.$store.commit('tempShow', T)
-    }
-  }
+  // },
+  // computed: {
+  //   user () {
+  //     return this.$store.state.user
+  //   },
+  // tempCardShow () {
+  //   return this.$store.state.tempCardShow
+  // }
+  // },
+  // methods: {
+  //   tempShow (T) {
+  //     this.$store.commit('tempShow', T)
+  //   }
+  // }
   // watch: {
   //   tempCardShow: function (val) {
   //     // console.log(val)

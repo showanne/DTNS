@@ -85,15 +85,15 @@ export default {
       loading: false
     }
   },
-  computed: {
-    tempCardShow () {
-      return this.$store.state.tempCardShow
-    }
-  },
+  // computed: {
+  //   tempCardShow () {
+  //     return this.$store.state.tempCardShow
+  //   }
+  // },
   methods: {
-    tempShow (T) {
-      this.$store.commit('tempShow', T)
-    },
+    // tempShow (T) {
+    //   this.$store.commit('tempShow', T)
+    // },
     async editArticle (index) {
       this.tempForm = {
         _id: this.articleM[index]._id,

@@ -23,8 +23,8 @@ export default new Vuex.Store({
       name: '',
       avatar: ''
       // email: ''
-    },
-    tempCardShow: 0
+    }
+    // tempCardShow: 0
   },
   // 修改狀態的 function
   // 呼叫 mutations this.$store.commit('', )
@@ -57,10 +57,10 @@ export default new Vuex.Store({
       state.user.role = data.role
       state.user.name = data.name
       state.user.avatar = data.avatar
-    },
-    tempShow (state, data) {
-      state.tempCardShow = data
     }
+    // tempShow (state, data) {
+    //   state.tempCardShow = data
+    // }
   },
   // 修改狀態的 function，支援 async
   // 呼叫 actions this.$store.dispatch('', )
