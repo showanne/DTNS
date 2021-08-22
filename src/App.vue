@@ -294,12 +294,12 @@ export default {
 
     if (window.location.href.includes('jwt')) {
       const matches = location.href.match(/jwt=([^.\s]+.[^.\s]+.[^.\s]+)/gm)
-      console.log(matches)
+      // console.log(matches)
       if (matches.length > 0) {
-        console.log(matches[0])
+        // console.log(matches[0])
         // 如果 line 有成功登入，會有 jwt 在網址列，要拿這個 jwt 去換自己的 token
         const jwt = matches[0].substring(4, 176)
-        console.log(jwt)
+        // console.log(jwt)
         if (jwt) {
         // this.$store.commit('signIn', jwt)
         // const query = this.$route.query
@@ -314,8 +314,10 @@ export default {
           }).then(res => {
             console.log(res)
             this.$store.commit('signIn', res.data)
-            // 登入成功後導向會員中心 / 網址列的 jwt 清不掉用跳轉到會員頁代替
-            this.$router.push('/member/memberProfile')
+            // 登入成功後導向會員中心
+            this.$router.push('/member/memberArticle')
+            // 清網址列的 jwt
+            window.history.pushState('', '', '/#/member/memberArticle')
           }).catch((error) => {
             console.log(error)
             this.$store.commit('signOut')
