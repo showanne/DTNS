@@ -30,14 +30,38 @@
  -->
 
     <!-- 編輯 modal -->
-    <md-dialog :md-active.sync="editModal">
-      <md-dialog-title>查看文章</md-dialog-title>
+    <md-dialog :md-active.sync="showModal">
+      <md-dialog-title class="text-right">查看文章</md-dialog-title>
       <md-dialog-content>
 
+        <md-card>
+          <md-button class="closeBtn w-unset h-unset md-primary"
+            @click="showModal = false">
+            <md-icon>close</md-icon>
+          </md-button>
+          <md-card-content>
+            <md-avatar class="md-small md-elevation-3 mr-2">
+              <img :src="articleShow.avatar" :alt="articleShow.author" />
+            </md-avatar>
+            <div class="md-subhead">{{ articleShow.author }}</div>
+            <div class="md-icon-dateL">{{ articleShow.date }}</div>
+            <div class="md-title text-v-html">{{ articleShow.title }}</div>
+            <!-- <div class="md-caption text-right">編輯日期：{{ articleShow.date }}</div> -->
+            <div class="md-caption">選擇日期：{{ articleShow.datepicker }}</div>
+            <md-card-media v-if="articleShow.image">
+              <img class="w-33 text-right" :src="articleShow.image" :alt="articleShow.title">
+            </md-card-media>
+            <div class="md-body-1 text-v-html" v-html="'描述1：'+articleShow.textarea"></div>
+            <div class="md-body-1 text-v-html" v-html="'描述2：'+articleShow.text"></div>
+
+            <div class="md-subhead">被檢舉：{{ articleShow.report }}</div>
+            <div class="md-subhead">移除文章：{{ articleShow.publicOff }}</div>
+            <div class="md-subhead">按讚人次：{{ articleShow.likeNum }}</div>
+            <div class="md-subhead">儲存人次：{{ articleShow.saveNum }}</div>
+            <div class="md-subhead">分享人次：{{ articleShow.shareNum }}</div>
+          </md-card-content>
+        </md-card>
       </md-dialog-content>
-      <md-dialog-actions>
-        <md-button class="md-primary" @click="editModal = false">關閉</md-button>
-      </md-dialog-actions>
     </md-dialog>
 
     <!-- 訊息提示 modal -->
@@ -164,7 +188,7 @@ export default {
           renderBodyCell: ({ row, column, rowIndex }, h) => {
             return (
               <div class="md-layout md-alignment-center-center">
-                <md-button class="md-md-layout-item md-primary h-unset w-unset" on-click={() => this.editRow(rowIndex)}>
+                <md-button class="md-md-layout-item md-primary h-unset w-unset" on-click={() => this.showRow(rowIndex)}>
                   <md-icon>visibility</md-icon>
                 </md-button>
                 <md-button class="md-md-layout-item md-primary h-unset w-unset" on-click={() => this.publicOff(rowIndex)}>
@@ -178,8 +202,27 @@ export default {
       article: [],
       search: null,
       searched: [],
-      // 編輯 modal
-      editModal: false,
+      articleShow: {
+        // id: '',
+        template: '',
+        title: '',
+        author: '',
+        avatar: '',
+        share: '',
+        image: '',
+        textarea: '',
+        text: '',
+        datepicker: '',
+        select: '',
+        date: '',
+        report: '',
+        publicOff: '',
+        likeNum: '',
+        saveNum: '',
+        shareNum: ''
+      },
+      // 顯示的 modal
+      showModal: false,
       // 提示框顯示控制
       msgModal: false,
       // 提示框訊息
@@ -189,9 +232,38 @@ export default {
     }
   },
   methods: {
-    editRow (rowIndex) {
+    async showRow (rowIndex) {
       // alert(`eidt row number:${rowIndex}`)
-      this.editModal = true
+      this.showModal = true
+      try {
+        // 取得個別文章 /article/:id
+        const { data } = await this.axios.get('/article/' + this.article[rowIndex]._id)
+
+        // this.articleShow = data.result
+        this.articleShow.template = data.result.template
+        this.articleShow.title = data.result.title
+        this.articleShow.author = data.result.author
+        this.articleShow.avatar = data.result.avatar
+        this.articleShow.share = data.result.share
+        // this.articleShow.image = data.result.image
+        if (data.result.image) {
+          this.articleShow.image = `${process.env.VUE_APP_API}/file/${data.result.image}`
+        }
+        this.articleShow.textarea = data.result.textarea
+        this.articleShow.text = data.result.text
+        // this.articleShow.datepicker = data.result.datepicker
+        // this.articleShow.date = data.result.date
+        this.articleShow.datepicker = new Date(data.result.datepicker).toLocaleDateString()
+        this.articleShow.date = new Date(data.result.date).toLocaleDateString()
+        this.articleShow.select = data.result.select
+        this.articleShow.report = data.result.report
+        this.articleShow.publicOff = data.result.publicOff
+        this.articleShow.likeNum = data.result.likeNum
+        this.articleShow.saveNum = data.result.saveNum
+        this.articleShow.shareNum = data.result.shareNum
+      } catch (error) {
+        console.log(error)
+      }
     },
     async publicOff (rowIndex) {
       // 將文章下架，不刪除
