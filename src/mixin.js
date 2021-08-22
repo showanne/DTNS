@@ -9,7 +9,7 @@ export default {
         { field: 'text', name: '來自(引用)' }
       ],
       postIt: [
-        { field: 'share', name: '分享', value: false }, // 預設分享 x
+        { field: 'share', name: '分享', value: true }, // 預設分享 o
         { field: 'title', name: '本次發想主題' },
         { field: 'author', name: '作者' }, // 系統自行帶入
         { field: 'textarea', name: '寫點什麼...' }
@@ -57,6 +57,7 @@ export default {
         { field: 'text', name: '存放地點' },
         { field: 'datepicker', name: '購買日期' }
       ]
+      // tempCardShow: 0 // 放這或放 state
     }
   },
   computed: {
@@ -137,6 +138,7 @@ export default {
       link += '&bot_prompt=normal' // 預設要加官方帳號好友
       link += '&scope=openid%20profile' // 預設申請使用者資料及 token
       window.location.href = link
+      console.log(link)
       // window.open(link, '_self') // 跳轉頁面
 
       // 在 LINE Login 授權 URL ，並讓用戶重新導向
