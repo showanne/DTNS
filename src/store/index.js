@@ -42,7 +42,7 @@ export default new Vuex.Store({
       state.jwt.token = ''
       state.jwt.received = 0
       state.user.account = ''
-      state.user.role = 0
+      state.user.role = -1
       state.user.name = ''
       state.user.avatar = ''
     },
