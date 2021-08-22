@@ -301,7 +301,7 @@ export default {
         console.log(res)
         this.$store.commit('signIn', res.data)
         // 登入成功後導向會員中心 / 網址列的 jwt 清不掉用跳轉到會員頁代替
-        // this.$router.push('/member/memberProfile')
+        this.$router.push('/member/memberProfile')
       }).catch((error) => {
         console.log(error)
         this.$store.commit('signOut')
