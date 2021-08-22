@@ -267,7 +267,7 @@ export default {
   },
   created () {
     const jwt = this.$route.query.jwt
-    // console.log(jwt)
+    console.log(jwt)
     if (jwt) {
       // this.$store.commit('signIn', jwt)
       // const query = this.$route.query
@@ -279,7 +279,7 @@ export default {
           authorization: 'Bearer ' + jwt
         }
       }).then(res => {
-        // console.log(res)
+        console.log(res)
         this.$store.commit('signIn', res.data)
         // 登入成功後導向會員中心 / 網址列的 jwt 清不掉用跳轉到會員頁代替
         this.$router.push('/member/memberProfile')
