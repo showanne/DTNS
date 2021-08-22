@@ -46,7 +46,7 @@
           <!-- todo -->
           <md-card-content v-if="tempNum === 2">
             <div class="md-title text-v-html">{{ title }}</div>
-            <div class="md-caption text-medium-right">期限：{{ datepicker }}</div>
+            <div class="md-caption text-right">期限：{{ datepicker }}</div>
             <!-- <div class="md-body-1 text-v-html" v-html="textarea"></div> -->
             <div class="ulListBox">
               <div class="ulList card-todo text-v-html" v-for="(todo, t) in ulList" :key="t">{{ todo }}</div>
@@ -56,8 +56,8 @@
           <!-- diary -->
           <md-card-content v-if="tempNum === 3">
             <div class="md-title text-v-html">{{ title }}</div>
-            <div class="md-caption text-medium-right">日期：{{ datepicker }}</div>
-            <div class="md-caption text-medium-right">心情：{{ select }}</div>
+            <div class="md-caption text-right">日期：{{ datepicker }}</div>
+            <div class="md-caption text-right">心情：{{ select }}</div>
             <div class="md-body-1 text-v-html" v-html="textarea"></div>
           </md-card-content>
 
@@ -71,8 +71,8 @@
           <md-card-content v-if="tempNum === 5">
             <div class="md-title text-v-html">{{ title }}</div>
             <div class="md-body-1 text-v-html" v-html="'作者：'+text"></div>
-            <div class="md-caption text-medium-right">完結日期：{{ datepicker }}</div>
-            <div class="md-caption text-medium-right">是否已完結：{{ select }}</div>
+            <div class="md-caption text-right">完結日期：{{ datepicker }}</div>
+            <div class="md-caption text-right">是否已完結：{{ select }}</div>
             <md-card-media v-if="image">
               <img :src="image" :alt="title" class="w-50">
             </md-card-media>
@@ -83,7 +83,7 @@
           <md-card-content v-if="tempNum === 6">
             <div class="md-title text-v-html">{{ title }}</div>
             <div class="md-body-1 text-v-html" v-html="'存放地點：'+text"></div>
-            <div class="md-caption text-medium-right">購買日期：{{ datepicker }}</div>
+            <div class="md-caption text-right">購買日期：{{ datepicker }}</div>
             <md-card-media v-if="image">
               <img :src="image" :alt="title">
             </md-card-media>
