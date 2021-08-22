@@ -266,9 +266,15 @@ export default {
     }
   },
   created () {
+    console.log('created')
+  },
+  async mounted () {
+    console.log('mounted')
     console.log(this.$route)
     console.log(this.$route.query)
     console.log(this.$route.query.jwt)
+
+    // 如果 line 有成功登入，會有 jwt 在網址列，要拿這個 jwt 去換自己的 token
     const jwt = this.$route.query.jwt
     console.log(jwt)
     if (jwt) {
@@ -277,6 +283,7 @@ export default {
       // delete query.jwt
       // 把網址列的 jwt 清掉
       // this.$router.replace({ query: {} })
+      // Line登入換資料 / signInLineData
       this.axios.get('/users/signInLineData', {
         headers: {
           authorization: 'Bearer ' + jwt
@@ -291,8 +298,6 @@ export default {
         this.$store.commit('signOut')
       })
     }
-  },
-  async mounted () {
     // 判斷 Vuex 裡有沒有存 jwt ，沒有就不跑接下來的程式
     if (this.$store.state.jwt.token.length === 0) return
 
