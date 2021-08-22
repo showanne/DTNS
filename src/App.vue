@@ -265,9 +265,24 @@ export default {
       }
     }
   },
+  // watch: {
+  //   '$route' (to, from) {
+  //     console.log(to, from)
+  //   }
+  // },
+  computed: {
+    query () {
+      return this.$route.query
+    }
+  },
   watch: {
-    '$route' (to, from) {
-      console.log(to, from)
+    query: {
+      handler (value) {
+        if (value.jwt) {
+          console.log(value.jwt)
+        }
+      },
+      deep: true
     }
   },
   created () {
