@@ -266,6 +266,8 @@ export default {
     }
   },
   created () {
+    console.log(this.$route)
+    console.log(this.$route.query)
     console.log(this.$route.query.jwt)
     const jwt = this.$route.query.jwt
     console.log(jwt)
