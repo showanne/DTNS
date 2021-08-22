@@ -167,9 +167,10 @@
                   <div class="md-subheading text-v-html"
                        v-html="issue.issueDescription">
                   </div>
-                  <div v-if="issue.replyIssue" class="md-body-2 mt-large-3" style="margin-top: 0.8rem; color: darkkhaki;">
-                    <md-icon>support_agent</md-icon>
-                    {{ issue.replyIssue }}
+                  <div class="md-body-2 mt-2 tc-dark3 ls-1">
+                    <md-icon class="mr-2">support_agent</md-icon>
+                    <span v-if="issue.replyIssue">{{ issue.replyIssue }}</span>
+                    <span v-else>...工程師正在處理中</span>
                   </div>
                 </div>
               </md-card-content>

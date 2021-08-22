@@ -196,10 +196,10 @@ export default {
     async publicOff (rowIndex) {
       // 將文章下架，不刪除
       // 會員那邊會顯示成無法更動
-      // 編輯文章 (會員)  /  editArticle
       try {
-        console.log(this.$store.state.jwt.token)
+        // console.log(this.$store.state.jwt.token)
         // .patch('/users/cart', { product: this.cart[index]._id, amount: 0 },
+        // 編輯文章 (會員)  /  editArticle
         await this.axios.patch('/article/all', {
           article: this.article[rowIndex]._id,
           share: false,
@@ -210,7 +210,9 @@ export default {
             authorization: 'Bearer ' + this.$store.state.jwt.token
           }
         })
-        alert(this.article[rowIndex]._id)
+        // alert(this.article[rowIndex]._id)
+        this.article[rowIndex].share = false
+        this.article[rowIndex].publicOff = true
       } catch (error) {
         console.log(error)
       }
