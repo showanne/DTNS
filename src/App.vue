@@ -266,6 +266,7 @@ export default {
     }
   },
   created () {
+    console.log(this.$route.query.jwt)
     const jwt = this.$route.query.jwt
     console.log(jwt)
     if (jwt) {
