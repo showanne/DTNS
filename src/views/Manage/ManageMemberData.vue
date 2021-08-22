@@ -2,7 +2,7 @@
   <div id="manageMemberData">
     <md-table md-card v-model="memberData"
       md-sort="name" md-sort-order="asc"
-      md-fixed-header>
+      md-height="unset" md-fixed-header>
       <md-table-toolbar>
         <div class="md-toolbar-section-start">
           <h1 class="md-title">使用者清單</h1>

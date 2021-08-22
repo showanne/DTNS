@@ -7,7 +7,6 @@
     :columns="tableTitle"
     :table-data="article.filter(item=>!searchText || item.name.includes(searchText))"
     style="'word-break':break-all;"
-    max-height="calc(100vh - 190px)"
     :fixed-header="true"
     :border-around="false"
     :border-x="true"

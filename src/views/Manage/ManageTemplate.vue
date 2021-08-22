@@ -1,6 +1,6 @@
 <template>
   <div id="manageTemplate">
-    <md-table v-model="tempList" md-fixed-header>
+    <md-table v-model="tempList" md-height="unset" md-fixed-header>
       <!-- <md-table-toolbar>
         <h1 class="md-title">Template</h1>
       </md-table-toolbar> -->

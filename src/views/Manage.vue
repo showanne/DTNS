@@ -1,6 +1,6 @@
 <template>
   <div id="manage">
-    <md-tabs md-alignment="fixed" md-sync-route @md-changed="checkNewPosts">
+    <md-tabs class="md-accent" md-alignment="right" md-sync-route @md-changed="checkNewPosts">
       <template slot="md-tab" slot-scope="{ tab }">
         {{ tab.label }} <i class="badge" v-if="tab.data.badge">{{ tab.data.badge }}</i>
       </template>

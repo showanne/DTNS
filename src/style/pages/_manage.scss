@@ -1,5 +1,13 @@
 /* manage */
 #manage{
+  .md-tabs-navigation{
+    position: fixed;
+    z-index: 9;
+    margin-top: -16px;
+  }
+  .md-tabs-content{
+    margin-top: 29px;
+  }
 
   .badge {
     width: 19px;
