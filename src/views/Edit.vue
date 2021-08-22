@@ -11,8 +11,6 @@
         class="md-layout-item md-size-33 md-small-size-100 md-xsmall-size-100"
       >
         <div class="md-layout md-alignment-space-around-left">
-          <!-- 有漸層背景及文字 <md-card-media-cover md-text-scrim> -->
-
           <div v-for="(temp, T) in tempList"
             :key="T" @click="tempShow(T)"
             class="md-layout-item md-xlarge-size-50 md-large-size-50 md-medium-size-50 md-small-size-temp"
@@ -45,8 +43,8 @@
       <div id="tempEdit"
         class="md-layout-item md-size-66 md-small-size-100 md-xsmall-size-100"
       >
-      <div class="md-layout md-alignment-center-center">
-        <form class="md-layout-item md-size-66 md-xsmall-size-100"
+      <!-- <div class="md-layout md-alignment-center-center"> -->
+        <form class=""
             @submit.prevent="submitEdit"
             @reset="clearForm">
             <md-card style="padding: 1.3rem 0 1rem 0;">
@@ -312,7 +310,7 @@
               </md-card-actions>
             </md-card>
         </form>
-      </div>
+      <!-- </div> -->
 
         <md-dialog :md-active.sync="formSaved">
           <md-dialog-title>{{ savedMsg }}</md-dialog-title>
@@ -381,7 +379,7 @@ export default {
   watch: {},
   methods: {
     tempShow (T) {
-      console.log(T)
+      console.log('Edit ' + T)
       this.tempForm.template = T
     },
     // FIXED: 驗證不會出現驗證文字
