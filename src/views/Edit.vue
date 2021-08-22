@@ -47,7 +47,7 @@
         <form class=""
             @submit.prevent="submitEdit"
             @reset="clearForm">
-            <md-card style="padding: 1.3rem 0 1rem 0;">
+            <md-card class="pt-4 pb-3">
               <md-card-header>
                 <p class="md-title fw-bold">
                   <!-- Edit temp name -->
