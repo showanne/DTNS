@@ -55,6 +55,11 @@
   word-break: break-all;
   overflow-wrap: break-word;
 }
+.text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 
 .loading{
   margin: auto;
