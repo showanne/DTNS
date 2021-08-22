@@ -137,6 +137,44 @@
   }
 }
 
+.ulListBox{
+  margin-top: 1.5rem;
+  margin-bottom: -2rem;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.ulList{
+  width: 90px;
+  height: auto;
+  margin: 3px;
+  padding: 1rem;
+  font-size: 19px;
+  line-height: 1.3;
+  letter-spacing: 3px;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 3px 5px 19px rgba($dark5, 0.4);
+  // position: absolute;
+  transition: background-color 0.5s;
+  cursor: pointer;
+}
+.card-postit{
+  background-color: $success;
+}
+.card-todo{
+  background-color: $success2;
+}
+// .card-modal-img{
+//   width: 199px;
+//   position: absolute;
+//   top: 30%;
+//   right: 0;
+// }
+
+
 .md-theme-dark{
   .card-share{
     blockquote {

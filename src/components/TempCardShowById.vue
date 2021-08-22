@@ -37,14 +37,20 @@
           <!-- postIt -->
           <md-card-content v-if="tempNum === 1">
             <div class="md-title text-v-html">{{ title }}</div>
-            <div class="md-body-1 text-v-html" v-html="textarea"></div>
+            <!-- <div class="md-body-1 text-v-html" v-html="textarea"></div> -->
+            <div class="ulListBox">
+              <div class="ulList card-postit text-v-html" v-for="(postit, p) in ulList" :key="p">{{ postit }}</div>
+            </div>
           </md-card-content>
 
           <!-- todo -->
           <md-card-content v-if="tempNum === 2">
             <div class="md-title text-v-html">{{ title }}</div>
             <div class="md-caption text-medium-right">期限：{{ datepicker }}</div>
-            <div class="md-body-1 text-v-html" v-html="textarea"></div>
+            <!-- <div class="md-body-1 text-v-html" v-html="textarea"></div> -->
+            <div class="ulListBox">
+              <div class="ulList card-todo text-v-html" v-for="(todo, t) in ulList" :key="t">{{ todo }}</div>
+            </div>
           </md-card-content>
 
           <!-- diary -->
@@ -88,8 +94,8 @@
       </md-dialog-content>
       <md-dialog-actions class="md-layout md-alignment-space-around-center">
         <md-button class="md-layout-item md-layout-nowrap">
-          <md-avatar class=" md-small md-elevation-3 mr-2">
-            <img :src="avatar" :alt="author">
+          <md-avatar class="md-small md-elevation-3 mr-2">
+            <img :src="avatar" :alt="author" />
           </md-avatar>
           <span class="md-subhead">{{ author }}</span>
         </md-button>
@@ -105,7 +111,7 @@
         </md-button>
 
         <md-button class="md-layout-item md-layout-nowrap">
-          <a :href="'http://line.naver.jp/R/msg/text/?DTNS分享吧！–' + title + '&nbsp;%0D%0Ahttps://showanne.github.io/DTNS'">
+          <a :href="'http://line.naver.jp/R/msg/text/?DTNS分享吧！–&nbsp;' + title + '%0D%0Ahttps://showanne.github.io/DTNS'">
             <md-icon :md-src="require('../assets/icon/action-share.svg')"></md-icon>
           </a>
         </md-button>
@@ -128,7 +134,8 @@ export default {
       text: '',
       select: '',
       datepicker: '',
-      date: ''
+      date: '',
+      ulList: []
     }
   },
   components: {},
@@ -171,6 +178,15 @@ export default {
       this.select = data.result.select
       this.datepicker = new Date(data.result.datepicker).toLocaleDateString()
       this.date = new Date(data.result.date).toLocaleDateString()
+
+      // console.log(typeof (data.result.textarea))
+      if (data.result.template === 1 || data.result.template === 2) {
+        // .split("-").map(a=>"#"+a)
+        this.ulList = data.result.textarea.split('\n').map(item => {
+          // console.log(item)
+          return item
+        })
+      }
     } catch (error) {
       // 找不到丟回原頁
       this.$router.push('/collection')
