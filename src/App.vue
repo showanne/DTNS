@@ -270,58 +270,66 @@ export default {
   //     console.log(to, from)
   //   }
   // },
-  computed: {
-    query () {
-      return this.$route.query
-    }
-  },
-  watch: {
-    query: {
-      handler (value) {
-        if (value.jwt) {
-          console.log(value.jwt)
-        }
-      },
-      deep: true
-    }
-  },
+  // computed: {
+  //   query () {
+  //     return this.$route.query
+  //   }
+  // },
+  // watch: {
+  //   query: {
+  //     handler (value) {
+  //       if (value.jwt) {
+  //         console.log(value.jwt)
+  //       }
+  //     },
+  //     deep: true
+  //   }
+  // },
   created () {
-    console.log('created')
-    console.log(window.location)
-    console.log('search: ' + window.location.search)
-    console.log('href: ' + window.location.href)
-    console.log('href.jwt: ' + window.location.href.jwt)
+    // console.log('created')
+    // console.log(window.location)
+    // console.log('search: ' + window.location.search)
+    // console.log('href: ' + window.location.href)
+    // console.log('href.jwt: ' + window.location.href.jwt)
+
+    if (window.location.href.includes('jwt')) {
+      const matches = location.href.match(/jwt=([^.\s]+.[^.\s]+.[^.\s]+)/gm)
+      console.log(matches)
+      if (matches.length > 0) {
+        console.log(matches[0])
+        // 如果 line 有成功登入，會有 jwt 在網址列，要拿這個 jwt 去換自己的 token
+        const jwt = matches[0].substring(4, 176)
+        console.log(jwt)
+        if (jwt) {
+        // this.$store.commit('signIn', jwt)
+        // const query = this.$route.query
+        // delete query.jwt
+        // 把網址列的 jwt 清掉
+        // this.$router.replace({ query: {} })
+        // Line登入換資料 / signInLineData
+          this.axios.get('/users/signInLineData', {
+            headers: {
+              authorization: 'Bearer ' + jwt
+            }
+          }).then(res => {
+            console.log(res)
+            this.$store.commit('signIn', res.data)
+            // 登入成功後導向會員中心 / 網址列的 jwt 清不掉用跳轉到會員頁代替
+            this.$router.push('/member/memberProfile')
+          }).catch((error) => {
+            console.log(error)
+            this.$store.commit('signOut')
+          })
+        }
+      }
+    }
   },
   async mounted () {
-    console.log('mounted')
+    // console.log('mounted')
     // console.log(this.$route)
     // console.log(this.$route.query)
     // console.log(this.$route.query.jwt)
 
-    // 如果 line 有成功登入，會有 jwt 在網址列，要拿這個 jwt 去換自己的 token
-    const jwt = this.$route.query.jwt
-    console.log(jwt)
-    if (jwt) {
-      // this.$store.commit('signIn', jwt)
-      // const query = this.$route.query
-      // delete query.jwt
-      // 把網址列的 jwt 清掉
-      // this.$router.replace({ query: {} })
-      // Line登入換資料 / signInLineData
-      this.axios.get('/users/signInLineData', {
-        headers: {
-          authorization: 'Bearer ' + jwt
-        }
-      }).then(res => {
-        console.log(res)
-        this.$store.commit('signIn', res.data)
-        // 登入成功後導向會員中心 / 網址列的 jwt 清不掉用跳轉到會員頁代替
-        this.$router.push('/member/memberProfile')
-      }).catch((error) => {
-        console.log(error)
-        this.$store.commit('signOut')
-      })
-    }
     // 判斷 Vuex 裡有沒有存 jwt ，沒有就不跑接下來的程式
     if (this.$store.state.jwt.token.length === 0) return
 
