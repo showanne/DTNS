@@ -33,7 +33,10 @@ $drawer-w-xsmall: 66vw;
   }
 
   // 清單的 active 效果
-  .md-list.md-theme-default{
+  .md-list{
+    .md-list-item-container {
+      color: $light1;
+    }
     .md-selected,
     .router-link-active {
       // transition: .5s;
@@ -53,30 +56,6 @@ $drawer-w-xsmall: 66vw;
       .md-list-item-content {
         background-color: $dark3;
         color: $light1;
-        &::before{
-          width: unset !important;
-        }
-      }
-    }
-  }
-  
-  .md-list.md-theme-dark{
-    .md-selected,
-    .router-link-active {
-      .md-list-item-content {
-        // transition: .5s;
-        &::before{
-          content: '';
-          position: absolute;
-          left: 0;
-          background-color: var(--md-theme-dark-primary-on-background, #B3AB88);
-          width: 5px;
-          height: 100%;
-        }
-      }
-    }
-    .md-list-item:first-child {
-      .md-list-item-content {
         &::before{
           width: unset !important;
         }
