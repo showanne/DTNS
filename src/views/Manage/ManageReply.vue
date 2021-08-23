@@ -40,6 +40,12 @@
         <md-table-cell md-label="回復">{{ item.reply }}</md-table-cell>
       </md-table-row>
     </md-table> -->
+
+    <md-dialog-alert
+      :md-active.sync="editReply"
+      md-title="回覆問題"
+      :md-content="replyAlert"
+       />
   </div>
 </template>
 
@@ -52,7 +58,8 @@ export default {
       loading: false,
       // search: null,
       // searched: [],
-      // editReply: false,
+      editReply: false,
+      replyAlert: '',
       replyForm: [],
       expandOption: {
         trigger: 'cell',
@@ -148,7 +155,7 @@ export default {
   },
   methods: {
     async submitReply (rowIndex) {
-      alert(`eidt row number:${rowIndex}`)
+      // alert(`已回復編號 ${this.replyForm[rowIndex]._id} 的問題`)
       try {
         await this.axios.patch('/issue', {
           _id: this.replyForm[rowIndex]._id,
@@ -161,8 +168,15 @@ export default {
           }
         })
         this.replyForm[rowIndex].reply = true
+        // this.replyForm[rowIndex].replyIssue = replyIssue
+
+        window.setTimeout(() => {
+          this.editReply = true
+          this.replyAlert = '已回復編號 ' + this.replyForm[rowIndex]._id + '的問題'
+        }, 1500)
+
         // 表單成功送出後 重新跳轉頁面
-        this.$router.go()
+        // this.$router.go()
       } catch (error) {
         console.log(error)
       }
