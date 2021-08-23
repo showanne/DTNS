@@ -98,23 +98,60 @@
             <span class="px-1">--</span>
         </md-button>
 
-        <!-- <div class="line-it-button" data-lang="zh_Hant" data-type="share-b" data-ver="3" data-url="http://192.168.0.6:8080/#/Collection" data-color="grey" data-size="small" data-count="true"></div>
-        <div class="line-it-button" data-lang="zh_Hant" data-type="friend" data-lineid="@661mbqmr" data-count="true" style="display: none;"></div>
-        <md-button>
-          <a href="http://line.naver.jp/R/msg/text/?大家跟我一起用Line分享吧!%0D%0Ahttps://showanne.github.io/">
-            <img src="https://social-plugins.line.me/img/button/ja/20x20.png" />
-          </a>
-        </md-button>
-         <a expr:href='&amp;quot;http://line.naver.jp/R/msg/text/?&amp;quot; + data:post.title +
-        &amp;quot;%0D%0A&amp;quot; + data:post.url + &amp;quot;&amp;quot;'>
-          <img src='https://social-plugins.line.me/img/button/ja/20x20.png'/>
-        </a> -->
         <md-button class="md-button w-unset md-dense">
           <a :href="'http://line.naver.jp/R/msg/text/?DTNS分享吧！– ' + item.article.title + '%0D%0Ahttps://showanne.github.io/DTNS'">
             <md-icon :md-src="require('../assets/icon/action-share.svg')"></md-icon>
           </a>
         </md-button>
       </md-card-actions>
+
+      <!-- 編輯 modal -->
+      <md-dialog :md-active.sync="editArticleModal">
+        <md-dialog-title>編輯文章</md-dialog-title>
+        <md-dialog-content>
+          <!-- {{ editForm }} -->
+          <form class="md-layout md-alignment-center-center">
+
+            <md-field v-if="editForm.article.title" md-clearable class="md-layout-item md-size-90">
+              <md-textarea v-model="editForm.article.title" md-autogrow required></md-textarea>
+            </md-field>
+
+            <md-field v-if="editForm.article.textarea" md-clearable class="md-layout-item md-size-90">
+              <md-textarea v-model="editForm.article.textarea"></md-textarea>
+            </md-field>
+
+            <md-field v-if="editForm.article.text" md-clearable class="md-layout-item md-size-90">
+              <md-input v-model="editForm.article.text"></md-input>
+            </md-field>
+
+            <div v-if="editForm.article.datepicker" class="md-layout-item md-size-45">
+              <md-datepicker
+                v-model="editForm.article.datepicker"
+                md-immediately />
+            </div>
+
+            <div v-if="editForm.article.share" class="md-layout-item md-size-45 ml-3">
+              <label class="label">公開至分享牆</label>
+              <md-switch v-model="editForm.article.share"
+                class="md-primary m-1" ></md-switch>
+            </div>
+
+            <div v-if="editForm.article.image" class="md-layout-item md-size-90">
+              <img-inputer v-model="editForm.article.image"
+                accept="image/*" theme="material"
+                :capture="true"
+                placeholder="點擊或拖曳選擇相片"
+                bottom-text="點擊或拖曳以修改" />
+            </div>
+
+          </form>
+            <!-- <md-progress-bar md-mode="indeterminate" v-if="sending" /> -->
+        </md-dialog-content>
+        <md-dialog-actions>
+          <md-button class="md-primary" @click="submitArticle(index)">確定</md-button>
+          <md-button class="md-primary" @click="editArticleModal = false">取消</md-button>
+        </md-dialog-actions>
+      </md-dialog>
     </md-card>
 </template>
 
@@ -123,7 +160,8 @@ export default {
   name: 'TempCardForMember',
   data () {
     return {
-
+      editArticleModal: false,
+      editForm: []
     }
   },
   props: {
@@ -131,52 +169,44 @@ export default {
     item: {
       type: Object,
       required: true
+    },
+    index: {
+      type: Number,
+      required: true
     }
   },
   methods: {
     async editArticle (index) {
-      alert('editArticle', index)
-      this.tempForm = {
-        _id: this.articleM[index]._id,
-        title: this.articleM[index].title,
-        share: this.articleM[index].share,
-        image: this.articleM[index].image,
-        textarea: this.articleM[index].textarea,
-        text: this.articleM[index].text,
-        select: this.articleM[index].select,
-        datepicker: this.articleM[index].datepicker,
-        date: this.articleM[index].date,
-        index
-      }
       this.editArticleModal = true
-      // 建立上傳格式 FormData  後端接收資料型態為 multipart/form-data
-      const FD = new FormData()
-      // 將資料新增進 FormData 用 append('key 欄位名稱', 'value 資料的值')
-      for (const key in this.tempForm) {
-        FD.append(key, this.tempForm[key])
-      }
-      // 編輯文章 (會員)  /  editArticle
-      const { data } = await this.axios.patch('/article/member' + this.tempForm._id, FD, {
-        headers: {
-          // 驗證欄位 'Bearer ' + token  -> Bearer要空格
-          authorization: 'Bearer ' + this.$store.state.jwt.token
+      // alert('editArticle', index)
+      console.log(index, this.index)
+
+      this.editForm = this.item
+    },
+    async submitArticle (index) {
+      console.log(index)
+      console.log(this.item._id)
+      try {
+        console.log(this.editForm)
+        // 建立上傳格式 FormData  後端接收資料型態為 multipart/form-data
+        const FD = new FormData()
+        // 將資料新增進 FormData 用 append('key 欄位名稱', 'value 資料的值')
+        for (const key in this.editForm.article) {
+          FD.append(key, this.editForm.article[key])
         }
-      })
-      this.articleM[this.tempForm.index] = {
-        title: this.tempForm.title,
-        share: this.tempForm.share,
-        image: `${process.env.VUE_APP_API}/file/${data.result.image}`,
-        textarea: this.tempForm.textarea,
-        text: this.tempForm.text,
-        select: this.tempForm.select,
-        datepicker: new Date(this.tempForm.datepicker).toLocaleDateString(),
-        date: new Date(this.tempForm.datepicker).toLocaleDateString(),
-        _id: this.tempForm._id
+
+        // 編輯文章 (會員)  /  editArticle
+        await this.axios.patch('/article/member/' + this.item._id, FD, {
+          headers: {
+            // 驗證欄位 'Bearer ' + token  -> Bearer要空格
+            authorization: 'Bearer ' + this.$store.state.jwt.token
+          }
+        })
+
+        this.editArticleModal = false
+      } catch (error) {
+        console.log(error)
       }
-      // refresh 畫面 讓資料即時更新
-      // else {
-      //   console.log(error)
-      // }
     },
     deleteArticle (index) {
       alert('deleteArticle', index)
@@ -193,7 +223,7 @@ export default {
       this.item.article.datepicker = new Date(this.item.article.datepicker).toLocaleDateString()
       this.item.article.date = new Date(this.item.article.date).toLocaleDateString()
     }
-    console.log(this.item.article)
+    // console.log(this.item.article)
     // console.log(this.tempList[this.item.article.template].subhead)
   }
 }
