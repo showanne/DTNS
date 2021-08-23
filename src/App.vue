@@ -317,7 +317,7 @@ export default {
             // 登入成功後導向會員中心
             this.$router.push('/member/memberArticle')
             // 清網址列的 jwt
-            window.history.pushState('', '', '/#/member/memberArticle')
+            window.history.pushState('', '', '/DTNS/#/member/memberArticle')
           }).catch((error) => {
             console.log(error)
             this.$store.commit('signOut')
