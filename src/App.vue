@@ -46,7 +46,11 @@
               <md-icon
                 :md-src="require('./assets/icon/menu-'+menu.subhead+'.svg')"
               ></md-icon>
-              <span class="md-list-item-text">{{ menu.name }}</span>
+              <span class="menuText md-list-item-text">{{ menu.name }}</span>
+              <md-tooltip class="menuTooltip"
+                v-if="fullWidth >= 600 || fullWidth <= 900"
+                md-direction="right">
+                {{ menu.name }}</md-tooltip>
             </md-list-item>
 
             <!-- setting to="/setting" -->
@@ -89,39 +93,54 @@
             </md-list-item> -->
 
             <!-- member -->
-            <md-list-item md-expand :md-expanded.sync="expandMember"
-              v-if="user.isSignIn && !user.isAdmin" to="/member">
+            <md-list-item v-if="user.isSignIn"
+              md-expand :md-expanded.sync="expandMember">
               <md-icon
                 :md-src="require('./assets/icon/menu-Member.svg')"
               ></md-icon>
-              <span class="md-list-item-text">會員中心</span>
+              <span class="menuText menuMember md-list-item-text">會員中心</span>
+              <md-tooltip class="menuTooltip"
+                v-if="fullWidth >= 600"
+                md-direction="right">
+                會員中心</md-tooltip>
 
-              <md-list slot="md-expand" class="bg-light3">
+              <md-list slot="md-expand" class="bg-dark3">
                 <!-- 會員資訊 -->
-                <md-avatar class="md-elevation-4 mt-2">
-                  <img :src="avatarImg" :alt="userName">
-                </md-avatar>
-                <div class="md-body-2 d-inline-block">{{ userName }}</div>
+                <md-list-item>
+                  <md-avatar class="md-elevation-3">
+                    <img :src="avatarImg" :alt="userName">
+                  </md-avatar>
+
+                  <span class="menuText md-body-2">{{ userName }}</span>
+                </md-list-item>
 
                 <!-- 會員可用功能選單 -->
-                <md-list-item to="/member/memberAnalytics">
+                <!-- <md-list-item to="/member/memberAnalytics">
                   <md-icon>analytics</md-icon>
                   <span class="md-list-item-text">Analytics</span>
-                </md-list-item>
+                </md-list-item> -->
 
                 <md-list-item to="/member/memberArticle">
                   <md-icon>feed</md-icon>
-                  <span class="md-list-item-text">Article</span>
+                  <span class="menuText md-list-item-text">文章總覽</span>
+                  <md-tooltip class="menuTooltip"
+                    v-if="fullWidth >= 600"
+                    md-direction="right">
+                    文章總覽</md-tooltip>
                 </md-list-item>
 
-                <md-list-item to="/member/memberProfile">
+                <!-- <md-list-item to="/member/memberProfile">
                   <md-icon>perm_contact_calendar</md-icon>
                   <span class="md-list-item-text">Profile</span>
-                </md-list-item>
+                </md-list-item> -->
 
                 <md-list-item to="/member/memberReply">
                   <md-icon>3p</md-icon>
-                  <span class="md-list-item-text">Reply</span>
+                  <span class="menuText md-list-item-text">聯絡我們</span>
+                  <md-tooltip class="menuTooltip"
+                    v-if="fullWidth >= 600"
+                    md-direction="right">
+                    聯絡我們</md-tooltip>
                 </md-list-item>
               </md-list>
             </md-list-item>
@@ -131,14 +150,23 @@
               <md-icon
                 :md-src="require('./assets/icon/menu-Manage.svg')"
               ></md-icon>
-              <span class="md-list-item-text">管理中心</span>
+              <span class="menuText md-list-item-text">管理中心</span>
+              <md-tooltip class="menuTooltip"
+                v-if="fullWidth >= 600 || fullWidth <= 900"
+                md-direction="right">
+                管理中心</md-tooltip>
+
             </md-list-item>
 
             <!-- Sign Up -->
             <md-list-item v-if="!user.isSignIn"
               @click="signUpBtn = true">
                 <md-icon :md-src="require('./assets/icon/signUp.svg')"></md-icon>
-                <span class="md-list-item-text">註冊</span>
+                <span class="menuText md-list-item-text">註冊</span>
+                <md-tooltip class="menuTooltip"
+                  v-if="fullWidth >= 600 || fullWidth <= 900"
+                  md-direction="right">
+                  註冊</md-tooltip>
 
               <md-dialog :md-active.sync="signUpBtn">
                 <md-dialog-content class="md-layout md-alignment-center-center">
@@ -153,8 +181,12 @@
             <!-- Sign In -->
             <md-list-item v-if="!user.isSignIn"
               @click="signInBtn = true">
-                <md-icon :md-src="require('./assets/icon/signIn.svg')"></md-icon>
-                <span class="md-list-item-text">登入</span>
+              <md-icon :md-src="require('./assets/icon/signIn.svg')"></md-icon>
+              <span class="menuText md-list-item-text">登入</span>
+              <md-tooltip class="menuTooltip"
+                v-if="fullWidth >= 600 || fullWidth <= 900"
+                md-direction="right">
+                登入</md-tooltip>
 
               <SignModal
                 v-if="signInBtn"
@@ -169,7 +201,11 @@
             <md-list-item v-if="user.isSignIn"
               @click="signOutBtn">
               <md-icon :md-src="require('./assets/icon/signOut.svg')"></md-icon>
-              <span class="md-list-item-text">登出</span>
+              <span class="menuText md-list-item-text">登出</span>
+              <md-tooltip class="menuTooltip"
+                v-if="fullWidth >= 600 || fullWidth <= 900"
+                md-direction="right">
+                登出</md-tooltip>
             </md-list-item>
 
           </md-list>
@@ -228,7 +264,9 @@ export default {
       signUpBtn: false,
       signInBtn: false,
       // alert 訊息控制 false 是不跳 alert
-      signOutMsg: false
+      signOutMsg: false,
+      fullWidth: 0
+      // fullHeight: 0
     }
   },
   components: {
@@ -327,6 +365,14 @@ export default {
     }
   },
   async mounted () {
+    this.fullWidth = window.innerWidth
+    // this.fullHeight = window.innerHeight
+    window.onresize = () => {
+      this.fullWidth = window.innerWidth
+    //   this.fullHeight = window.innerHeight
+    }
+    // console.log(this.fullWidth, this.fullHeight)
+
     // console.log('mounted')
     // console.log(this.$route)
     // console.log(this.$route.query)

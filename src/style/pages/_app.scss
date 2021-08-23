@@ -17,19 +17,53 @@
 
 // 網頁內容寬度 100vw - $drawer-w
 // 側邊欄 drawer 190px
-$drawer-w: 190px;
+$drawer-w: 230px;
 $drawer-w-small: 80px;
 $drawer-w-xsmall: 66vw;
 .md-drawer {
   // .md-persistent-mini:not(.md-active)
   width: $drawer-w !important;
+  overflow-y: hidden;
 
-  @include md-layout-small {
-    width: $drawer-w-small !important;
+  .menuTooltip{
+    display: none;
   }
 
+  .menuMember{
+    + .md-list-expand-icon{
+      display: flex;
+    }
+  }
+  
+  @include md-layout-small {
+    width: $drawer-w-small !important;
+    
+    .menuText{
+      display: none;
+    }
+
+    .menuMember{
+      + .md-list-expand-icon{
+        display: none;
+      }
+    }
+  }
+  
   @include md-layout-xsmall{
     width: $drawer-w-xsmall !important;
+    
+    .menuText{
+      display: flex;
+    }
+    .menuTooltip{
+      display: none;
+    }
+
+    .menuMember{
+      + .md-list-expand-icon{
+        display: flex;
+      }
+    }
   }
 
   // 清單的 active 效果
@@ -76,6 +110,18 @@ $drawer-w-xsmall: 66vw;
   .md-list-item-content>.md-icon:first-child {
     margin-right: 2rem;
     margin-left: 1rem;
+    
+    @include md-layout-small {
+      margin-right: 1rem;
+    }
+  }
+  .md-list-item-content>.md-avatar:first-child {
+    @include md-layout-small {
+      margin-right: 0;
+    }
+    @include md-layout-xsmall {
+      margin-right: 16px;
+    }
   }
 
   .md-list-item-content:first-child {
