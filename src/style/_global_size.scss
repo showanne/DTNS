@@ -23,24 +23,24 @@ $size-wh2: (
 // Map (key: value) 一對(pair)的特性
 @each $key, $value in $size-wh {
   .w-#{$key} {
-    width: $value;
+    width: $value !important;
   }
   .h-#{$key} {
-    height: $value;
+    height: $value !important;
   }
 }
 
 @each $key, $value in $size-wh2 {
   .max-w-#{$key} {
-    max-width: $value;
+    max-width: $value !important;
   }
   .min-w-#{$key} {
-    min-width: $value;
+    min-width: $value !important;
   }
   .max-h-#{$key} {
-    max-height: $value;
+    max-height: $value !important;
   }
   .min-h-#{$key} {
-    min-height: $value;
+    min-height: $value !important;
   }
 }

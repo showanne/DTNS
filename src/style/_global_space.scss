@@ -18,51 +18,51 @@ $spacers: (
 // Map (key: value) 一對(pair)的特性
 @each $key, $value in $spacers {
   .m-#{$key} {
-    margin: $value;
+    margin: $value !important;
   }
   .mx-#{$key} {
-    margin-right: $value;
-    margin-left: $value;
+    margin-right: $value !important;
+    margin-left: $value !important;
   }
   .my-#{$key} {
-    margin-top: $value;
-    margin-bottom: $value;
+    margin-top: $value !important;
+    margin-bottom: $value !important;
   }
   .mr-#{$key} {
-    margin-right: $value;
+    margin-right: $value !important;
   }
   .ml-#{$key} {
-    margin-left: $value;
+    margin-left: $value !important;
   }
   .mt-#{$key} {
-    margin-top: $value;
+    margin-top: $value !important;
   }
   .mb-#{$key} {
-    margin-bottom: $value;
+    margin-bottom: $value !important;
   }
 }
 @each $key, $value in $spacers {
   .p-#{$key} {
-    padding: $value;
+    padding: $value !important;
   }
   .px-#{$key} {
-    padding-right: $value;
-    padding-left: $value;
+    padding-right: $value !important;
+    padding-left: $value !important;
   }
   .py-#{$key} {
-    padding-top: $value;
-    padding-bottom: $value;
+    padding-top: $value !important;
+    padding-bottom: $value !important;
   }
   .pr-#{$key} {
-    padding-right: $value;
+    padding-right: $value !important;
   }
   .pl-#{$key} {
-    padding-left: $value;
+    padding-left: $value !important;
   }
   .pt-#{$key} {
-    padding-top: $value;
+    padding-top: $value !important;
   }
   .pb-#{$key} {
-    padding-bottom: $value;
+    padding-bottom: $value !important;
   }
 }
