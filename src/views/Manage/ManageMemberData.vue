@@ -215,6 +215,13 @@ export default {
         //  註冊 / signUp
         await this.axios.post('/users', this.signUp)
 
+        // NOTE: 將剛新增的使用者塞進呈現的陣列，就不用等送出後又從後台抓資料，再重新整理頁面，使用者體驗較佳
+        this.memberData.push({
+          account: this.signUp.account,
+          avatar: this.avatarImg,
+          role: 0
+        })
+
         this.sending = true
 
         window.setTimeout(() => {
@@ -223,7 +230,7 @@ export default {
           this.clearForm()
 
           // 創建成功後 重新跳轉頁面
-          this.$router.go()
+          // this.$router.go()
         }, 1500)
       } catch (error) {
         window.setTimeout(() => {

@@ -238,11 +238,19 @@ export default {
       this.sending = true
       // 新增問題 (訪客)  /issue
       await this.axios.post('/issue', this.contactForm)
+      // NOTE: 將剛打的問題新增進呈現的陣列，就不用等送出後又從後台抓資料，再重新整理頁面，使用者體驗較佳
+      this.questionCardReply.push({
+        majorIssue: this.contactForm.majorIssue,
+        nickname: this.contactForm.nickname,
+        issueDescription: this.contactForm.issueDescription,
+        replyIssue: '',
+        date: this.contactForm.date
+      })
       this.sending = false
       this.contactBtn = false
       this.clearForm()
       // 表單成功送出後 重新跳轉頁面
-      this.$router.go()
+      // this.$router.go()
     },
     clearForm () {
       this.contactForm = {
