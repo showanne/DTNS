@@ -221,8 +221,11 @@
 .showCardModal{
   .md-dialog-container {
     min-width: 600px;
-    @media (max-width: 768px) {
+    @include md-layout-small {
       min-width: 500px;
+    }
+    @include md-layout-xsmall {
+      min-width: 100vw;
     }
   }
   .md-card {
