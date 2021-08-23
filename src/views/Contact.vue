@@ -148,7 +148,7 @@
           <!-- style="flex-direction: column;" -->
         <!-- md-layout-nowrap w-contact-content -->
           <div v-for="(issue, i) in questionCardReply" :key="i"
-           class="md-layout-item md-large-size-50 md-medium-size-50 md-small-size-70 md-xsmall-size-100">
+           class="md-layout-item md-large-size-50 md-medium-size-50 md-small-size-95 md-xsmall-size-100">
             <md-card class="md-accent">
               <md-card-content class="md-layout md-alignment-center">
                 <div class="md-layout-item md-size-15">
