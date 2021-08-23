@@ -162,7 +162,7 @@
                       </md-option>
                       <md-option
                         v-for="(Sitem, s) in tempList[tempForm.template].input[5].selectList"
-                        :key="s" :value="s">
+                        :key="s" :value="Sitem">
                         {{ Sitem }}
                       </md-option>
                     </md-select>
@@ -227,7 +227,7 @@
                       </md-option>
                       <md-option
                         v-for="(Sitem, s) in tempList[tempForm.template].input[6].selectList"
-                        :key="s" :value="s">
+                        :key="s" :value="Sitem">
                         {{ Sitem }}
                       </md-option>
                     </md-select>
