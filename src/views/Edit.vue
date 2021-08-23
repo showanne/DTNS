@@ -47,7 +47,7 @@
         <form class=""
             @submit.prevent="submitEdit"
             @reset="clearForm">
-            <md-card class="pt-4 pb-3">
+            <md-card class="py-4">
               <md-card-header>
                 <p class="md-title fw-bold">
                   <!-- Edit temp name -->
@@ -284,29 +284,21 @@
               </md-card-content>
 
               <md-progress-bar md-mode="indeterminate" v-if="sending" />
-                <!-- TODO: 調整 progress-bar 參數 md-mode="buffer" :md-value="29"
-                :md-buffer="66" -->
+
+              <div class="p-share">
+                <label class="label">公開至分享牆</label>
+                <md-switch v-model="tempList[tempForm.template].input[0].value"
+                  class="md-primary" ></md-switch>
+              </div>
 
               <md-card-actions class="md-layout md-alignment-center-center">
-                <div class="md-layout-item md-size-90">
-                  <div class="md-layout md-alignment-center-space-between">
-                    <div class="md-layout-item md-size-25">
-                      <label class="label">share</label>
-                      <md-switch v-model="tempList[tempForm.template].input[0].value"
-                        class="md-primary" ></md-switch>
-                    </div>
-
-                    <div class="md-layout-item md-size-75 md-alignment-center-space-between">
-                      <md-button type="reset" class="md-raised">
-                        RESET
-                      </md-button>
-                      <md-button type="submit" class="md-raised"
-                        :disabled="sending">
-                        Submit
-                      </md-button>
-                    </div>
-                  </div>
-                </div>
+                <md-button type="reset" class="mx-2 md-accent md-raised">
+                  重設
+                </md-button>
+                <md-button type="submit" class="mx-2 md-primary md-raised"
+                  :disabled="sending">
+                  送出
+                </md-button>
               </md-card-actions>
             </md-card>
         </form>

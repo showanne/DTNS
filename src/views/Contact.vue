@@ -148,7 +148,7 @@
           <!-- style="flex-direction: column;" -->
         <!-- md-layout-nowrap w-contact-content -->
           <div v-for="(issue, i) in questionCardReply" :key="i"
-           class="md-layout-item md-large-size-50 md-medium-size-50 md-small-size-50 md-xsmall-size-100">
+           class="md-layout-item md-large-size-50 md-medium-size-50 md-small-size-70 md-xsmall-size-100">
             <md-card class="md-accent">
               <md-card-content class="md-layout md-alignment-center">
                 <div class="md-layout-item md-size-15">
@@ -156,7 +156,7 @@
                 </div>
                 <div class="md-layout-item md-size-85">
                   <div class="md-layout md-alignment-center-space-between">
-                    <div class="md-title">
+                    <div class="md-title lh-4">
                       {{ issue.nickname }}
                       <span class="md-caption">#{{ i+1 }}</span>
                     </div>
@@ -167,7 +167,7 @@
                   <div class="md-subheading text-v-html"
                        v-html="issue.issueDescription">
                   </div>
-                  <div class="md-body-2 mt-2 tc-dark3 ls-1">
+                  <div class="text-support">
                     <md-icon class="mr-2">support_agent</md-icon>
                     <span v-if="issue.replyIssue">{{ issue.replyIssue }}</span>
                     <span v-else>...工程師正在處理中</span>

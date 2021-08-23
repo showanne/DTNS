@@ -69,10 +69,22 @@ form.w-contact-modal {
   }
 }
 
+.text-support{
+  color: $dark3;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24;
+  letter-spacing: 1px;
+  margin-top: 0.5rem;
+}
+
 .md-theme-dark{
   #questionCard{
     span.md-caption{
       background-color: $dark1;
     }
+  }
+  .text-support{
+    color: $dark1;
   }
 }

@@ -88,9 +88,11 @@
   }
 
   .md-card {
-    background-color: white;
     margin-right: 8px;
     margin-left: 8px;
+    &.md-theme-default{
+      background-color: white;
+    }
   }
   .img-inputer {
     width: 100%;
@@ -103,6 +105,20 @@
     color: rgba(0, 0, 0, 0.54);
     font-size: 12px;
     line-height: 20px;
+  }
+}
+.p-share{
+  position: absolute;
+  left: 2.3%;
+  transform: translateX(50%);
+  @include md-layout-medium {
+    left: 1.5%;
+  }
+  @include md-layout-small {
+    left: 2.2%;
+  }
+  @include md-layout-xsmall {
+    left: 0.3%;
   }
 }
 
