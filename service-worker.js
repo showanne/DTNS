@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "precache-manifest.e790f9213fce92155f2fc8760a57b655.js"
+  "precache-manifest.37a0ab9a365e22b3ca7cfc34d12ef4a3.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "dtns"});
