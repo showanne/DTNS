@@ -122,19 +122,19 @@
           </md-speed-dial-target>
 
           <md-speed-dial-content>
-            <md-button class="md-icon-button md-dense">
+            <md-button class="md-icon-button md-dense" @click="saveArticle = true">
               <md-icon :md-src="require('../assets/icon/action-save.svg')"></md-icon>
               <md-tooltip md-direction="right" md-delay="300">儲存</md-tooltip>
               <!-- {{ saveNum }} -->
             </md-button>
 
-            <md-button class="md-icon-button md-dense">
+            <md-button class="md-icon-button md-dense" @click="reportArticle = true">
               <md-icon :md-src="require('../assets/icon/action-report.svg')"></md-icon>
               <md-tooltip md-direction="right" md-delay="300">檢舉</md-tooltip>
               <!-- {{ report }} -->
             </md-button>
 
-            <md-button class="md-icon-button md-dense" @click="likeArticle">
+            <md-button class="md-icon-button md-dense" @click="likeArticle = true">
               <md-icon :md-src="require('../assets/icon/action-good.svg')"></md-icon>
               <md-tooltip md-direction="right" md-delay="300">按讚</md-tooltip>
               <!-- {{ likeNum }} -->
@@ -172,6 +172,26 @@
         <!-- :showCardById="showCardById" 傳值進 TempCardShowById.vue -->
         <!-- @closeModal="showCardById = false" 接收內層傳來的值 並做 "" 內動作是改 showCardById 的值 -->
       </TempCardShowById>
+
+      <md-dialog-alert
+        :md-active.sync="saveArticle"
+        md-content="儲存文章！"
+        md-confirm-text="確認" />
+
+      <md-dialog-confirm
+        :md-active.sync="reportArticle"
+        md-title="確認要檢舉這篇文章？"
+        :md-content="'檢舉 <strong>編號 ' + item._id.substr(3, 6) + '*** </strong>文章'"
+        md-confirm-text="確認"
+        md-cancel-text="取消"
+        @md-cancel="onCancel"
+        @md-confirm="onConfirm" />
+
+      <md-dialog-alert
+        :md-active.sync="likeArticle"
+        :md-content="item.author + ' 感謝您按讚！'"
+        md-confirm-text="確認" />
+
     </md-card>
 </template>
 
@@ -184,7 +204,11 @@ export default {
   name: 'TempCardShare',
   data () {
     return {
-      showCardById: false
+      showCardById: false,
+      saveArticle: false,
+      reportArticle: false,
+      likeArticle: false,
+      report: ''
     }
   },
   components: {
@@ -203,6 +227,31 @@ export default {
     }
   },
   methods: {
+    onConfirm () {
+      this.report = 'Confirm'
+    },
+    onCancel () {
+      this.report = 'Cancel'
+    }
+    // async likeArticle () {
+    //   // alert(this.item._id)
+    //   // 如果不是會員就不跑下面了
+    //   if( user.role !== 0 || user.role !== 1 ) return
+    //   try {
+    //     // 按讚文章 (會員)  /  likeArticle
+    //     await this.axios.patch('/article/like' + this.item._id, {
+    //       like: this.name // 放目前的會員
+    //     }, {
+    //       headers: {
+    //       // 驗證欄位 'Bearer ' + token  -> Bearer要空格
+    //         authorization: 'Bearer ' + this.$store.state.jwt.token
+    //       }
+    //     })
+    //     this.article[rowIndex].likeNum += 1
+    //   } catch (error) {
+    //     console.log(error)
+    //   }
+    // }
   // showModal () {
   //   this.showCardById = true
   // },
