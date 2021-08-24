@@ -14,7 +14,7 @@
             <md-button class="w-unset"
               v-if="!user.isSignIn"
               @click="signForLine">
-              <md-icon :md-src="require('./assets/icon/signUp.svg')"></md-icon>
+              <md-icon class="iconFill" :md-src="require('./assets/icon/signUp.svg')"></md-icon>
             </md-button>
           </div>
 
@@ -169,7 +169,7 @@
             <!-- Sign Up -->
             <md-list-item v-if="!user.isSignIn"
               @click="signUpBtn = true">
-                <md-icon :md-src="require('./assets/icon/signUp.svg')"></md-icon>
+                <md-icon class="iconFill" :md-src="require('./assets/icon/signUp.svg')"></md-icon>
                 <span class="menuText md-list-item-text">註冊</span>
                 <md-tooltip class="menuTooltip"
                   v-if="fullWidth >= 600 || fullWidth <= 900"
@@ -193,7 +193,7 @@
             <!-- Sign In -->
             <md-list-item v-if="!user.isSignIn"
               @click="signInBtn = true">
-              <md-icon :md-src="require('./assets/icon/signIn.svg')"></md-icon>
+              <md-icon class="iconFill" :md-src="require('./assets/icon/signIn.svg')"></md-icon>
               <span class="menuText md-list-item-text">登入</span>
               <md-tooltip class="menuTooltip"
                 v-if="fullWidth >= 600 || fullWidth <= 900"
@@ -211,7 +211,7 @@
             <!-- Sign out -->
             <md-list-item v-if="user.isSignIn"
               @click="signOutBtn">
-              <md-icon :md-src="require('./assets/icon/signOut.svg')"></md-icon>
+              <md-icon class="iconFill" :md-src="require('./assets/icon/signOut.svg')"></md-icon>
               <span class="menuText md-list-item-text">登出</span>
               <md-tooltip class="menuTooltip"
                 v-if="fullWidth >= 600 || fullWidth <= 900"

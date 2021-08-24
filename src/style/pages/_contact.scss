@@ -13,6 +13,13 @@
   .md-card .md-avatar {
     margin-left: -40px;
   }
+
+    // For contact modal btn
+  @include md-layout-small {
+    .md-fab.md-fab-bottom-right {
+      bottom: 48px;
+    }
+  }
 }
 
 form.w-contact-modal {
@@ -86,5 +93,12 @@ form.w-contact-modal {
   }
   .text-support{
     color: $dark1;
+  }
+
+  // For svg icon
+  .md-fab.md-fab-bottom-right {
+    path{
+      fill: $light2;
+    }
   }
 }
