@@ -92,7 +92,7 @@
                   完結日期：{{ datepicker }}</div>
                 <div class="md-caption lh-5">
                   <md-icon>event_available</md-icon>
-                  是否已完結：{{ select }}</div>
+                  是否完結：{{ select }}</div>
               </div>
             </div>
             <div class="md-layout-item md-size-100 px-3 md-body-1 text-v-html" v-html="textarea"></div>

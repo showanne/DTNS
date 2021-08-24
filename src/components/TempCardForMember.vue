@@ -60,11 +60,11 @@
       <md-card-content v-if="item.article.template === 3">
         <div class="md-title">{{ item.article.title }}</div>
 
-        <div class="md-subhead">
+        <div class="md-subhead lh-5">
           <md-icon>event_note</md-icon>
           期限：{{ item.article.datepicker }}</div>
 
-        <div class="md-subhead">
+        <div class="md-subhead lh-5">
           <md-icon>face</md-icon>
           心情：{{ item.article.select }}</div>
 
@@ -93,7 +93,7 @@
 
         <div class="md-subhead lh-5">
           <md-icon>book</md-icon>
-          是否已完結：{{ item.article.select }}</div>
+          是否完結：{{ item.article.select }}</div>
 
         <div class="md-subhead lh-5">
           <md-icon>event_available</md-icon>

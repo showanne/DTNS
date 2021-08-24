@@ -80,7 +80,7 @@
         </div>
         <div class="md-subhead lh-4">
           <md-icon>book</md-icon>
-          是否已完結：{{ item.select }}
+          是否完結：{{ item.select }}
         </div>
         <div class="md-subhead lh-4">
           <md-icon>event_available</md-icon>

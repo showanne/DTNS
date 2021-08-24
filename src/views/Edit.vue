@@ -182,6 +182,7 @@
                   <md-field md-clearable class="md-layout-item md-size-90">
                     <label>{{ tempList[tempForm.template].input[3].name }}</label>
                     <md-textarea v-model="tempForm.textarea"></md-textarea>
+                    <span class="md-helper-text">本筆記內容區支援程式碼語法</span>
                   </md-field>
                 </div>
               </md-card-content>
@@ -197,7 +198,7 @@
 
                   <md-field md-clearable class="md-layout-item md-size-90">
                     <label>{{ tempList[tempForm.template].input[3].name }}</label>
-                    <md-input v-model="tempForm.text"></md-input>
+                    <md-input type="text" v-model="tempForm.text"></md-input>
                   </md-field>
 
                   <div class="md-layout-item md-size-90">
@@ -211,7 +212,7 @@
                       在手機中使用相機 capture="true"-->
                   </div>
 
-                  <md-field md-clearable class="md-layout-item md-size-90">
+                  <md-field md-clearable class="md-layout-item md-size-90 mt-5">
                     <label>{{ tempList[tempForm.template].input[5].name }}</label>
                     <md-textarea v-model="tempForm.textarea"></md-textarea>
                   </md-field>
