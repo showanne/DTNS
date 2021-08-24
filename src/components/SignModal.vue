@@ -5,20 +5,17 @@
     :md-click-outside-to-close="false"
     >
       <md-dialog-title>
-        <div class="md-layout md-alignment-center-space-between">
-          <!-- <md-icon class="md-size-3x signIcon">person_pin</md-icon> -->
           <slot name="title"></slot>
-
-          <md-button class="md-primary" @click="closeModal">
-            close &times;
+          <md-button class="closeBtn w-unset h-unset md-primary"
+            @click="closeModal">
+            <md-icon>close</md-icon>
           </md-button>
-        </div>
       </md-dialog-title>
 
       <md-dialog-content class="md-scrollbar">
         <md-tabs md-alignment="fixed">
 
-          <md-tab exact id="tab-line" md-label="line" :md-icon="require('../assets/icon/line-logo.svg')">
+          <md-tab exact id="tab-line" md-label="會員登入" :md-icon="require('../assets/icon/line-logo.svg')">
             <div class="md-layout md-alignment-center-center">
               <md-button @click="signForLine" class="h-unset">
                 <md-icon :md-src="require('../assets/icon/line-logo.svg')"
@@ -28,7 +25,7 @@
             </div>
           </md-tab>
 
-          <md-tab id="tab-manage" md-label="manage" md-icon="person">
+          <md-tab id="tab-manage" md-label="管理者登入" md-icon="person">
             <form
               novalidate
               class="md-layout md-small-hide"
@@ -39,12 +36,12 @@
                 <md-card-content>
                   <!-- 帳號 Account -->
                   <md-field :class="getValidationClass('account')">
-                    <label for="account">Account</label>
+                    <label for="account">帳號</label>
                     <md-input
                       name="account"
                       autocomplete="account"
                       v-model="form.account"
-                      placeholder="You Nick Name..."
+                      placeholder="帳號 *****"
                       :disabled="sending"
                     />
                     <span class="md-error" v-if="!$v.form.account.required"
@@ -57,13 +54,13 @@
 
                   <!-- 密碼 Password -->
                   <md-field :class="getValidationClass('password')">
-                    <label for="password">Password</label>
+                    <label for="password">密碼</label>
                     <md-input
                       type="password"
                       name="password"
                       autocomplete="password"
                       v-model="form.password"
-                      placeholder="password..."
+                      placeholder="密碼 ****"
                       :disabled="sending"
                     />
                     <span class="md-error" v-if="!$v.form.password.required"
@@ -235,11 +232,11 @@ export default {
           this.$emit('closeModal') // emitting to parent
           if (this.user.isSignIn && this.user.isAdmin) {
             // 是管理者登入的話，登入成功後導向管理中心
-            this.$router.push('/manage').catch((error) => { console.log(error) })
+            this.$router.push('/manage').catch(() => {})
             // console.log(this.$store.state.jwt.token.length, this.$store.state.user.role, this.$store.state.jwt.token)
           } else {
             // 登入成功後導向會員中心
-            this.$router.push('/member').catch((error) => { console.log(error) })
+            this.$router.push('/member/memberArticle').catch(() => {})
             // console.log(this.$store.state.jwt.token.length, this.$store.state.user.role, this.$store.state.jwt.token)
           }
         }, 1500)

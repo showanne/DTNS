@@ -10,6 +10,12 @@
               @click="toggleMenu" v-if="!menuVisible">
               <md-icon :md-src="require('./assets/icon/menu.svg')"></md-icon>
             </md-button>
+
+            <md-button class="w-unset"
+              v-if="!user.isSignIn"
+              @click="signForLine">
+              <md-icon :md-src="require('./assets/icon/signUp.svg')"></md-icon>
+            </md-button>
           </div>
 
           <h1 class="md-layout-item text-dtns">DTNS</h1>
@@ -170,6 +176,10 @@
 
               <md-dialog :md-active.sync="signUpBtn">
                 <md-dialog-content class="md-layout md-alignment-center-center">
+                  <md-button class="closeBtn w-unset h-unset md-primary"
+                    @click="signUpBtn = false">
+                    <md-icon>close</md-icon>
+                  </md-button>
                   <md-button @click="signForLine" class="h-unset">
                     <md-icon :md-src="require('./assets/icon/line-logo.svg')" class="md-size-5x"></md-icon>
                     <span> 快速註冊 </span>
@@ -192,8 +202,7 @@
                 v-if="signInBtn"
                 :signBtn="signInBtn"
                 @closeModal="signInBtn = false"
-                ><!-- capturing event close-context -->
-                <span slot="title">Sign In</span>
+                >
               </SignModal>
             </md-list-item>
 
@@ -350,10 +359,10 @@ export default {
               authorization: 'Bearer ' + jwt
             }
           }).then(res => {
-            console.log(res)
+            // console.log(res)
             this.$store.commit('signIn', res.data)
             // 登入成功後導向會員中心
-            this.$router.push('/member/memberArticle')
+            this.$router.push('/member/memberArticle').catch(() => {})
             // 清網址列的 jwt
             window.history.pushState('', '', '/DTNS/#/member/memberArticle')
           }).catch((error) => {

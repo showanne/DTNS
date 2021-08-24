@@ -36,8 +36,10 @@
             <md-card-header>
               <div class="md-title">方便儲存</div>
               <div class="md-subhead">紀錄讓你心動的剎那，隨時回味翻找查詢。</div>
-              <md-button to="/member"
+              <md-button v-if="!user.isSignIn" @click="signForLine"
                 class="md-raised md-primary">立即註冊...</md-button>
+              <md-button v-else to="/member"
+                class="md-raised md-primary">來去看看...</md-button>
             </md-card-header>
           </div>
         </md-card>
@@ -56,7 +58,7 @@
               <div class="md-title">便捷分享</div>
               <div class="md-subhead">立即跟親朋好友分享，創造更好的文字風景。</div>
               <md-button to="/collection"
-                class="md-raised md-primary">來去看看...</md-button>
+                class="md-raised md-primary">來去分享...</md-button>
             </md-card-header>
           </div>
         </md-card>
