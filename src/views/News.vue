@@ -1,6 +1,6 @@
 <template>
   <div id="news">
-    <dic class="md-headline">最新消息</dic>
+    <div class="md-headline">最新消息</div>
     <div class="md-layout-nowrap">
       <div v-for="(news, n) in newsCard" :key="n"
         class="md-layout-item md-size-100">

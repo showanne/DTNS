@@ -93,9 +93,11 @@
                 <md-progress-bar md-mode="indeterminate" v-if="sending" />
 
                 <md-card-actions>
-                  <md-button type="reset" class="md-primary"> Reset</md-button>
-                  <md-button type="submit" class="md-primary" :disabled="sending">
-                    Sign In</md-button>
+                  <md-button type="reset" class="md-primary">
+                    重設</md-button>
+                  <md-button type="submit" class="md-primary"
+                    :disabled="sending">
+                    登入</md-button>
                 </md-card-actions>
               </md-card>
 
@@ -103,13 +105,8 @@
               <!-- <md-snackbar :md-active.sync="messageShow"
                 >The user {{ user }} was saved with {{ message }}!</md-snackbar> -->
               <!-- Sign In -->
-              <md-snackbar :md-active.sync="messageShow"
-            >{{ message }}</md-snackbar>
-
-            <!-- <md-dialog-alert
-              :md-active.sync="messageShow"
-              md-title="ERROR"
-              :md-content="message" /> -->
+              <md-snackbar :md-active.sync="messageShow">
+                {{ message }}</md-snackbar>
 
             </form>
 
@@ -131,17 +128,6 @@
       :md-active.sync="messageShow"
       md-title="ERROR"
       :md-content="message" />
-
-    <!-- <md-dialog :md-active.sync="wellcomeMsg">
-      <md-dialog-content class="md-alignment-centered">
-        <md-avatar class="md-large md-elevation-5">
-          <img :src="avatarImg" alt="">
-        </md-avatar>
-        <div class="md-layout-item">
-          Wellcome {{ form.account }}
-          </div>
-      </md-dialog-content>
-    </md-dialog> -->
   </div>
 </template>
 
