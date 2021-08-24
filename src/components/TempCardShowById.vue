@@ -166,6 +166,7 @@ export default {
       template: 0,
       title: '',
       author: '',
+      avatar: '',
       image: '',
       textarea: '',
       text: '',
