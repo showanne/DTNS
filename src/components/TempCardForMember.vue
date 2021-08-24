@@ -152,7 +152,7 @@
         </md-button>
 
         <md-button class="md-button w-unset md-dense">
-          <a :href="'http://line.naver.jp/R/msg/text/?DTNS分享吧！–&nbsp;' + item.article.title + '%0D%0Ahttps://showanne.github.io/DTNS'">
+          <a :href="'http://line.naver.jp/R/msg/text/?DTNS分享吧！–&nbsp;' + item.article.title + '%0D%0Ahttps://showanne.github.io/DTNS'" target="_blank">
             <md-icon :md-src="require('../assets/icon/action-share.svg')"></md-icon>
           </a>
         </md-button>
@@ -162,8 +162,8 @@
       <md-dialog :md-active.sync="editArticleModal">
         <md-dialog-title>編輯文章</md-dialog-title>
         <md-dialog-content>
-          <!-- {{ editForm }} -->
-          <!-- <form class="md-layout md-alignment-center-center">
+          <!-- {{ editForm.article }} -->
+          <form class="md-layout md-alignment-center-center">
 
             <md-field v-if="editForm.article.title" md-clearable class="md-layout-item md-size-90">
               <md-textarea v-model="editForm.article.title" md-autogrow required></md-textarea>
@@ -197,7 +197,7 @@
                 bottom-text="點擊或拖曳以修改" />
             </div>
 
-          </form> -->
+          </form>
             <!-- <md-progress-bar md-mode="indeterminate" v-if="sending" /> -->
         </md-dialog-content>
         <md-dialog-actions>
@@ -214,7 +214,26 @@ export default {
   data () {
     return {
       editArticleModal: false,
-      editForm: [],
+      editForm: {
+        article: {
+          template: 0,
+          saveNum: [],
+          shareNum: [],
+          _id: '',
+          likeNum: [],
+          title: '',
+          author: '',
+          avatar: '',
+          share: true,
+          publicOff: false,
+          image: '',
+          textarea: '',
+          text: '',
+          datepicker: '',
+          select: '',
+          date: ''
+        }
+      },
       ulList: []
     }
   },
@@ -277,6 +296,8 @@ export default {
   //   }
   // },
   mounted () {
+    this.editForm = this.item
+
     // 有圖片才更新網址
     if (this.item.article.image) {
       // 處理 image 路徑  因為 :src 會錯誤判別 process.env  / 取得上傳的圖片 /file
