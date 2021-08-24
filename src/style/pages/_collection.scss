@@ -142,9 +142,12 @@
   margin-bottom: -2rem;
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
+  // flex-wrap: wrap;
+  @include md-layout-xsmall {
+    flex-direction: column;
+  }
 }
-.ulList{
+%ulList{
   width: 90px;
   height: auto;
   margin: 3px;
@@ -160,20 +163,22 @@
   // position: absolute;
   transition: background-color 0.5s;
   cursor: pointer;
+  @include md-layout-xsmall {
+    width: unset;
+    justify-content: flex-start;
+  }
+  &:hover{
+    box-shadow: 1px 1px 5px rgba($dark5, 0.7);
+  }
 }
 .card-postit{
+  @extend %ulList;
   background-color: $success;
 }
 .card-todo{
+  @extend %ulList;
   background-color: $success2;
 }
-// .card-modal-img{
-//   width: 199px;
-//   position: absolute;
-//   top: 30%;
-//   right: 0;
-// }
-
 
 .md-theme-dark{
   .card-share{
@@ -184,7 +189,16 @@
       color: lighten($dark4, 20%);
     }
   }
+  .card-postit{
+    @extend %ulList;
+    background-color: darken($success, 80%);
+  }
+  .card-todo{
+    @extend %ulList;
+    background-color: darken($success2, 80%);
+  }
 }
+
 
 .tempCard{
   .md-card-header .md-subhead {

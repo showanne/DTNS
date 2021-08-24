@@ -39,55 +39,87 @@
             <div class="md-title text-v-html">{{ title }}</div>
             <!-- <div class="md-body-1 text-v-html" v-html="textarea"></div> -->
             <div class="ulListBox">
-              <div class="ulList card-postit text-v-html" v-for="(postit, p) in ulList" :key="p">{{ postit }}</div>
+              <div class="card-postit text-v-html" v-for="(postit, p) in ulList" :key="p">{{ postit }}</div>
             </div>
           </md-card-content>
 
           <!-- todo -->
           <md-card-content v-if="tempNum === 2">
             <div class="md-title text-v-html">{{ title }}</div>
-            <div class="md-caption text-right">期限：{{ datepicker }}</div>
+            <div class="md-caption text-right">
+              <md-icon>alarm</md-icon>
+              期限：{{ datepicker }}</div>
             <!-- <div class="md-body-1 text-v-html" v-html="textarea"></div> -->
             <div class="ulListBox">
-              <div class="ulList card-todo text-v-html" v-for="(todo, t) in ulList" :key="t">{{ todo }}</div>
+              <div class="card-todo text-v-html" v-for="(todo, t) in ulList" :key="t">{{ todo }}</div>
             </div>
           </md-card-content>
 
           <!-- diary -->
           <md-card-content v-if="tempNum === 3">
             <div class="md-title text-v-html">{{ title }}</div>
-            <div class="md-caption text-right">日期：{{ datepicker }}</div>
-            <div class="md-caption text-right">心情：{{ select }}</div>
-            <div class="md-body-1 text-v-html" v-html="textarea"></div>
+            <div class="md-caption text-right">
+              <md-icon>event_note</md-icon>
+              日期：{{ datepicker }}</div>
+            <div class="md-caption text-right">
+              <md-icon>face</md-icon>
+              心情：{{ select }}</div>
+            <div class="md-body-1 mt-2 text-v-html" v-html="textarea"></div>
           </md-card-content>
 
           <!-- notes -->
           <md-card-content v-if="tempNum === 4">
             <div class="md-title text-v-html">{{ title }}</div>
-            <div class="md-body-1 text-v-html" v-html="textarea"></div>
+            <div class="md-body-1 mt-2 text-v-html" v-html="textarea"></div>
           </md-card-content>
 
           <!-- novel -->
           <md-card-content v-if="tempNum === 5">
-            <div class="md-title text-v-html">{{ title }}</div>
-            <div class="md-body-1 text-v-html" v-html="'作者：'+text"></div>
-            <div class="md-caption text-right">完結日期：{{ datepicker }}</div>
-            <div class="md-caption text-right">是否已完結：{{ select }}</div>
-            <md-card-media v-if="image">
-              <img :src="image" :alt="title" class="w-50">
-            </md-card-media>
-            <div class="md-body-1 text-v-html" v-html="textarea"></div>
+            <div class="md-layout md-alignment-bottom-center">
+              <md-card-media
+                class="md-layout-item md-size-45 md-xsmall-size-90 text-center">
+                <img v-if="image" :src="image" :alt="title" class="w-80">
+                <md-icon v-else class="md-size-2x my-2">image_not_supported</md-icon>
+              </md-card-media>
+              <div class="md-layout-item md-size-45 md-xsmall-size-90 pb-3">
+                <div class="md-title text-v-html lh-5">{{ title }}</div>
+                <div class="lh-5">
+                  <md-icon>emoji_emotions</md-icon>
+                  <span class="md-body-1 text-v-html" v-html="'作者：'+text"></span>
+                </div>
+                <div class="md-caption lh-5">
+                  <md-icon>book</md-icon>
+                  完結日期：{{ datepicker }}</div>
+                <div class="md-caption lh-5">
+                  <md-icon>event_available</md-icon>
+                  是否已完結：{{ select }}</div>
+              </div>
+            </div>
+            <div class="md-layout-item md-size-100 px-3 md-body-1 text-v-html" v-html="textarea"></div>
           </md-card-content>
 
           <!-- storage -->
-          <md-card-content v-if="tempNum === 6">
-            <div class="md-title text-v-html">{{ title }}</div>
-            <div class="md-body-1 text-v-html" v-html="'存放地點：'+text"></div>
-            <div class="md-caption text-right">購買日期：{{ datepicker }}</div>
-            <md-card-media v-if="image">
-              <img :src="image" :alt="title">
+          <md-card-content v-if="tempNum === 6"
+            class="md-layout md-alignment-bottom-center">
+            <md-card-media
+              class="md-layout-item md-size-45 md-xsmall-size-90 text-center">
+              <img v-if="image" :src="image" :alt="title" class="w-80">
+              <md-icon v-else class="md-size-2x my-2">image_not_supported</md-icon>
             </md-card-media>
-            <div class="md-body-1 text-v-html" v-html="'物品狀況描述：'+textarea"></div>
+            <div class="md-layout-item md-size-45 md-xsmall-size-90 pb-3">
+              <div class="md-title text-v-html lh-5">{{ title }}</div>
+              <div class="md-caption lh-5">
+                <md-icon>today</md-icon>
+                購買日期：{{ datepicker }}</div>
+              <div class="lh-5">
+                <md-icon>share_location</md-icon>
+                <span class="md-body-1 text-v-html" v-html="'存放地點：'+text"></span>
+              </div>
+              <div class="lh-5">
+                <md-icon>inventory_2</md-icon>
+                <span class="md-body-1 text-v-html" v-html="'物品狀況描述：'+textarea"></span>
+              </div>
+            </div>
           </md-card-content>
 
         </md-card>
