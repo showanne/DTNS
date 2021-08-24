@@ -31,7 +31,7 @@
 
         <!-- 側邊欄 drawer -->
         <md-app-drawer :md-active.sync="menuVisible"
-          md-permanent="full" class="md-accent bg-dark3  md-layout">
+          md-permanent="full" class="md-accent bg-dark3 md-layout">
           <!-- :md-permanent="permanent"
           :md-persistent="persistent" -->
         <!-- <md-app-drawer :md-active.sync="menuVisible" md-permanent="full" md-persistent="mini"> -->
@@ -126,7 +126,8 @@
                   <span class="md-list-item-text">Analytics</span>
                 </md-list-item> -->
 
-                <md-list-item to="/member/memberArticle">
+                <md-list-item to="/member/memberArticle"
+                  class="menuMember-item">
                   <md-icon>feed</md-icon>
                   <span class="menuText md-list-item-text">文章總覽</span>
                   <md-tooltip class="menuTooltip"
@@ -140,7 +141,8 @@
                   <span class="md-list-item-text">Profile</span>
                 </md-list-item> -->
 
-                <md-list-item to="/member/memberReply">
+                <md-list-item to="/member/memberReply"
+                  class="menuMember-item">
                   <md-icon>3p</md-icon>
                   <span class="menuText md-list-item-text">聯絡我們</span>
                   <md-tooltip class="menuTooltip"

@@ -120,6 +120,17 @@ $drawer-w-xsmall: 66vw;
   .md-list-item-content:first-child {
     justify-content: center;
   }
+
+  .menuMember-item{
+    margin-left: 2rem;
+    
+    @include md-layout-small {
+      margin-left: unset;
+    }
+    @include md-layout-xsmall {
+      margin-left: 25%;
+    }
+  }
 }
 
 // 網頁內容高度 100vh - $toolbar-h
@@ -181,6 +192,8 @@ $toolbar-h-xsmall: 56px;
   // 縮小版型時選單按鈕才出現
   .btn-menu{
     display: none;
+    background-color: $dark3 !important;
+    color: $light1 !important;
     @include md-layout-xsmall{
       display: flex;
     }
