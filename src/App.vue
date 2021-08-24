@@ -144,11 +144,11 @@
                 <md-list-item to="/member/memberReply"
                   class="menuMember-item">
                   <md-icon>3p</md-icon>
-                  <span class="menuText md-list-item-text">聯絡我們</span>
+                  <span class="menuText md-list-item-text">問題回報</span>
                   <md-tooltip class="menuTooltip"
                     v-if="fullWidth >= 600"
                     md-direction="right">
-                    聯絡我們</md-tooltip>
+                    問題回報</md-tooltip>
                 </md-list-item>
               </md-list>
             </md-list-item>

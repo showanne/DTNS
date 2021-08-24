@@ -217,6 +217,7 @@ export default {
       this.date = new Date(data.result.date).toLocaleDateString()
 
       // console.log(typeof (data.result.textarea))
+      // 處理 便利貼1 及待辦事項2 顯示格式
       if (data.result.template === 1 || data.result.template === 2) {
         // .split("-").map(a=>"#"+a)
         this.ulList = data.result.textarea.split('\n').map(item => {

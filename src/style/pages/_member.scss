@@ -17,4 +17,14 @@
       border-bottom: $dark2 1px solid;
     }
   }
+
+  .ulListBox{
+    margin-top: 1rem;
+    margin-bottom: 0.7rem;
+    flex-direction: column;
+    .card-postit ,.card-todo{
+      width: unset;
+      justify-content: flex-start;
+    }
+  }
 }
