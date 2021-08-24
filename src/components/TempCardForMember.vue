@@ -15,32 +15,59 @@
       </md-card-header>
 
       <!-- share -->
-      <md-card-content v-if="item.article.template === 0">
+      <md-card-content v-if="item.article.template === 0"
+        class="card-share">
         <md-card-media v-if="item.article.image">
-          <img :src="item.article.image" alt="">
+          <img :src="item.article.image"
+               :alt="item.article.title">
         </md-card-media>
-        <div class="md-title">{{ item.article.title }}</div>
-        <div class="md-body-1 text-v-html" v-html="item.article.text"></div>
+
+        <figure>
+          <blockquote class="p-3">
+            <p class="text-v-html" v-html="item.article.title"></p>
+            <figcaption>
+              <cite>
+              –– <span class="text-v-html" v-html="item.article.text"></span>
+              </cite>
+            </figcaption>
+          </blockquote>
+        </figure>
       </md-card-content>
 
       <!-- postIt -->
       <md-card-content v-if="item.article.template === 1">
         <div class="md-title">{{ item.article.title }}</div>
-        <div class="md-body-1 text-v-html" v-html="item.article.text"></div>
+
+        <div class="ulListBox">
+          <div class="card-postit text-v-html" v-for="(postit, p) in ulList" :key="p">{{ postit }}</div>
+        </div>
       </md-card-content>
 
       <!-- todo -->
       <md-card-content v-if="item.article.template === 2">
         <div class="md-title">{{ item.article.title }}</div>
-        <div class="md-subhead">期限：{{ item.article.datepicker }}</div>
-        <div class="md-body-1 text-v-html" v-html="item.article.text"></div>
+
+        <div class="md-subhead lh-5">
+          <md-icon>alarm</md-icon>
+          期限：{{ item.article.datepicker }}</div>
+
+        <div class="ulListBox">
+          <div class="card-todo text-v-html" v-for="(todo, t) in ulList" :key="t">{{ todo }}</div>
+        </div>
       </md-card-content>
 
       <!-- diary -->
       <md-card-content v-if="item.article.template === 3">
         <div class="md-title">{{ item.article.title }}</div>
-        <div class="md-subhead">期限：{{ item.article.datepicker }}</div>
-        <div class="md-subhead">心情：{{ item.article.select }}</div>
+
+        <div class="md-subhead">
+          <md-icon>event_note</md-icon>
+          期限：{{ item.article.datepicker }}</div>
+
+        <div class="md-subhead">
+          <md-icon>face</md-icon>
+          心情：{{ item.article.select }}</div>
+
         <div class="md-body-1 text-v-html" v-html="item.article.textarea"></div>
       </md-card-content>
 
@@ -52,28 +79,48 @@
 
       <!-- novel -->
       <md-card-content v-if="item.article.template === 5">
-        <md-card-media v-if="item.article.image">
-          <img :src="item.article.image" alt="">
+        <md-card-media
+          class="text-center">
+          <img v-if="item.article.image" :src="item.article.image" :alt="item.article.title" class="w-80">
+          <md-icon v-else class="md-size-2x my-2">image_not_supported</md-icon>
         </md-card-media>
+
         <div class="md-title">{{ item.article.title }}</div>
-        <div class="md-subhead">作者：{{ item.article.text }}</div>
-        <div class="md-subhead">是否已完結：{{ item.article.select }}</div>
-        <div class="md-subhead">完結日期：{{ item.article.datepicker }}</div>
+
+        <div class="md-subhead lh-5">
+          <md-icon>emoji_emotions</md-icon>
+          作者：{{ item.article.text }}</div>
+
+        <div class="md-subhead lh-5">
+          <md-icon>book</md-icon>
+          是否已完結：{{ item.article.select }}</div>
+
+        <div class="md-subhead lh-5">
+          <md-icon>event_available</md-icon>
+          完結日期：{{ item.article.datepicker }}</div>
+
         <div class="md-body-1 text-v-html" v-html="item.article.textarea"></div>
       </md-card-content>
 
       <!-- storage -->
       <md-card-content v-if="item.article.template === 6">
-        <md-card-media v-if="item.article.image">
-          <img :src="item.article.image" alt="">
+        <md-card-media
+          class="text-center">
+          <img v-if="item.article.image" :src="item.article.image" :alt="item.article.title" class="w-80">
+          <md-icon v-else class="md-size-2x my-2">image_not_supported</md-icon>
         </md-card-media>
+
         <div class="md-title">{{ item.article.title }}</div>
-        <div class="md-subhead">購買日期：{{ item.article.datepicker }}</div>
-        <div class="md-subhead">
+
+        <div class="lh-5">
           <md-icon>share_location</md-icon>
-          存放地點：{{ item.article.text }}
+          <span class="md-subhead text-v-html" v-html="'存放地點：'+ item.article.text"></span>
         </div>
-        <div class="md-body-1 text-v-html" v-html="item.article.textarea"></div>
+
+        <div class="lh-5">
+          <md-icon>inventory_2</md-icon>
+          <span class="md-subhead text-v-html" v-html="'物品狀況描述：'+item.article.textarea"></span>
+        </div>
       </md-card-content>
 
       <md-card-actions md-alignment="space-between">
@@ -116,7 +163,7 @@
         <md-dialog-title>編輯文章</md-dialog-title>
         <md-dialog-content>
           <!-- {{ editForm }} -->
-          <form class="md-layout md-alignment-center-center">
+          <!-- <form class="md-layout md-alignment-center-center">
 
             <md-field v-if="editForm.article.title" md-clearable class="md-layout-item md-size-90">
               <md-textarea v-model="editForm.article.title" md-autogrow required></md-textarea>
@@ -150,7 +197,7 @@
                 bottom-text="點擊或拖曳以修改" />
             </div>
 
-          </form>
+          </form> -->
             <!-- <md-progress-bar md-mode="indeterminate" v-if="sending" /> -->
         </md-dialog-content>
         <md-dialog-actions>
@@ -167,7 +214,8 @@ export default {
   data () {
     return {
       editArticleModal: false,
-      editForm: []
+      editForm: [],
+      ulList: []
     }
   },
   props: {
@@ -229,6 +277,16 @@ export default {
       this.item.article.datepicker = new Date(this.item.article.datepicker).toLocaleDateString()
       this.item.article.date = new Date(this.item.article.date).toLocaleDateString()
     }
+
+    // 處理 便利貼1 及待辦事項2 顯示格式
+    if (this.item.article.template === 1 || this.item.article.template === 2) {
+      // .split("-").map(a=>"#"+a)
+      this.ulList = this.item.article.textarea.split('\n').map(item => {
+        // console.log(item)
+        return item
+      })
+    }
+
     // console.log(this.item.article)
     // console.log(this.tempList[this.item.article.template].subhead)
   }
