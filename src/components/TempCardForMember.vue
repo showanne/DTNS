@@ -98,8 +98,14 @@
             <span class="px-1">--</span>
         </md-button>
 
+        <md-button v-if="item.article.publicOff" class="md-button w-unset" disabled>
+          <md-icon :md-src="require('../assets/icon/action-report.svg')"></md-icon>
+          <!-- {{ item.article.publicOff }} -->
+          <!-- <small class="pl-1">檢舉</small> -->
+        </md-button>
+
         <md-button class="md-button w-unset md-dense">
-          <a :href="'http://line.naver.jp/R/msg/text/?DTNS分享吧！– ' + item.article.title + '%0D%0Ahttps://showanne.github.io/DTNS'">
+          <a :href="'http://line.naver.jp/R/msg/text/?DTNS分享吧！–&nbsp;' + item.article.title + '%0D%0Ahttps://showanne.github.io/DTNS'">
             <md-icon :md-src="require('../assets/icon/action-share.svg')"></md-icon>
           </a>
         </md-button>

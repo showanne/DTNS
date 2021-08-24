@@ -103,19 +103,27 @@
           <md-speed-dial-content>
             <md-button class="md-icon-button md-dense">
               <md-icon :md-src="require('../assets/icon/action-save.svg')"></md-icon>
-              <md-tooltip md-direction="right" md-delay="300">39</md-tooltip>
-
+              <md-tooltip md-direction="right" md-delay="300">儲存</md-tooltip>
+              <!-- {{ saveNum }} -->
             </md-button>
 
             <md-button class="md-icon-button md-dense">
+              <md-icon :md-src="require('../assets/icon/action-report.svg')"></md-icon>
+              <md-tooltip md-direction="right" md-delay="300">檢舉</md-tooltip>
+              <!-- {{ report }} -->
+            </md-button>
+
+            <md-button class="md-icon-button md-dense" @click="likeArticle">
               <md-icon :md-src="require('../assets/icon/action-good.svg')"></md-icon>
-              <md-tooltip md-direction="right" md-delay="300">59</md-tooltip>
+              <md-tooltip md-direction="right" md-delay="300">按讚</md-tooltip>
+              <!-- {{ likeNum }} -->
             </md-button>
 
             <md-button class="md-icon-button md-dense">
-              <a :href="'http://line.naver.jp/R/msg/text/?DTNS分享吧！–' + item.title + '&nbsp;%0D%0Ahttps://showanne.github.io/DTNS'">
+              <a :href="'http://line.naver.jp/R/msg/text/?DTNS分享吧！–&nbsp;' + item.title + '%0D%0Ahttps://showanne.github.io/DTNS'">
                 <md-icon :md-src="require('../assets/icon/action-share.svg')"></md-icon>
               </a>
+              <md-tooltip md-direction="right" md-delay="300">分享</md-tooltip>
             </md-button>
 
             <!-- <div class="line-it-button" data-lang="zh_Hant" data-type="share-b" data-ver="3" data-url="http://192.168.0.6:8080/#/Collection" data-color="grey" data-size="small" data-count="true"></div>
@@ -172,14 +180,14 @@ export default {
       type: String,
       required: true
     }
-  }
-  // methods: {
+  },
+  methods: {
   // showModal () {
   //   this.showCardById = true
   // },
   // closeModal (val) {
   // this.showCardById = val
   // }
-  // }
+  }
 }
 </script>

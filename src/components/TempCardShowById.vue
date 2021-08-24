@@ -93,24 +93,29 @@
         </md-card>
       </md-dialog-content>
       <md-dialog-actions class="md-layout md-alignment-space-around-center">
-        <md-button class="md-layout-item md-layout-nowrap">
+        <md-button class="md-layout-item md-size-33 md-layout-nowrap w-unset">
           <md-avatar class="md-small md-elevation-3 mr-2">
             <img :src="avatar" :alt="author" />
           </md-avatar>
           <span class="md-subhead">{{ author }}</span>
         </md-button>
-        <md-button class="md-layout-item md-layout-nowrap">
+        <md-button class="md-layout-item md-layout-nowrap w-unset min-w-unset">
           <md-icon :md-src="require('@/assets/icon/action-save.svg')"></md-icon>
-          <span class="pl-1">--</span>
-
+          <!-- <span class="pl-1">--</span> -->
         </md-button>
 
-        <md-button class="md-layout-item md-layout-nowrap">
+        <md-button class="md-layout-item md-layout-nowrap w-unset min-w-unset">
+          <md-icon :md-src="require('../assets/icon/action-report.svg')"></md-icon>
+          <!-- <small class="pl-1">檢舉</small> -->
+          <!-- {{ report }} -->
+        </md-button>
+
+        <md-button class="md-layout-item md-layout-nowrap w-unset min-w-unset">
           <md-icon :md-src="require('@/assets/icon/action-good.svg')"></md-icon>
-          <span class="pl-1">--</span>
+          <!-- <span class="pl-1">--</span> -->
         </md-button>
 
-        <md-button class="md-layout-item md-layout-nowrap">
+        <md-button class="md-layout-item md-layout-nowrap w-unset min-w-unset">
           <a :href="'http://line.naver.jp/R/msg/text/?DTNS分享吧！–&nbsp;' + title + '%0D%0Ahttps://showanne.github.io/DTNS'">
             <md-icon :md-src="require('../assets/icon/action-share.svg')"></md-icon>
           </a>
