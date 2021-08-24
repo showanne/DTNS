@@ -148,7 +148,7 @@
         </md-button>
 
         <md-button class="md-layout-item md-layout-nowrap w-unset min-w-unset">
-          <a :href="'http://line.naver.jp/R/msg/text/?DTNS分享吧！–&nbsp;' + title + '%0D%0Ahttps://showanne.github.io/DTNS'">
+          <a :href="'http://line.naver.jp/R/msg/text/?DTNS分享吧！–&nbsp;' + title + '%0D%0Ahttps://showanne.github.io/DTNS'" target="_blank">
             <md-icon :md-src="require('../assets/icon/action-share.svg')"></md-icon>
           </a>
         </md-button>
