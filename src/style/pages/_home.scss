@@ -69,7 +69,17 @@
       }
     }
   }
-}
+
+  // For mini size phone
+  .md-layout-item.md-small-size-30,
+  .md-layout-item.md-small-size-70 {
+    @media (max-width: 400px) {
+      min-width: 100%;
+      max-width: 100%;
+      flex: 1 1 100%;
+      }
+    }
+  }
 
 // scss 的 預設集 給變數 自動產生樣式 
 @mixin sizeIcon($px) {
