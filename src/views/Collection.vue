@@ -103,8 +103,8 @@ export default {
           }
           // 處理日期格式
           if (article.datepicker || article.date) {
-            article.datepicker = new Date(article.datepicker).toLocaleDateString()
-            article.date = new Date(article.date).toLocaleDateString()
+            article.datepicker = new Date(article.datepicker).toISOString().split('T')[0]
+            article.date = new Date(article.date).toISOString().split('T')[0]
           }
           return article
         })
@@ -137,8 +137,8 @@ export default {
         }
         // 處理日期格式
         if (article.datepicker || article.date) {
-          article.datepicker = new Date(article.datepicker).toLocaleDateString()
-          article.date = new Date(article.date).toLocaleDateString()
+          article.datepicker = new Date(article.datepicker).toISOString().split('T')[0]
+          article.date = new Date(article.date).toISOString().split('T')[0]
         }
         return article
       })

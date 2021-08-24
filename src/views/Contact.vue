@@ -269,8 +269,7 @@ export default {
       this.questionCardReply = data.result.map(item => {
         // 處理日期格式
         if (item.date) {
-          item.datepicker = new Date(item.datepicker).toLocaleDateString()
-          item.date = new Date(item.date).toLocaleDateString()
+          item.date = new Date(item.date).toISOString().split('T')[0]
         }
         return item
       })

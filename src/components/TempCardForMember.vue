@@ -266,6 +266,16 @@ export default {
       alert('deleteArticle', index)
     }
   },
+  // computed: {
+  // datepickerFormat () {
+  //   const date = this.item.article.datepicker
+  //   return new Date(date).toLocaleDateString()
+  // },
+  //   dateFormat () {
+  //     const date = this.item.article.date
+  //     return new Date(date).toLocaleDateString()
+  //   }
+  // },
   mounted () {
     // 有圖片才更新網址
     if (this.item.article.image) {
@@ -274,8 +284,9 @@ export default {
     }
     // 處理日期格式
     if (this.item.article.datepicker || this.item.article.date) {
-      this.item.article.datepicker = new Date(this.item.article.datepicker).toLocaleDateString()
-      this.item.article.date = new Date(this.item.article.date).toLocaleDateString()
+      // .split('T')[0] 找到 'T' 切割成陣列，並取第 0 個陣列回傳
+      this.item.article.datepicker = new Date(this.item.article.datepicker).toISOString().split('T')[0]
+      this.item.article.date = new Date(this.item.article.date).toISOString().split('T')[0]
     }
 
     // 處理 便利貼1 及待辦事項2 顯示格式

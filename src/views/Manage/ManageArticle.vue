@@ -253,8 +253,8 @@ export default {
         this.articleShow.text = data.result.text
         // this.articleShow.datepicker = data.result.datepicker
         // this.articleShow.date = data.result.date
-        this.articleShow.datepicker = new Date(data.result.datepicker).toLocaleDateString()
-        this.articleShow.date = new Date(data.result.date).toLocaleDateString()
+        this.articleShow.datepicker = new Date(data.result.datepicker).toISOString().split('T')[0]
+        this.articleShow.date = new Date(data.result.date).toISOString().split('T')[0]
         this.articleShow.select = data.result.select
         this.articleShow.report = data.result.report
         this.articleShow.publicOff = data.result.publicOff
@@ -328,8 +328,8 @@ export default {
         }
         // 處理日期格式
         if (article.datepicker || article.date) {
-          article.datepicker = new Date(article.datepicker).toLocaleDateString()
-          article.date = new Date(article.date).toLocaleDateString()
+          article.datepicker = new Date(article.datepicker).toISOString().split('T')[0]
+          article.date = new Date(article.date).toISOString().split('T')[0]
         }
         return article
       })

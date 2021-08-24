@@ -213,8 +213,8 @@ export default {
       this.textarea = data.result.textarea
       this.text = data.result.text
       this.select = data.result.select
-      this.datepicker = new Date(data.result.datepicker).toLocaleDateString()
-      this.date = new Date(data.result.date).toLocaleDateString()
+      this.datepicker = new Date(data.result.datepicker).toISOString().split('T')[0]
+      this.date = new Date(data.result.date).toISOString().split('T')[0]
 
       // console.log(typeof (data.result.textarea))
       // 處理 便利貼1 及待辦事項2 顯示格式
