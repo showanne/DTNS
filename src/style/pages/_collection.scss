@@ -11,6 +11,8 @@
       width: calc(100vw - 2.5rem - #{$drawer-w-small});
       overflow-x: scroll;
       overflow-y: hidden;
+      // for 縮小後 第一個 tab 跑版
+      justify-content: flex-start;
     }
     
     @include md-layout-xsmall{
@@ -183,19 +185,26 @@
 .md-theme-dark{
   .card-share{
     blockquote {
-      background: lighten( $dark1 ,2% );
+      background: lighten($dark1 ,2% );
     }
     cite {
       color: lighten($dark4, 20%);
     }
   }
+
+  %ulList{
+    box-shadow: 2px 3px 15px rgba($dark5, 0.3);
+    &:hover{
+      box-shadow: 1px 1px 5px rgba($dark5, 0.5);
+    }
+  }
   .card-postit{
     @extend %ulList;
-    background-color: darken($success, 80%);
+    background-color: darken($success, 78%);
   }
   .card-todo{
     @extend %ulList;
-    background-color: darken($success2, 80%);
+    background-color: darken($success2, 78%);
   }
 }
 
