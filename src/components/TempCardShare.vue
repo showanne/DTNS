@@ -141,7 +141,7 @@
             </md-button>
 
             <md-button class="md-icon-button md-dense">
-              <a :href="'http://line.naver.jp/R/msg/text/?DTNS分享吧！–&nbsp;' + item.title + '%0D%0Ahttps://showanne.github.io/DTNS'" target="_blank">
+              <a :href="'http://line.naver.jp/R/msg/text/?DTNS分享吧！– ' + item.title + '%0D%0Ahttps://showanne.github.io/DTNS/#/'" target="_blank">
                 <md-icon :md-src="require('../assets/icon/action-share.svg')"></md-icon>
               </a>
               <md-tooltip md-direction="right" md-delay="300">分享</md-tooltip>
