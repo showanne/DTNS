@@ -166,15 +166,15 @@
           <form class="md-layout md-alignment-center-center">
 
             <md-field v-if="editForm.article.title" md-clearable class="md-layout-item md-size-90">
-              <md-textarea v-model="editForm.article.title" md-autogrow required></md-textarea>
+              <md-textarea v-model="editForm.article.title" md-autogrow required class="pr-6"></md-textarea>
             </md-field>
 
             <md-field v-if="editForm.article.textarea" md-clearable class="md-layout-item md-size-90">
-              <md-textarea v-model="editForm.article.textarea"></md-textarea>
+              <md-textarea v-model="editForm.article.textarea" class="pr-6 pb-3"></md-textarea>
             </md-field>
 
             <md-field v-if="editForm.article.text" md-clearable class="md-layout-item md-size-90">
-              <md-input v-model="editForm.article.text"></md-input>
+              <md-input v-model="editForm.article.text" class="pr-6"></md-input>
             </md-field>
 
             <div v-if="editForm.article.datepicker" class="md-layout-item md-size-45">
@@ -205,6 +205,16 @@
           <md-button class="md-primary" @click="editArticleModal = false">取消</md-button>
         </md-dialog-actions>
       </md-dialog>
+
+      <!-- 刪除 confirm -->
+      <md-dialog-confirm
+        :md-active.sync="deleteArticleModal"
+        md-title="確認要刪除這篇文章？"
+        :md-content="editForm.article.title"
+        md-confirm-text="確認"
+        md-cancel-text="取消"
+        @md-cancel="onCancel"
+        @md-confirm="onConfirm" />
     </md-card>
 </template>
 
@@ -214,6 +224,7 @@ export default {
   data () {
     return {
       editArticleModal: false,
+      deleteArticleModal: false,
       editForm: {
         article: {
           template: 0,
@@ -257,10 +268,10 @@ export default {
       this.editForm = this.item
     },
     async submitArticle (index) {
-      console.log(index)
-      console.log(this.item._id)
+      // console.log(index)
+      // console.log(this.item._id)
       try {
-        console.log(this.editForm)
+        // console.log(this.editForm)
         // 建立上傳格式 FormData  後端接收資料型態為 multipart/form-data
         const FD = new FormData()
         // 將資料新增進 FormData 用 append('key 欄位名稱', 'value 資料的值')
@@ -282,7 +293,15 @@ export default {
       }
     },
     deleteArticle (index) {
-      alert('deleteArticle', index)
+      // alert('deleteArticle', index)
+      this.deleteArticleModal = true
+      // this.editForm.article.title
+    },
+    onConfirm () {
+      // this.report = 'Confirm'
+    },
+    onCancel () {
+      // this.report = 'Cancel'
     }
   },
   // computed: {
