@@ -103,8 +103,8 @@
             <template slot="accordion-content">
               <span>
                 <ol>
-                  <li>最新編輯會在 <router-link to="/collection">分享牆</router-link> 隨機出現唷 ^^</li>
-                  <li>或是可以到會員中心的文章管理去檢視文章唷 ^^</li>
+                  <li>最新編輯會在 <router-link to="/collection">分享牆</router-link> 出現唷 ^^</li>
+                  <li>或是可以到會員中心的文章總覽去檢視文章唷 ^^</li>
                 </ol>
               </span>
             </template>
@@ -120,8 +120,8 @@
             <template slot="accordion-content">
               <span>
                 <ul>
-                  <li>如果您是會員，可以到會員中心的文章管理去編輯文章</li>
-                  <li>如果您不是會員，目前不支援對已送出的文章進行再編輯的唷！</li>
+                  <li class="pl-2">如果您是會員，可以到會員中心的文章管理去編輯文章</li>
+                  <li class="pl-2">如果您不是會員，目前不支援對已送出的文章進行再編輯的唷！</li>
                 </ul>
               </span>
             </template>
