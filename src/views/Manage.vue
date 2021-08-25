@@ -1,14 +1,16 @@
 <template>
   <div id="manage">
-    <md-tabs class="md-accent" md-alignment="right" md-sync-route @md-changed="checkNewPosts">
-      <template slot="md-tab" slot-scope="{ tab }">
-        {{ tab.label }} <i class="badge" v-if="tab.data.badge">{{ tab.data.badge }}</i>
+    <md-tabs class="md-accent md-small-none-manage" md-alignment="fixed" md-sync-route @md-changed="checkNewPosts">
+      <template slot="md-tab" slot-scope="{ tab }" class="md-primary">
+        {{ tab.label }}
+        <i class="badge bg-dark3" v-if="tab.data.badge">!</i>
+        <!-- <i class="badge" v-if="tab.data.badge">{{ tab.data.badge }}</i> -->
       </template>
 
       <!-- Home 管理員身分顯示頁面 -->
-      <md-tab id="tab-Home" md-label="管理員身分資訊" to="/manage" exact>
+      <!-- <md-tab id="tab-Home" md-label="管理員身分資訊" to="/manage" exact>
         <router-view></router-view>
-      </md-tab>
+      </md-tab> -->
       <!-- memberData 會員資料管理頁 -->
       <md-tab id="tab-memberData" md-label="會員資料管理" to="/manage/memberData"
         :md-template-data="{ badge: newPosts }" @click="clearNewPosts">
@@ -29,15 +31,21 @@
         <router-view></router-view>
       </md-tab>
       <!-- special 最新消息或優惠訊息 -->
-      <md-tab id="tab-special" md-label="最新消息" to="/manage/special">
+      <!-- <md-tab id="tab-special" md-label="最新消息" to="/manage/special">
         <router-view></router-view>
-      </md-tab>
+      </md-tab> -->
       <!-- editApp 網頁版面及內容編輯 -->
-      <md-tab id="tab-editApp" md-label="網頁內容編輯" to="/manage/editApp">
+      <!-- <md-tab id="tab-editApp" md-label="網頁內容編輯" to="/manage/editApp">
         <router-view></router-view>
-      </md-tab>
+      </md-tab> -->
     </md-tabs>
-
+    <!-- 800px 以下尺寸 不顯示任何資料 -->
+    <md-empty-state
+      class="md-small-show-manage tc-warn2"
+      md-icon="no_accounts"
+      md-label="為了您的管理體驗"
+      md-description="螢幕尺寸小於 800px 管理頁面將不會顯示任何資料！">
+    </md-empty-state>
   </div>
 </template>
 
