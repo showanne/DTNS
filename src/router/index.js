@@ -9,10 +9,10 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
-    // meta: {
-    //   title: 'DTNS'
-    // }
+    component: Home,
+    meta: {
+      title: 'DTNS - 每字美句每個你喜歡的瞬間'
+    }
   },
   // {
   //   path: '/signin',
@@ -33,34 +33,34 @@ const routes = [
   {
     path: '/edit',
     name: 'Edit',
-    component: () => import(/* webpackChunkName: "edit" */ '../views/Edit.vue')
-    // meta: {
-    //   title: 'DTNS - Edit'
-    // }
+    component: () => import(/* webpackChunkName: "edit" */ '../views/Edit.vue'),
+    meta: {
+      title: 'DTNS - Edit'
+    }
   },
   {
     path: '/collection',
     name: 'Collection',
-    component: () => import(/* webpackChunkName: "collection" */ '../views/Collection.vue')
-    // meta: {
-    //   title: 'DTNS - Collection'
-    // }
+    component: () => import(/* webpackChunkName: "collection" */ '../views/Collection.vue'),
+    meta: {
+      title: 'DTNS - Collection'
+    }
   },
   {
     path: '/contact',
     name: 'Contact',
-    component: () => import(/* webpackChunkName: "contact" */ '../views/Contact.vue')
-    // meta: {
-    //   title: 'DTNS - Contact'
-    // }
+    component: () => import(/* webpackChunkName: "contact" */ '../views/Contact.vue'),
+    meta: {
+      title: 'DTNS - Contact'
+    }
   },
   {
     path: '/news',
     name: 'News',
-    component: () => import(/* webpackChunkName: "news" */ '../views/News.vue')
-    // meta: {
-    //   title: 'DTNS - News'
-    // }
+    component: () => import(/* webpackChunkName: "news" */ '../views/News.vue'),
+    meta: {
+      title: 'DTNS - News'
+    }
   },
   // {
   //   path: '/setting',
@@ -82,8 +82,8 @@ const routes = [
         name: 'MemberProfile',
         component: () => import(/* webpackChunkName: "member" */ '../views/Member/MemberProfile.vue'),
         meta: {
-          signIn: true
-          // title: 'DTNS - MemberProfile'
+          signIn: true,
+          title: 'DTNS - MemberProfile'
         }
       },
       {
@@ -91,8 +91,8 @@ const routes = [
         name: 'MemberArticle',
         component: () => import(/* webpackChunkName: "member" */ '../views/Member/MemberArticle.vue'),
         meta: {
-          signIn: true
-          // title: 'DTNS - MemberArticle'
+          signIn: true,
+          title: 'DTNS - MemberArticle'
         }
       },
       {
@@ -100,8 +100,8 @@ const routes = [
         name: 'MemberAnalytics',
         component: () => import(/* webpackChunkName: "member" */ '../views/Member/MemberAnalytics.vue'),
         meta: {
-          signIn: true
-          // title: 'DTNS - MemberAnalytics'
+          signIn: true,
+          title: 'DTNS - MemberAnalytics'
         }
       },
       {
@@ -109,8 +109,8 @@ const routes = [
         name: 'MemberReply',
         component: () => import(/* webpackChunkName: "member" */ '../views/Member/MemberReply.vue'),
         meta: {
-          signIn: true
-          // title: 'DTNS - MemberReply'
+          signIn: true,
+          title: 'DTNS - MemberReply'
         }
       }
     ]
@@ -128,8 +128,8 @@ const routes = [
         component: () => import(/* webpackChunkName: "manage" */ '../views/Manage/ManageHome.vue'),
         meta: {
           signIn: true,
-          admin: true
-          // title: 'DTNS - ManageHome'
+          admin: true,
+          title: 'DTNS - ManageHome'
         }
       },
       {
@@ -138,8 +138,8 @@ const routes = [
         component: () => import(/* webpackChunkName: "manage" */ '../views/Manage/ManageMemberData.vue'),
         meta: {
           signIn: true,
-          admin: true
-          // title: 'DTNS - ManageMemberData'
+          admin: true,
+          title: 'DTNS - ManageMemberData'
         }
       },
       {
@@ -148,8 +148,8 @@ const routes = [
         component: () => import(/* webpackChunkName: "manage" */ '../views/Manage/ManageArticle.vue'),
         meta: {
           signIn: true,
-          admin: true
-          // title: 'DTNS - ManageArticle'
+          admin: true,
+          title: 'DTNS - ManageArticle'
         }
       },
       {
@@ -158,8 +158,8 @@ const routes = [
         component: () => import(/* webpackChunkName: "manage" */ '../views/Manage/ManageTemplate.vue'),
         meta: {
           signIn: true,
-          admin: true
-          // title: 'DTNS - ManageTemplate'
+          admin: true,
+          title: 'DTNS - ManageTemplate'
         }
       },
       {
@@ -168,8 +168,8 @@ const routes = [
         component: () => import(/* webpackChunkName: "manage" */ '../views/Manage/ManageReply.vue'),
         meta: {
           signIn: true,
-          admin: true
-          // title: 'DTNS - ManageReply'
+          admin: true,
+          title: 'DTNS - ManageReply'
         }
       },
       {
@@ -178,8 +178,8 @@ const routes = [
         component: () => import(/* webpackChunkName: "manage" */ '../views/Manage/ManageSpecial.vue'),
         meta: {
           signIn: true,
-          admin: true
-          // title: 'DTNS - ManageSpecial'
+          admin: true,
+          title: 'DTNS - ManageSpecial'
         }
       },
       {
@@ -188,8 +188,8 @@ const routes = [
         component: () => import(/* webpackChunkName: "manage" */ '../views/Manage/ManageEditApp.vue'),
         meta: {
           signIn: true,
-          admin: true
-          // title: 'DTNS - ManageEditApp'
+          admin: true,
+          title: 'DTNS - ManageEditApp'
         }
       }
     ]
