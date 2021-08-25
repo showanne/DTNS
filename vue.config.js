@@ -16,7 +16,7 @@ module.exports = {
     manifestOptions: {
       // APP 名稱
       name: 'DTNS - 每字美句每個你喜歡的瞬間',
-      short_name: 'DTNS',
+      short_name: 'DTNS - 每字美句每個你喜歡的瞬間',
       // APP 主題顏色
       theme_color: '#7876B3',
       // APP 啟動畫面背景色
