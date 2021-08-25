@@ -11,7 +11,8 @@ $dark5:    #757159;
 $warn:     #FFD2CF;
 $warn2:    #ffe4cf;
 $success:  #C2FFDB;
-$success2: #C2FFFE;
+$success2: #C2E0FF;
+$success3: #C2FFFE;
 
 $colorList: (
   light1:   $light1,
@@ -25,7 +26,8 @@ $colorList: (
   warn:     $warn,
   warn2:    $warn2,
   success:  $success,
-  success2: $success2
+  success2: $success2,
+  success3: $success3
   );
 @each $key, $value in $colorList {
   .bg-#{$key} {
