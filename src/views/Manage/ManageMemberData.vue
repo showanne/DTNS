@@ -122,7 +122,7 @@
           </md-card>
 
           <md-snackbar :md-active.sync="messageSussess">
-            新帳號 {{ user }} 創建成功！
+            新帳號 {{ signUp.account }} 創建成功！
           </md-snackbar>
 
         </form>
