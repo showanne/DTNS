@@ -144,7 +144,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "img/temp-todo.624bae4f.svg"
   },
   {
-    "revision": "8cd06a5f99148ccca91f849101e1a0ec",
+    "revision": "2d543e75a5dbb728b884ef7cb0218768",
     "url": "index.html"
   },
   {
@@ -180,7 +180,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "js/news.0f48f08e.js"
   },
   {
-    "revision": "ebf721e6d8f2e94d0116cd4aeda687cb",
+    "revision": "1b7eaaa867fac852f06eb5af5c23d7eb",
     "url": "manifest.json"
   },
   {
