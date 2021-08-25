@@ -35,7 +35,7 @@ const routes = [
     name: 'Edit',
     component: () => import(/* webpackChunkName: "edit" */ '../views/Edit.vue'),
     meta: {
-      title: 'DTNS - Edit'
+      title: 'DTNS - 編輯'
     }
   },
   {
@@ -43,7 +43,7 @@ const routes = [
     name: 'Collection',
     component: () => import(/* webpackChunkName: "collection" */ '../views/Collection.vue'),
     meta: {
-      title: 'DTNS - Collection'
+      title: 'DTNS - 分享牆'
     }
   },
   {
@@ -51,7 +51,7 @@ const routes = [
     name: 'Contact',
     component: () => import(/* webpackChunkName: "contact" */ '../views/Contact.vue'),
     meta: {
-      title: 'DTNS - Contact'
+      title: 'DTNS - 聯絡我們'
     }
   },
   {
@@ -59,7 +59,7 @@ const routes = [
     name: 'News',
     component: () => import(/* webpackChunkName: "news" */ '../views/News.vue'),
     meta: {
-      title: 'DTNS - News'
+      title: 'DTNS - 最新消息'
     }
   },
   // {
@@ -83,7 +83,7 @@ const routes = [
         component: () => import(/* webpackChunkName: "member" */ '../views/Member/MemberProfile.vue'),
         meta: {
           signIn: true,
-          title: 'DTNS - MemberProfile'
+          title: 'DTNS - 會員資料'
         }
       },
       {
@@ -92,7 +92,7 @@ const routes = [
         component: () => import(/* webpackChunkName: "member" */ '../views/Member/MemberArticle.vue'),
         meta: {
           signIn: true,
-          title: 'DTNS - MemberArticle'
+          title: 'DTNS - 會員文章總覽'
         }
       },
       {
@@ -101,7 +101,7 @@ const routes = [
         component: () => import(/* webpackChunkName: "member" */ '../views/Member/MemberAnalytics.vue'),
         meta: {
           signIn: true,
-          title: 'DTNS - MemberAnalytics'
+          title: 'DTNS - 會員文章分析'
         }
       },
       {
@@ -110,7 +110,7 @@ const routes = [
         component: () => import(/* webpackChunkName: "member" */ '../views/Member/MemberReply.vue'),
         meta: {
           signIn: true,
-          title: 'DTNS - MemberReply'
+          title: 'DTNS - 會員問題回報'
         }
       }
     ]
@@ -129,7 +129,7 @@ const routes = [
         meta: {
           signIn: true,
           admin: true,
-          title: 'DTNS - ManageHome'
+          title: 'DTNS - 管理身分資訊'
         }
       },
       {
@@ -139,7 +139,7 @@ const routes = [
         meta: {
           signIn: true,
           admin: true,
-          title: 'DTNS - ManageMemberData'
+          title: 'DTNS - 會員資料管理'
         }
       },
       {
@@ -149,7 +149,7 @@ const routes = [
         meta: {
           signIn: true,
           admin: true,
-          title: 'DTNS - ManageArticle'
+          title: 'DTNS - 文章管理'
         }
       },
       {
@@ -159,7 +159,7 @@ const routes = [
         meta: {
           signIn: true,
           admin: true,
-          title: 'DTNS - ManageTemplate'
+          title: 'DTNS - 文章模板管理'
         }
       },
       {
@@ -169,7 +169,7 @@ const routes = [
         meta: {
           signIn: true,
           admin: true,
-          title: 'DTNS - ManageReply'
+          title: 'DTNS - 問題回復'
         }
       },
       {
@@ -179,7 +179,7 @@ const routes = [
         meta: {
           signIn: true,
           admin: true,
-          title: 'DTNS - ManageSpecial'
+          title: 'DTNS - 最新消息編輯'
         }
       },
       {
@@ -189,7 +189,7 @@ const routes = [
         meta: {
           signIn: true,
           admin: true,
-          title: 'DTNS - ManageEditApp'
+          title: 'DTNS - 網頁內容編輯'
         }
       }
     ]
