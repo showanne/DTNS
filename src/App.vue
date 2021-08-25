@@ -48,7 +48,7 @@
             </md-button>
 
             <md-list-item v-for="(menu, m) in menuList" :key="m"
-             :to="'/'+menu.subhead">
+             :to="'/'+menu.subhead" @click="toggleMenu">
               <md-icon
                 :md-src="require('./assets/icon/menu-'+menu.subhead+'.svg')"
               ></md-icon>
@@ -127,7 +127,7 @@
                 </md-list-item> -->
 
                 <md-list-item to="/member/memberArticle"
-                  class="menuMember-item">
+                  class="menuMember-item" @click="toggleMenu">
                   <md-icon>feed</md-icon>
                   <span class="menuText md-list-item-text">文章總覽</span>
                   <md-tooltip class="menuTooltip"
@@ -142,7 +142,7 @@
                 </md-list-item> -->
 
                 <md-list-item to="/member/memberReply"
-                  class="menuMember-item">
+                  class="menuMember-item" @click="toggleMenu">
                   <md-icon>3p</md-icon>
                   <span class="menuText md-list-item-text">問題回報</span>
                   <md-tooltip class="menuTooltip"
@@ -154,7 +154,7 @@
             </md-list-item>
 
             <!-- manage -->
-            <md-list-item v-if="user.isSignIn && user.isAdmin" to="/manage">
+            <md-list-item v-if="user.isSignIn && user.isAdmin" to="/manage" @click="toggleMenu">
               <md-icon
                 :md-src="require('./assets/icon/menu-Manage.svg')"
               ></md-icon>
