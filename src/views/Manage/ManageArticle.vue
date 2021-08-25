@@ -122,10 +122,10 @@ export default {
           field: 'title',
           key: 'c',
           title: '標題',
-          width: '30%',
+          width: '25%',
           renderBodyCell: ({ row, column, rowIndex }, h) => {
           // v-html 指令在JSX的寫法是 domPropsInnerHTML
-            return <div class="text-truncate" domPropsInnerHTML={row[column.field]}></div>
+            return <div class="text-v-html" domPropsInnerHTML={row[column.field]}></div>
           }
         },
         {
@@ -156,7 +156,7 @@ export default {
           field: 'image',
           key: 'f',
           title: '圖片',
-          width: '30%',
+          width: '25%',
           renderBodyCell: ({ row, column, rowIndex }, h) => {
             return (
               <img src={row[column.field]} />
@@ -176,7 +176,7 @@ export default {
         // { field: 'text', key: 'h', title: '內文', width: '10%' },
         // { field: 'select', key: 'i', title: '選項', width: '5%' },
         // { field: 'datepicker', key: 'j', title: '日期', width: '5%' },
-        { field: 'date', key: 'k', title: '日期', width: '5%' },
+        { field: 'date', key: 'k', title: '日期', width: '10%' },
         {
           field: '',
           key: 'l',

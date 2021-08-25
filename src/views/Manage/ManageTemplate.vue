@@ -6,14 +6,14 @@
       </md-table-toolbar> -->
 
       <md-table-row slot="md-table-row" slot-scope="{ item }">
-        <md-table-cell md-label="index" md-sort-by="index" md-numeric>{{ item.index }}</md-table-cell>
-        <md-table-cell md-label="Name" md-sort-by="name">{{ item.name }}</md-table-cell>
-        <md-table-cell md-label="Subhead" md-sort-by="subhead">{{ item.subhead }}</md-table-cell>
-        <md-table-cell md-label="Show" md-sort-by="show">
+        <md-table-cell md-label="編號" md-sort-by="index" md-numeric>{{ item.index }}</md-table-cell>
+        <md-table-cell md-label="模板名稱" md-sort-by="name">{{ item.name }}</md-table-cell>
+        <!-- <md-table-cell md-label="Subhead" md-sort-by="subhead">{{ item.subhead }}</md-table-cell> -->
+        <md-table-cell md-label="是否開放" md-sort-by="show">
           <!-- {{ item.show === 'true' ? '開放' : '僅登入可見' }} -->
           <md-switch v-model="item.show" class="md-primary"></md-switch>
         </md-table-cell>
-        <md-table-cell md-label="Input" md-sort-by="input">
+        <md-table-cell md-label="各模板欄位" md-sort-by="input">
           <!-- {{ item.input }} -->
             <md-chip class="md-accent"
              v-for="(input, i) in item.input"

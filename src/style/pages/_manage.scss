@@ -43,16 +43,39 @@
     }
   }
 }
-
+#manageMemberData,
 #manageTemplate{
   .md-table{
     // max-height: calc(100vh - 190px);
     border: solid 1px #B3AB88;
+    overflow: hidden;
   }
 }
 
 #manageReply{
   .md-table-head, .md-table-cell{
     max-width: 300px;
+  }
+}
+
+
+.md-small-show-manage {
+  display: none;
+  @media (max-width: 800px){
+    display: flex;
+  }
+
+  // For empty state font
+  color: darken(#ffe4cf, 20%)  !important;
+  padding: 21px;
+  height: 80vh;
+  .md-icon-font {
+    color: darken(#ffe4cf, 20%)  !important;
+  }
+}
+.md-small-none-manage {
+  display: flex;
+  @media (max-width: 800px){
+    display: none;
   }
 }

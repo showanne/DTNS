@@ -1,6 +1,6 @@
 <template>
   <div id="manageMemberData">
-    <md-table md-card v-model="memberData"
+    <md-table v-model="memberData"
       md-sort="name" md-sort-order="asc"
       md-height="unset" md-fixed-header>
       <md-table-toolbar>
@@ -28,20 +28,20 @@
       <md-table-row slot="md-table-row" slot-scope="{ item }">
         <!-- <md-table-cell md-label="ID" md-numeric>{{ item._id }}</md-table-cell> -->
         <!-- <md-table-cell md-label="No">{{ item.id }}</md-table-cell> -->
-        <md-table-cell class="avatar" md-label="Avatar">
+        <md-table-cell class="avatar" md-label="大頭照">
           <md-avatar v-if="item.avatar" class="">
             <img :src="item.avatar" :alt="item.name" width="90">
           </md-avatar>
         </md-table-cell>
-        <md-table-cell md-label="Name" md-sort-by="name">{{ item.name || item.account }}</md-table-cell>
-        <md-table-cell md-label="Role" md-sort-by="role">
+        <md-table-cell md-label="姓名" md-sort-by="name">{{ item.name || item.account }}</md-table-cell>
+        <md-table-cell md-label="身份" md-sort-by="role">
           <span v-if="item.role == 0">會員（{{ item.role }}）</span>
           <span v-else-if="item.role == 1">管理員（{{ item.role }}）</span>
           <span v-else-if="item.role == -1">訪客（{{ item.role }}）</span>
         </md-table-cell>
         <!-- <md-table-cell md-label="Account">{{ item.account }}</md-table-cell> -->
-        <md-table-cell md-label="Tokens">{{ item.tokens }}</md-table-cell>
-        <md-table-cell md-label="Editor">{{ item.editor }}</md-table-cell>
+        <md-table-cell md-label="登入">{{ item.tokens }}</md-table-cell>
+        <md-table-cell md-label="文章數">{{ item.editor }}</md-table-cell>
       </md-table-row>
 
       <!-- 分頁上使用仍有問題
