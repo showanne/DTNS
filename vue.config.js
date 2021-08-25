@@ -18,7 +18,7 @@ module.exports = {
       name: 'DTNS - 每字美句每個你喜歡的瞬間',
       short_name: 'DTNS - 每字美句每個你喜歡的瞬間',
       // APP 主題顏色
-      theme_color: '#7876B3',
+      themeColor: '#7876B3',
       // APP 啟動畫面背景色
       background_color: '#FFF9DB',
       description: 'DTNS - 每字美句每個你喜歡的瞬間\n讓你隨時記錄，方便儲存，便捷分享給親朋好友，\n來自一本書、一首歌、一句詞、一個讓你感動的瞬間。',
