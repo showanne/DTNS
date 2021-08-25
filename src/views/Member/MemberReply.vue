@@ -18,7 +18,7 @@
                 主要問題...
               </label>
               <md-select
-
+                v-model="contactForm.majorIssue"
                 name="majorIssue" required>
                 <md-option><!-- 第一個空白選項 --></md-option>
                 <md-option value="編輯權限">編輯權限</md-option>
@@ -32,6 +32,7 @@
             <md-field class="md-form-group">
               <label>問題描述 ...</label>
               <md-textarea
+                v-model="contactForm.issueDescription"
                 md-counter="40" required></md-textarea>
             </md-field>
 
@@ -51,6 +52,10 @@
         </form>
       </md-card>
     </div>
+    <md-dialog-alert
+        :md-active.sync="submitAlert"
+        :md-content="submitMsg"
+        md-confirm-text="確認" />
   </div>
 </template>
 
@@ -60,6 +65,8 @@ export default {
   data () {
     return {
       send: '',
+      submitAlert: false,
+      submitMsg: '',
       contactForm: {
         majorIssue: '',
         issueDescription: '',
@@ -70,7 +77,11 @@ export default {
   },
   methods: {
     async submitIssue () {
+      this.contactForm.nickname = this.userName
       console.log(this.contactForm)
+      this.submitMsg = '親愛的 ' + this.contactForm.nickname + ' ^^ <br>已收到您有關 ' + this.contactForm.majorIssue + ' 的問題，工程師將會盡快確認喔！'
+      this.submitAlert = true
+
       // this.sending = true
       // 新增問題 (訪客)  /issue
       // await this.axios.post('/issue', this.contactForm)
