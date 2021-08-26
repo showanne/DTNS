@@ -264,7 +264,7 @@
                       在手機中使用相機 capture="true"-->
                   </div>
 
-                  <md-field md-clearable class="md-layout-item md-size-90">
+                  <md-field md-clearable class="md-layout-item md-size-90 mt-5">
                     <label>{{ tempList[tempForm.template].input[3].name }}</label>
                     <md-textarea v-model="tempForm.textarea"></md-textarea>
                   </md-field>
