@@ -218,7 +218,7 @@ export default {
           this.$emit('closeModal') // emitting to parent
           if (this.user.isSignIn && this.user.isAdmin) {
             // 是管理者登入的話，登入成功後導向管理中心
-            this.$router.push('/manage').catch(() => {})
+            this.$router.push('/manage/memberData').catch(() => {})
             // console.log(this.$store.state.jwt.token.length, this.$store.state.user.role, this.$store.state.jwt.token)
           } else {
             // 登入成功後導向會員中心
