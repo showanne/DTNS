@@ -43,16 +43,16 @@
             <md-avatar class="md-small md-elevation-3 mr-2">
               <img :src="articleShow.avatar" :alt="articleShow.author" />
             </md-avatar>
-            <div class="md-subhead">{{ articleShow.author }}</div>
-            <div class="md-icon-dateL">{{ articleShow.date }}</div>
-            <div class="md-title text-v-html">{{ articleShow.title }}</div>
-            <!-- <div class="md-caption text-right">編輯日期：{{ articleShow.date }}</div> -->
-            <div class="md-caption">選擇日期：{{ articleShow.datepicker }}</div>
+            <div class="md-subhead d-inline-block">{{ articleShow.author }}</div>
+            <div class="md-icon-dateL">編輯日期：{{ articleShow.date }}</div>
+            <div class="md-title text-v-html lh-5">{{ articleShow.title }}</div>
             <md-card-media v-if="articleShow.image">
               <img class="w-33 text-right" :src="articleShow.image" :alt="articleShow.title">
             </md-card-media>
-            <div class="md-body-1 text-v-html" v-html="'描述1：'+articleShow.textarea"></div>
-            <div class="md-body-1 text-v-html" v-html="'描述2：'+articleShow.text"></div>
+            <!-- <div class="md-caption text-right">編輯日期：{{ articleShow.date }}</div> -->
+            <div class="md-caption">選擇日期：{{ articleShow.datepicker }}</div>
+            <div class="md-body-1 text-v-html" v-html="'描述1：<br>'+articleShow.textarea"></div>
+            <div class="md-body-1 text-v-html" v-html="'描述2：<br>'+articleShow.text"></div>
 
             <div class="md-subhead">被檢舉：{{ articleShow.report }}</div>
             <div class="md-subhead">移除文章：{{ articleShow.publicOff }}</div>

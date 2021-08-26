@@ -75,7 +75,7 @@
 
           <!-- novel -->
           <md-card-content v-if="tempNum === 5">
-            <div class="md-layout md-alignment-bottom-center">
+            <div class="md-layout md-alignment-center-center">
               <md-card-media
                 class="md-layout-item md-size-45 md-xsmall-size-90 text-center">
                 <img v-if="image" :src="image" :alt="title" class="w-80">
@@ -100,7 +100,7 @@
 
           <!-- storage -->
           <md-card-content v-if="tempNum === 6"
-            class="md-layout md-alignment-bottom-center">
+            class="md-layout md-alignment-top-center">
             <md-card-media
               class="md-layout-item md-size-45 md-xsmall-size-90 text-center">
               <img v-if="image" :src="image" :alt="title" class="w-80">

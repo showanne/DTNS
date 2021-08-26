@@ -113,7 +113,7 @@ export default {
           align: 'center',
           renderBodyCell: ({ row, column, rowIndex }, h) => {
             return (
-              <md-icon>{row[column.field]}</md-icon>
+              <md-icon class="tc-success2">{row[column.field]}</md-icon>
             )
           }
         },
@@ -146,7 +146,7 @@ export default {
           align: 'center',
           renderBodyCell: ({ row, column, rowIndex }, h) => {
             return (
-              <md-icon>{row[column.field]}</md-icon>
+              <md-icon class="tc-warn">{row[column.field]}</md-icon>
             )
           }
         }
