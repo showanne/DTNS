@@ -144,7 +144,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "img/temp-todo.624bae4f.svg"
   },
   {
-    "revision": "3cc8e4cc1c06faf719421fcf124602dc",
+    "revision": "33b95edef7a1d0e6eedf5428274c32a4",
     "url": "index.html"
   },
   {
