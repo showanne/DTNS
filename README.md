@@ -20,7 +20,7 @@
 - 非會員僅能看到有公開分享及非下架的文章。
 - 管理員可以新增使用者資料。
 - 管理員可以下架文章及回復問題。
-- 檢視模式有黑按模式可以選擇切換。
+- 檢視模式有黑暗模式可以選擇切換。
 
 ### 前台使用技術
 - 使用 Vue-Cli 開發專案。
@@ -54,8 +54,6 @@
 ![](https://i.imgur.com/1VZp5Z1.png)
 
 ![](https://i.imgur.com/lcMzhQM.png)
-
-![](https://i.imgur.com/6vbRSjW.png)
 
 ![](https://i.imgur.com/yrDXSdj.png)
 
