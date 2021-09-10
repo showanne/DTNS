@@ -1,3 +1,4 @@
+# DTNS 
 ![DTNS](https://i.imgur.com/sQAGngS.png)
 ### [DTNS - 每字美句每個你喜歡的瞬間](https://showanne.github.io/DTNS/#/)
 
@@ -19,8 +20,29 @@
 - 非會員僅能看到有公開分享及非下架的文章。
 - 管理員可以新增使用者資料。
 - 管理員可以下架文章及回復問題。
+- 檢視模式有黑按模式可以選擇切換。
 
-## 部分頁面截圖
+### 前台使用技術
+- 使用 Vue-Cli 開發專案。
+- 使用 Vue-Router 套件管理路由。
+- 使用 VueMaterial UI 框架。
+- RWD 響應式網頁設計。
+- 應用 components 去管理重複的元件。
+- 使用 Sass 預處理器管理 CSS。
+- 使用 ESLint 管理程式碼風格。
+- 使用 Axios 串接後端 API 。
+- PWA (Progressive Web App) 設定。
+
+### 後台使用技術 
+- 自行撰寫資料庫。
+- 開發使用 Node.js + Express。
+- 資料庫使用 MongoDB + Mongoose 套件。
+- cors 去處理跨域請求。
+- 驗證使用 jwt 機制。
+- 註冊及登入使用 Line login API。
+- 部署在 Heroku。
+
+## 頁面截圖
 ![](https://i.imgur.com/cneQKyW.png)
 
 ![](https://i.imgur.com/7y4eKg0.png)
@@ -36,10 +58,6 @@
 ![](https://i.imgur.com/6vbRSjW.png)
 
 ![](https://i.imgur.com/yrDXSdj.png)
-
-
-
-
 
 
 ## 發想
