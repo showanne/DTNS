@@ -13,12 +13,31 @@
 > 立即跟親朋好友分享，創造更好的文字風景。
 
 ## 主要功能
-- 不同主題的編輯模板
-- 可以直接分享編輯的文章
-- 登入會員後解鎖更多模板
+- 分享牆可以檢視公開的文章、並依據不同的主題文章分類。
+- 會員及非會員都可以新增文章及留言問題。
+- 會員可以修改及刪除自己的文章。
+- 非會員僅能看到有公開分享及非下架的文章。
+- 管理員可以新增使用者資料。
+- 管理員可以下架文章及回復問題。
 
-## 後臺功能 ?
-- 
+## 部分頁面截圖
+![](https://i.imgur.com/cneQKyW.png)
+
+![](https://i.imgur.com/7y4eKg0.png)
+
+![](https://i.imgur.com/xE40dbz.png)
+
+![](https://i.imgur.com/YT1GrfO.png)
+
+![](https://i.imgur.com/1VZp5Z1.png)
+
+![](https://i.imgur.com/lcMzhQM.png)
+
+![](https://i.imgur.com/6vbRSjW.png)
+
+![](https://i.imgur.com/yrDXSdj.png)
+
+
 
 
 
