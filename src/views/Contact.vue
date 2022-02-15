@@ -85,7 +85,7 @@
             <template slot="accordion-trigger">
               <div class="md-subheading">
                 <md-icon :md-src="require('../assets/icon/question.svg')"></md-icon>
-                為什麼我只能編輯2個模板？
+                為什麼只能編輯2個模板？
               </div>
             </template>
             <template slot="accordion-content">
@@ -97,7 +97,7 @@
             <template slot="accordion-trigger">
               <div class="md-subheading">
                 <md-icon :md-src="require('../assets/icon/question.svg')"></md-icon>
-                我該如何看到我剛新增的文章？
+                該如何看到我剛新增的文章？
               </div>
             </template>
             <template slot="accordion-content">
