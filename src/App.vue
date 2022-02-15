@@ -237,7 +237,7 @@
                   class="d-inline-block"></md-icon>
                 <span> Anne.</span>
             </a>
-            <div class="md-caption tc-light3">&copy; 2021 Anne.</div>
+            <div class="md-caption tc-light3">&copy; {{ copyright }} Anne.</div>
           </div>
         </md-app-drawer>
 
@@ -276,6 +276,8 @@ export default {
       signInBtn: false,
       // alert 訊息控制 false 是不跳 alert
       signOutMsg: false,
+      // copyright 自動依照當年度年份顯示
+      copyright: new Date().getFullYear(),
       fullWidth: 0
       // fullHeight: 0
     }
