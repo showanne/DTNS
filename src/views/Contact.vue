@@ -35,6 +35,7 @@
                 <md-option value="編輯權限">編輯權限</md-option>
                 <md-option value="網頁功能">網頁功能</md-option>
                 <md-option value="文章編輯">文章編輯</md-option>
+                <md-option value="帳號問題">帳號問題</md-option>
                 <md-option value="其他">其他</md-option>
               </md-select>
             </md-field>
