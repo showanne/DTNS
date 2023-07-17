@@ -1,3 +1,5 @@
+[![Deploy](https://github.com/showanne/DTNS/actions/workflows/deploy.yml/badge.svg?branch=main)](https://github.com/showanne/DTNS/actions/workflows/deploy.yml)
+
 # DTNS 
 ![DTNS](https://i.imgur.com/sQAGngS.png)
 ### [DTNS - 每字美句每個你喜歡的瞬間](https://showanne.github.io/DTNS/#/)
