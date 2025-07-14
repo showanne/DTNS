@@ -1,5 +1,10 @@
 # Action 名稱
 name: Deploy
+
+uses: actions/setup-node@v3
+with:
+  node-version: '14'
+  
 # 觸發時機，當推送到分支 main 時
 on:
   push:
