@@ -1,10 +1,5 @@
 # Action 名稱
 name: Deploy
-
-uses: actions/setup-node@v3
-with:
-  node-version: '14'
-  
 # 觸發時機，當推送到分支 main 時
 on:
   push:
@@ -21,6 +16,13 @@ jobs:
       - name: checkout
         # 使用的 actions/checkout 複製程式碼
         uses: actions/checkout@v3
+
+      # 使用指定版本的 Node 運行
+      - name: Use Node.js 14
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+
       # 步驟二：編譯
       - name: Install and Build
         run: |
