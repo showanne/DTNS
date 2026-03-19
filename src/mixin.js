@@ -104,7 +104,14 @@ export default {
       return userName
     },
     avatarImg () {
-      return this.fixAvatar(this.user.avatar, this.userName)
+      let avatarImg = ''
+      if (this.user.avatar === '' || this.user.avatar === undefined) {
+        // 使用 DiceBear API 作為備用頭像服務，取代已失效的 boringavatars
+        avatarImg = `https://api.dicebear.com/9.x/thumbs/svg?seed=${encodeURIComponent(this.userName)}`
+      } else {
+        avatarImg = this.user.avatar
+      }
+      return avatarImg
     },
     // show () {
     //   this.tempList.show === null ? this.tempList.show = this.user.isSignIn : this.tempList.show = true
@@ -118,16 +125,6 @@ export default {
   methods: {
     random (R) {
       return Math.floor(Math.random() * R)
-    },
-    fixAvatar (url, seed = 'DTNS') {
-      const oldService = 'boringavatars.com'
-      if (!url || url === '') {
-        return `https://api.dicebear.com/9.x/thumbs/svg?seed=${encodeURIComponent(seed)}`
-      } else if (url.includes(oldService)) {
-        // 將舊網址作為 seed 傳給 DiceBear，確保同一個舊網址轉換後得到的頭像是固定的
-        return `https://api.dicebear.com/9.x/thumbs/svg?seed=${encodeURIComponent(url)}`
-      }
-      return url
     },
     async signForLine () {
       let link = 'https://access.line.me/oauth2/v2.1/authorize?'

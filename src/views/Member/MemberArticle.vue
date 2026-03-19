@@ -82,7 +82,7 @@ export default {
         }
       })
 
-      this.articleM = data.result.map((articleM) => {
+      this.articleM = data.result.map(articleM => {
         // console.log(articleM)
         // 有圖片才更新網址
         // if (articleM.article.image) {
@@ -94,13 +94,6 @@ export default {
         // articleM.article.datepicker = new Date(articleM.article.datepicker).toLocaleDateString()
         // articleM.article.date = new Date(articleM.article.date).toLocaleDateString()
         // }
-        // 處理作者頭像舊版網址 (若有存放在資料庫中)
-        if (articleM.article.avatar) {
-          articleM.article.avatar = this.fixAvatar(
-            articleM.article.avatar,
-            articleM.article.author,
-          );
-        }
         return articleM
       })
       // 頁面載完時 動畫消失

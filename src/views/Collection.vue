@@ -106,8 +106,6 @@ export default {
             article.datepicker = new Date(article.datepicker).toISOString().split('T')[0]
             article.date = new Date(article.date).toISOString().split('T')[0]
           }
-          // 處理舊版 avatar 網址 (從資料庫讀取的舊資料)
-          article.avatar = this.fixAvatar(article.avatar, article.author)
           return article
         })
 
