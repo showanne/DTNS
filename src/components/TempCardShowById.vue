@@ -126,9 +126,7 @@
       </md-dialog-content>
       <md-dialog-actions class="md-layout md-alignment-space-around-center">
         <md-button class="md-layout-item md-size-33 md-layout-nowrap w-unset">
-          <md-avatar class="md-small md-elevation-3 mr-2">
-            <img :src="avatar" :alt="author" />
-          </md-avatar>
+          <Avatar class="md-small md-elevation-3 mr-2" :src="avatar" :address="author" />
           <span class="md-subhead">{{ author }}</span>
         </md-button>
         <md-button class="md-layout-item md-layout-nowrap w-unset min-w-unset">

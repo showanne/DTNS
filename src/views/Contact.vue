@@ -188,7 +188,6 @@
 import { validationMixin } from 'vuelidate'
 import { required, minLength, maxLength } from 'vuelidate/lib/validators'
 // import FormCard from '@/components/FormCard.vue'
-import Avatar from '@/components/Avatar.vue'
 // import Anonymous from '@/components/Anonymous.vue'
 import Accordion from '@/components/accordion.vue'
 import AccordionItem from '@/components/accordion-item.vue'
@@ -228,7 +227,6 @@ export default {
     }
   },
   components: {
-    Avatar,
     // Anonymous,
     Accordion,
     AccordionItem

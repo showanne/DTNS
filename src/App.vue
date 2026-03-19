@@ -113,9 +113,7 @@
               <md-list slot="md-expand" class="bg-dark3">
                 <!-- 會員資訊 -->
                 <md-list-item>
-                  <md-avatar class="md-elevation-3">
-                    <img :src="avatarImg" :alt="userName">
-                  </md-avatar>
+                  <Avatar class="md-elevation-3" :src="user.avatar" :address="userName" />
 
                   <span class="menuText md-body-2">{{ userName }}</span>
                 </md-list-item>

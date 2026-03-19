@@ -40,9 +40,7 @@
             <md-icon>close</md-icon>
           </md-button>
           <md-card-content>
-            <md-avatar class="md-small md-elevation-3 mr-2">
-              <img :src="articleShow.avatar" :alt="articleShow.author" />
-            </md-avatar>
+            <Avatar class="md-small md-elevation-3 mr-2" :src="articleShow.avatar" :address="articleShow.author" />
             <div class="md-subhead d-inline-block">{{ articleShow.author }}</div>
             <div class="md-icon-dateL">編輯日期：{{ articleShow.date }}</div>
             <div class="md-title text-v-html lh-5">{{ articleShow.title }}</div>

@@ -29,9 +29,7 @@
         <!-- <md-table-cell md-label="ID" md-numeric>{{ item._id }}</md-table-cell> -->
         <!-- <md-table-cell md-label="No">{{ item.id }}</md-table-cell> -->
         <md-table-cell class="avatar" md-label="大頭照">
-          <md-avatar v-if="item.avatar" class="">
-            <img :src="item.avatar" :alt="item.name" width="90">
-          </md-avatar>
+          <Avatar :src="item.avatar" :address="item.name || item.account" />
         </md-table-cell>
         <md-table-cell md-label="姓名" md-sort-by="name">{{ item.name || item.account }}</md-table-cell>
         <md-table-cell md-label="身份" md-sort-by="role">

@@ -21,6 +21,7 @@ import VueEasytable from 'vue-easytable'
 import VueGtag from 'vue-gtag'
 
 import App from './App.vue'
+import Avatar from '@/components/Avatar.vue'
 import './registerServiceWorker'
 import router from './router'
 import store from './store'
@@ -44,6 +45,7 @@ Vue.use(VueAxios, axios)
 // Vue.use(VueCarousel)
 Vue.use(VueMasonryPlugin)
 Vue.component('ImgInputer', ImgInputer)
+Vue.component('Avatar', Avatar)
 Vue.use(VueEasytable)
 
 // 全域引用 mixin 方便各分頁直接用變數

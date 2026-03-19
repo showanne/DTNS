@@ -1,9 +1,7 @@
 <template>
     <md-card md-with-hover>
       <md-card-header class="md-layout">
-        <md-avatar class="md-large md-elevation-5">
-          <img :src="item.avatar" alt="Avatar">
-        </md-avatar>
+        <Avatar class="md-large md-elevation-5" :src="item.avatar" :address="item.author" />
         <div class="md-layout-item md-subhead">{{ item.author }}</div>
         <div class="md-layout-item md-subhead">
           <md-icon :md-src="require('../assets/icon/dateS.svg')"></md-icon>

@@ -1,9 +1,7 @@
 <template>
   <div id="manageHome">
     <!-- 管理者資訊 -->
-    <md-avatar class="md-large md-elevation-5">
-      <img :src="avatarImg" alt="">
-    </md-avatar>
+    <Avatar class="md-large md-elevation-5" :src="user.avatar" :address="userName" />
     <h2>{{ userName }}</h2>
   </div>
 </template>
