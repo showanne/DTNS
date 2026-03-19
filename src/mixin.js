@@ -106,11 +106,9 @@ export default {
     avatarImg () {
       let avatarImg = ''
       if (this.user.avatar === '' || this.user.avatar === undefined) {
-        // console.log('avatarImg')
-        const avatarColors = ['3B4058', '2A6E78', '7A907C', 'C9B180', '3E6B48', 'B5B479', 'F7E6A6']
-        avatarImg = `https://source.boringavatars.com/beam/80/?colors=${avatarColors[Math.floor(Math.random() * 7)]},${avatarColors[Math.floor(Math.random() * 7)]}`
+        // 使用 DiceBear API 作為備用頭像服務，取代已失效的 boringavatars
+        avatarImg = `https://api.dicebear.com/9.x/thumbs/svg?seed=${encodeURIComponent(this.userName)}`
       } else {
-        // console.log('avatar')
         avatarImg = this.user.avatar
       }
       return avatarImg

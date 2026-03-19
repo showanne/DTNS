@@ -1,7 +1,7 @@
 <template>
   <md-avatar>
     <img class="avatar"
-        :src="`https://source.boringavatars.com/${variant}/${size}/?colors=${colors[random()]},${colors[random()]}`"
+        :src="`https://api.dicebear.com/9.x/${diceBearVariant}/svg?seed=${address || 'DTNS'}`"
         alt="Avatar"
       />
   </md-avatar>
@@ -24,16 +24,15 @@ export default {
     variant: {
       type: String,
       default: 'beam'
-      // variant oneOf: marble, beam, pixel,sunset, ring, bauhaus
+      // original boringavatars variant: marble, beam, pixel, sunset, ring, bauhaus
     },
     address: {
       type: String,
-      require: true
+      default: ''
     },
     colors: {
       type: Array,
       default: function () {
-        // HEX 不需要 # (官方文件就沒有)
         return ['3B4058', '2A6E78', '7A907C', 'C9B180', '3E6B48', 'B5B479', 'F7E6A6']
       }
     }
@@ -41,6 +40,17 @@ export default {
   computed: {
     user () {
       return this.$store.state.user
+    },
+    diceBearVariant () {
+      const map = {
+        beam: 'thumbs',
+        pixel: 'pixel-art',
+        marble: 'shapes',
+        ring: 'identicon',
+        sunset: 'shapes',
+        bauhaus: 'shapes'
+      }
+      return map[this.variant] || 'thumbs'
     }
   },
   methods: {

@@ -153,9 +153,8 @@
             <md-card class="md-accent">
               <md-card-content class="md-layout md-alignment-center">
                 <div class="md-layout-item md-size-15">
-                    <Avatar class="md-large md-elevation-5" />
-                </div>
-                <div class="md-layout-item md-size-85">
+                    <Avatar class="md-large md-elevation-5" :address="issue.nickname" />
+                </div>                <div class="md-layout-item md-size-85">
                   <div class="md-layout md-alignment-center-space-between">
                     <div class="md-title lh-4">
                       {{ issue.nickname }}
