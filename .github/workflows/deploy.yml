@@ -1,9 +1,17 @@
 # Action 名稱
 name: Deploy
-# 觸發時機，當推送到分支 main 時
+# 觸發時機
 on:
   push:
     branches: [ main ]
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+# 允許 Actions 寫入 PR 留言與內容
+permissions:
+  contents: write
+  pull-requests: write
+
 # 執行的工作
 jobs:
   # 工作名稱
@@ -34,6 +42,7 @@ jobs:
           VUE_APP_CHANNEL_SECRET: ${{ secrets.VUE_APP_CHANNEL_SECRET }}
           VUE_APP_CALLBACK_URL: ${{ secrets.VUE_APP_CALLBACK_URL }}
           # github -> settings -> secrets
+
       # 步驟三：部署
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
@@ -41,3 +50,17 @@ jobs:
           branch: gh-pages
           # 打包後創建的資料夾名稱
           folder: dist
+          # 如果是 PR 則部署到子目錄 (例如 pr-12)，如果是 main 則部署到根目錄
+          target-folder: ${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.number) || '' }}
+          # 設為 false 以免部署 PR 時刪除掉 main 分支的內容
+          clean: false
+
+      # 步驟四：在 PR 下方留言告知預覽連結
+      - name: Comment PR
+        if: github.event_name == 'pull_request'
+        uses: thollander/actions-comment-pull-request@v2
+        with:
+          message: |
+            🚀 **PR Preview 已就緒！**
+            🔍 [點此查看預覽網頁](https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/${{ format('pr-{0}/', github.event.number) }})
+            此版本是根據最近一次推送自動生成的。
