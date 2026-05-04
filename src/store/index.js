@@ -21,9 +21,11 @@ export default new Vuex.Store({
       role: -1, // 一般訪客 -1 / 一般會員 0 / 管理者 1
       account: '',
       name: '',
-      avatar: ''
+      avatar: '',
+      isSpecial: false // 特殊作者標記 (Demo 用)
       // email: ''
-    }
+    },
+    specialArticles: [] // 儲存特殊作者的本地文章 (Demo 用)
     // tempCardShow: 0
   },
   // 修改狀態的 function
@@ -36,6 +38,7 @@ export default new Vuex.Store({
       state.user.role = data.role
       state.user.name = data.name
       state.user.avatar = data.avatar
+      state.user.isSpecial = data.isSpecial || false
     },
     signOut (state) {
       // 登出把 vuex 清空
@@ -45,6 +48,7 @@ export default new Vuex.Store({
       state.user.role = -1
       state.user.name = ''
       state.user.avatar = ''
+      state.user.isSpecial = false
     },
     extend (state, data) {
       // 更新 jwt
@@ -57,6 +61,15 @@ export default new Vuex.Store({
       state.user.role = data.role
       state.user.name = data.name
       state.user.avatar = data.avatar
+      state.user.isSpecial = data.isSpecial || false
+    },
+    // Demo 用：儲存特殊文章到本地
+    saveSpecialArticle (state, article) {
+      state.specialArticles.push({
+        ...article,
+        _id: Date.now().toString(),
+        date: new Date().getTime()
+      })
     }
     // tempShow (state, data) {
     //   state.tempCardShow = data
@@ -77,9 +90,13 @@ export default new Vuex.Store({
       return {
         isSignIn: state.jwt.token.length > 0,
         isAdmin: state.user.role === 1,
+        isSpecial: state.user.isSpecial,
         ...state.user
       }
       // ...state.user 其餘運算子 將 state: {user} 展開
+    },
+    specialArticles (state) {
+      return state.specialArticles
     }
   },
   // 將 Vuex 資料存 localstorage
