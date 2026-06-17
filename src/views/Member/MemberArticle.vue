@@ -9,8 +9,20 @@
         md-mode="indeterminate"></md-progress-spinner>
     </md-empty-state>
 
+    <!-- 特殊作者專屬功能入口 (Demo) -->
+    <div v-if="user.isSignIn" class="demo-controls md-layout md-alignment-center p-2 mb-2" style="background: #eee; border-radius: 8px;">
+      <span class="md-body-1 mr-3">Demo 測試工具：</span>
+      <md-switch v-model="demoIsSpecial" class="md-primary">開啟特殊作者權限</md-switch>
+    </div>
+
+    <div v-if="user.isSpecial" class="special-author-tools md-layout md-alignment-center p-3">
+      <md-button to="/member/specialEdit" class="md-raised md-primary">
+        <md-icon>edit_note</md-icon> 撰寫深度專欄 (特殊作者)
+      </md-button>
+    </div>
+
     <!-- 無資料時顯示 -->
-    <md-empty-state v-else-if="articleM == ''"
+    <md-empty-state v-else-if="articleM == '' && specialArticles.length == 0"
       class="md-primary"
       md-icon="travel_explore"
       md-label="快來開始吧！">
@@ -20,6 +32,29 @@
 
     <!-- 文章呈現區 -->
     <div v-else class="md-layout md-alignment-center">
+      <!-- 特殊專欄區域 (Demo) -->
+      <div v-if="specialArticles.length > 0" class="md-layout-item md-size-100 p-4">
+        <h2 class="md-title ml-4">我的深度專欄 (不公開)</h2>
+        <div class="md-layout md-gutter md-alignment-top-center">
+          <div v-for="sa in specialArticles" :key="sa._id" class="md-layout-item md-size-33 md-small-size-100 mb-4">
+            <md-card>
+              <md-card-header>
+                <div class="md-title">{{ sa.title }}</div>
+                <div class="md-subhead">{{ new Date(sa.date).toLocaleDateString() }}</div>
+              </md-card-header>
+              <md-card-content class="text-truncate-3">
+                {{ sa.content }}
+              </md-card-content>
+              <md-card-actions>
+                <md-button class="md-primary">編輯</md-button>
+                <md-button>查看</md-button>
+              </md-card-actions>
+            </md-card>
+          </div>
+        </div>
+        <md-divider class="my-5"></md-divider>
+      </div>
+
       <div
         class="masonry-container"
         v-masonry
@@ -68,6 +103,22 @@ export default {
       editArticleModal: false,
       // 載入時 loading 動畫
       loading: false
+    }
+  },
+  computed: {
+    user () {
+      return this.$store.getters.user
+    },
+    specialArticles () {
+      return this.$store.getters.specialArticles
+    },
+    demoIsSpecial: {
+      get () {
+        return this.user.isSpecial
+      },
+      set (val) {
+        this.$store.commit('getInfo', { ...this.user, isSpecial: val })
+      }
     }
   },
   async mounted () {

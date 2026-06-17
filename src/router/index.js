@@ -112,6 +112,15 @@ const routes = [
           signIn: true,
           title: 'DTNS - 會員問題回報'
         }
+      },
+      {
+        path: 'specialEdit',
+        name: 'MemberSpecialEdit',
+        component: () => import(/* webpackChunkName: "member" */ '../views/Member/MemberSpecialEdit.vue'),
+        meta: {
+          signIn: true,
+          title: 'DTNS - 專欄編輯中心'
+        }
       }
     ]
   },
